@@ -1,6 +1,9 @@
-.idea
-.iml
+.idea/
+*.iml
 *.log
 .DS_Store
 out/
 build/
+.settings/
+gradle/
+.gradle
