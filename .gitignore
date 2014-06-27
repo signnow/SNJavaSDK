@@ -7,3 +7,4 @@ build/
 .settings/
 gradle/
 .gradle
+classes/

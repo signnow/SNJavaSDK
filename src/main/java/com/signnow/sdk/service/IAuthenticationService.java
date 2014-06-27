@@ -11,7 +11,7 @@ public interface IAuthenticationService {
      * @param user
      * @return a user with the system generated OAuth2 credentials
      */
-    User requestToken(User user);
+    Oauth2Token requestToken(User user);
 
 
     /**

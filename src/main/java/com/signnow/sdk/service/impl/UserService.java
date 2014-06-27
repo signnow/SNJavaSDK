@@ -17,11 +17,7 @@ public class UserService implements IUserService {
 
     @Override
     public User create(User user) {
-
-
         User createdUser = null;
-
-
         try {
             String requestBody = objectMapper.writeValueAsString(user);
             logger.debug("POSTING to /user \n" + requestBody);
@@ -47,7 +43,25 @@ public class UserService implements IUserService {
 
     @Override
     public User get(User user) {
-        return null;
+        User getUser = null;
+
+        try {
+            String requestBody = objectMapper.writeValueAsString(user);
+            logger.debug("GET user to /user \n" + requestBody);
+
+            HttpResponse httpResponse = Unirest.get(Config.getApiBase() + "/user")
+                    .header("Authorization", "Bearer "+ user.getOauth2Token().getAccessToken())
+                    .header("Accept", "application/json")
+                    .asString();
+
+            String json = httpResponse.getBody().toString();
+            logger.debug("Response body is " + json);
+            getUser = objectMapper.readValue(json, User.class);
+        }
+        catch(Exception ex) {
+            logger.error(ex.getMessage());
+        }
+        return getUser;
     }
 
     public ObjectMapper getObjectMapper() {
