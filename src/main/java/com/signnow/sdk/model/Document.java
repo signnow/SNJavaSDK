@@ -18,8 +18,6 @@ public class Document {
         this.link = link;
     }
 
-
-
     public String getId() {
         return id;
     }
