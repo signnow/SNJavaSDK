@@ -4,14 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.signnow.sdk.Config;
-import com.signnow.sdk.model.Document;
-import com.signnow.sdk.model.Invitation;
-import com.signnow.sdk.model.Oauth2Token;
+import com.signnow.sdk.model.*;
 import com.signnow.sdk.service.IDocumentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.File;
-import com.signnow.sdk.model.Template;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bhanu on 6/27/2014.
@@ -69,15 +68,16 @@ public class DocumentService implements IDocumentService{
     }
 
     @Override
-    public Document updateDocument(Oauth2Token token,String id) {
+    public Document updateDocument(Oauth2Token token,Map<String,List<Fields>> fieldsMap,String id) {
         Document document = null;
-
         try {
-            String requestBody = objectMapper.writeValueAsString(token);
+            String requestBody = objectMapper.writeValueAsString(fieldsMap);
             logger.debug("PUT to /document/<id> \n" + requestBody);
-            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document"+"/"+id)
+            HttpResponse httpResponse = Unirest.put(Config.getApiBase() + "/document" + "/" + id)
                     .header("Accept", "application/json")
-                    .header("Authorization", "Bearer "+token.getAccessToken())
+                    .header("Content-Type","application/json")
+                    .header("Authorization", "Bearer " + token.getAccessToken())
+                    .body(requestBody)
                     .asString();
 
             String json = httpResponse.getBody().toString();
@@ -195,7 +195,7 @@ public class DocumentService implements IDocumentService{
             String requestBody = objectMapper.writeValueAsString(token);
             logger.debug("GET  to /document/<id>/history \n" + requestBody);
             HttpResponse httpResponse = Unirest.get(Config.getApiBase() + "/document" + "/" + id + "/history")
-                    .header("Accept", "application/json")
+                    //.header("Accept", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .asString();
 

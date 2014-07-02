@@ -1,14 +1,27 @@
 package com.signnow.sdk.model;
 import com.signnow.sdk.service.IDocumentService;
+
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Bhanu on 6/27/2014.
  */
 public class Document {
 
-
     String id;
     private Oauth2Token oauth2Token;
     private String link;
+
+    private Map<String,List<Fields>> fields ;
+
+    public Map<String,List<Fields>> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String,List<Fields>> fields) {
+        this.fields = fields;
+    }
 
     public String getLink() {
         return link;

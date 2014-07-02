@@ -1,8 +1,9 @@
 package com.signnow.sdk.service;
-import com.signnow.sdk.model.Document;
-import com.signnow.sdk.model.Invitation;
-import com.signnow.sdk.model.Oauth2Token;
-import com.signnow.sdk.model.Template;
+import com.signnow.sdk.model.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface IDocumentService {
 
@@ -16,7 +17,7 @@ public interface IDocumentService {
 
     Document getDocument(Oauth2Token token, String id);
 
-    Document updateDocument(Oauth2Token token, String id);
+    Document updateDocument(Oauth2Token token, Map<String,List<Fields>> fieldsMap, String id);
 
     Document downLoadDocumentAsPDF(Oauth2Token token, String id);
 
