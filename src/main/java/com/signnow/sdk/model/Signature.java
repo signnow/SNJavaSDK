@@ -16,11 +16,6 @@ public class Signature extends Fields {
 
     private String data;
 
-    public Signature()
-    {
-
-    }
-
     public int getWidth() {
         return width;
     }
