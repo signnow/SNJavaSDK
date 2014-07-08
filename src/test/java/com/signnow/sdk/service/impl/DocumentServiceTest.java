@@ -15,6 +15,8 @@ import sun.misc.BASE64Encoder;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.*;
 
 import static junit.framework.TestCase.assertNotNull;
@@ -526,7 +528,7 @@ public class DocumentServiceTest extends TestBase{
         assertNotNull("DocumentId", document.getId());
 
         Document doc1 = new Document();
-        String docFilePath1 = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        String docFilePath1 = getClass().getClassLoader().getResource("ReleaseForm-2013.pdf").getFile();
         doc.setFilePath(docFilePath1);
         Document document1 = documentService.create(requestedToken,doc);
         assertNotNull("DocumentId", document1.getId());
@@ -540,12 +542,24 @@ public class DocumentServiceTest extends TestBase{
         ArrayList<String> docIds = new ArrayList<String>();
         docIds.add(document.getId());
         docIds.add(document1.getId());
-       // docIds.add(document2.getId());
+        docIds.add(document2.getId());
         HashMap <String, List<String>> myMergeMap = new HashMap<String, List<String>>();
         myMergeMap.put("document_ids",docIds);
 
-        Document mergeDocument = new Document();
-        mergeDocument = documentService.mergeDocuments(requestedToken, myMergeMap);
+       // Document mergeDocument = new Document();
+        InputStream mergeInputStream = documentService.mergeDocuments(requestedToken, myMergeMap);
+
+        ReadableByteChannel rbc = Channels.newChannel(mergeInputStream);
+        String destinationFile = getClass().getClassLoader().getResource(".").getPath();
+        try {
+            FileOutputStream fos = new FileOutputStream(destinationFile+"\\result.pdf");
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertNotNull("MergeTEST",destinationFile);
     }
 
 }

@@ -1,22 +1,24 @@
 package com.signnow.sdk.service.impl;
 
+import ch.qos.logback.core.util.FileUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.signnow.sdk.Config;
 import com.signnow.sdk.model.*;
 import com.signnow.sdk.service.IDocumentService;
+import org.omg.IOP.Encoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.misc.BASE64Decoder;
 
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 /**
  * Created by Bhanu on 6/27/2014.
@@ -281,11 +283,11 @@ public class DocumentService implements IDocumentService{
 
 
      /*
-        This method is used to (POST) merge tha new document from the given template id in the SignNow Application
+        This method is used to (POST) merge the new document from the given template id in the SignNow Application
      */
 
     @Override
-    public Document mergeDocuments(Oauth2Token token, HashMap <String, List<String>> myMergeMap) {
+    public InputStream mergeDocuments(Oauth2Token token, HashMap <String, List<String>> myMergeMap) {
         Document document = null;
         try {
             String requestBody = objectMapper.writeValueAsString(myMergeMap);
@@ -297,20 +299,13 @@ public class DocumentService implements IDocumentService{
                     .body(requestBody)
                     .asString();
 
-            String json = httpResponse.getBody().toString();
-
-            // re write the path
-            File f = new File("E:\\SignNow\\bb.pdf");
-            DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
-            dos.writeInt(json.length());
-            dos.writeUTF(json);
-            logger.debug("Response body is " + json);
-           // document = objectMapper.readValue(json, Document.class);
+           InputStream inputStream = httpResponse.getRawBody();
+            return inputStream;
         }
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-        return document;
+        return null;
     }
     public ObjectMapper getObjectMapper() {
         return objectMapper;

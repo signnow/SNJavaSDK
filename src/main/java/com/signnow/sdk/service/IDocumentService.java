@@ -1,6 +1,7 @@
 package com.signnow.sdk.service;
 import com.signnow.sdk.model.*;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +22,7 @@ public interface IDocumentService {
      */
     Document create(Oauth2Token token, Document documentPath);
 
-    Document mergeDocuments(Oauth2Token token, HashMap <String, List<String>> myMergeMap);
+    InputStream mergeDocuments(Oauth2Token token, HashMap <String, List<String>> myMergeMap);
 
     Document getDocument(Oauth2Token token, String id);
 
