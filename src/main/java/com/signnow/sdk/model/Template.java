@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Bhanu on 6/30/2014.
+ *
+ * This model class used to create the template based on the given document id.
  */
 public class Template {
     @JsonProperty("document_id")

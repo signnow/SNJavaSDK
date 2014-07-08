@@ -4,7 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Bhanu on 7/1/2014.
+ *
+ * This class is used to create the check box on the document
  */
+
+
 public class Checkbox extends Fields{
 
     private int x;

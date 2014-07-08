@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Bhanu on 7/1/2014.
+ *
+ * This model class is used to place the Texts on the documents for a given document ID.
  */
 public class Text extends Fields {
 

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Bhanu on 6/30/2014.
+ *
+ * This model obejct being used to send the invitations to different users to sign the documents.
  */
 public class Invitation {
 

@@ -3,6 +3,12 @@ package com.signnow.sdk.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Created by Bhanu on 6/30/2014.
+ *
+ * This model class used to create the User in SignNow Application
+ */
+
 public class User {
     private String id;
 

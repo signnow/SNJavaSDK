@@ -2,6 +2,11 @@ package com.signnow.sdk;
 
 import org.apache.commons.codec.binary.Base64;
 
+/**
+ * Created by Bhanu on 6/26/2014.
+ *
+ * This class is used to read the configuration parameters like, base endpointURL, clientID, clientSecret to access SignNow Application.
+ */
 public class Config {
     private Config() {
     }

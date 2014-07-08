@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Bhanu on 7/1/2014.
+ *
+ * This model is useful to build the Fields Object to have different types of files like, Signature,CheckBox,Texts and Initials.
  */
 public class Fields {
 

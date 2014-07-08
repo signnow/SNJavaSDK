@@ -6,22 +6,15 @@ import java.util.Map;
 
 /**
  * Created by Bhanu on 6/27/2014.
+ *
+ * This class is used to create the document model object
  */
 public class Document {
 
-    String id;
+    private String id;
     private Oauth2Token oauth2Token;
     private String link;
-
-    private Map<String,List<Fields>> fields ;
-
-    public Map<String,List<Fields>> getFields() {
-        return fields;
-    }
-
-    public void setFields(Map<String,List<Fields>> fields) {
-        this.fields = fields;
-    }
+    private String filePath;
 
     public String getLink() {
         return link;
@@ -47,4 +40,11 @@ public class Document {
         this.oauth2Token = oauth2Token;
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 }

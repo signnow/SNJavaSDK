@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by Bhanu on 7/1/2014.
+ *
+ * This model class built to place the signature on the document.
  */
 public class Signature extends Fields {
     private int width;
@@ -13,7 +15,6 @@ public class Signature extends Fields {
 
     @JsonProperty("page_number")
     private int pageNumber;
-
     private String data;
 
     public int getWidth() {

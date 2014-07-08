@@ -1,7 +1,13 @@
 package com.signnow.sdk.model;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Created by Bhanu on 6/30/2014.
+ *
+ * This model obejct being used to get the OAuth2 access tokens to interact with SignNow API .
+ */
+
 
 public class Oauth2Token {
     @JsonProperty("access_token")

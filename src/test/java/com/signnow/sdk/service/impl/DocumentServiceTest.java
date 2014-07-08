@@ -10,26 +10,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.io.File;
-import java.util.HashMap;
-
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.IOException;
 import sun.misc.BASE64Encoder;
-import sun.misc.BASE64Decoder;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.List;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.*;
 
 import static junit.framework.TestCase.assertNotNull;
 
 /**
  * Created by Bhanu on 6/27/2014.
+ *
+ * This test class is used to perform and test the Document specific test operations.
  */
 public class DocumentServiceTest extends TestBase{
 
@@ -49,50 +42,63 @@ public class DocumentServiceTest extends TestBase{
         ((DocumentService) documentService).setObjectMapper(getObjectMapper());
     }
 
+    /**
+     *
+     * This test method is used to create a Document in SignNow Application
+     */
     @Test
     public void createDocument () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-        resultUser.setPassword("fakePassword");
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
-
 
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-        assertNotNull("DocumentId" , document.getId());
-
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
     }
 
-
+    /**
+     *
+     * This test method is used to update an existing Document in SignNow Application
+     */
     @Test
     public void updateDocument () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-        resultUser.setPassword("fakePassword");
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
         // Build the data for Signature Test
-        String filePath="E:/SignNow/TestImage.jpg";
-        String imageStr= getEncodedImage(filePath);
+        String signatureImageFilePath=getClass().getClassLoader().getResource("SignatureImage.jpg").getFile();
+        String encodedString= getEncodedImage(signatureImageFilePath);
 
-        String filePath1="E:/SignNow/TestImage1.jpg";
-        String imageStr1= getEncodedImage(filePath1);
+        String signatureImageFilePath1=getClass().getClassLoader().getResource("SignatureImage1.jpg").getFile();
+        String encodedString1= getEncodedImage(signatureImageFilePath1);
 
         Signature signature = new Signature();
         signature.setX(305);
@@ -100,7 +106,7 @@ public class DocumentServiceTest extends TestBase{
         signature.setPageNumber(1);
         signature.setWidth(100);
         signature.setHeight(30);
-        signature.setData(imageStr);
+        signature.setData(encodedString);
 
         Signature signature1 = new Signature();
         signature1.setX(205);
@@ -108,7 +114,7 @@ public class DocumentServiceTest extends TestBase{
         signature1.setPageNumber(1);
         signature1.setWidth(100);
         signature1.setHeight(30);
-        signature1.setData(imageStr1);
+        signature1.setData(encodedString1);
 
         ArrayList<Fields> signatureList = new ArrayList();
         signatureList.add(signature);
@@ -125,7 +131,6 @@ public class DocumentServiceTest extends TestBase{
         text.setFont("Arial");
         text.setLineHeight(9.075);
 
-
         Text text1 = new Text();
         text1.setPageNumber(1);
         text1.setSize(30);
@@ -135,8 +140,7 @@ public class DocumentServiceTest extends TestBase{
         text1.setFont("Arial");
         text1.setLineHeight(9.075);
 
-
-        ArrayList<Fields> textsList = new ArrayList();
+        ArrayList<Fields> textsList = new ArrayList<Fields>();
         textsList.add(text);
         textsList.add(text1);
 
@@ -180,12 +184,14 @@ public class DocumentServiceTest extends TestBase{
         fieldsMap.put("checks",checksList);
         fieldsMap.put("fields",fieldsList);
 
-        Document documentUpdate = new Document();
-        documentUpdate.setFields(fieldsMap);
-
-        Document resultDoc = documentService.updateDocument(requestedToken,documentUpdate.getFields(),document.getId());
+        Document resultDoc = documentService.updateDocument(requestedToken, fieldsMap,document.getId());
 
     }
+
+    /**
+     *
+     * This utility method is used to get the encoded image from a given filePath
+     */
 
     public String getEncodedImage(String filePath)
     {
@@ -201,10 +207,13 @@ public class DocumentServiceTest extends TestBase{
         return imgstr;
     }
 
+    /**
+     *
+     * This utility method is used to convert the image based on its type to a base 64 encoded String.
+     */
     public String encodeToString(BufferedImage image, String type) {
         String imageString = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
         try {
             ImageIO.write(image, type, bos);
             byte[] imageBytes = bos.toByteArray();
@@ -219,116 +228,124 @@ public class DocumentServiceTest extends TestBase{
         return imageString;
     }
 
+    /**
+     *
+     * This test method is used to GET the Document for a given user based on the given DocumentID from SignNow Application
+     */
     @Test
     public void getDocument () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-
-        resultUser.setPassword("fakePassword");
-
-
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
-
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
-
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
         Document resultDoc = documentService.getDocument(requestedToken,document.getId());
         Assert.assertNotNull("resultDoc id", resultDoc.getId());
 
     }
 
-    @Test
+    /**
+     *
+     * This test method is used to GET a Document as PDF in SignNow Application
+     */
 
+    @Test
     public void getDocumentAsPDF()
     {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-
-        resultUser.setPassword("fakePassword");
-
-
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
-
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
-
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
         Document resultDoc = documentService.downLoadDocumentAsPDF(requestedToken,document.getId());
         Assert.assertNotNull("resultDoc Link", resultDoc.getLink());
     }
 
+    /**
+     *
+     * This test method is used to GET the Collapsed Document in SignNow Application
+     */
 
     @Test
 
     public void getCollapsedDocument()
     {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-
-        resultUser.setPassword("fakePassword");
-
-
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
-
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
-
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
         Document resultDoc = documentService.downLoadCollapsedDocument(requestedToken,document.getId());
-
-        // TODO:  Write teh response to a new pdf file and see if the raw data is saved properly.. open the file and verify...
-
-        File f = new File("E:\\SignNow\\Result.pdf");
-
-        //
     }
 
+    /**
+     *
+     * This test method is used to invite the signers to sign the Document in SignNow Application
+     */
     @Test
     public void invite () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-        resultUser.setPassword("fakePassword");
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
-        String toEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String toEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
 
         Invitation invitation = new Invitation();
         invitation.setFromEmail(resultUser.getEmail());
@@ -381,47 +398,60 @@ public class DocumentServiceTest extends TestBase{
     }*/
 
 
+    /**
+     *
+     * This test method is used to GET the Document History for a given Document ID in SignNow Application
+     */
     @Test
     public void getDocumentHistory () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-        resultUser.setPassword("fakePassword");
-
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
        // call getDocumentHistory
-       String result  = documentService.getDocumentHistory(requestedToken,document.getId());
-      //  assertNotNull("document history", result.toString());
-
+        String result  = documentService.getDocumentHistory(requestedToken,document.getId());
+        assertNotNull("document history", result);
     }
 
-
+    /**
+     *
+     * This test method is used to create a Template for a Given Document in SignNow Application
+     */
     @Test
     public void createTemplate () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-        resultUser.setPassword("fakePassword");
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
         Template template = new Template();
         template.setDocumentId(document.getId());
@@ -432,22 +462,30 @@ public class DocumentServiceTest extends TestBase{
         assertNotNull("template create result", resultTemplate.getId());
     }
 
+    /**
+     *
+     * This test method is used to create a Document from a Template based on the template id SignNow Application
+     */
     @Test
     public void createDocumentFromTemplate () {
-        String randomEmail = "lukeskywalker" + new Date().getTime() + "@mailinator.com";
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
         User user = new User();
         user.setEmail(randomEmail);
-        user.setPassword("fakePassword");
+        user.setPassword("password");
 
         User resultUser = userService.create(user);
-        resultUser.setPassword("fakePassword");
+        resultUser.setPassword("password");
         assertNotNull("No user id from creating user", resultUser.getId());
 
         Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
         assertNotNull("Access Token", requestedToken.getAccessToken());
 
-        Document document = documentService.create(requestedToken);
-        assertNotNull("DocumentId" , document.getId());
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
 
         Template template = new Template();
         template.setDocumentId(document.getId());
@@ -457,8 +495,57 @@ public class DocumentServiceTest extends TestBase{
         Template resultTemplate  = documentService.createTemplate(requestedToken,template);
         assertNotNull("template create result", resultTemplate.getId());
 
-        String doc = documentService.createNewDocumentFromTemplate(requestedToken,resultTemplate);
-        assertNotNull("document id",doc);
-
+        String doc1 = documentService.createNewDocumentFromTemplate(requestedToken,resultTemplate);
+        assertNotNull("document id",doc1);
     }
+
+
+    /**
+     *
+     * This test method is used to merge the list of documents based on the given document id's in SignNow Application
+     */
+    @Test
+    public void mergeDocument () {
+        String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
+        User user = new User();
+        user.setEmail(randomEmail);
+        user.setPassword("password");
+
+        User resultUser = userService.create(user);
+        resultUser.setPassword("password");
+        assertNotNull("No user id from creating user", resultUser.getId());
+
+        Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
+        assertNotNull("Access Token", requestedToken.getAccessToken());
+
+        //copy the ReleaseForm.pdf file to the test/resources.
+        Document doc = new Document();
+        String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath);
+        Document document = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document.getId());
+
+        Document doc1 = new Document();
+        String docFilePath1 = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath1);
+        Document document1 = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document1.getId());
+
+        Document doc2 = new Document();
+        String docFilePath2 = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+        doc.setFilePath(docFilePath2);
+        Document document2 = documentService.create(requestedToken,doc);
+        assertNotNull("DocumentId", document2.getId());
+
+        ArrayList<String> docIds = new ArrayList<String>();
+        docIds.add(document.getId());
+        docIds.add(document1.getId());
+       // docIds.add(document2.getId());
+        HashMap <String, List<String>> myMergeMap = new HashMap<String, List<String>>();
+        myMergeMap.put("document_ids",docIds);
+
+        Document mergeDocument = new Document();
+        mergeDocument = documentService.mergeDocuments(requestedToken, myMergeMap);
+    }
+
 }

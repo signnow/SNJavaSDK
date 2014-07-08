@@ -8,29 +8,41 @@ import com.signnow.sdk.model.*;
 import com.signnow.sdk.service.IDocumentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Bhanu on 6/27/2014.
+ *
+ * This class is used to perform operations on the Documents. This class is provides the guidle lines on how to call the SignNow API
+ * for several operations like Create (POST), GetDocuemnt (GET), Update Document (PUT), Get Document History, etc.,
  */
 public class DocumentService implements IDocumentService{
     final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
     private ObjectMapper objectMapper;
 
 
+    /*
+    This method is used to create  or POST the document for a given user in the SignNow Application
+     */
     @Override
-    public Document create(Oauth2Token token) {
+    public Document create(Oauth2Token token,Document documentPath) {
         Document document = null;
-
         try {
-            String requestBody = objectMapper.writeValueAsString(token);
+            String requestBody = objectMapper.writeValueAsString(documentPath.getFilePath());
             logger.debug("POSTING to /document \n" + requestBody);
             HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document")
                     .header("Accept", "application/json")
+                    //.header("Content-Type","multipart/form-data")
                     .header("Authorization", "Bearer "+token.getAccessToken())
-                    .field("file", new File("E:/SignNow/ReleaseForm.pdf"))
+                    .field("file", new File(documentPath.getFilePath()))
                     .asString();
 
             String json = httpResponse.getBody().toString();
@@ -40,22 +52,22 @@ public class DocumentService implements IDocumentService{
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return document;
     }
 
+    /*
+        This method is used to GET the document for a given user from the SignNow Application
+     */
     @Override
     public Document getDocument(Oauth2Token token,String id) {
         Document document = null;
-
         try {
             String requestBody = objectMapper.writeValueAsString(token);
-            logger.debug("Getting the Document to /documentI/documentId \n" + requestBody);
+            logger.debug("Getting the Document to /document/documentId \n" + requestBody);
             HttpResponse httpResponse = Unirest.get(Config.getApiBase() + "/document" + "/" + id)
                     .header("Accept", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .asString();
-
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Document.class);
@@ -63,13 +75,16 @@ public class DocumentService implements IDocumentService{
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return document;
     }
 
+    /*
+        This method is used to update [PUT] the document for a given user from the SignNow Application
+     */
     @Override
-    public Document updateDocument(Oauth2Token token,Map<String,List<Fields>> fieldsMap,String id) {
+    public Document updateDocument(Oauth2Token token,HashMap<String,List<Fields>> fieldsMap,String id) {
         Document document = null;
+
         try {
             String requestBody = objectMapper.writeValueAsString(fieldsMap);
             logger.debug("PUT to /document/<id> \n" + requestBody);
@@ -87,15 +102,16 @@ public class DocumentService implements IDocumentService{
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return document;
     }
 
+    /*
+        This method is used to download (POST) the document as PDF for a given user from the SignNow Application
+     */
 
     @Override
     public Document downLoadDocumentAsPDF(Oauth2Token token, String id) {
         Document document = null;
-
         try {
             String requestBody = objectMapper.writeValueAsString(token);
             logger.debug("POST  to /documentI/id/download/link \n" + requestBody);
@@ -103,7 +119,6 @@ public class DocumentService implements IDocumentService{
                     .header("Accept", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .asString();
-
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Document.class);
@@ -111,14 +126,15 @@ public class DocumentService implements IDocumentService{
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return document;
     }
 
+    /*
+        This method is used to (GET) download the Collapsed document for a given user from the SignNow Application
+     */
     @Override
     public Document downLoadCollapsedDocument(Oauth2Token token, String id) {
         Document document = null;
-
         try {
             String requestBody = objectMapper.writeValueAsString(token);
             logger.debug("GET  to /document/id/download?type=collapsed \n" + requestBody);
@@ -126,22 +142,24 @@ public class DocumentService implements IDocumentService{
                     .header("Accept", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .asString();
-
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
+            // TODO:  Write the response to a new pdf file and see if the raw data is saved properly.. open the file and verify...
+
             document = objectMapper.readValue(json, Document.class);
         }
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return document;
     }
 
+    /*
+        This method is used to (POST) invite the signers to sign on  the document in the SignNow Application
+     */
     @Override
     public String invite(Oauth2Token token,Invitation invitation, String id) {
         String result = null;
-
         try {
             String requestBody = objectMapper.writeValueAsString(invitation);
             logger.debug("POSTING to /document/id/invite \n" + requestBody);
@@ -151,7 +169,6 @@ public class DocumentService implements IDocumentService{
                     .header("Authorization", "Bearer "+token.getAccessToken())
                     .body(requestBody)
                     .asString();
-
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             result = objectMapper.readValue(json, Invitation.class).toString();
@@ -159,7 +176,6 @@ public class DocumentService implements IDocumentService{
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return result;
     }
 
@@ -188,6 +204,9 @@ public class DocumentService implements IDocumentService{
         return result;
     }*/
 
+    /*
+        This method is used to (GET) get the Document History for a given Document and for a given user from the SignNow Application
+     */
     @Override
     public String getDocumentHistory(Oauth2Token token, String id) {
         String document = null;
@@ -198,25 +217,24 @@ public class DocumentService implements IDocumentService{
                     //.header("Accept", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .asString();
-
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
-            document = objectMapper.readValue(json, Document.class).toString();
+            document = objectMapper.readValue(json, Object.class).toString();
         }
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
-
     }
 
+    /*
+        This method is used to (POST)  create the template from a document in the SignNow Application
+     */
     @Override
     public Template createTemplate(Oauth2Token token, Template template) {
-        Template temp = null;
-
+        Template templ = null;
         try {
             String requestBody = objectMapper.writeValueAsString(template);
-
             logger.debug("POST  to /template \n" + requestBody);
             HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/template")
                     .header("Accept", "application/json")
@@ -227,24 +245,22 @@ public class DocumentService implements IDocumentService{
 
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
-            temp = objectMapper.readValue(json, Template.class);
-        }
+            templ = objectMapper.readValue(json, Template.class);        }
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
-        return temp;
-
+        return templ;
     }
 
+     /*
+        This method is used to (POST) create a new document from the given template id in the SignNow Application
+     */
 
     @Override
     public String createNewDocumentFromTemplate(Oauth2Token token, Template template) {
         String str = null;
-
         try {
             String requestBody = objectMapper.writeValueAsString(template);
-
             logger.debug("POST  to /template \n" + requestBody);
             HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/template"+"/"+template.getId()+"/copy")
                     .header("Accept", "application/json")
@@ -260,9 +276,41 @@ public class DocumentService implements IDocumentService{
         catch(Exception ex) {
             logger.error(ex.getMessage());
         }
-
         return str;
+    }
 
+
+     /*
+        This method is used to (POST) merge tha new document from the given template id in the SignNow Application
+     */
+
+    @Override
+    public Document mergeDocuments(Oauth2Token token, HashMap <String, List<String>> myMergeMap) {
+        Document document = null;
+        try {
+            String requestBody = objectMapper.writeValueAsString(myMergeMap);
+            logger.debug("POST  to /document/merge \n" + requestBody);
+            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document"+"/"+"merge")
+                    .header("Accept", "application/json")
+                    .header("Content-Type", "application/pdf")
+                    .header("Authorization", "Bearer "+ token.getAccessToken())
+                    .body(requestBody)
+                    .asString();
+
+            String json = httpResponse.getBody().toString();
+
+            // re write the path
+            File f = new File("E:\\SignNow\\bb.pdf");
+            DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
+            dos.writeInt(json.length());
+            dos.writeUTF(json);
+            logger.debug("Response body is " + json);
+           // document = objectMapper.readValue(json, Document.class);
+        }
+        catch(Exception ex) {
+            logger.error(ex.getMessage());
+        }
+        return document;
     }
     public ObjectMapper getObjectMapper() {
         return objectMapper;

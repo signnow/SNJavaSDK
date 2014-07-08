@@ -4,6 +4,11 @@ package com.signnow.sdk.service;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.signnow.sdk.model.User;
 
+/**
+ * Created by Bhanu on 6/26/2014.
+ *
+ * This interface is used to perform to User specific operations in the SignNow Application.
+ */
 public interface IUserService {
 
     /**
