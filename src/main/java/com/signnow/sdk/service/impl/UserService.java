@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Created by Bhanu on 6/26/2014.
- *
+ * <p/>
  * This class is used to perform to Create / GET User details in the SignNow Application.
  */
 public class UserService implements IUserService {
@@ -36,8 +36,7 @@ public class UserService implements IUserService {
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             createdUser = objectMapper.readValue(json, User.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return createdUser;
@@ -54,14 +53,13 @@ public class UserService implements IUserService {
             logger.debug("GET user to /user \n" + requestBody);
 
             HttpResponse httpResponse = Unirest.get(Config.getApiBase() + "/user")
-                    .header("Authorization", "Bearer "+ user.getOauth2Token().getAccessToken())
+                    .header("Authorization", "Bearer " + user.getOauth2Token().getAccessToken())
                     .header("Accept", "application/json")
                     .asString();
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             getUser = objectMapper.readValue(json, User.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return getUser;

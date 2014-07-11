@@ -16,11 +16,11 @@ import java.util.List;
 
 /**
  * Created by Bhanu on 6/27/2014.
- *
+ * <p/>
  * This class is used to perform operations on the Documents. This class is provides the guidle lines on how to call the SignNow API
  * for several operations like Create (POST), GetDocuemnt (GET), Update Document (PUT), Get Document History, etc.,
  */
-public class DocumentService implements IDocumentService{
+public class DocumentService implements IDocumentService {
     final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
     private ObjectMapper objectMapper;
 
@@ -29,23 +29,22 @@ public class DocumentService implements IDocumentService{
     This method is used to create  or POST the document for a given user in the SignNow Application
      */
     @Override
-    public Document create(Oauth2Token token,Document documentPath) {
+    public Document create(Oauth2Token token, Document documentPath) {
         Document document = null;
         try {
             String requestBody = objectMapper.writeValueAsString(documentPath.getFilePath());
             logger.debug("POSTING to /document \n" + requestBody);
             HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document")
                     .header("Accept", "application/json")
-                    //.header("Content-Type","multipart/form-data")
-                    .header("Authorization", "Bearer "+token.getAccessToken())
+                            //.header("Content-Type","multipart/form-data")
+                    .header("Authorization", "Bearer " + token.getAccessToken())
                     .field("file", new File(documentPath.getFilePath()))
                     .asString();
 
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Document.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
@@ -55,7 +54,7 @@ public class DocumentService implements IDocumentService{
         This method is used to GET the document for a given user from the SignNow Application
      */
     @Override
-    public Document getDocument(Oauth2Token token,String id) {
+    public Document getDocument(Oauth2Token token, String id) {
         Document document = null;
         try {
             String requestBody = objectMapper.writeValueAsString(token);
@@ -67,8 +66,7 @@ public class DocumentService implements IDocumentService{
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Document.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
@@ -78,7 +76,7 @@ public class DocumentService implements IDocumentService{
         This method is used to update [PUT] the document for a given user from the SignNow Application
      */
     @Override
-    public Document updateDocument(Oauth2Token token,HashMap<String,List<Fields>> fieldsMap,String id) {
+    public Document updateDocument(Oauth2Token token, HashMap<String, List<Fields>> fieldsMap, String id) {
         Document document = null;
 
         try {
@@ -86,7 +84,7 @@ public class DocumentService implements IDocumentService{
             logger.debug("PUT to /document/<id> \n" + requestBody);
             HttpResponse httpResponse = Unirest.put(Config.getApiBase() + "/document" + "/" + id)
                     .header("Accept", "application/json")
-                    .header("Content-Type","application/json")
+                    .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .body(requestBody)
                     .asString();
@@ -94,8 +92,7 @@ public class DocumentService implements IDocumentService{
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Document.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
@@ -118,8 +115,7 @@ public class DocumentService implements IDocumentService{
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Document.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
@@ -143,8 +139,7 @@ public class DocumentService implements IDocumentService{
             // TODO:  Write the response to a new pdf file and see if the raw data is saved properly.. open the file and verify...
 
             document = objectMapper.readValue(json, Document.class);
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
@@ -154,22 +149,21 @@ public class DocumentService implements IDocumentService{
         This method is used to (POST) invite the signers to sign on  the document in the SignNow Application
      */
     @Override
-    public String invite(Oauth2Token token,Invitation invitation, String id) {
+    public String invite(Oauth2Token token, Invitation invitation, String id) {
         String result = null;
         try {
             String requestBody = objectMapper.writeValueAsString(invitation);
             logger.debug("POSTING to /document/id/invite \n" + requestBody);
-            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document"+"/"+id+"/invite?email=disable")
+            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document" + "/" + id + "/invite?email=disable")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
-                    .header("Authorization", "Bearer "+token.getAccessToken())
+                    .header("Authorization", "Bearer " + token.getAccessToken())
                     .body(requestBody)
                     .asString();
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             result = objectMapper.readValue(json, Invitation.class).toString();
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return result;
@@ -217,8 +211,7 @@ public class DocumentService implements IDocumentService{
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             document = objectMapper.readValue(json, Object.class).toString();
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return document;
@@ -236,14 +229,14 @@ public class DocumentService implements IDocumentService{
             HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/template")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
-                    .header("Authorization", "Bearer "+ token.getAccessToken())
+                    .header("Authorization", "Bearer " + token.getAccessToken())
                     .body(requestBody)
                     .asString();
 
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
-            templ = objectMapper.readValue(json, Template.class);        }
-        catch(Exception ex) {
+            templ = objectMapper.readValue(json, Template.class);
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return templ;
@@ -259,18 +252,17 @@ public class DocumentService implements IDocumentService{
         try {
             String requestBody = objectMapper.writeValueAsString(template);
             logger.debug("POST  to /template \n" + requestBody);
-            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/template"+"/"+template.getId()+"/copy")
+            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/template" + "/" + template.getId() + "/copy")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
-                    .header("Authorization", "Bearer "+ token.getAccessToken())
+                    .header("Authorization", "Bearer " + token.getAccessToken())
                     .body(requestBody)
                     .asString();
 
             String json = httpResponse.getBody().toString();
             logger.debug("Response body is " + json);
             str = objectMapper.readValue(json, Template.class).toString();
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return str;
@@ -282,26 +274,26 @@ public class DocumentService implements IDocumentService{
      */
 
     @Override
-    public InputStream mergeDocuments(Oauth2Token token, HashMap <String, List<String>> myMergeMap) {
+    public InputStream mergeDocuments(Oauth2Token token, HashMap<String, List<String>> myMergeMap) {
         Document document = null;
         try {
             String requestBody = objectMapper.writeValueAsString(myMergeMap);
             logger.debug("POST  to /document/merge \n" + requestBody);
-            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document"+"/"+"merge")
+            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document" + "/" + "merge")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/pdf")
-                    .header("Authorization", "Bearer "+ token.getAccessToken())
+                    .header("Authorization", "Bearer " + token.getAccessToken())
                     .body(requestBody)
                     .asString();
 
-           InputStream inputStream = httpResponse.getRawBody();
+            InputStream inputStream = httpResponse.getRawBody();
             return inputStream;
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
         return null;
     }
+
     public ObjectMapper getObjectMapper() {
         return objectMapper;
     }
