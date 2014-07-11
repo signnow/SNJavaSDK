@@ -564,4 +564,157 @@ public class DocumentServiceTest extends TestBase{
         assertNotNull("MergeTEST",destinationFile);
     }
 
+    @Test
+    public void roleBasedInvite()
+    {
+            String randomEmail = "bhanu" + new Date().getTime() + "@mailinator.com";
+            User user = new User();
+            user.setEmail(randomEmail);
+            user.setPassword("password");
+
+            User resultUser = userService.create(user);
+            resultUser.setPassword("password");
+            assertNotNull("No user id from creating user", resultUser.getId());
+
+            Oauth2Token requestedToken = authenticationService.requestToken(resultUser);
+            assertNotNull("Access Token", requestedToken.getAccessToken());
+
+            //copy the ReleaseForm.pdf file to the test/resources.
+            Document doc = new Document();
+            String docFilePath = getClass().getClassLoader().getResource("ReleaseForm.pdf").getFile();
+            doc.setFilePath(docFilePath);
+            Document document = documentService.create(requestedToken,doc);
+            assertNotNull("DocumentId", document.getId());
+
+            // Build the data for Signature Test
+            String signatureImageFilePath=getClass().getClassLoader().getResource("SignatureImage.jpg").getFile();
+            String encodedString= getEncodedImage(signatureImageFilePath);
+
+            String signatureImageFilePath1=getClass().getClassLoader().getResource("SignatureImage1.jpg").getFile();
+            String encodedString1= getEncodedImage(signatureImageFilePath1);
+
+            Signature signature = new Signature();
+            signature.setX(305);
+            signature.setY(18);
+            signature.setPageNumber(1);
+            signature.setWidth(100);
+            signature.setHeight(30);
+            signature.setData(encodedString);
+
+            Signature signature1 = new Signature();
+            signature1.setX(205);
+            signature1.setY(28);
+            signature1.setPageNumber(1);
+            signature1.setWidth(100);
+            signature1.setHeight(30);
+            signature1.setData(encodedString1);
+
+            ArrayList<Fields> signatureList = new ArrayList();
+            signatureList.add(signature);
+            signatureList.add(signature1);
+
+            // Build the data for Texts Test
+
+            Text text = new Text();
+            text.setPageNumber(0);
+            text.setSize(30);
+            text.setX(61);
+            text.setY(72);
+            text.setData("TEXT DATA FOR TESTING SIGNNOW");
+            text.setFont("Arial");
+            text.setLineHeight(9.075);
+
+            Text text1 = new Text();
+            text1.setPageNumber(1);
+            text1.setSize(30);
+            text1.setX(61);
+            text1.setY(72);
+            text1.setData("TEXT DATA FOR TESTING SIGNNOW AGAIN");
+            text1.setFont("Arial");
+            text1.setLineHeight(9.075);
+
+            ArrayList<Fields> textsList = new ArrayList<Fields>();
+            textsList.add(text);
+            textsList.add(text1);
+
+            // Build the data for Checks
+
+            Checkbox checks = new Checkbox();
+            checks.setPageNumber(0);
+            checks.setX(250);
+            checks.setY(500);
+            checks.setWidth(20);
+            checks.setHeight(20);
+
+            Checkbox checks1 = new Checkbox();
+            checks1.setPageNumber(1);
+            checks1.setX(250);
+            checks1.setY(500);
+            checks1.setWidth(20);
+            checks1.setHeight(20);
+
+            ArrayList<Fields> checksList = new ArrayList();
+            checksList.add(checks);
+            checksList.add(checks1);
+
+            Fields fields = new Fields();
+            fields.setPageNumber(1);
+            fields.setHeight(25);
+            fields.setWidth(122);
+            fields.setRequired(true);
+            fields.setRole("buyer");
+            fields.setType("signature");
+            fields.setX(55);
+            fields.setY(333);
+
+            Fields fields1 = new Fields();
+            fields1.setPageNumber(1);
+            fields1.setHeight(121);
+            fields1.setWidth(25);
+            fields1.setRequired(true);
+            fields1.setRole("seller");
+            fields1.setType("signature");
+            fields1.setX(55);
+            fields1.setY(133);
+
+            ArrayList<Fields> fieldsList = new ArrayList();
+            fieldsList.add(fields);
+            fieldsList.add(fields1);
+
+            HashMap <String,List<Fields>> fieldsMap = new HashMap<String,List<Fields>>();
+            fieldsMap.put("signatures",signatureList);
+            fieldsMap.put("texts",textsList);
+            fieldsMap.put("checks",checksList);
+            fieldsMap.put("fields",fieldsList);
+
+            Document resultDoc = documentService.updateDocument(requestedToken, fieldsMap,document.getId());
+            Document getDoc = documentService.getDocument(requestedToken,resultDoc.getId());
+
+            Fields []flds = getDoc.getFields();
+            ArrayList<HashMap> roleMapList = new ArrayList<HashMap>();
+            EmailSignature emailSignature = new EmailSignature();
+            long date=new Date().getTime();
+            int counter = 0;
+            //iterate all the fields
+            for(int i=0;i<flds.length;i++)
+            {
+                String toEmail = "bhanu"+ ++date + "@mailinator.com";
+                    HashMap roleMap = new HashMap();
+                    roleMap.put("email", toEmail);
+                    roleMap.put("role_id", flds[i].getRoleId());
+                    roleMap.put("role", flds[i].getRole());
+                    roleMap.put("order", ++counter);
+                    roleMapList.add(roleMap);
+            } // close for loop
+
+            // build the emailSignature model to from the request for role based invite
+            emailSignature.setTo(roleMapList);
+            emailSignature.setFrom(resultUser.getEmail());
+            emailSignature.setCc(new String[0]);
+            emailSignature.setMessage(resultUser.getEmail() + " asked you to sign this document");
+            emailSignature.setSubject("SignNow Invitation");
+            String result = documentService.roleBasedInvite(requestedToken, emailSignature, document.getId());
+            Assert.assertNotNull("result" + result.contains("success"));
+        }
+
 }

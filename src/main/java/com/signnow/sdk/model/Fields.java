@@ -19,6 +19,17 @@ public class Fields {
     private boolean required;
     private String type;
 
+    @JsonProperty("role_id")
+    private String roleId;
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
+
     public int getX() {
         return x;
     }

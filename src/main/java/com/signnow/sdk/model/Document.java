@@ -1,4 +1,5 @@
 package com.signnow.sdk.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.sdk.service.IDocumentService;
 
 import java.util.List;
@@ -15,6 +16,15 @@ public class Document {
     private Oauth2Token oauth2Token;
     private String link;
     private String filePath;
+    private Fields []fields;
+
+    public Fields[] getFields() {
+        return fields;
+    }
+
+    public void setFields(Fields[] fields) {
+        this.fields = fields;
+    }
 
     public String getLink() {
         return link;

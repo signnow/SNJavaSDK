@@ -64,7 +64,7 @@ public class DocumentService implements IDocumentService {
                     .header("Authorization", "Bearer " + token.getAccessToken())
                     .asString();
             String json = httpResponse.getBody().toString();
-            logger.debug("Response body is " + json);
+            logger.debug("Response body is ; getDocument Output" + json);
             document = objectMapper.readValue(json, Document.class);
         } catch (Exception ex) {
             logger.error(ex.getMessage());
@@ -294,6 +294,29 @@ public class DocumentService implements IDocumentService {
         return null;
     }
 
+    /*
+       This method is used to (POST)perform rolebased  to invite the signers to sign on  the document in the SignNow Application
+    */
+    @Override
+    public String roleBasedInvite(Oauth2Token token,EmailSignature emailSignature, String id) {
+        String result = null;
+        try {
+            String requestBody = objectMapper.writeValueAsString(emailSignature);
+            logger.debug("POSTING to /document/id/invite \n" + requestBody);
+            HttpResponse httpResponse = Unirest.post(Config.getApiBase() + "/document" + "/" + id + "/invite")
+                    .header("Accept", "application/json")
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "Bearer " + token.getAccessToken())
+                    .body(requestBody)
+                    .asString();
+            result = httpResponse.getBody().toString();
+            logger.debug("Response body is " + result);
+        }
+        catch(Exception ex) {
+            logger.error(ex.getMessage());
+        }
+        return result;
+    }
     public ObjectMapper getObjectMapper() {
         return objectMapper;
     }

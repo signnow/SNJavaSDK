@@ -2,10 +2,8 @@ package com.signnow.sdk.service;
 import com.signnow.sdk.model.*;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Bhanu on 6/26/2014.
@@ -33,6 +31,8 @@ public interface IDocumentService {
     Document downLoadCollapsedDocument(Oauth2Token token, String id);
 
     String invite(Oauth2Token token, Invitation invitation, String id);
+
+    String roleBasedInvite(Oauth2Token token, EmailSignature emailSignature, String id);
 
     //String notaryInvite(Oauth2Token token,Invitation invitation);
 
