@@ -1,24 +1,18 @@
 package com.signnow.sdk.service.impl;
 
-import ch.qos.logback.core.util.FileUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.signnow.sdk.Config;
 import com.signnow.sdk.model.*;
 import com.signnow.sdk.service.IDocumentService;
-import org.omg.IOP.Encoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.misc.BASE64Decoder;
 
-import java.io.*;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
+import java.io.File;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Bhanu on 6/27/2014.
@@ -214,7 +208,8 @@ public class DocumentService implements IDocumentService{
         String document = null;
         try {
             String requestBody = objectMapper.writeValueAsString(token);
-            logger.debug("GET  to /document/<id>/history \n" + requestBody);
+            logger.debug("GET  to /document/<id>/history " +
+                    "\n" + requestBody);
             HttpResponse httpResponse = Unirest.get(Config.getApiBase() + "/document" + "/" + id + "/history")
                     //.header("Accept", "application/json")
                     .header("Authorization", "Bearer " + token.getAccessToken())
@@ -315,3 +310,5 @@ public class DocumentService implements IDocumentService{
         this.objectMapper = objectMapper;
     }
 }
+
+

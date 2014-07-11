@@ -188,6 +188,8 @@ public class DocumentServiceTest extends TestBase{
 
         Document resultDoc = documentService.updateDocument(requestedToken, fieldsMap,document.getId());
 
+        System.out.println("result document :::::::::::" + resultDoc.getId());
+
     }
 
     /**

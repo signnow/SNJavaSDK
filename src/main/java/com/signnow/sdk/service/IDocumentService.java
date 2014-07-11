@@ -41,5 +41,4 @@ public interface IDocumentService {
     Template createTemplate(Oauth2Token token, Template template);
 
     String createNewDocumentFromTemplate(Oauth2Token token, Template template);
-
 }
