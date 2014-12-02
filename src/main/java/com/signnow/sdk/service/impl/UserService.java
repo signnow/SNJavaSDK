@@ -37,7 +37,9 @@ public class UserService implements IUserService {
             logger.debug("Response body is " + json);
             createdUser = objectMapper.readValue(json, User.class);
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             logger.error(ex.getMessage());
+            throw new RuntimeException(ex);
         }
         return createdUser;
     }

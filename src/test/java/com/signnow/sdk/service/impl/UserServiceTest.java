@@ -1,5 +1,6 @@
 package com.signnow.sdk.service.impl;
 
+import com.signnow.sdk.Config;
 import com.signnow.sdk.TestBase;
 import com.signnow.sdk.model.Oauth2Token;
 import com.signnow.sdk.model.User;
@@ -34,6 +35,8 @@ public class UserServiceTest extends TestBase {
         User user = new User();
         user.setEmail(randomEmail);
         user.setPassword("fakePassword");
+
+        Config config = new Config("signnow.eval","0fccdbc73581ca0f9bf8c379e6a96813","3719a124bcfc03c534d4f5c05b5a196b");
 
         User resultUser = userService.create(user);
 
