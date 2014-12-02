@@ -36,7 +36,7 @@ public class UserServiceTest extends TestBase {
         user.setEmail(randomEmail);
         user.setPassword("fakePassword");
 
-        Config config = new Config("signnow.eval","0fccdbc73581ca0f9bf8c379e6a96813","3719a124bcfc03c534d4f5c05b5a196b");
+        Config config = new Config("signnow.eval","clientID","clientSecret");
 
         User resultUser = userService.create(user);
 
