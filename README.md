@@ -21,7 +21,7 @@ If you are running into an error ```javax.net.ssl.SSLProtocolException: handshak
 # SignNowJavaSDK.jar
 
 To start using the SignNow Java SDK, download the jar file from 
-https://github.com/SignNowInc/SNJavaSDK/tree/master/build add it to the class path.
+https://github.com/signnow/SNJavaSDK/tree/master/build  add it to the class path.
 
 
 After importing the jar file you can create a java class with main method. Initialize the Config as shown in the examples.
