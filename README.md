@@ -25,7 +25,7 @@ Examples
 To run the example.java you will need an API key. You can get one here [https://signnow.com/l/api/request_information](https://signnow.com/l/api/request_information). For a full list of accepted parameters, refer to the SignNow REST Endpoints API guide: [https://techlib.barracuda.com/SignNow/RestEndpointsAPI](https://techlib.barracuda.com/SignNow/RestEndpointsAPI).
 
 set the below to the correct values.
-
+```java
 		 String accountUser = "accountEmailAddress";
          String accountPass = "password";
          String testEmailAddress = "testEmailAddress";
@@ -34,10 +34,10 @@ set the below to the correct values.
 
          //Client ID, Client Secret, API URL
          Config.init("[YOUR CLIENT ID]", "[YOUR CLIENT SECRET]", "https://api-eval.cudasign.com/");
-		 
+```		 
 
 # User
-
+```java
 		LOGGER.info("================= Create User =================");
         String email ="demo2@demo7.com";
         String password="123456789";
@@ -59,18 +59,18 @@ set the below to the correct values.
     	 {
     		 LOGGER.info("User Creation failed. Please check if already verification mail sent for the user...");
     	 }
-        
+```        
 
 ## Retrieve User Information
-
+```java
 		LOGGER.info("================= Retrieve User Info =================");
     	 JSONObject userInfo= User.Get(access_token);
          LOGGER.info("UserInfo is..."+userInfo);
-
+```
 # OAuth 2.0
 
 ## Request Access Token
-
+```java
 String grant_type= "password";
          String scope="*";
                
@@ -88,9 +88,9 @@ String grant_type= "password";
         	 LOGGER.info("refresh_token ==> "+refresh_token); 
         	 LOGGER.info("expires_in ==> "+expires_in); 
          }
-
+```
 ## Verify an Access Token
-
+```java
  LOGGER.info("=================Verifying OAuth2 Token=================");
          JSONObject OAuthVRes = OAuth2.Verify(access_token);
     	if(OAuthVRes!= null)
@@ -102,32 +102,33 @@ String grant_type= "password";
 			}
 			
 		}      
-
+```
 # Document
 
 ## Retrieve a List of the User’s Documents
 `
 // Get all users documents
-         
+```java       
          JSONArray getAllDocumentsObj = Document.getAllUserDocuments(access_token);
          if(getAllDocumentsObj != null)
          {
         	 LOGGER.info("Get all User Documents Result :" + getAllDocumentsObj); 
          }   
-
+```
 ## Retrieve a Document Resource
 //Get Document
-         
+```java        
          JSONObject getDocumentObj = Document.get(access_token,documentId);
          if(getDocumentObj != null)
          {
         	 LOGGER.info("Get Document Result :" + getDocumentObj); 
          }
          
-
+```
 ## Download a Collapsed Document
 
 //Download Document
+```java
          LOGGER.info("=================Downloading Document =================");
          InputStream downloadDocRes = Document.download(access_token, documentId); 
 		 
@@ -141,20 +142,21 @@ String grant_type= "password";
          fos.close();
          LOGGER.info("Document  downloaded");	
 		 
-
+```
 ## Delete Document
-
+```java
 LOGGER.info("================= Delete Document =================");
          JSONObject deleteDocRes = Document.Delete(access_token, docId);
          if(deleteDocRes != null) {
         	 String status =(String)deleteDocRes.get("status");
         	 LOGGER.info("Deleted Document ID :" + docId + "Deletion Status :"+  status);
 		}
-		
+```		
 
 ## Upload Document
 
 //Create a New Document
+```java
          LOGGER.info("================= Creating New Document =================");
          boolean extra_fileds=false;
          String resultFormat= "JSON";
@@ -169,10 +171,11 @@ LOGGER.info("================= Delete Document =================");
 			LOGGER.info("New Document ID : "+ documentId);
 		} 
 		
-
+```
 ## Upload File & Extract Fields
 
        //Create a New Document and Extract the Fields
+```java
          LOGGER.info("=================Creating New Document & Extracting Fields =================");
          File docFile = new File("Example Fields.docx").getAbsoluteFile();
          String docFileName= "Example Fields.docx";
@@ -184,11 +187,11 @@ LOGGER.info("================= Delete Document =================");
 			docId=(String)docRes.get("id");
 			LOGGER.info("New Document ID using Extract Fields:  "+ docId);
 		} 
-
+```
 ## Update Document (add fields)
 
 //Add fileds:
-         
+```java         
          LOGGER.info("================= Adding Fields =================");
          JSONArray fields = new JSONArray();
          JSONObject fieldsObj = new JSONObject();
@@ -224,7 +227,8 @@ LOGGER.info("================= Delete Document =================");
         	 fields_docId =(String)fieldsRes.get("id");
         	 LOGGER.info("After Adding the fileds, Document ID is :" + fields_docId);
 		} 
-         
+
+```        
          //Add fileds End
         
 
@@ -232,7 +236,7 @@ LOGGER.info("================= Delete Document =================");
 
 //Send Free Form Invite. Below are the two steps to perform this.
          
-         
+```java        
        //STEP 1: Create a New Document
          LOGGER.info("================= SendInvite =================");
 
@@ -266,11 +270,11 @@ LOGGER.info("================= Delete Document =================");
 		}
         // END free form invite. 
 
-		
+```		
 
 ## Cancel an Invite to a Document
 
-
+```java
        //Cancel Invite
          LOGGER.info("================= Canceling Invite =================");
          JSONObject cancelInviteRes = Document.CancelInvite(access_token, invite_id);         
@@ -278,9 +282,10 @@ LOGGER.info("================= Delete Document =================");
  			status=(String)cancelInviteRes.get("result");
  			LOGGER.info("Cancel Invite Status: "+status);
  		} 
-		
+```		
 ## Create a One-time Use Download URL
 
+```java
  //Create Download Link
          LOGGER.info("================= Creating Download Link (Share)=================");
          JSONObject downloadLinkRes = Document.Share(access_token, documentId);
@@ -289,11 +294,12 @@ LOGGER.info("================= Delete Document =================");
   			link=(String)downloadLinkRes.get("link");
   			LOGGER.info("Download Link: "+link);
   		} 
-
+```
 ## Merges Existing Documents
 
 //Merge Existing Documents:
-         
+
+```java         
          LOGGER.info("================= Merging Existing Documents =================");
          JSONArray jsonArray = new JSONArray();
          jsonArray.add(documentId);
@@ -315,23 +321,26 @@ LOGGER.info("================= Delete Document =================");
          mergeDocsRes.close();
          fos1.close();
          LOGGER.info("Merged Document downloaded at : " +filePath+"merged.pdf");		
-
+```
 
 ## Get Document History
 
 //Document History
+```java
          LOGGER.info("================= Retrieving Document History =================");
          JSONArray docHistoryRes = Document.History(access_token, documentId);
          if(docHistoryRes != null)
          {
          LOGGER.info("Document History:   "+ docHistoryRes.toString());
          }
+```
 
 # Template
 
 ## Create a Template
 
 //Create Template
+```java
          LOGGER.info("Create Template");
          JSONObject templObj = new JSONObject();
          templObj.put("document_id", documentId);
@@ -343,10 +352,11 @@ LOGGER.info("================= Delete Document =================");
    			String template_id=(String)newTemplateRes.get("id");
    			LOGGER.info("New Template ID:       "+template_id);
    		} 
-
+```
 ## Duplicate a Template
 
 //Copy Template
+```java
          LOGGER.info("================= Copy Template =================");
          JSONObject copyTemplobj = new JSONObject();
          copyTemplobj.put("document_name","My_Copy_Template_Doc");
@@ -357,11 +367,12 @@ LOGGER.info("================= Delete Document =================");
     			String doc_name=(String)copyTemplateRes.get("name");
     			LOGGER.info("New Doc ID: "+ doc_id +"  AND DocName:  "+doc_name);
     		}
-			
+```			
 # Folder
 
 ## Returns a list of folders
 
+```java
 LOGGER.info("================= List Folder =================");
 
          //List Folders
@@ -378,10 +389,11 @@ LOGGER.info("================= List Folder =================");
  			 doc_name=(String)folderObj.get("name");
  			LOGGER.info("New Doc ID: "+ doc_id +"  AND DocName:  "+doc_name);
  		} 
-
+```
 
 ## Returns a list of documents inside a folder
 
+```java
 //Get Folder
          LOGGER.info("================= Get Folder =================");
          String params=""; // optional parameters        
@@ -391,6 +403,7 @@ LOGGER.info("================= List Folder =================");
         	 LOGGER.info(" Get Folder Results:       "+ getFolderRes);
          }
 
+```
 # Webhook
 
 ## Create a Webhook
@@ -404,6 +417,7 @@ invite.create  | Webhook is triggered when an invitation to a SignNow document i
 invite.update  | Webhook is triggered when an invite to SignNow document is updated. Ex. A signer has signed the document.
 
  //Create Webook
+```java
          LOGGER.info("================= Create Webhook =================");
  		JSONObject webHookobj = new JSONObject();
  		webHookobj.put("event", "document.create");
@@ -416,31 +430,35 @@ invite.update  | Webhook is triggered when an invite to SignNow document is upda
  			subscriptionId=(String)createWebhookRes.get("id");
  			LOGGER.info("Webhook Created : Subscription Id:       "+ subscriptionId);
  		} 
-
+```
 ## List Webhook
 
  //List Webhooks
+ ```java
          LOGGER.info("================= List Webhooks =================");
          JSONObject listWebhooksRes = Webhook.List(access_token);
          if(listWebhooksRes != null)
          {
          LOGGER.info(" List Webhooks Results:       "+ listWebhooksRes);
          }
-		 
+```	 
 ## Delete Webhook
 
 //Delete Webhook
+```java
          LOGGER.info("================= Delete Webhooks =================");
          JSONObject deleteWebhookRes = Webhook.Delete(access_token, subscriptionId);
          if(deleteWebhookRes != null)
          {
          LOGGER.info(" Delete Webhooks Results:       "+ deleteWebhookRes);
          }
-
+```
 		 
 # Link
 
 # Create a Signing Link
+
+```java
 
          LOGGER.info("=================Link =================");
 
@@ -453,12 +471,13 @@ invite.update  | Webhook is triggered when an invite to SignNow document is upda
          {
          LOGGER.info("Results:       "+ createLinkRes);
          }
-		 
+```		 
 		 
 # Document Groups
 
 ## Create
 
+```java
 JSONArray docGroupArray = new JSONArray();
          docGroupArray.add(documentId);
          docGroupArray.add(invite_document_Id);
@@ -475,17 +494,20 @@ JSONArray docGroupArray = new JSONArray();
 			docGroupId=(String)createDocGroup.get("id");
 			LOGGER.info("Create Document Group Results:       "+ docGroupId);
 		}
-
+```
 ## Get Document Groups
+
+```java
 LOGGER.info("================= Get Document Group =================");
          JSONObject getDocGroup = DocumentGroup.Get(access_token, docGroupId);
          if(getDocGroup != null)
          {
          LOGGER.info("Get Document Group Results:       "+ getDocGroup);
          }
-
+```
 ## Delete Document Group
 //DELETE Document Groups
+```java
          LOGGER.info("================= Delete Document Group =================");
          JSONObject deleteDocGroup = DocumentGroup.Get(access_token, docGroupId);
          if(deleteDocGroup !=null)
@@ -493,9 +515,12 @@ LOGGER.info("================= Get Document Group =================");
          LOGGER.info("Delete Document Group Results:       "+ deleteDocGroup);
          }
 
+```
+		 
 ## Group Invite
 
 //Group Invite
+```java
          LOGGER.info("================= Invite Document Group =================");
          //build the invite model:
          JSONObject model = buildInviteGrpModel(accountUser,testEmailAddress,fields_docId,invite_document_Id);
@@ -512,11 +537,12 @@ LOGGER.info("================= Get Document Group =================");
         	 group_id= (String)map.get("document_group_id");
         	 LOGGER.info("Invite Document Group Results:       Group Invite Id:  "+ group_invite_id +"    AND   Group ID:  "+group_id );
          }
-
+```
 
 ## Get Group Invite
 
        //Get Group Invite
+```java
          LOGGER.info("=================Get Invite : Document Group =================");
          JSONObject getInviteGroup = DocumentGroup.getInvite(access_token,group_id,group_invite_id);
          JSONObject inviteObj=null;
@@ -541,41 +567,44 @@ LOGGER.info("================= Get Document Group =================");
         	 LOGGER.info("GET Invite Document Group Results:       "+ inviteDocGroup);
         	 LOGGER.info("GET Invite Document Group Results:       "+ replace_doc_id);
          }
-
+```
 ## Cancel Group Invite
 
 //Cancel Group Invite
+```java
          LOGGER.info("================= Cancel Invite : Document Group =================");         
          JSONObject cancelInviteGroup = DocumentGroup.cancelGroupInvite(access_token,group_id,group_invite_id);
          if(cancelInviteGroup !=null)
          {
         	 LOGGER.info("CANCEL Invite Document Group Results:       "+ cancelInviteGroup);
          }
-
+```
 ##	Get Pending Invites
 
 //Get Pending Invites
+```java
          LOGGER.info("================= Pending Invites : Document Group =================");         
          JSONObject pendingInvites = DocumentGroup.getPendingInvites(access_token,group_id,group_invite_id);
          if(pendingInvites !=null)
          {
         	 LOGGER.info("Get Pending Invite Document Group Results:       "+ pendingInvites);
          }
-
+```
 ## Resend Invites
 
  //resendInvite 
+ ```java
          LOGGER.info("================= Resend Invite : Document Group =================");         
          JSONObject resendInvite = DocumentGroup.resendInvite(access_token,group_id,group_invite_id);
          if(resendInvite !=null)
          {
         	 LOGGER.info("Resent Invite Document Group Results:       "+ resendInvite);
          }
-
+```
 ## Replace Inviters
 
 //replaceInviters 
-         //TODO: what is the stepId
+```java
          LOGGER.info("=================Replace Inviters : Document Group ================="); 
          JSONObject replaceModelObj = buildReplaceModel(replace_doc_id);
          JSONObject replaceInviters = DocumentGroup.replaceInviters(access_token,group_id,group_invite_id,stepId, replaceModelObj);
@@ -583,8 +612,7 @@ LOGGER.info("================= Get Document Group =================");
          {
         	 LOGGER.info("ReplaceInviters Document Group Results:       "+ replaceInviters);
          }
-
-		 
+```	 
 
 # Additional Contact Information
 
