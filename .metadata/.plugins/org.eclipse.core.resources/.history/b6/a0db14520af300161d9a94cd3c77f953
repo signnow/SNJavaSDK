@@ -1,0 +1,24 @@
+package com.signnow.library;
+
+import org.json.simple.JSONObject;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.signnow.config.Config;
+
+public class OAuth2 {
+
+	public static JSONObject requestToken(String email, String password, String scope, String resultFormat)
+	{
+	
+		 HttpResponse httpResponse = Unirest.post(Config.apiHost + "/oauth2/token")
+                 .basicAuth(Config.getClientId(), Config.getClientSecret())
+                 .header("Accept", "application/json")
+                 .header("Content-Type", "application/x-www-form-urlencoded")
+                 .field("username",user.getEmail())
+                 .field("password",user.getPassword())
+                 .field("grant_type","password")
+                 .asString();
+
+         String json = httpResponse.getBody().toString();
+	}
+}

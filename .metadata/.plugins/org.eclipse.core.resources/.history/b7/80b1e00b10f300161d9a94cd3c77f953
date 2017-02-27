@@ -1,0 +1,28 @@
+package com.signnow.examples;
+
+import org.json.simple.JSONObject;
+
+import com.signnow.config.Config;
+import com.signnow.library.OAuth2;
+
+public class Example {
+
+	public static void main(String args[]){
+		
+		 String accountUser = "bkaranam@barracuda.com";
+         String accountPass = "May@2016";
+         String testEmailAddress = "karanambhanu@gmail.com";
+
+         Config config = new Config();
+         //Client ID, Client Secret, API URL
+         //config.init("[YOUR CLIENT ID]", "[YOUR CLIENT SECRET]", "https://api-eval.cudasign.com/");
+         config.init("0fccdbc73581ca0f9bf8c379e6a96813", "3719a124bcfc03c534d4f5c05b5a196b", "https://api-eval.cudasign.com/");
+         
+         
+         //Request OAuth Token
+         System.out.println("Requesting OAuth Token");
+         JSONObject OAuthRes = OAuth2.requestToken(accountUser, accountPass,"*","JSON");
+         String jsonResp =OAuthRes.toJSONString();
+         System.out.println("Response is:", jsonResp);
+	}
+}

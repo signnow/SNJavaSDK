@@ -1,0 +1,11 @@
+package com.signnow.library;
+
+import javax.json.*;
+
+public class OAuth2 {
+	JsonObject j;
+	public static  requestToken(String email, String password, String scope = "*", String resultFormat = "JSON")
+	{
+		
+	}
+}

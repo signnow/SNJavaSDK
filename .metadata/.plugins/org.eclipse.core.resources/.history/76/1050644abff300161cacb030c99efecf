@@ -1,0 +1,79 @@
+package com.signnow.examples;
+
+import java.io.IOException;
+import java.util.Date;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
+import com.signnow.config.Config;
+import com.signnow.library.OAuth2;
+
+public class Example {
+
+	public static void main(String args[]) throws IOException{
+		
+		 String accountUser = "bkaranam@barracuda.com";
+         String accountPass = "May@2016";
+         String testEmailAddress = "karanambhanu@gmail.com";
+         
+
+         //Client ID, Client Secret, API URL
+         //config.init("[YOUR CLIENT ID]", "[YOUR CLIENT SECRET]", "https://api-eval.cudasign.com/");
+         Config.init("0fccdbc73581ca0f9bf8c379e6a96813", "3719a124bcfc03c534d4f5c05b5a196b", "https://api-eval.cudasign.com/");
+         
+         
+         //Request OAuth Token
+         System.out.println("Requesting OAuth Token");
+         String OAuthRes = OAuth2.requestToken(accountUser, accountPass,"*","JSON");
+         JSONParser parser = new JSONParser();
+         String access_token = "";
+    	 String refresh_token = "";
+    	 Long expires_in;
+         try {
+        	 JSONObject json = (JSONObject) parser.parse(OAuthRes);
+        	 access_token = (String) json.get("access_token");
+        	 refresh_token = (String) json.get("refresh_token");
+        	 expires_in = (Long)json.get("expires_in");
+        	 
+        	 System.out.println("access_token ==> "+access_token);
+        	 System.out.println("refresh_token ==> "+refresh_token); 
+             System.out.println("expires_in ==> "+expires_in); 
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+          
+         
+       //Verify OAuth Token 
+         
+         System.out.println("Verifying OAuth2 Token");
+         String OAuthVRes = OAuth2.Verify(access_token);
+         //Console.WriteLine("Verified Access Token: {0} \r\n\r\n\r\n", OAuthVRes["access_token"]); 
+       
+       //Verify OAuth Token - End 
+         
+       //=======================
+         // User
+       //=======================
+         
+       //Create New CudaSign User Account
+         
+         
+         
+       //Retreive User Account Information
+         
+         
+         
+         //=======================
+         // Document
+         //=======================
+         
+	}
+}

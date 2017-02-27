@@ -1,0 +1,14 @@
+package com.signnow.examples;
+
+public class Example {
+
+	public static void main(String args[]){
+		
+		 String accountUser = "";
+         String accountPass = "";
+         string testEmailAddress = "";
+
+         //Client ID, Client Secret, API URL
+         CudaSign.Config.init("[YOUR CLIENT ID]", "[YOUR CLIENT SECRET]", "https://api-eval.cudasign.com/");
+	}
+}

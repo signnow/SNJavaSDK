@@ -1,0 +1,6 @@
+package com.signnow.config;
+
+public class Config {
+
+	static String encodedClientCredentials="";
+}

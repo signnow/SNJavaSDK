@@ -1,0 +1,18 @@
+package com.signnow.library;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+
+public class DocumentGroup {
+
+public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");	
+	static OkHttpClient client = new OkHttpClient();
+	
+	public static String Create(String accessToken)
+	{
+		
+	}
+
+
+
+}

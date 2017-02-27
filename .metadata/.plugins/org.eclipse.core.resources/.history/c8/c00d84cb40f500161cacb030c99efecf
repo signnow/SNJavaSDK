@@ -1,0 +1,50 @@
+package com.signnow.library;
+
+import java.io.IOException;
+
+import org.json.simple.JSONObject;
+
+import com.signnow.config.Config;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class Link {
+	public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");	
+	static OkHttpClient client = new OkHttpClient();
+	
+	public static JSONObject Create(String accessToken,String documentId)
+	{
+		JSONObject obj = new JSONObject();
+		obj.put("document_id", documentId);
+        
+        String json = obj.toJSONString();
+		RequestBody body = RequestBody.create(JSON, json);
+		Request request=null;
+		try {
+			request = new Request.Builder()
+			  .url(Config.apiHost +"link")
+			  .addHeader("Accept", "application/json")
+			  .addHeader("Authorization",  "Bearer " + accessToken)
+			  .post(body)
+			  .build();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	  Response response;
+	try {
+		response = client.newCall(request).execute();
+		if(response.isSuccessful())
+		{
+		return  response.body().string();
+		}
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	  return  null;
+	}
+
+}

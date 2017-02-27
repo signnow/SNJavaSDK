@@ -1,0 +1,67 @@
+package com.signnow.library;
+
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.json.simple.JSONObject;
+
+import com.signnow.config.Config;
+
+public class OAuth2 {
+
+	public static JSONObject requestToken(String email, String password, String scope, String resultFormat)
+	{
+		CloseableHttpClient httpClient = null;
+        HttpPost httpPost = null;
+        CloseableHttpResponse response = null;
+
+        try {
+
+            httpClient = HttpClients.createDefault();
+            httpPost = new HttpPost("https://api.kii.com/api/oauth2/token");
+
+             StringEntity input = new StringEntity("{\"username\":" +email+",\"password\":"+password+"}");
+             input.setContentType("application/json");
+             httpPost.setEntity(input);
+
+                httpPost.addHeader("Accept", "application/json");
+                httpPost.addHeader("Authorization", "Basic " + Config.EncodedClientCredentials);
+                httpPost.addHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            response = httpClient.execute(httpPost);
+
+            if (response.getStatusLine().getStatusCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + response.getStatusLine().getStatusCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    (response.getEntity().getContent())));
+
+            String output;
+            System.out.println("Output from Server .... \n");
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+            }
+        } catch (MalformedURLException e) {
+
+            e.printStackTrace();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+            try{
+                response.close();
+                httpClient.close();
+            }catch(Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        return null;
+	}
+		
+}

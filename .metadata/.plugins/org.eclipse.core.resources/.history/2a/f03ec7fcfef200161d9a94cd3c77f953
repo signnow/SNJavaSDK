@@ -1,0 +1,5 @@
+package com.signnow.config;
+
+public class Config {
+
+}

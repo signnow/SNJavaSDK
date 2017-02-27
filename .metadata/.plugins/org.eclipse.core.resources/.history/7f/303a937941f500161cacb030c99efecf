@@ -1,0 +1,487 @@
+package com.signnow.examples;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonReader;
+import com.signnow.config.Config;
+import com.signnow.library.Document;
+import com.signnow.library.DocumentGroup;
+import com.signnow.library.Folder;
+import com.signnow.library.Link;
+import com.signnow.library.OAuth2;
+import com.signnow.library.Template;
+import com.signnow.library.User;
+import com.signnow.library.Webhook;
+
+public class Example {
+	
+
+	public static void main(String args[]) throws IOException{
+		
+		 String accountUser = "bkaranam@barracuda.com";
+         String accountPass = "May@2016";
+         String testEmailAddress = "karanambhanu@gmail.com";
+         String clientId= "0fccdbc73581ca0f9bf8c379e6a96813";
+         String clientSecret="3719a124bcfc03c534d4f5c05b5a196b";
+
+         //Client ID, Client Secret, API URL
+         //config.init("[YOUR CLIENT ID]", "[YOUR CLIENT SECRET]", "https://api-eval.cudasign.com/");
+         Config.init("0fccdbc73581ca0f9bf8c379e6a96813", "3719a124bcfc03c534d4f5c05b5a196b", "https://api-eval.cudasign.com/");
+ 
+         //Request OAuth Token - Start
+         System.out.println("Requesting OAuth Token");
+         
+         String grant_type= "password";
+         String scope="*";
+               
+         JSONObject OAuthRes = OAuth2.requestToken(accountUser,accountPass,grant_type,scope);
+         String access_token = "";
+    	 String refresh_token = "";
+    	 Long expires_in;
+    	 
+         if(OAuthRes != null)
+         {
+        	 access_token= (String)OAuthRes.get("access_token");
+        	 refresh_token= (String)OAuthRes.get("refresh_token");
+        	 expires_in= (Long)OAuthRes.get("expires_in");
+        	 System.out.println("access_token ==> "+access_token);
+        	 System.out.println("refresh_token ==> "+refresh_token); 
+             System.out.println("expires_in ==> "+expires_in); 
+         }
+      //Request OAuth Token - End
+
+       //Verify OAuth Token          
+         System.out.println("Verifying OAuth2 Token");
+         JSONObject OAuthVRes = OAuth2.Verify(access_token,"JSON");
+    	if(OAuthVRes!= null)
+    	{
+			String verify_access_token = (String) OAuthVRes.get("access_token");			
+			if(access_token.equals(verify_access_token))
+			{
+				System.out.println("verified...");
+			}
+			
+		}          
+       //Verify OAuth Token - End 
+
+       //=======================
+         // User
+       //=======================
+         
+       //Create New CudaSign User Account
+        String email ="demo6@demo7.com";
+        String password="123456789";
+        String firstName="John";
+        String lastName= "Carter";
+        
+        JSONObject createUserObj = new JSONObject();
+        createUserObj.put("email", email);
+        createUserObj.put("password", password);
+        createUserObj.put("first_name",firstName);
+        createUserObj.put("last_name", lastName);
+        JSONObject newAccountRes = User.Create(createUserObj,clientId,clientSecret);
+    	 if(newAccountRes != null)
+    	 {    	
+    		 String id = (String)newAccountRes.get("id");
+    		 System.out.println("id is"+id);    	 
+    	 }
+    	 else
+    	 {
+    		 System.out.println("User Creation failed. Please check if already verification mail sent for the user...");
+    	 }
+         
+         
+       //Retreive User Account Information
+         
+    	 JSONObject userInfo= User.Get(access_token);
+         System.out.println("UserInfo is..."+userInfo);
+         
+         //=======================
+         // Document
+         //=======================
+         JSONParser parser = new JSONParser(); 
+         //Create a New Document
+         System.out.println("Creating New Document");
+         boolean extra_fileds=false;
+         String resultFormat= "JSON";
+
+         File file = new File("1-tkt.pdf").getAbsoluteFile();
+         String name= "1-tkt.pdf";
+         String fileExtn="pdf";
+         JSONObject newDocRes = Document.Create(access_token,file,name,extra_fileds,resultFormat,fileExtn);
+         String documentId=null;
+         if(newDocRes != null) {
+			documentId=(String)newDocRes.get("id");
+			System.out.println("New Document ID : "+ documentId);
+		} 
+         
+       //Create a New Document and Extract the Fields
+         System.out.println("Creating New Document & Extracting Fields");
+         File docFile = new File("Example Fields.docx").getAbsoluteFile();
+         String docFileName= "Example Fields.docx";
+         fileExtn="docx";
+         
+         JSONObject docRes = Document.Create(access_token,docFile,docFileName,true,resultFormat,fileExtn);
+         String docId=null;
+         if(docRes!=null) {
+			docId=(String)docRes.get("id");
+			System.out.println("New Document ID using Extract Fields:  "+ docId);
+		} 
+         
+         //Delete Document
+         JSONObject deleteDocRes = Document.Delete(access_token, docId);
+         if(deleteDocRes != null) {
+        	 String status =(String)deleteDocRes.get("status");
+        	 System.out.println("Deleted Document ID :" + docId + "Deletion Status :"+  status);
+		} 
+         
+       //Download Document
+         System.out.println("Downloading Document");
+         InputStream downloadDocRes = Document.download(access_token, documentId);         
+        
+         // provide the path where the document to be downloaded with a name to it.
+         String filePath = "C://TEST//sample.pdf";
+         FileOutputStream fos = new FileOutputStream(new File(filePath));
+         int inByte;
+         while((inByte = downloadDocRes.read()) != -1)
+              fos.write(inByte);
+         downloadDocRes.close();
+         fos.close();
+         System.out.println("Document  downloaded");		
+
+         
+  //Send Free Form Invite. Below are the two steps to perform this.
+         
+         
+       //STEP 1: Create a New Document
+         System.out.println("Creating New Document");
+
+         file = new File("pdf-sample.pdf").getAbsoluteFile();
+         name= "pdf-sample.pdf";
+         fileExtn="pdf";
+         newDocRes = Document.Create(access_token,file,name,extra_fileds,resultFormat,fileExtn);
+         String invite_document_Id=null;
+         if(newDocRes != null) {
+			invite_document_Id=(String)newDocRes.get("id");
+			System.out.println("Invite Document ID : "+ invite_document_Id);
+		} 
+         
+         //STEP 2:  Get the document id from STEP 1. Construct the invite object and send free form invite 
+         
+         System.out.println("Sending free form Invite");         
+         JSONObject inviteDataObj = new JSONObject();
+         inviteDataObj.put("from", accountUser);
+         inviteDataObj.put("to", testEmailAddress);
+         String inviteDataObjStr = inviteDataObj.toString();
+         boolean disableEmail= false;
+         JSONObject sendFreeFormInviteRes = Document.Invite(access_token, invite_document_Id, inviteDataObjStr,disableEmail);
+         System.out.println("Invite Status: "+ sendFreeFormInviteRes);   
+         // parse the response and show the invite id and status
+         String invite_id=null;
+         String status;
+         if(sendFreeFormInviteRes != null) {
+			invite_id=(String)sendFreeFormInviteRes.get("id");
+			status=(String)sendFreeFormInviteRes.get("result");
+			System.out.println("Freeform invite done : invite_id "+ invite_id+ " status :"+ status);
+		}
+        // END free form invite. 
+         JSONObject json;
+       //Cancel Invite
+         System.out.println("Canceling Invite");
+         JSONObject cancelInviteRes = Document.CancelInvite(access_token, invite_id);         
+        /* if(cancelInviteRes != null) {
+ 			status=(String)cancelInviteRes.get("result");
+ 			System.out.println("Cancel Invite Status: "+status);
+ 		} */
+         
+         
+         //Create Download Link
+         System.out.println("Creating Download Link (Share)");
+         JSONObject downloadLinkRes = Document.Share(access_token, documentId);
+         String link;
+         if(downloadLinkRes != null) {
+  			link=(String)downloadLinkRes.get("link");
+  			System.out.println("Download Link: "+link);
+  		} 
+         
+         //Merge Existing Documents:
+         
+         System.out.println("Merging Existing Documents");
+         JSONArray jsonArray = new JSONArray();
+         jsonArray.add(documentId);
+         jsonArray.add(invite_document_Id);
+         JSONObject mergeDocObj = new JSONObject();
+         mergeDocObj.put("name", "My-New-Merged-doc");
+         mergeDocObj.put("document_ids", jsonArray);
+         String mergeDocObjStr = mergeDocObj.toString();
+
+         InputStream mergeDocsRes = Document.Merge(access_token, mergeDocObjStr);
+         System.out.println("Merged Docs Result: "+ mergeDocsRes);
+                       
+         // provide the path where the document to be downloaded with a name to it.
+         filePath = "C://TEST//";
+         FileOutputStream fos1 = new FileOutputStream(new File(filePath+"merged.pdf"));
+         inByte=0;
+         while((inByte = mergeDocsRes.read()) != -1)
+              fos1.write(inByte);
+         mergeDocsRes.close();
+         fos1.close();
+         System.out.println("Merged Document downloaded at : " +filePath+"merged.pdf");		
+
+         
+       //Document History
+         System.out.println("Retrieving Document History:");
+         JSONArray docHistoryRes = Document.History(access_token, documentId);
+         if(docHistoryRes != null)
+         {
+         System.out.println("Document History:   "+ docHistoryRes.toString());
+         }
+
+       
+         //=======================
+         // Template
+         //=======================
+         System.out.println("Template");
+         
+       //Create Template
+         System.out.println("Create Template");
+         JSONObject templObj = new JSONObject();
+         templObj.put("document_id", documentId);
+         templObj.put("document_name", "My New Template");
+ 		
+         JSONObject newTemplateRes = Template.Create(access_token,templObj);
+         
+        if(newTemplateRes != null) {
+   			String template_id=(String)newTemplateRes.get("id");
+   			System.out.println("New Template ID: {0} \r\n\r\n\r\n"+template_id);
+   		} 
+         
+       //Copy Template
+         System.out.println("Copy Template");
+         JSONObject copyTemplobj = new JSONObject();
+         copyTemplobj.put("document_name","My_Copy_Template_Doc");
+ 		
+         JSONObject copyTemplateRes = Template.Copy(access_token, invite_document_Id,copyTemplobj);
+         if(copyTemplateRes != null) {
+    			String doc_id=(String)copyTemplateRes.get("id");
+    			String doc_name=(String)copyTemplateRes.get("name");
+    			System.out.println("New Doc ID: "+ doc_id +"  AND DocName:  "+doc_name);
+    		}
+         
+         
+       //=======================
+         // Folder
+         //=======================
+         System.out.println("Folder");
+
+         //List Folders
+         System.out.println("List Folders");
+         JSONObject listFoldersRes = Folder.List(access_token);
+         System.out.println("List Folders Results: {0} \r\n\r\n\r\n"+ listFoldersRes);
+         String folderId=null;
+         String doc_id=null;
+         String doc_name= null;
+         if(listFoldersRes != null) {
+ 			JSONArray folders = (JSONArray) listFoldersRes.get("folders");
+ 			JSONObject folderObj= (JSONObject)folders.get(0);
+ 			 doc_id = (String)folderObj.get("id");
+ 			 doc_name=(String)folderObj.get("name");
+ 			System.out.println("New Doc ID: "+ doc_id +"  AND DocName:  "+doc_name);
+ 		} 
+         
+       //Get Folder
+         System.out.println("Get Folder");
+         String params=""; // optional parameters        
+         JSONObject getFolderRes = Folder.Get(access_token, doc_id,params);
+         if(getFolderRes != null)
+         {
+        	 System.out.println(" Get Folder Results: {0} \r\n\r\n\r\n"+ getFolderRes);
+         }
+         
+         
+       //=======================
+         // Webhook
+         //=======================
+         System.out.println("Webhook");
+
+         //Create Webook
+         System.out.println("Create Webhook");
+ 		JSONObject webHookobj = new JSONObject();
+ 		webHookobj.put("event", "document.create");
+ 		webHookobj.put("callback_url", "http://requestb.in/");
+         
+         JSONObject createWebhookRes = Webhook.Create(access_token,webHookobj);
+         System.out.println("Webhook Created : Results: {0} \r\n\r\n\r\n"+ createWebhookRes);
+         String subscriptionId=null;
+         if(createWebhookRes != null) {
+ 			subscriptionId=(String)createWebhookRes.get("id");
+ 		} 
+         
+       //List Webhooks
+         System.out.println("List Webhooks");
+         JSONObject listWebhooksRes = Webhook.List(access_token);
+         if(listWebhooksRes != null)
+         {
+         System.out.println(" List Webhooks Results: {0} \r\n\r\n\r\n"+ listWebhooksRes);
+         }
+         
+       //Delete Webhook
+         System.out.println("Delete Webhooks");
+         JSONObject deleteWebhookRes = Webhook.Delete(access_token, subscriptionId);
+         if(deleteWebhookRes != null)
+         {
+         System.out.println(" Delete Webhooks Results: {0} \r\n\r\n\r\n"+ deleteWebhookRes);
+         }
+         
+       //=======================
+         // Link
+       //=======================
+         System.out.println("Link");
+
+         System.out.println("Create Signing Link");
+ 		JSONObject linkObj = new JSONObject();
+ 		linkObj.put("document_id", documentId);
+ 		
+         JSONObject createLinkRes = Link.Create(access_token,linkObj);
+         if(createLinkRes != null)
+         {
+         System.out.println("Results: {0} \r\n\r\n\r\n"+ createLinkRes);
+         }
+
+       //=======================
+         // Document Groups
+       //=======================
+         //CREATE
+         System.out.println("Document Groups");
+         System.out.println("Create Document Group");
+         //create a document with fileds (in case if you dont have a document with fields):
+         
+         //Create a New Document and Extract the Fields
+         System.out.println("Creating New Document & Extracting Fields");
+         File docFieldFile = new File("Example Fields.docx").getAbsoluteFile();
+         String docFiledFileName= "Example Fields.docx";
+         fileExtn="docx";
+         
+         JSONObject docFieldRes = Document.Create(access_token,docFieldFile,docFiledFileName,true,resultFormat,fileExtn);
+         String docFileId=null;
+         if(docFieldRes != null) {
+			docFileId=(String)docFieldRes.get("id");
+			System.out.println("New Document ID using Extract Fields:  "+ docFileId);
+		} 
+         //
+         
+         JSONArray docGroupArray = new JSONArray();
+         docGroupArray.add(documentId);
+         docGroupArray.add(invite_document_Id);
+         docGroupArray.add(docFileId); // having a document with fields is mandatory for DocumentGroup
+         JSONObject docGroupObj = new JSONObject();
+         docGroupObj.put("document_ids", docGroupArray);
+         docGroupObj.put("group_name", "MyDocumentGrpName");
+         String docGroupObjStr = docGroupObj.toString();
+         
+         JSONObject createDocGroup = DocumentGroup.Create(access_token, docGroupObjStr);
+         
+         String docGroupId=null;
+         if(createDocGroup != null) {
+			docGroupId=(String)createDocGroup.get("id");
+			System.out.println("Create Document Group Results: {0} \r\n\r\n\r\n"+ docGroupId);
+		}
+       
+         //GET Document Groups
+         
+         System.out.println("Get Document Group");
+         JSONObject getDocGroup = DocumentGroup.Get(access_token, docGroupId);
+         System.out.println("Get Document Group Results: {0} \r\n\r\n\r\n"+ getDocGroup);
+         
+         //DELETE Document Groups
+         System.out.println("Delete Document Group");
+         String deleteDocGroup = DocumentGroup.Get(access_token, docGroupId);
+         System.out.println("Delete Document Group Results: {0} \r\n\r\n\r\n"+ deleteDocGroup);
+         
+         //Group Invite
+         System.out.println("Invite Document Group");
+         JSONObject model = buildInviteGrpModel(accountUser,testEmailAddress,documentId,invite_document_Id);
+         JSONObject inviteDocGroup = DocumentGroup.groupInvite(access_token, docGroupId,model);
+         System.out.println("Invite Document Group Results: {0} \r\n\r\n\r\n"+ inviteDocGroup);
+	}
+	public static JSONObject buildInviteGrpModel(String email1,String email2,String docId1,String docId2)
+	{
+		//invite_email object construction
+		JSONObject first = new JSONObject();
+		first.put("email", email1);
+		first.put("disabled","0");
+		first.put("subject", "subject for email1");
+		first.put("message", "message oor email1");
+		
+		
+		JSONObject second = new JSONObject();
+		second.put("email", email2);
+		second.put("disabled","0");
+		second.put("subject", "subject for email2");
+		second.put("message", "message oor email2");
+		
+		JSONArray objArray = new JSONArray();
+		objArray.add(first);
+		objArray.add(second);
+		
+		//build invite_emails model
+		
+		//JSONObject invite_emails_obj = new JSONObject();
+		//invite_emails_obj.put("invite_emails", objArray);
+		
+		//invite_email object construction - end
+		
+		//invite_actions object construction -start
+		
+		JSONObject invite_actions_attr_1 = new JSONObject();
+		invite_actions_attr_1.put("email", email1);
+		invite_actions_attr_1.put("role_name","Role1");
+		invite_actions_attr_1.put("action", "sign");
+		invite_actions_attr_1.put("document_id", docId1);
+		invite_actions_attr_1.put("allow_reassign", "0");		
+		
+		JSONObject invite_actions_attr_2 = new JSONObject();
+		invite_actions_attr_2.put("email", email2);
+		invite_actions_attr_2.put("role_name","Role2");
+		invite_actions_attr_2.put("action", "sign");
+		invite_actions_attr_2.put("document_id", docId2);
+		invite_actions_attr_2.put("allow_reassign", "0");
+		
+		JSONArray invite_actions_attr_array= new JSONArray();
+		invite_actions_attr_array.add(invite_actions_attr_1);
+		invite_actions_attr_array.add(invite_actions_attr_2);
+		
+		//JSONObject invite_actions_model = new JSONObject();
+		
+		//invite_actions_model.put("invite_actions", invite_actions_attr_array);
+		//invite_actions object construction -End
+		
+		JSONObject invite_steps_obj = new JSONObject();
+		invite_steps_obj.put("order","1");
+		invite_steps_obj.put("invite_emails", objArray);
+		invite_steps_obj.put("invite_actions", invite_actions_attr_array);
+		
+		JSONArray invite_steps_arry = new JSONArray();
+		invite_steps_arry.add(invite_steps_obj);
+		
+		JSONObject invite_steps_model = new JSONObject();
+		invite_steps_model.put("invite_steps", invite_steps_arry);
+
+		System.out.println("Model is  :"+ invite_steps_model.toJSONString());
+		return invite_steps_model;
+	}
+
+	
+}

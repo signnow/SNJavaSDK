@@ -1,0 +1,43 @@
+package com.signnow.library;
+
+import java.io.File;
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import com.signnow.config.Config;
+
+public class Document {
+	private static final MediaType MEDIA_TYPE_PDF = MediaType.parse("application/pdf");
+	public static String Create(String accessToken,File f,String fileName, boolean extractFields, String resultFormat)
+	{
+		
+		String path =(extractFields) ? "document/fieldextract" : "document";
+		
+		RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("file", fileName, RequestBody.create(MEDIA_TYPE_PDF, f))
+                .build();
+		
+		Request request = new Request.Builder()
+		  .url(Config.apiHost +path)
+		  .addHeader("Accept", "application/json")
+		  .addHeader("Authorization", "Bearer " + accessToken)
+		  .post(requestBody)
+		  .build();
+		
+		Response response;
+		try {
+			response = client.newCall(request).execute();
+			return  response.body().string();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+}

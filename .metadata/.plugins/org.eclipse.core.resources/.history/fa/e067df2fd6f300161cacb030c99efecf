@@ -1,0 +1,6 @@
+package com.signnow.library;
+
+public class Document {
+
+	public static String Create(String accessToken, String FilePath, Boolean ExtractFields, String resultFormat)
+}

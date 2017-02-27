@@ -1,0 +1,17 @@
+package com.signnow.examples;
+
+import com.signnow.config.Config;
+
+public class Example {
+
+	public static void main(String args[]){
+		
+		 String accountUser = "";
+         String accountPass = "";
+         String testEmailAddress = "";
+
+         Config config = new Config();
+         //Client ID, Client Secret, API URL
+         config.init("[YOUR CLIENT ID]", "[YOUR CLIENT SECRET]", "https://api-eval.cudasign.com/");
+	}
+}
