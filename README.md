@@ -3,11 +3,19 @@ SignNow
 SignNow REST Service Wrapper
 
 #### Updates
+07/11/2018 - Added Maven dependency management. 
+To create JAR file with all dependencies:
+```
+  cd SNJavaSDK
+  mvn package  
+```
+JAR file will be created in SNJavaSDK/target/ folder
+
 
 12/3/2015 - The eval server has been changed to api-eval.signnow.com. You will need to create a new account for api-eval.signnow.com. [https://eval.signnow.com](https://eval.signnow.com).
 
 #### About SignNow
-SignNow by Barracuda is an eSigning platform that offers a cloud version, a physical appliance and also a virtual appliance. Backed by Barracuda’s industry-leading security infrastructure, SignNow is fully compliant with eSigning laws and encrypts all data in transit. Users can share, manage and access their documents with confidence. It’s never been easier to get legally binding signatures from customers, partners, and employees - in seconds using any device.
+SignNow by Barracuda is an eSigning platform that offers a cloud version, a physical appliance and also a virtual appliance. Backed by Barracudaâ€™s industry-leading security infrastructure, SignNow is fully compliant with eSigning laws and encrypts all data in transit. Users can share, manage and access their documents with confidence. Itâ€™s never been easier to get legally binding signatures from customers, partners, and employees - in seconds using any device.
 
 #### API Contact Information
 If you have questions about the SignNow API, please visit https://techlib.barracuda.com/SignNow/RestEndpointsAPI or email [api@signnow.com](mailto:api@signnow.com).
@@ -105,7 +113,7 @@ String grant_type= "password";
 ```
 # Document
 
-## Retrieve a List of the User’s Documents
+## Retrieve a List of the Userâ€™s Documents
 
 ```java       
          JSONArray getAllDocumentsObj = Document.getAllUserDocuments(access_token);
