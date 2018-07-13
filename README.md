@@ -7,10 +7,11 @@ SignNow REST Service Wrapper
 12/3/2015 - The eval server has been changed to api-eval.signnow.com. You will need to create a new account for api-eval.signnow.com. [https://eval.signnow.com](https://eval.signnow.com).
 
 #### About SignNow
-SignNow by Barracuda is an eSigning platform that offers a cloud version, a physical appliance and also a virtual appliance. Backed by Barracuda’s industry-leading security infrastructure, SignNow is fully compliant with eSigning laws and encrypts all data in transit. Users can share, manage and access their documents with confidence. It’s never been easier to get legally binding signatures from customers, partners, and employees - in seconds using any device.
+SignNow is a powerful web-based e-signature solution that streamlines the signing process and overall document flow for businesses of any size. SignNow offers SaaS as well as public and private cloud deployment options using the same underlying API. With SignNow you can easily sign, share and manage documents in compliance with international data laws and industry-specific regulations. SignNow enables you to collect signatures from partners, employees and customers from any device within minutes. 
+
 
 #### API Contact Information
-If you have questions about the SignNow API, please visit https://techlib.barracuda.com/SignNow/RestEndpointsAPI or email [api@signnow.com](mailto:api@signnow.com).
+If you have questions about the SignNow API, please visit [https://help.signnow.com/docs](https://help.signnow.com/docs) or email [api@signnow.com](mailto:api@signnow.com).
 
 See additional contact information at the bottom.
 
@@ -22,7 +23,7 @@ Download SignNowSDK.jar from <path>
 Examples
 ==========
 
-To run the example.java you will need an API key. You can get one here [https://signnow.com/l/api/request_information](https://signnow.com/l/api/request_information). For a full list of accepted parameters, refer to the SignNow REST Endpoints API guide: [https://techlib.barracuda.com/SignNow/RestEndpointsAPI](https://techlib.barracuda.com/SignNow/RestEndpointsAPI).
+To run the example.java you will need an API key. You can get one here [https://www.signnow.com/api](https://www.signnow.com/api). For a full list of accepted parameters, refer to the SignNow REST Endpoints API guide: [https://help.signnow.com/docs](https://help.signnow.com/docs).
 
 set the below to the correct values.
 ```java
@@ -105,7 +106,7 @@ String grant_type= "password";
 ```
 # Document
 
-## Retrieve a List of the User’s Documents
+## Retrieve a List of the Userâ€™s Documents
 
 ```java       
          JSONArray getAllDocumentsObj = Document.getAllUserDocuments(access_token);
@@ -589,7 +590,7 @@ LOGGER.info("================= Get Document Group =================");
 # Additional Contact Information
 
 ##### SUPPORT
-To contact SignNow support, please email [support@signnow.com](mailto:support@signnow.com).
+To contact SignNow support check [https://university.signnow.com/](https://university.signnow.com/)
 
 ##### SALES
-For pricing information, please call (800) 831-2050 or email [sales@signnow.com](mailto:sales@signnow.com).
+For pricing information please fill form [https://www.signnow.com/contact](https://www.signnow.com/contact), call (800) 831-2050 or email [sales@signnow.com](mailto:sales@signnow.com).
