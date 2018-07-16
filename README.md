@@ -590,7 +590,7 @@ LOGGER.info("================= Get Document Group =================");
 # Additional Contact Information
 
 ##### SUPPORT
-To contact SignNow support check [https://university.signnow.com/](https://university.signnow.com/)
+To contact SignNow support email [support@signnow.com](mailto:support@signnow.com).
 
 ##### SALES
 For pricing information please fill form [https://www.signnow.com/contact](https://www.signnow.com/contact), call (800) 831-2050 or email [sales@signnow.com](mailto:sales@signnow.com).
