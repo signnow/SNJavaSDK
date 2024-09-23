@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/template/[0-9a-z]{40}/copy"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"887804c8a01763e14276ad9db596b09d588d0132\",\"name\":\"quos\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

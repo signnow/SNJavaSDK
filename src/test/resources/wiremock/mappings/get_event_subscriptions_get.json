@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/api/v2/events"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":[{\"id\":\"35f7589783cd23b4cc2d1f9421deff48f104a434\",\"event\":\"debitis\",\"entity_id\":92072,\"action\":\"consequatur\",\"json_attributes\":{\"use_tls_12\":false,\"docid_queryparam\":true,\"integration_id\":\"3a7833cbd6d573df59398064cc58c705f0db238d\",\"callback_url\":\"http:\\/\\/cruickshank.net\\/\",\"headers\":{\"string_head\":\"quis\",\"int_head\":20676,\"bool_head\":false,\"float_head\":77.5998},\"secret_key\":\"e247dda28a260acb8ce84421fccfb3f0df47d794\"},\"created\":1083536351,\"content\":{\"key\":\"dolorem\",\"key1\":\"ut\",\"key2\":\"distinctio\",\"account_id\":\"c546fe13ca4860f259a08409a5779d31ad3f9042\",\"source\":\"et\"}}]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2/document-groups/[0-9a-z]{40}/recipients"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":{\"recipients\":[{\"name\":\"tempora\",\"email\":\"zaria97@turcotte.com\",\"email_group\":{\"id\":\"3828ce352e5e30a253e04d01471b34ab71343b3a\"},\"order\":96973,\"attributes\":{\"message\":\"deserunt\",\"subject\":\"nulla\",\"expiration_days\":47273,\"reminder\":{\"remind_after\":68981,\"remind_before\":41067,\"remind_repeat\":23105},\"allow_forwarding\":true,\"show_decline_button\":true,\"i_am_recipient\":true,\"authentication\":{\"type\":\"expedita\",\"value\":\"quis\",\"phone\":\"enim\",\"method\":\"neque\"}},\"documents\":[{\"id\":\"48fd037fcca265f11f24c3fa0d3c4f242682dd03\",\"role\":\"quibusdam\",\"action\":\"nobis\"}]}],\"unmapped_documents\":[{\"id\":\"71a24daccfc516fa1f8fa7409cb4cfdbb207a339\",\"role\":\"aut\",\"action\":\"dolorem\"}],\"allowed_unmapped_sign_documents\":[{\"id\":\"9a7168ccd8edeac2d7ae4dbdce455c583cd29918\",\"role\":\"aperiam\",\"recipient\":\"placeat\"}],\"cc\":[\"dolor\"]}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

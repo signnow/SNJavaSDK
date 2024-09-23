@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "PUT",
+        "url": "/user/initial"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"5093af71f2b476583d5bb63f0a85a1a8a7ae2a7f\",\"width\":\"72355\",\"height\":\"5262\",\"created\":\"804153045\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

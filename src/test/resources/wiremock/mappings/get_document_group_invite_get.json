@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/documentgroup/[0-9a-z]{40}/groupinvite/[0-9a-z]{40}"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"invite\":{\"id\":\"c040f14d85981ed8659cc8a6f2ec7194bb5378b9\",\"status\":\"cumque\",\"steps\":[{\"id\":\"50ead8c7f63856df287adbd62bbe1a3a6100cbf1\",\"status\":\"asperiores\",\"order\":897,\"actions\":[{\"action\":\"similique\",\"email\":\"lelia73@hotmail.com\",\"document_id\":\"20e2c98b6dba456dce7a721e0d414ac228d9c009\",\"status\":\"accusamus\",\"role_name\":\"non\"}]}]}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

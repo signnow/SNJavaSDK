@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.signnow</groupId>
+    <artifactId>java-sdk</artifactId>
+    <version>3.0.0</version>
+    <packaging>jar</packaging>
+    <name>SignNow Java SDK</name>
+    <description>The Official SignNow PHP SDK library for interacting with SignNow REST API.
+        Sign documents, request e-signatures, and build role-based workflows with multiple signers using this client.
+    </description>
+    <url>https://github.com/signnow/SNJavaSDK</url>
+
+    <licenses>
+        <license>
+            <name>The MIT License, Version 2.0</name>
+            <url>https://github.com/signnow/SNJavaSDK/blob/master/LICENSE.md</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/signnow/SNJavaSDK</url>
+        <connection>scm:git:github.com/signnow/SNJavaSDK.git</connection>
+        <developerConnection>scm:git:ssh://github.com/signnow/SNJavaSDK.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>Jisoft</id>
+            <name>Ihor Cherkashyn</name>
+            <email>cherkashyn.ihor@pdffiller.team</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.12.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

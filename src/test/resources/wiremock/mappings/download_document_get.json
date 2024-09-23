@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/document/[0-9a-z]{40}/download"
+    },
+    "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

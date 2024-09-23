@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2/documents/[0-9a-z]{40}/fields"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":[{\"id\":\"45fbed799231d85cf3471121ecd6a4221f9c561a\",\"name\":\"similique\",\"type\":\"explicabo\",\"value\":\"reprehenderit\"}]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

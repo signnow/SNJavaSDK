@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/folder"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"e32405609d93b2f2a7dd7d4f1891837b5a601ca7\",\"created\":549437861,\"name\":\"quo\",\"user_id\":\"e7786ef9a62f257284dd0eb69bfce91054c5a219\",\"system_folder\":true,\"shared\":false,\"folders\":[{\"id\":\"0ceb3c015ccdaf7fdc03baa89241c4220fb02488\",\"created\":\"202378819\",\"name\":\"ducimus\",\"user_id\":\"7630aa41e130f60a7a6c06cfd7385e9103fdd4ca\",\"shared\":true,\"document_count\":\"19543\",\"template_count\":\"85958\",\"folder_count\":\"25534\"}],\"total_documents\":43798,\"documents\":[{\"id\":\"9827634ff66702409b1587ae000d32677876579c\",\"user_id\":\"8171f2abb38f725a478224f73b9ada2424995dc6\",\"document_name\":\"optio aut\",\"page_count\":\"10417\",\"created\":889103938,\"updated\":1589836001,\"original_filename\":\"quidem.doc\",\"origin_document_id\":\"8ac17b432757d2c5e002452d2773bf17e45e635e\",\"owner\":\"kelli74@gmail.com\",\"origin_user_id\":\"74397e8793152e411f1ca0850e87908bb99b0f9d\",\"template\":true,\"is_favorite\":true,\"version_time\":132882414}],\"team_name\":\"Dream\",\"team_id\":\"55307f0793152f326f2ce0961087918aa89b0fd9\",\"team_type\":\"super\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

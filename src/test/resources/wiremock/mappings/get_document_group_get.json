@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/documentgroup/[0-9a-z]{40}"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"7a694acfac7ea6e017d990f4bb62f54a7e858aa5\",\"group_name\":\"sunt\",\"documents\":[{\"id\":\"2a1b1970eff34e70759b554e7fd8c1df26335d9a\",\"roles\":[\"quia\"],\"document_name\":\"facilis sit\",\"thumbnail\":{\"small\":\"https:\\/\\/api.signnow.com\\/document\\/3fddb3bb127ba3958bf4ee546502b36fe1e2b88d\\/thumbnail?size=small\",\"medium\":\"https:\\/\\/api.signnow.com\\/document\\/3fddb3bb127ba3958bf4ee546502b36fe1e2b88d\\/thumbnail?size=medium\",\"large\":\"https:\\/\\/api.signnow.com\\/document\\/3fddb3bb127ba3958bf4ee546502b36fe1e2b88d\\/thumbnail?size=large\"},\"origin_document_id\":\"6c5b2d117e1a9571d0e83a944fb90e78c91e4af4\",\"has_unassigned_field\":false,\"has_credit_card_number\":false,\"allowed_to_remove\":false}],\"originator_organization_settings\":[{\"setting\":\"distinctio\",\"value\":\"voluptatum\"}]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

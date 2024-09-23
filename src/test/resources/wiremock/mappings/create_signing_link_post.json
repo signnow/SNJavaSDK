@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/link"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"url\":\"http:\\/\\/www.treutel.info\\/quos-non-vel-qui-quis-eius-saepe.html\",\"url_no_signup\":\"http:\\/\\/www.price.org\\/nisi-ut-similique-nobis-totam-velit-omnis-distinctio\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

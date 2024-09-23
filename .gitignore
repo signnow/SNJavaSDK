@@ -1,0 +1,9 @@
+/vendor
+/.idea
+/.fleet
+/.vscode
+/target
+.env
+.env.backup
+.env.production
+.env.development

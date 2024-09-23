@@ -1,0 +1,14 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/document/[0-9a-z]{40}/invite",
+        "bodyPatterns": [{"matchesJsonPath": "$.[?(@.to =~ /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/)]"}]
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"result\":\"success\",\"id\":\"d89d9a7d57c524881e63d06678e5f0380c3316c3\",\"callback_url\":\"https:\\/\\/swift.com\\/ex-sed-nihil-dolor-est.html\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

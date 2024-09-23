@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/documentgroup/[0-9a-z]{40}/groupinvite/[0-9a-z]{40}/pendinginvites"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"document_group_name\":\"rem\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

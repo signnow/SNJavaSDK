@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/v2/event-subscriptions/[0-9a-z]{40}"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":{\"id\":\"8881818e28ab582a96ec89743a0f30622145985e\",\"entity_type\":\"user\",\"event\":\"user.document.open\",\"entity_id\":188,\"entity_unique_id\":\"01f2f54e7efa95313a6fd0b3a4535875c15e3013\",\"request_method\":\"post\",\"action\":\"callback\",\"active\":true,\"json_attributes\":{\"use_tls_12\":false,\"docid_queryparam\":false,\"callback_url\":\"https://dvv.subtest.non.exists.com/\",\"delete_access_token\":false,\"include_metadata\":true},\"application_name\":\"Demo Application\",\"version\":\"2\",\"created\":1720800201,\"event_count\":12}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

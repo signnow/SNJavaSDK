@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/user"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"6eccf0b922ddf8cd2dc3fb71f8548f1f646a6250\",\"verified\":92943,\"email\":\"parisian.mathilde@yahoo.com\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
