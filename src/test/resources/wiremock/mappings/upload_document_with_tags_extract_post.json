@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/document/fieldextract"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"795c0413526854d8c692e200498d90b46b5ee022\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

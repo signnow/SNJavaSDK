@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/oauth2/token"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"expires_in\":1482244759,\"token_type\":\"bearer\",\"access_token\":\"d879f2d6857c1e5b6058a33640d3ce238bac5789fb7c41b2d57a2c87f90d45c7\",\"refresh_token\":\"85d0e0cc5bc7fb7d25446ba65de64ce7f7397330c979e5a118eb3981e118e9cb\",\"scope\":\"*\",\"last_login\":1257040294}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

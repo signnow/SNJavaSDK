@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/documentgroup"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"14f2b0157ce3cb455a2d8031ccc1fc08bd32f8b5\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

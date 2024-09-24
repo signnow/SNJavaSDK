@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/document/[0-9a-z]{40}/template/routing/detail"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"routing_details\":[{\"default_email\":\"s2s@t2t.eat\",\"inviter_role\":false,\"name\":\"iusto\",\"role_id\":\"88ee91e8d8264ea6f079799020a30f38601f5338\",\"signing_order\":85937,\"decline_by_signature\":false,\"delivery_type\":\"nihil\"}],\"cc\":[\"abreitenberg@gmail.com\"],\"cc_step\":[{\"email\":\"lonie.reichert@gmail.com\",\"name\":\"quos\",\"step\":21346}],\"viewers\":[{\"default_email\":\"bwalsh@yahoo.com\",\"name\":\"velit\",\"signing_order\":12917}],\"approvers\":[{\"default_email\":\"wellington43@gmail.com\",\"name\":\"assumenda\",\"signing_order\":86005}],\"invite_link_instructions\":[\"nisi\"]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

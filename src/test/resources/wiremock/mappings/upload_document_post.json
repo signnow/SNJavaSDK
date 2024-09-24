@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/document"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"d591b66bc56cd02d33e8e1a3546efb994ee80273\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

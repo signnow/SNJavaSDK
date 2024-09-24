@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/document/[0-9a-z]{40}/template/routing/detail"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"routing_details\":[{\"default_email\":\"mtorphy@gmail.com\",\"inviter_role\":false,\"name\":\"aut\",\"role_id\":\"015b41c6da667c1c4f2d258fec12b7d4d986fddf\",\"signing_order\":41808}]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

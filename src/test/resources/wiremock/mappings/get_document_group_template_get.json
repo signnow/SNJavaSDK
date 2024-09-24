@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "GET",
+        "urlPathPattern": "/documentgroup/template/[0-9a-z]{40}"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"4059b121fc4c08c96f0ebf2f9a43bfb9464cebcf\",\"name\":\"commodi\",\"filename\":\"possimus.docx\",\"page_count\":\"1\",\"created\":723490199,\"updated\":185035579,\"editor_link\":\"http:\\/\\/www.hickle.info\\/omnis-ut-optio-tempore-et-illum.html\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

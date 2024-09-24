@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "PUT",
+        "urlPathPattern": "/document/[0-9a-z]{40}"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"8a6ca6363bbcd4618bab9acb26c4330c6e8958bd\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

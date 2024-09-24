@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "PUT",
+        "urlPathPattern": "/document/[0-9a-z]{40}/template/routing/detail"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"3303ac35c8a67fafd684951b422dc8d8ce535ab8\",\"document_id\":\"a0e7abaa868b9668037f87902dfabacd3540f287\",\"data\":{\"name\":\"repudiandae\",\"role_id\":\"25140601ef3f9cafc4d7c9875d63e10fac79aa41\",\"signing_order\":69720},\"cc\":[\"emie31@gmail.com\"],\"cc_step\":[{\"email\":\"leif46@gmail.com\",\"name\":\"cumque\",\"step\":90950}],\"viewers\":[{\"default_email\":\"oreichel@toy.biz\",\"name\":\"quis\",\"signing_order\":4670}],\"approvers\":[{\"default_email\":\"cedrick91@keebler.info\",\"name\":\"qui\",\"signing_order\":24375}],\"invite_link_instructions\":[\"rem\"]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

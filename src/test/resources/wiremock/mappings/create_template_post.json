@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/template"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"id\":\"4943cf4aee213667201203a68318e2c219021e0c\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

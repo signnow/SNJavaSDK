@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/v2/documents/[0-9a-z]{40}/embedded-invites"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":[{\"id\":\"4f93b6ca5a118b50e57e55f22d32e82de172051c\",\"email\":\"eve18@franecki.info\",\"role_id\":\"1e081de66dc7eb878e901196af68c5cb310da5a0\",\"order\":63106,\"status\":\"success\"}]}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

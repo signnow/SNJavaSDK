@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/document/merge"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"document_id\": \"022405739d93b2f2a8dd8d401891837e5a6e3cd3\"}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

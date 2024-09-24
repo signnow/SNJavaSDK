@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/v2/document-groups/[0-9a-z]{40}/embedded-invites"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":{\"id\":\"55b919aa645837a86fd05fc56586ad82e07176a7\"}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
