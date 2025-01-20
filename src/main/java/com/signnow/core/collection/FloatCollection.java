@@ -9,4 +9,17 @@
 
 package com.signnow.core.collection;
 
-public class FloatCollection extends TypedCollection<Float> {}
+/**
+ * This class represents a collection of Float objects.
+ * It extends the TypedCollection class by specifying the type of objects it can contain.
+ * 
+ * @see TypedCollection
+ */
+public class FloatCollection extends TypedCollection<Float> {
+    /**
+     * Default constructor {@code FloatCollection}.
+     */
+    public FloatCollection() {
+        super();
+    }
+}

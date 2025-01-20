@@ -11,4 +11,15 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class EnumerationOptionCollection extends TypedCollection<EnumerationOption> {}
+/**
+ * This class represents a collection of EnumerationOption objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
+public class EnumerationOptionCollection extends TypedCollection<EnumerationOption> {
+    /**
+     * Default constructor {@code EnumerationOptionCollection}.
+     */
+    public EnumerationOptionCollection() {
+        super();
+    }
+}

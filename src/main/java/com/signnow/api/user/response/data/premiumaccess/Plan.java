@@ -17,47 +17,106 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Plan in the signNow API.
+ */
 public final class Plan extends ApiData {
 
+  /**
+   * The id of the plan.
+   */
   @JsonProperty("id")
   private final int id;
 
+  /**
+   * The plan id of the plan.
+   */
   @JsonProperty("plan_id")
   private final String planId;
 
+  /**
+   * The name of the plan.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The price of the plan.
+   */
   @JsonProperty("price")
   private final String price;
 
+  /**
+   * The billing cycle of the plan.
+   */
   @JsonProperty("billing_cycle")
   private final int billingCycle;
 
+  /**
+   * The active status of the plan.
+   */
   @JsonProperty("active")
   private final boolean active;
 
+  /**
+   * The groups associated with the plan.
+   */
   @JsonProperty("groups")
   private final GroupCollection groups;
 
+  /**
+   * The level of the plan.
+   */
   @JsonProperty("level")
   private final String level;
 
+  /**
+   * The type of the plan.
+   */
   @JsonProperty("type")
   private final String type;
 
+  /**
+   * The number of API requests allowed for the plan.
+   */
   @JsonProperty("api_requests")
   private final int apiRequests;
 
+  /**
+   * The unit price of the plan.
+   */
   @JsonProperty("unit_price")
   private final int unitPrice;
 
+  /**
+   * The trial status of the plan.
+   */
   @JsonProperty("is_trial")
   private final boolean isTrial;
 
+  /**
+   * The marketplace status of the plan.
+   */
   @JsonProperty("is_marketplace")
   private final boolean isMarketplace;
 
+  /**
+   * Constructor for the Plan class.
+   *
+   * @param id The id of the plan.
+   * @param planId The plan id of the plan.
+   * @param name The name of the plan.
+   * @param price The price of the plan.
+   * @param billingCycle The billing cycle of the plan.
+   * @param active The active status of the plan.
+   * @param groups The groups associated with the plan.
+   * @param level The level of the plan.
+   * @param type The type of the plan.
+   * @param apiRequests The number of API requests allowed for the plan.
+   * @param unitPrice The unit price of the plan.
+   * @param isTrial The trial status of the plan.
+   * @param isMarketplace The marketplace status of the plan.
+   */
   @JsonCreator
   public Plan(
       @JsonProperty("id") int id,
@@ -88,58 +147,128 @@ public final class Plan extends ApiData {
     this.isMarketplace = isMarketplace;
   }
 
+  /**
+   * Returns the id of the plan.
+   *
+   * @return The id of the plan.
+   */
   public int getId() {
     return this.id;
   }
 
+  /**
+   * Returns the plan id of the plan.
+   *
+   * @return The plan id of the plan.
+   */
   public String getPlanId() {
     return this.planId;
   }
 
+  /**
+   * Returns the name of the plan.
+   *
+   * @return The name of the plan.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the price of the plan.
+   *
+   * @return The price of the plan.
+   */
   public String getPrice() {
     return this.price;
   }
 
+  /**
+   * Returns the billing cycle of the plan.
+   *
+   * @return The billing cycle of the plan.
+   */
   public int getBillingCycle() {
     return this.billingCycle;
   }
 
+  /**
+   * Returns the active status of the plan.
+   *
+   * @return The active status of the plan.
+   */
   public boolean isActive() {
     return this.active;
   }
 
+  /**
+   * Returns the groups associated with the plan.
+   *
+   * @return The groups associated with the plan.
+   */
   public GroupCollection getGroups() {
     return this.groups;
   }
 
+  /**
+   * Returns the level of the plan.
+   *
+   * @return The level of the plan.
+   */
   public String getLevel() {
     return this.level;
   }
 
+  /**
+   * Returns the type of the plan.
+   *
+   * @return The type of the plan.
+   */
   public String getType() {
     return this.type;
   }
 
+  /**
+   * Returns the number of API requests allowed for the plan.
+   *
+   * @return The number of API requests allowed for the plan.
+   */
   public int getApiRequests() {
     return this.apiRequests;
   }
 
+  /**
+   * Returns the unit price of the plan.
+   *
+   * @return The unit price of the plan.
+   */
   public int getUnitPrice() {
     return this.unitPrice;
   }
 
+  /**
+   * Returns the trial status of the plan.
+   *
+   * @return The trial status of the plan.
+   */
   public boolean isTrial() {
     return this.isTrial;
   }
 
+  /**
+   * Returns the marketplace status of the plan.
+   *
+   * @return The marketplace status of the plan.
+   */
   public boolean isMarketplace() {
     return this.isMarketplace;
   }
 
+  /**
+   * Converts the Plan object to a Map.
+   *
+   * @return A Map representing the Plan object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -160,6 +289,12 @@ public final class Plan extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Plan object from a Map.
+   *
+   * @param data A Map representing a Plan object.
+   * @return A Plan object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Plan fromMap(@NotNull Map<String, Object> data) {

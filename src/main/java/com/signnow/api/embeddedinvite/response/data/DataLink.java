@@ -17,20 +17,41 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a data link in the signNow API.
+ */
 public final class DataLink extends ApiData {
 
+  /**
+   * The link property of the data link.
+   */
   @JsonProperty("link")
   private final String link;
 
+  /**
+   * Constructs a new DataLink with the specified link.
+   *
+   * @param link the link of the data link
+   */
   @JsonCreator
   public DataLink(@JsonProperty("link") String link) {
     this.link = link;
   }
 
+  /**
+   * Returns the link of this data link.
+   *
+   * @return the link of this data link
+   */
   public String getLink() {
     return this.link;
   }
 
+  /**
+   * Converts this data link to a map.
+   *
+   * @return a map representing this data link
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -39,6 +60,12 @@ public final class DataLink extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new DataLink from the specified map.
+   *
+   * @param data the map to create the data link from
+   * @return a new DataLink created from the specified map
+   */
   @NotNull
   @Contract("_ -> new")
   public static DataLink fromMap(@NotNull Map<String, Object> data) {

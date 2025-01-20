@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Logo with its properties and methods.
+ */
 public final class Logo extends ApiData {
 
+  /**
+   * The id of the logo.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The name of the logo.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The active status of the logo.
+   */
   @JsonProperty("active")
   private final boolean active;
 
+  /**
+   * Constructs a new Logo with the specified id, name, and active status.
+   *
+   * @param id the id of the logo
+   * @param name the name of the logo
+   * @param active the active status of the logo
+   */
   @JsonCreator
   public Logo(
       @JsonProperty("id") String id,
@@ -38,18 +57,38 @@ public final class Logo extends ApiData {
     this.active = active;
   }
 
+  /**
+   * Returns the id of the logo.
+   *
+   * @return the id of the logo
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the name of the logo.
+   *
+   * @return the name of the logo
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the active status of the logo.
+   *
+   * @return the active status of the logo
+   */
   public boolean isActive() {
     return this.active;
   }
 
+  /**
+   * Returns a map representation of the logo.
+   *
+   * @return a map representation of the logo
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class Logo extends ApiData {
     return map;
   }
 
+  /**
+   * Returns a new Logo object created from the specified map.
+   *
+   * @param data the map containing the logo data
+   * @return a new Logo object created from the specified map
+   */
   @NotNull
   @Contract("_ -> new")
   public static Logo fromMap(@NotNull Map<String, Object> data) {

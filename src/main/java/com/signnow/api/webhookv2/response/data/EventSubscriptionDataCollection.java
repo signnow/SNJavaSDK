@@ -10,4 +10,15 @@ package com.signnow.api.webhookv2.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class EventSubscriptionDataCollection extends TypedCollection<EventSubscriptionData> {}
+/**
+ * This class represents a collection of EventSubscriptionData objects.
+ * It extends the TypedCollection class from the signNow SDK API client.
+ */
+public class EventSubscriptionDataCollection extends TypedCollection<EventSubscriptionData> {
+    /**
+     * Default constructor {@code EventSubscriptionDataCollection}.
+     */
+    public EventSubscriptionDataCollection() {
+        super();
+    }
+}

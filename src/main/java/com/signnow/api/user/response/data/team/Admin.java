@@ -17,26 +17,57 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an Admin user in the system.
+ */
 public final class Admin extends ApiData {
 
+  /**
+   * The unique identifier of the Admin.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The secondary status of the Admin.
+   */
   @JsonProperty("is_secondary")
   private final String isSecondary;
 
+  /**
+   * The email address of the Admin.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The billing status of the Admin.
+   */
   @JsonProperty("billing")
   private final int billing;
 
+  /**
+   * The document access level of the Admin.
+   */
   @JsonProperty("document_access")
   private final int documentAccess;
 
+  /**
+   * The primary status of the Admin.
+   */
   @JsonProperty("primary")
   private final boolean primary;
 
+  /**
+   * Constructor for the Admin class.
+   *
+   * @param id The unique identifier of the Admin.
+   * @param isSecondary The secondary status of the Admin.
+   * @param email The email address of the Admin.
+   * @param billing The billing status of the Admin.
+   * @param documentAccess The document access level of the Admin.
+   * @param primary The primary status of the Admin.
+   */
   @JsonCreator
   public Admin(
       @JsonProperty("id") String id,
@@ -53,30 +84,65 @@ public final class Admin extends ApiData {
     this.primary = primary;
   }
 
+  /**
+   * Returns the unique identifier of the Admin.
+   *
+   * @return The unique identifier of the Admin.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the secondary status of the Admin.
+   *
+   * @return The secondary status of the Admin.
+   */
   public String getIsSecondary() {
     return this.isSecondary;
   }
 
+  /**
+   * Returns the email address of the Admin.
+   *
+   * @return The email address of the Admin.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the billing status of the Admin.
+   *
+   * @return The billing status of the Admin.
+   */
   public int getBilling() {
     return this.billing;
   }
 
+  /**
+   * Returns the document access level of the Admin.
+   *
+   * @return The document access level of the Admin.
+   */
   public int getDocumentAccess() {
     return this.documentAccess;
   }
 
+  /**
+   * Returns the primary status of the Admin.
+   *
+   * @return The primary status of the Admin.
+   */
   public boolean isPrimary() {
     return this.primary;
   }
 
+  /**
+   * Converts the Admin object to a Map.
+   *
+   * @return A Map representation of the Admin object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -90,6 +156,12 @@ public final class Admin extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an Admin object from a Map.
+   *
+   * @param data A Map containing the data for the Admin object.
+   * @return A new Admin object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Admin fromMap(@NotNull Map<String, Object> data) {

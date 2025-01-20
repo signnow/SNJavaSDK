@@ -17,38 +17,85 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Signer in the signNow API.
+ */
 public final class Signer extends ApiData {
 
+  /**
+   * The email of the signer.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The authentication method of the signer.
+   */
   @JsonProperty("auth_method")
   private final String authMethod;
 
+  /**
+   * The documents associated with the signer.
+   */
   @JsonProperty("documents")
   private final DocumentCollection documents;
 
+  /**
+   * The first name of the signer.
+   */
   @JsonProperty("first_name")
   private final String firstName;
 
+  /**
+   * The last name of the signer.
+   */
   @JsonProperty("last_name")
   private final String lastName;
 
+  /**
+   * The language of the signer.
+   */
   @JsonProperty("language")
   private final String language;
 
+  /**
+   * The required preset signature name of the signer.
+   */
   @JsonProperty("required_preset_signature_name")
   private final String requiredPresetSignatureName;
 
+  /**
+   * The redirect URI of the signer.
+   */
   @JsonProperty("redirect_uri")
   private final String redirectUri;
 
+  /**
+   * The decline redirect URI of the signer.
+   */
   @JsonProperty("decline_redirect_uri")
   private final String declineRedirectUri;
 
+  /**
+   * The redirect target of the signer.
+   */
   @JsonProperty("redirect_target")
   private final String redirectTarget;
 
+  /**
+   * Constructor for the Signer class.
+   *
+   * @param email The email of the signer.
+   * @param authMethod The authentication method of the signer.
+   * @param documents The documents associated with the signer.
+   * @param firstName The first name of the signer.
+   * @param lastName The last name of the signer.
+   * @param language The language of the signer.
+   * @param requiredPresetSignatureName The required preset signature name of the signer.
+   * @param redirectUri The redirect URI of the signer.
+   * @param declineRedirectUri The decline redirect URI of the signer.
+   * @param redirectTarget The redirect target of the signer.
+   */
   @JsonCreator
   public Signer(
       @JsonProperty("email") String email,
@@ -73,6 +120,15 @@ public final class Signer extends ApiData {
     this.redirectTarget = redirectTarget;
   }
 
+  /**
+   * Constructor for the Signer class with fewer parameters.
+   *
+   * @param email The email of the signer.
+   * @param authMethod The authentication method of the signer.
+   * @param documents The documents associated with the signer.
+   * @param firstName The first name of the signer.
+   * @param lastName The last name of the signer.
+   */
   public Signer(
       @JsonProperty("email") String email,
       @JsonProperty("auth_method") String authMethod,
@@ -91,46 +147,81 @@ public final class Signer extends ApiData {
     this.redirectTarget = null;
   }
 
+  /**
+   * @return The email of the signer.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The authentication method of the signer.
+   */
   public String getAuthMethod() {
     return this.authMethod;
   }
 
+  /**
+   * @return The first name of the signer.
+   */
   public String getFirstName() {
     return this.firstName;
   }
 
+  /**
+   * @return The last name of the signer.
+   */
   public String getLastName() {
     return this.lastName;
   }
 
+  /**
+   * @return The documents associated with the signer.
+   */
   public DocumentCollection getDocuments() {
     return this.documents;
   }
 
+  /**
+   * @return The language of the signer.
+   */
   public String getLanguage() {
     return this.language;
   }
 
+  /**
+   * @return The required preset signature name of the signer.
+   */
   public String getRequiredPresetSignatureName() {
     return this.requiredPresetSignatureName;
   }
 
+  /**
+   * @return The redirect URI of the signer.
+   */
   public String getRedirectUri() {
     return this.redirectUri;
   }
 
+  /**
+   * @return The decline redirect URI of the signer.
+   */
   public String getDeclineRedirectUri() {
     return this.declineRedirectUri;
   }
 
+  /**
+   * @return The redirect target of the signer.
+   */
   public String getRedirectTarget() {
     return this.redirectTarget;
   }
 
+  /**
+   * Converts the Signer object to a Map.
+   *
+   * @return A Map representation of the Signer object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -148,6 +239,12 @@ public final class Signer extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Signer object from a Map.
+   *
+   * @param data The Map to convert to a Signer object.
+   * @return A new Signer object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Signer fromMap(@NotNull Map<String, Object> data) {

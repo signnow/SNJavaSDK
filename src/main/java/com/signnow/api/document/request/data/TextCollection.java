@@ -11,4 +11,15 @@ package com.signnow.api.document.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class TextCollection extends TypedCollection<Text> {}
+/**
+ * This class represents a collection of Text objects.
+ * It extends the TypedCollection class with Text as its type parameter.
+ */
+public class TextCollection extends TypedCollection<Text> {
+    /**
+     * Constructs an empty {@code TextCollection}.
+     */
+    public TextCollection() {
+        super();
+    }
+}

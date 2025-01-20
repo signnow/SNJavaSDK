@@ -17,20 +17,42 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Declined class extends ApiData.
+ * Represents the declined data in the API response.
+ */
 public final class Declined extends ApiData {
 
+  /**
+   * Declined text property.
+   */
   @JsonProperty("declined_text")
   private final String declinedText;
 
+  /**
+   * Declined class constructor.
+   *
+   * @param declinedText The declined text from the API response.
+   */
   @JsonCreator
   public Declined(@JsonProperty("declined_text") String declinedText) {
     this.declinedText = declinedText;
   }
 
+  /**
+   * Getter for declined text.
+   *
+   * @return The declined text.
+   */
   public String getDeclinedText() {
     return this.declinedText;
   }
 
+  /**
+   * Converts the Declined object to a Map.
+   *
+   * @return A map representation of the Declined object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -39,6 +61,12 @@ public final class Declined extends ApiData {
     return map;
   }
 
+  /**
+   * Static method to create a Declined object from a Map.
+   *
+   * @param data The map containing the declined data.
+   * @return A new Declined object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Declined fromMap(@NotNull Map<String, Object> data) {

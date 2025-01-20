@@ -18,29 +18,64 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a JSON attribute in the signNow SDK API client.
+ */
 public final class JsonAttribute extends ApiData {
 
+  /**
+   * A boolean indicating whether to use TLS 1.2.
+   */
   @JsonProperty("use_tls_12")
   private final boolean useTls12;
 
+  /**
+   * The callback URL.
+   */
   @JsonProperty("callback_url")
   private final String callbackUrl;
 
+  /**
+   * A boolean indicating whether to include the document ID in the query parameter.
+   */
   @JsonProperty("docid_queryparam")
   private final boolean docidQueryparam;
 
+  /**
+   * The integration ID.
+   */
   @JsonProperty("integration_id")
   private final String integrationId;
 
+  /**
+   * The headers for the request.
+   */
   @JsonProperty("headers")
   private Map<String, Object> headers;
 
+  /**
+   * A boolean indicating whether to include metadata.
+   */
   @JsonProperty("include_metadata")
   private final boolean includeMetadata;
 
+  /**
+   * A boolean indicating whether to delete the access token.
+   */
   @JsonProperty("delete_access_token")
   private final boolean deleteAccessToken;
 
+  /**
+   * Constructor for the JsonAttribute class.
+   *
+   * @param useTls12           Whether to use TLS 1.2.
+   * @param callbackUrl        The callback URL.
+   * @param docidQueryparam    Whether to include the document ID in the query parameter.
+   * @param integrationId      The integration ID.
+   * @param headers            The headers for the request.
+   * @param includeMetadata    Whether to include metadata.
+   * @param deleteAccessToken  Whether to delete the access token.
+   */
   @JsonCreator
   public JsonAttribute(
       @JsonProperty("use_tls_12") boolean useTls12,
@@ -59,34 +94,60 @@ public final class JsonAttribute extends ApiData {
     this.deleteAccessToken = deleteAccessToken;
   }
 
+  /**
+   * @return Whether to use TLS 1.2.
+   */
   public boolean isUseTls12() {
     return this.useTls12;
   }
 
+  /**
+   * @return Whether to include the document ID in the query parameter.
+   */
   public boolean isDocidQueryparam() {
     return this.docidQueryparam;
   }
 
+  /**
+   * @return The integration ID.
+   */
   public String getIntegrationId() {
     return this.integrationId;
   }
 
+  /**
+   * @return The callback URL.
+   */
   public String getCallbackUrl() {
     return this.callbackUrl;
   }
 
+  /**
+   * @return The headers for the request.
+   */
   public Map<String, Object> getHeaders() {
     return this.headers;
   }
 
+  /**
+   * @return Whether to include metadata.
+   */
   public boolean isIncludeMetadata() {
     return this.includeMetadata;
   }
 
+  /**
+   * @return Whether to delete the access token.
+   */
   public boolean isDeleteAccessToken() {
     return this.deleteAccessToken;
   }
 
+  /**
+   * Converts this object to a map.
+   *
+   * @return A map representation of this object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -101,6 +162,12 @@ public final class JsonAttribute extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new JsonAttribute object from a map.
+   *
+   * @param data The map to create the object from.
+   * @return A new JsonAttribute object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static JsonAttribute fromMap(@NotNull Map<String, Object> data) {

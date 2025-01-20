@@ -17,20 +17,41 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Signature which extends ApiData.
+ */
 public final class Signature extends ApiData {
 
+  /**
+   * The type of the signature.
+   */
   @JsonProperty("type")
   private final String type;
 
+  /**
+   * Constructor for the Signature class.
+   *
+   * @param type The type of the signature.
+   */
   @JsonCreator
   public Signature(@JsonProperty("type") String type) {
     this.type = type;
   }
 
+  /**
+   * This method is used to get the type of the signature.
+   *
+   * @return String This returns the type of the signature.
+   */
   public String getType() {
     return this.type;
   }
 
+  /**
+   * This method is used to convert the signature object to a map.
+   *
+   * @return Map This returns the signature object as a map.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -39,6 +60,12 @@ public final class Signature extends ApiData {
     return map;
   }
 
+  /**
+   * This method is used to create a signature object from a map.
+   *
+   * @param data The map containing the signature data.
+   * @return Signature This returns a new signature object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Signature fromMap(@NotNull Map<String, Object> data) {

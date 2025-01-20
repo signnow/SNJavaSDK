@@ -16,6 +16,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to refresh an access token.
+ * It implements the RequestInterface with a String type parameter.
+ */
 @ApiEndpoint(
     name = "refreshAccessToken",
     url = "/oauth2/token",
@@ -26,11 +30,34 @@ import org.jetbrains.annotations.NotNull;
     type = "application/x-www-form-urlencoded")
 public final class RefreshTokenPostRequest implements RequestInterface<String> {
 
+  /**
+   * The refresh token.
+   */
   private final String refreshToken;
+
+  /**
+   * The scope of the request.
+   */
   private final String scope;
+
+  /**
+   * The expiration time of the token.
+   */
   private final String expirationTime;
+
+  /**
+   * The grant type of the request.
+   */
   private final String grantType;
 
+  /**
+   * Constructs a new RefreshTokenPostRequest with the specified parameters.
+   *
+   * @param refreshToken the refresh token
+   * @param scope the scope of the request
+   * @param expirationTime the expiration time of the token
+   * @param grantType the grant type of the request
+   */
   public RefreshTokenPostRequest(
       String refreshToken, String scope, String expirationTime, String grantType) {
     this.refreshToken = refreshToken;
@@ -39,22 +66,47 @@ public final class RefreshTokenPostRequest implements RequestInterface<String> {
     this.grantType = grantType;
   }
 
+  /**
+   * Returns the refresh token.
+   *
+   * @return the refresh token
+   */
   public String getRefreshToken() {
     return this.refreshToken;
   }
 
+  /**
+   * Returns the scope of the request.
+   *
+   * @return the scope of the request
+   */
   public String getScope() {
     return this.scope;
   }
 
+  /**
+   * Returns the expiration time of the token.
+   *
+   * @return the expiration time of the token
+   */
   public String getExpirationTime() {
     return this.expirationTime;
   }
 
+  /**
+   * Returns the grant type of the request.
+   *
+   * @return the grant type of the request
+   */
   public String getGrantType() {
     return this.grantType;
   }
 
+  /**
+   * Returns a new HashMap.
+   *
+   * @return a new HashMap
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -62,6 +114,11 @@ public final class RefreshTokenPostRequest implements RequestInterface<String> {
     return new HashMap<>();
   }
 
+  /**
+   * Returns a map with the payload of the request.
+   *
+   * @return a map with the payload of the request
+   */
   @NotNull
   public Map<String, String> payload() {
     Map<String, String> map = new HashMap<>();

@@ -5,13 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.signnow</groupId>
-    <artifactId>java-sdk</artifactId>
+    <artifactId>signnow-java-sdk</artifactId>
     <version>3.0.0</version>
     <packaging>jar</packaging>
-    <name>SignNow Java SDK</name>
-    <description>The Official SignNow PHP SDK library for interacting with SignNow REST API.
-        Sign documents, request e-signatures, and build role-based workflows with multiple signers using this client.
-    </description>
+    <name>signnow-java-sdk</name>
+    <description>SignNow official Java SDK</description>
     <url>https://github.com/signnow/SNJavaSDK</url>
 
     <licenses>
@@ -22,12 +20,6 @@
         </license>
     </licenses>
 
-    <scm>
-        <url>https://github.com/signnow/SNJavaSDK</url>
-        <connection>scm:git:github.com/signnow/SNJavaSDK.git</connection>
-        <developerConnection>scm:git:ssh://github.com/signnow/SNJavaSDK.git</developerConnection>
-    </scm>
-
     <developers>
         <developer>
             <id>Jisoft</id>
@@ -35,6 +27,12 @@
             <email>cherkashyn.ihor@pdffiller.team</email>
         </developer>
     </developers>
+
+    <scm>
+        <url>https://github.com/signnow/SNJavaSDK</url>
+        <connection>scm:git:github.com/signnow/SNJavaSDK.git</connection>
+        <developerConnection>scm:git:ssh://github.com/signnow/SNJavaSDK.git</developerConnection>
+    </scm>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -53,7 +51,6 @@
             <artifactId>okhttp</artifactId>
             <version>4.12.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -81,7 +78,70 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

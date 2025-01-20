@@ -11,4 +11,8 @@ package com.signnow.api.documentinvite.response.data.meta;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class.
+ * It represents a collection of links in the context of the signNow SDK API client.
+ */
 public class LinkCollection extends StringCollection {}

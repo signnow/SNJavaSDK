@@ -18,32 +18,71 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the document group information.
+ */
 public final class DocumentGroupInfo extends ApiData {
 
+  /**
+   * Represents the freeform invite.
+   */
   @JsonProperty("freeform_invite")
   private final FreeformInvite freeformInvite;
 
+  /**
+   * Represents the document group id.
+   */
   @JsonProperty("document_group_id")
   private final String documentGroupId;
 
+  /**
+   * Represents the document group name.
+   */
   @JsonProperty("document_group_name")
   private final String documentGroupName;
 
+  /**
+   * Represents the invite id.
+   */
   @JsonProperty("invite_id")
   private final String inviteId;
 
+  /**
+   * Represents the invite status.
+   */
   @JsonProperty("invite_status")
   private final String inviteStatus;
 
+  /**
+   * Represents the state.
+   */
   @JsonProperty("state")
   private final String state;
 
+  /**
+   * Represents the document count in group.
+   */
   @JsonProperty("doc_count_in_group")
   private final Integer docCountInGroup;
 
+  /**
+   * Represents the sign as merged status.
+   */
   @JsonProperty("sign_as_merged")
   private final Boolean signAsMerged;
 
+  /**
+   * Constructor for DocumentGroupInfo.
+   *
+   * @param freeformInvite the freeform invite
+   * @param documentGroupId the document group id
+   * @param documentGroupName the document group name
+   * @param inviteId the invite id
+   * @param inviteStatus the invite status
+   * @param state the state
+   * @param docCountInGroup the document count in group
+   * @param signAsMerged the sign as merged status
+   */
   @JsonCreator
   public DocumentGroupInfo(
       @JsonProperty("freeform_invite") FreeformInvite freeformInvite,
@@ -64,38 +103,83 @@ public final class DocumentGroupInfo extends ApiData {
     this.signAsMerged = signAsMerged;
   }
 
+  /**
+   * Returns the freeform invite.
+   *
+   * @return the freeform invite
+   */
   public FreeformInvite getFreeformInvite() {
     return this.freeformInvite;
   }
 
+  /**
+   * Returns the document group id.
+   *
+   * @return the document group id
+   */
   public String getDocumentGroupId() {
     return this.documentGroupId;
   }
 
+  /**
+   * Returns the document group name.
+   *
+   * @return the document group name
+   */
   public String getDocumentGroupName() {
     return this.documentGroupName;
   }
 
+  /**
+   * Returns the invite id.
+   *
+   * @return the invite id
+   */
   public String getInviteId() {
     return this.inviteId;
   }
 
+  /**
+   * Returns the invite status.
+   *
+   * @return the invite status
+   */
   public String getInviteStatus() {
     return this.inviteStatus;
   }
 
+  /**
+   * Returns the state.
+   *
+   * @return the state
+   */
   public String getState() {
     return this.state;
   }
 
+  /**
+   * Returns the document count in group.
+   *
+   * @return the document count in group
+   */
   public Integer getDocCountInGroup() {
     return this.docCountInGroup;
   }
 
+  /**
+   * Returns the sign as merged status.
+   *
+   * @return the sign as merged status
+   */
   public Boolean isSignAsMerged() {
     return this.signAsMerged;
   }
 
+  /**
+   * Converts the DocumentGroupInfo to a map.
+   *
+   * @return the map representation of the DocumentGroupInfo
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -111,6 +195,12 @@ public final class DocumentGroupInfo extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a DocumentGroupInfo from a map.
+   *
+   * @param data the map containing the data
+   * @return the created DocumentGroupInfo
+   */
   @NotNull
   @Contract("_ -> new")
   public static DocumentGroupInfo fromMap(@NotNull Map<String, Object> data) {

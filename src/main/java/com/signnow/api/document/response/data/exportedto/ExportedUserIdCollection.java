@@ -11,4 +11,20 @@ package com.signnow.api.document.response.data.exportedto;
 
 import com.signnow.core.collection.StringCollection;
 
-public class ExportedUserIdCollection extends StringCollection {}
+/**
+ * This class extends the StringCollection class and represents a collection of exported user IDs.
+ * It doesn't have any additional properties or methods.
+ * 
+ * @see StringCollection
+ */
+public class ExportedUserIdCollection extends StringCollection {
+
+    /**
+     * Default constructor for the ExportedUserIdCollection class.
+     * It doesn't take any parameters or return any values.
+     * It doesn't throw any exceptions.
+     */
+    public ExportedUserIdCollection() {
+        super();
+    }
+}

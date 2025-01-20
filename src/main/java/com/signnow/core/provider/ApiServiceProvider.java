@@ -18,20 +18,36 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class provides services for the signNow API SDK.
+ */
 public class ApiServiceProvider {
 
-  /** Path to signNow API SDK configuration file. */
+  /** 
+   * Path to signNow API SDK configuration file. 
+   */
   private final String configPath;
 
-  /** Map of SDK general services */
+  /** 
+   * Map of SDK general services 
+   */
   private final ServiceRepository serviceRepository;
 
+  /**
+   * Constructor for the ApiServiceProvider class.
+   *
+   * @param configPath the path to the configuration file
+   */
   public ApiServiceProvider(String configPath) {
     this.configPath = configPath;
     this.serviceRepository = new ServiceRepository();
   }
 
-  /** Register required SDK classes into Service Provider Repository */
+  /**
+   * Register required SDK classes into Service Provider Repository.
+   *
+   * @throws SignNowApiException if there is an error during the registration process
+   */
   public void register() throws SignNowApiException {
     if (!this.serviceRepository.has("config")) {
       this.serviceRepository.set("config", this.createSdkConfig());
@@ -41,11 +57,21 @@ public class ApiServiceProvider {
     }
   }
 
-  /** Provide access Service Provider Repository to set/get services */
+  /**
+   * Provide access Service Provider Repository to set/get services.
+   *
+   * @return the service repository
+   */
   public ServiceRepository services() {
     return this.serviceRepository;
   }
 
+  /**
+   * Create an API client.
+   *
+   * @return the created API client
+   * @throws SignNowApiException if there is an error during the creation process
+   */
   @NotNull
   private ApiClient createApiClient() throws SignNowApiException {
     ConfigRepository config = (ConfigRepository) this.serviceRepository.get("config");
@@ -57,6 +83,12 @@ public class ApiServiceProvider {
     return new ApiClient(httpClient, new ApiEndpointResolver(), config, config.basicToken(), null);
   }
 
+  /**
+   * Create an SDK configuration.
+   *
+   * @return the created SDK configuration
+   * @throws SignNowApiException if there is an error during the creation process
+   */
   @NotNull
   private ConfigRepository createSdkConfig() throws SignNowApiException {
     ConfigLoader configLoader = new ConfigLoader();

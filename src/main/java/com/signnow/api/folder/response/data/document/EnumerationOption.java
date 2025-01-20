@@ -17,41 +17,92 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an EnumerationOption which extends ApiData.
+ */
 public final class EnumerationOption extends ApiData {
 
+  /**
+   * The id of the EnumerationOption.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The page number of the EnumerationOption.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The width of the EnumerationOption.
+   */
   @JsonProperty("width")
   private final String width;
 
+  /**
+   * The height of the EnumerationOption.
+   */
   @JsonProperty("height")
   private final String height;
 
+  /**
+   * The created timestamp of the EnumerationOption.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The enumeration id of the EnumerationOption.
+   */
   @JsonProperty("enumeration_id")
   private final String enumerationId;
 
+  /**
+   * The user id of the EnumerationOption.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The data of the EnumerationOption.
+   */
   @JsonProperty("data")
   private final String data;
 
+  /**
+   * The email of the EnumerationOption.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The x-coordinate of the EnumerationOption.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the EnumerationOption.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * Constructor for the EnumerationOption class.
+   *
+   * @param id The id of the EnumerationOption.
+   * @param pageNumber The page number of the EnumerationOption.
+   * @param width The width of the EnumerationOption.
+   * @param height The height of the EnumerationOption.
+   * @param created The created timestamp of the EnumerationOption.
+   * @param enumerationId The enumeration id of the EnumerationOption.
+   * @param userId The user id of the EnumerationOption.
+   * @param data The data of the EnumerationOption.
+   * @param email The email of the EnumerationOption.
+   * @param x The x-coordinate of the EnumerationOption.
+   * @param y The y-coordinate of the EnumerationOption.
+   */
   @JsonCreator
   public EnumerationOption(
       @JsonProperty("id") String id,
@@ -78,50 +129,88 @@ public final class EnumerationOption extends ApiData {
     this.y = y;
   }
 
+  /**
+   * @return The id of the EnumerationOption.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The enumeration id of the EnumerationOption.
+   */
   public String getEnumerationId() {
     return this.enumerationId;
   }
 
+  /**
+   * @return The user id of the EnumerationOption.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return The data of the EnumerationOption.
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * @return The email of the EnumerationOption.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The page number of the EnumerationOption.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The width of the EnumerationOption.
+   */
   public String getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the EnumerationOption.
+   */
   public String getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The x-coordinate of the EnumerationOption.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the EnumerationOption.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * @return The created timestamp of the EnumerationOption.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Converts the EnumerationOption to a Map.
+   *
+   * @return A Map representation of the EnumerationOption.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -140,6 +229,12 @@ public final class EnumerationOption extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an EnumerationOption from a Map.
+   *
+   * @param data The Map to create the EnumerationOption from.
+   * @return A new EnumerationOption created from the provided Map.
+   */
   @NotNull
   @Contract("_ -> new")
   public static EnumerationOption fromMap(@NotNull Map<String, Object> data) {

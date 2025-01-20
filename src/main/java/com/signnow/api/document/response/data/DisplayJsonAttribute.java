@@ -17,29 +17,64 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the JSON attributes for display.
+ */
 public final class DisplayJsonAttribute extends ApiData {
 
+  /**
+   * The short name for web.
+   */
   @JsonProperty("web_short_name")
   private final String webShortName;
 
+  /**
+   * The description for web.
+   */
   @JsonProperty("web_description")
   private final String webDescription;
 
+  /**
+   * The common property.
+   */
   @JsonProperty("common")
   private final boolean common;
 
+  /**
+   * The disabled property.
+   */
   @JsonProperty("disabled")
   private final boolean disabled;
 
+  /**
+   * The order of date time field.
+   */
   @JsonProperty("date_time_field_order")
   private final Integer dateTimeFieldOrder;
 
+  /**
+   * The order of text field.
+   */
   @JsonProperty("text_field_order")
   private final Integer textFieldOrder;
 
+  /**
+   * The locale key for web.
+   */
   @JsonProperty("web_locale_key")
   private final String webLocaleKey;
 
+  /**
+   * Constructor for DisplayJsonAttribute.
+   *
+   * @param webShortName the short name for web
+   * @param webDescription the description for web
+   * @param common the common property
+   * @param disabled the disabled property
+   * @param dateTimeFieldOrder the order of date time field
+   * @param textFieldOrder the order of text field
+   * @param webLocaleKey the locale key for web
+   */
   @JsonCreator
   public DisplayJsonAttribute(
       @JsonProperty("web_short_name") String webShortName,
@@ -58,6 +93,12 @@ public final class DisplayJsonAttribute extends ApiData {
     this.webLocaleKey = webLocaleKey;
   }
 
+  /**
+   * Creates a new DisplayJsonAttribute from a map.
+   *
+   * @param data the map containing the data
+   * @return a new DisplayJsonAttribute
+   */
   @NotNull
   @Contract("_ -> new")
   public static DisplayJsonAttribute fromMap(@NotNull Map<String, Object> data) {
@@ -71,34 +112,74 @@ public final class DisplayJsonAttribute extends ApiData {
         (String) data.getOrDefault("web_locale_key", ""));
   }
 
+  /**
+   * Returns the web short name.
+   *
+   * @return the web short name
+   */
   public String getWebShortName() {
     return this.webShortName;
   }
 
+  /**
+   * Returns the web description.
+   *
+   * @return the web description
+   */
   public String getWebDescription() {
     return this.webDescription;
   }
 
+  /**
+   * Returns whether it is common or not.
+   *
+   * @return true if it is common, false otherwise
+   */
   public boolean isCommon() {
     return this.common;
   }
 
+  /**
+   * Returns whether it is disabled or not.
+   *
+   * @return true if it is disabled, false otherwise
+   */
   public boolean isDisabled() {
     return this.disabled;
   }
 
+  /**
+   * Returns the date time field order.
+   *
+   * @return the date time field order
+   */
   public Integer getDateTimeFieldOrder() {
     return this.dateTimeFieldOrder;
   }
 
+  /**
+   * Returns the text field order.
+   *
+   * @return the text field order
+   */
   public Integer getTextFieldOrder() {
     return this.textFieldOrder;
   }
 
+  /**
+   * Returns the web locale key.
+   *
+   * @return the web locale key
+   */
   public String getWebLocaleKey() {
     return this.webLocaleKey;
   }
 
+  /**
+   * Converts this object to a map.
+   *
+   * @return a map representing this object
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {

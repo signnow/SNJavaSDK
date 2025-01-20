@@ -11,4 +11,16 @@ package com.signnow.api.document.response.data.radiobutton;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class RadiobuttonCollection extends TypedCollection<Radiobutton> {}
+/**
+ * This class represents a collection of Radiobutton objects.
+ * It extends the TypedCollection class, specifying Radiobutton as the type parameter.
+ * This means that this collection will only accept Radiobutton objects.
+ */
+public class RadiobuttonCollection extends TypedCollection<Radiobutton> {
+    /**
+     * Constructs an empty {@code RadiobuttonCollection}.
+     */
+    public RadiobuttonCollection() {
+        super();
+    }
+}

@@ -11,4 +11,8 @@ package com.signnow.api.template.request.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class and is used to store a collection of template IDs.
+ * It doesn't have any additional properties or methods, it just provides a more specific type for collections of template IDs.
+ */
 public class TemplateIdsToAddCollection extends StringCollection {}

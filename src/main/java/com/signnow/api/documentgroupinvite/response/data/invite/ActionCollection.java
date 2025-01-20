@@ -11,4 +11,16 @@ package com.signnow.api.documentgroupinvite.response.data.invite;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class ActionCollection extends TypedCollection<Action> {}
+/**
+ * This class represents a collection of Action objects.
+ * It extends the TypedCollection class, specifying Action as the type parameter.
+ * This means that this collection will only accept Action objects.
+ */
+public class ActionCollection extends TypedCollection<Action> {
+    /**
+     * Constructs an empty {@code ActionCollection}.
+     */
+    public ActionCollection() {
+        super();
+    }
+}

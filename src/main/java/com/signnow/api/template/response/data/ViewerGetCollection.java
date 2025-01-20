@@ -11,4 +11,15 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class ViewerGetCollection extends TypedCollection<ViewerGet> {}
+/**
+ * This class extends the TypedCollection class with ViewerGet as its type.
+ * It represents a collection of ViewerGet objects.
+ */
+public class ViewerGetCollection extends TypedCollection<ViewerGet> {
+    /**
+     * Default constructor {@code ViewerGetCollection}.
+     */
+    public ViewerGetCollection() {
+        super();
+    }
+}

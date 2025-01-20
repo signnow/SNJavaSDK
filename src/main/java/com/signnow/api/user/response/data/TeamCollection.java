@@ -11,4 +11,17 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class TeamCollection extends TypedCollection {}
+/**
+ * This class represents a collection of Teams in the signNow API.
+ * It extends the TypedCollection class.
+ */
+public class TeamCollection extends TypedCollection {
+
+    /**
+     * Default constructor for TeamCollection class.
+     * It initializes an empty collection of Teams.
+     */
+    public TeamCollection() {
+        super();
+    }
+}

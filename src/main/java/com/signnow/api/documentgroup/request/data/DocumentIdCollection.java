@@ -11,4 +11,8 @@ package com.signnow.api.documentgroup.request.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class represents a collection of document IDs.
+ * It extends the StringCollection class.
+ */
 public class DocumentIdCollection extends StringCollection {}

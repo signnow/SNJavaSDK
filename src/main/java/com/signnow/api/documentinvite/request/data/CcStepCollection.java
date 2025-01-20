@@ -11,4 +11,15 @@ package com.signnow.api.documentinvite.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class CcStepCollection extends TypedCollection<CcStep> {}
+/**
+ * This class represents a collection of CcStep objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
+public class CcStepCollection extends TypedCollection<CcStep> {
+    /**
+     * Default constructor {@code CcStepCollection}.
+     */
+    public CcStepCollection() {
+        super();
+    }
+}

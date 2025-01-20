@@ -11,4 +11,9 @@ package com.signnow.api.embeddedgroupinvite.request.data.invite;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of Invite objects.
+ * It extends the TypedCollection class, specifying Invite as the type parameter.
+ * This means that this collection will only accept Invite objects.
+ */
 public class InviteCollection extends TypedCollection<Invite> {}

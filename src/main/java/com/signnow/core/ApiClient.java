@@ -31,6 +31,9 @@ import okio.Buffer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * This class is responsible for sending API requests to the signNow server.
+ */
 public class ApiClient {
 
   /** HTTP client to send API requests. */
@@ -48,6 +51,15 @@ public class ApiClient {
   /** Authorization Bearer token for API requests. */
   private BearerToken bearerToken;
 
+  /**
+   * Constructs an ApiClient with the provided parameters.
+   *
+   * @param client the HTTP client to send API requests
+   * @param apiEndpointResolver the resolver to retrieve the ApiEndpoint data object from annotated request object
+   * @param configRepository the signNow SDK configuration
+   * @param basicToken the Authorization Basic token to retrieve Bearer token
+   * @param bearerToken the Authorization Bearer token for API requests
+   */
   public ApiClient(
       OkHttpClient client,
       ApiEndpointResolver apiEndpointResolver,
@@ -61,6 +73,14 @@ public class ApiClient {
     this.bearerToken = bearerToken;
   }
 
+  /**
+   * Sends a request to the signNow server.
+   *
+   * @param request the request to be sent
+   * @param <R> the type of the response
+   * @return the response from the server
+   * @throws SignNowApiException if there is an error processing the request
+   */
   public <R> Reply<R> send(RequestInterface<?> request) throws SignNowApiException {
     ApiEndpoint apiEndpoint = this.apiEndpointResolver.resolve(request);
     Request apiRequest = this.buildRequest(apiEndpoint, request);
@@ -95,10 +115,20 @@ public class ApiClient {
     }
   }
 
+  /**
+   * Sets the Bearer token for API requests.
+   *
+   * @param token the Bearer token to be set
+   */
   public void setBearerToken(BearerToken token) {
     this.bearerToken = token;
   }
 
+  /**
+   * Retrieves the Bearer token for API requests.
+   *
+   * @return the Bearer token
+   */
   public BearerToken getBearerToken() {
     return this.bearerToken;
   }

@@ -16,6 +16,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to update user initials.
+ * It implements the RequestInterface with a String type parameter.
+ */
 @ApiEndpoint(
     name = "updateUserInitials",
     url = "/user/initial",
@@ -26,16 +30,35 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class InitialPutRequest implements RequestInterface<String> {
 
+  /**
+   * The data to be updated.
+   */
   private final String data;
 
+  /**
+   * Constructs a new InitialPutRequest with the specified data.
+   *
+   * @param data the data to be updated
+   */
   public InitialPutRequest(String data) {
     this.data = data;
   }
 
+  /**
+   * Returns the data to be updated.
+   *
+   * @return the data to be updated
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * Returns an empty HashMap.
+   * This method is required by the RequestInterface but not used in this class.
+   *
+   * @return an empty HashMap
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -43,6 +66,11 @@ public final class InitialPutRequest implements RequestInterface<String> {
     return new HashMap<>();
   }
 
+  /**
+   * Returns a Map with a single entry where the key is "data" and the value is the data to be updated.
+   *
+   * @return a Map with a single entry
+   */
   @NotNull
   public Map<String, String> payload() {
     Map<String, String> map = new HashMap<>();

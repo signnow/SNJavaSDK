@@ -11,4 +11,17 @@ package com.signnow.api.document.response.data.routingdetail;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DataCollection extends TypedCollection {}
+/**
+ * This class represents a collection of data in the signNow SDK API client.
+ * It extends the TypedCollection class.
+ */
+public class DataCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the DataCollection class.
+     * It initializes an instance of the class without setting any initial values.
+     */
+    public DataCollection() {
+        super();
+    }
+}

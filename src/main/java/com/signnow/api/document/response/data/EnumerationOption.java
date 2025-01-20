@@ -17,26 +17,57 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an EnumerationOption which extends ApiData.
+ */
 public final class EnumerationOption extends ApiData {
 
+  /**
+   * The id of the EnumerationOption.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The enumeration id of the EnumerationOption.
+   */
   @JsonProperty("enumeration_id")
   private final String enumerationId;
 
+  /**
+   * The data of the EnumerationOption.
+   */
   @JsonProperty("data")
   private final String data;
 
+  /**
+   * The created timestamp of the EnumerationOption.
+   */
   @JsonProperty("created")
   private final String created;
 
+  /**
+   * The updated timestamp of the EnumerationOption.
+   */
   @JsonProperty("updated")
   private final String updated;
 
+  /**
+   * The json attributes of the EnumerationOption.
+   */
   @JsonProperty("json_attributes")
   private final JsonAttribute jsonAttributes;
 
+  /**
+   * Constructor for EnumerationOption.
+   *
+   * @param id The id of the EnumerationOption.
+   * @param enumerationId The enumeration id of the EnumerationOption.
+   * @param data The data of the EnumerationOption.
+   * @param created The created timestamp of the EnumerationOption.
+   * @param updated The updated timestamp of the EnumerationOption.
+   * @param jsonAttributes The json attributes of the EnumerationOption.
+   */
   @JsonCreator
   public EnumerationOption(
       @JsonProperty("id") String id,
@@ -53,30 +84,53 @@ public final class EnumerationOption extends ApiData {
     this.jsonAttributes = jsonAttributes;
   }
 
+  /**
+   * @return The id of the EnumerationOption.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The enumeration id of the EnumerationOption.
+   */
   public String getEnumerationId() {
     return this.enumerationId;
   }
 
+  /**
+   * @return The data of the EnumerationOption.
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * @return The created timestamp of the EnumerationOption.
+   */
   public String getCreated() {
     return this.created;
   }
 
+  /**
+   * @return The updated timestamp of the EnumerationOption.
+   */
   public String getUpdated() {
     return this.updated;
   }
 
+  /**
+   * @return The json attributes of the EnumerationOption.
+   */
   public JsonAttribute getJsonAttributes() {
     return this.jsonAttributes;
   }
 
+  /**
+   * Converts the EnumerationOption to a Map.
+   *
+   * @return A Map representation of the EnumerationOption.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -90,6 +144,12 @@ public final class EnumerationOption extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an EnumerationOption from a Map.
+   *
+   * @param data The Map to create the EnumerationOption from.
+   * @return A new EnumerationOption created from the provided Map.
+   */
   @NotNull
   @Contract("_ -> new")
   public static EnumerationOption fromMap(@NotNull Map<String, Object> data) {

@@ -11,4 +11,8 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class and represents a collection of emails.
+ * It doesn't add any new methods or properties, it just provides a more specific type for collections of emails.
+ */
 public class EmailCollection extends StringCollection {}

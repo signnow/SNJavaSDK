@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class AttachmentCollection extends TypedCollection<Attachment> {}
+/**
+ * This class represents a collection of Attachment objects.
+ * It extends the TypedCollection class by specifying the type of the collection as Attachment.
+ */
+public class AttachmentCollection extends TypedCollection<Attachment> {
+    /**
+     * Constructs an empty {@code AttachmentCollection}.
+     */
+    public AttachmentCollection() {
+        super();
+    }
+}

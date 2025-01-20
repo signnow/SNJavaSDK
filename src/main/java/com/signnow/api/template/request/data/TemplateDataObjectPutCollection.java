@@ -11,4 +11,18 @@ package com.signnow.api.template.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class TemplateDataObjectPutCollection extends TypedCollection<TemplateDataObjectPut> {}
+/**
+ * This class extends the TypedCollection class with TemplateDataObjectPut as its type.
+ * It represents a collection of TemplateDataObjectPut objects.
+ * 
+ * @see com.signnow.core.collection.TypedCollection
+ * @see com.signnow.api.template.request.data.TemplateDataObjectPut
+ */
+public class TemplateDataObjectPutCollection extends TypedCollection<TemplateDataObjectPut> {
+    /**
+     * Default constructor {@code TemplateDataObjectPutCollection}.
+     */
+    public TemplateDataObjectPutCollection() {
+        super();
+    }
+}

@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class EntityLabelCollection extends TypedCollection<EntityLabel> {}
+/**
+ * This class represents a collection of EntityLabel objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
+public class EntityLabelCollection extends TypedCollection<EntityLabel> {
+    /**
+     * Constructs an empty {@code EntityLabelCollection}.
+     */
+    public EntityLabelCollection() {
+        super();
+    }
+}

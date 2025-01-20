@@ -16,10 +16,21 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** This class reads and parses signNow SDK configuration file. */
+/** 
+ * This class reads and parses signNow SDK configuration file. 
+ */
 public class ConfigLoader {
 
-  /** Return the map containing config file entries as a repository. */
+  /** 
+   * This method loads the configuration file from the provided file path and parses it into a map.
+   * Each line in the file should represent a key-value pair, separated by an equals sign.
+   * Lines starting with a hash sign are considered comments and are ignored.
+   * Empty lines are also ignored.
+   *
+   * @param filePath The path to the configuration file.
+   * @return A map containing the key-value pairs from the configuration file.
+   * @throws SignNowApiException If an error occurs while reading the file.
+   */
   public Map<String, String> load(String filePath) throws SignNowApiException {
     Map<String, String> configMap = new HashMap<>();
     try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {

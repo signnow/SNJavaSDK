@@ -17,20 +17,43 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the exported data to a specific domain.
+ */
 public final class ExportedTo extends ApiData {
 
+  /**
+   * The domain where the data is exported.
+   */
   @JsonProperty("export_domain")
   private final String exportDomain;
 
+  /**
+   * Flag indicating whether the data is exported or not.
+   */
   @JsonProperty("is_exported")
   private final boolean isExported;
 
+  /**
+   * Collection of user IDs to which the data is exported.
+   */
   @JsonProperty("exported_user_ids")
   private final ExportedUserIdCollection exportedUserIds;
 
+  /**
+   * Collection of storages where the data is exported.
+   */
   @JsonProperty("storages")
   private final StorageCollection storages;
 
+  /**
+   * Constructor for the ExportedTo class.
+   *
+   * @param exportDomain The domain where the data is exported.
+   * @param isExported Flag indicating whether the data is exported or not.
+   * @param exportedUserIds Collection of user IDs to which the data is exported.
+   * @param storages Collection of storages where the data is exported.
+   */
   @JsonCreator
   public ExportedTo(
       @JsonProperty("export_domain") String exportDomain,
@@ -43,22 +66,47 @@ public final class ExportedTo extends ApiData {
     this.storages = storages;
   }
 
+  /**
+   * Returns the domain where the data is exported.
+   *
+   * @return The export domain.
+   */
   public String getExportDomain() {
     return this.exportDomain;
   }
 
+  /**
+   * Returns whether the data is exported or not.
+   *
+   * @return True if the data is exported, false otherwise.
+   */
   public boolean isExported() {
     return this.isExported;
   }
 
+  /**
+   * Returns the collection of user IDs to which the data is exported.
+   *
+   * @return The collection of exported user IDs.
+   */
   public ExportedUserIdCollection getExportedUserIds() {
     return this.exportedUserIds;
   }
 
+  /**
+   * Returns the collection of storages where the data is exported.
+   *
+   * @return The collection of storages.
+   */
   public StorageCollection getStorages() {
     return this.storages;
   }
 
+  /**
+   * Converts the exported data to a map.
+   *
+   * @return A map representing the exported data.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +118,12 @@ public final class ExportedTo extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an instance of ExportedTo from a map.
+   *
+   * @param data A map representing the exported data.
+   * @return An instance of ExportedTo.
+   */
   @NotNull
   @Contract("_ -> new")
   public static ExportedTo fromMap(@NotNull Map<String, Object> data) {

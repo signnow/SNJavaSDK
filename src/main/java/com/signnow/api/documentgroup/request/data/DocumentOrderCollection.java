@@ -11,4 +11,8 @@ package com.signnow.api.documentgroup.request.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class and represents a collection of documents in a specific order.
+ * It is used to manage and manipulate a collection of document orders.
+ */
 public class DocumentOrderCollection extends StringCollection {}

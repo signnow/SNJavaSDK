@@ -17,35 +17,78 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Signature object with its properties and methods.
+ */
 public final class Signature extends ApiData {
 
+  /**
+   * The id of the signature.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The user id associated with the signature.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The email associated with the signature.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The page number where the signature is located.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The width of the signature.
+   */
   @JsonProperty("width")
   private final String width;
 
+  /**
+   * The height of the signature.
+   */
   @JsonProperty("height")
   private final String height;
 
+  /**
+   * The x-coordinate of the signature.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the signature.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * The creation timestamp of the signature.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * Constructor for the Signature class.
+   *
+   * @param id The id of the signature.
+   * @param userId The user id associated with the signature.
+   * @param email The email associated with the signature.
+   * @param pageNumber The page number where the signature is located.
+   * @param width The width of the signature.
+   * @param height The height of the signature.
+   * @param x The x-coordinate of the signature.
+   * @param y The y-coordinate of the signature.
+   * @param created The creation timestamp of the signature.
+   */
   @JsonCreator
   public Signature(
       @JsonProperty("id") String id,
@@ -68,42 +111,74 @@ public final class Signature extends ApiData {
     this.created = created;
   }
 
+  /**
+   * @return The id of the signature.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The user id associated with the signature.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return The email associated with the signature.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The page number where the signature is located.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The width of the signature.
+   */
   public String getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the signature.
+   */
   public String getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The x-coordinate of the signature.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the signature.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * @return The creation timestamp of the signature.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Converts the Signature object to a Map.
+   *
+   * @return A Map representation of the Signature object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -120,6 +195,12 @@ public final class Signature extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Signature object from a Map.
+   *
+   * @param data The Map containing the data for the Signature object.
+   * @return A new Signature object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Signature fromMap(@NotNull Map<String, Object> data) {

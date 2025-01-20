@@ -17,23 +17,50 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an Action in the signNow API.
+ */
 public final class Action extends ApiData {
 
+  /**
+   * The action to be performed.
+   */
   @JsonProperty("action")
   private final String action;
 
+  /**
+   * The ID of the document associated with the action.
+   */
   @JsonProperty("document_id")
   private final String documentId;
 
+  /**
+   * The status of the action.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * The role name associated with the action.
+   */
   @JsonProperty("role_name")
   private final String roleName;
 
+  /**
+   * The email associated with the action.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * Constructor for the Action class.
+   *
+   * @param action The action to be performed.
+   * @param documentId The ID of the document associated with the action.
+   * @param status The status of the action.
+   * @param roleName The role name associated with the action.
+   * @param email The email associated with the action.
+   */
   @JsonCreator
   public Action(
       @JsonProperty("action") String action,
@@ -48,26 +75,56 @@ public final class Action extends ApiData {
     this.email = email;
   }
 
+  /**
+   * Returns the action.
+   *
+   * @return The action.
+   */
   public String getAction() {
     return this.action;
   }
 
+  /**
+   * Returns the email.
+   *
+   * @return The email.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the document ID.
+   *
+   * @return The document ID.
+   */
   public String getDocumentId() {
     return this.documentId;
   }
 
+  /**
+   * Returns the status.
+   *
+   * @return The status.
+   */
   public String getStatus() {
     return this.status;
   }
 
+  /**
+   * Returns the role name.
+   *
+   * @return The role name.
+   */
   public String getRoleName() {
     return this.roleName;
   }
 
+  /**
+   * Converts the Action object to a Map.
+   *
+   * @return A Map representation of the Action object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -80,6 +137,12 @@ public final class Action extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an Action object from a Map.
+   *
+   * @param data The Map to convert to an Action object.
+   * @return The created Action object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Action fromMap(@NotNull Map<String, Object> data) {

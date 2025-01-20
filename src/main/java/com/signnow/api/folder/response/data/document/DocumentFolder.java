@@ -18,87 +18,198 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a document folder.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class DocumentFolder extends ApiData {
 
+  /**
+   * The id of the document folder.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The user id associated with the document folder.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The name of the document.
+   */
   @JsonProperty("document_name")
   private final String documentName;
 
+  /**
+   * The page count of the document.
+   */
   @JsonProperty("page_count")
   private final String pageCount;
 
+  /**
+   * The creation timestamp of the document folder.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The updated timestamp of the document folder.
+   */
   @JsonProperty("updated")
   private final int updated;
 
+  /**
+   * The original filename of the document.
+   */
   @JsonProperty("original_filename")
   private final String originalFilename;
 
+  /**
+   * The owner of the document folder.
+   */
   @JsonProperty("owner")
   private final String owner;
 
+  /**
+   * The thumbnail of the document.
+   */
   @JsonProperty("thumbnail")
   private final Thumbnail thumbnail;
 
+  /**
+   * The template status of the document folder.
+   */
   @JsonProperty("template")
   private final boolean template;
 
+  /**
+   * The favorite status of the document folder.
+   */
   @JsonProperty("is_favorite")
   private final boolean isFavorite;
 
+  /**
+   * The signatures of the document.
+   */
   @JsonProperty("signatures")
   private final SignatureCollection signatures;
 
+  /**
+   * The seals of the document.
+   */
   @JsonProperty("seals")
   private final SealCollection seals;
 
+  /**
+   * The texts of the document.
+   */
   @JsonProperty("texts")
   private final TextCollection texts;
 
+  /**
+   * The checks of the document.
+   */
   @JsonProperty("checks")
   private final CheckCollection checks;
 
+  /**
+   * The inserts of the document.
+   */
   @JsonProperty("inserts")
   private final InsertCollection inserts;
 
+  /**
+   * The tags of the document.
+   */
   @JsonProperty("tags")
   private final TagCollection tags;
 
+  /**
+   * The fields of the document.
+   */
   @JsonProperty("fields")
   private final FieldCollection fields;
 
+  /**
+   * The requests of the document.
+   */
   @JsonProperty("requests")
   private final RequestCollection requests;
 
+  /**
+   * The roles of the document.
+   */
   @JsonProperty("roles")
   private final RoleCollection roles;
 
+  /**
+   * The field invites of the document.
+   */
   @JsonProperty("field_invites")
   private final FieldInviteFolderCollection fieldInvites;
 
+  /**
+   * The version time of the document.
+   */
   @JsonProperty("version_time")
   private final int versionTime;
 
+  /**
+   * The enumeration options of the document.
+   */
   @JsonProperty("enumeration_options")
   private final EnumerationOptionCollection enumerationOptions;
 
+  /**
+   * The attachments of the document.
+   */
   @JsonProperty("attachments")
   private final AttachmentCollection attachments;
 
+  /**
+   * The origin document id of the document.
+   */
   @JsonProperty("origin_document_id")
   private final String originDocumentId;
 
+  /**
+   * The origin user id of the document.
+   */
   @JsonProperty("origin_user_id")
   private final String originUserId;
 
+  /**
+   * Constructor for DocumentFolder class.
+   *
+   * @param id The id of the document folder.
+   * @param userId The user id associated with the document folder.
+   * @param documentName The name of the document.
+   * @param pageCount The page count of the document.
+   * @param created The creation timestamp of the document folder.
+   * @param updated The updated timestamp of the document folder.
+   * @param originalFilename The original filename of the document.
+   * @param owner The owner of the document folder.
+   * @param thumbnail The thumbnail of the document.
+   * @param template The template status of the document folder.
+   * @param isFavorite The favorite status of the document folder.
+   * @param signatures The signatures of the document.
+   * @param seals The seals of the document.
+   * @param texts The texts of the document.
+   * @param checks The checks of the document.
+   * @param inserts The inserts of the document.
+   * @param tags The tags of the document.
+   * @param fields The fields of the document.
+   * @param requests The requests of the document.
+   * @param roles The roles of the document.
+   * @param fieldInvites The field invites of the document.
+   * @param versionTime The version time of the document.
+   * @param enumerationOptions The enumeration options of the document.
+   * @param attachments The attachments of the document.
+   * @param originDocumentId The origin document id of the document.
+   * @param originUserId The origin user id of the document.
+   */
   @JsonCreator
   public DocumentFolder(
       @JsonProperty("id") String id,
@@ -155,110 +266,245 @@ public final class DocumentFolder extends ApiData {
     this.originUserId = originUserId;
   }
 
+  /**
+   * Returns the id of the document folder.
+   *
+   * @return the id of the document folder.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the user id associated with the document folder.
+   *
+   * @return the user id associated with the document folder.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * Returns the name of the document.
+   *
+   * @return the name of the document.
+   */
   public String getDocumentName() {
     return this.documentName;
   }
 
+  /**
+   * Returns the page count of the document.
+   *
+   * @return the page count of the document.
+   */
   public String getPageCount() {
     return this.pageCount;
   }
 
+  /**
+   * Returns the creation timestamp of the document folder.
+   *
+   * @return the creation timestamp of the document folder.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the updated timestamp of the document folder.
+   *
+   * @return the updated timestamp of the document folder.
+   */
   public int getUpdated() {
     return this.updated;
   }
 
+  /**
+   * Returns the original filename of the document.
+   *
+   * @return the original filename of the document.
+   */
   public String getOriginalFilename() {
     return this.originalFilename;
   }
 
+  /**
+   * Returns the owner of the document folder.
+   *
+   * @return the owner of the document folder.
+   */
   public String getOwner() {
     return this.owner;
   }
 
+  /**
+   * Returns the thumbnail of the document.
+   *
+   * @return the thumbnail of the document.
+   */
   public Thumbnail getThumbnail() {
     return this.thumbnail;
   }
 
+  /**
+   * Returns the template status of the document folder.
+   *
+   * @return the template status of the document folder.
+   */
   public boolean isTemplate() {
     return this.template;
   }
 
+  /**
+   * Returns the favorite status of the document folder.
+   *
+   * @return the favorite status of the document folder.
+   */
   public boolean isFavorite() {
     return this.isFavorite;
   }
 
+  /**
+   * Returns the signatures of the document.
+   *
+   * @return the signatures of the document.
+   */
   public SignatureCollection getSignatures() {
     return this.signatures;
   }
 
+  /**
+   * Returns the seals of the document.
+   *
+   * @return the seals of the document.
+   */
   public SealCollection getSeals() {
     return this.seals;
   }
 
+  /**
+   * Returns the texts of the document.
+   *
+   * @return the texts of the document.
+   */
   public TextCollection getTexts() {
     return this.texts;
   }
 
+  /**
+   * Returns the checks of the document.
+   *
+   * @return the checks of the document.
+   */
   public CheckCollection getChecks() {
     return this.checks;
   }
 
+  /**
+   * Returns the inserts of the document.
+   *
+   * @return the inserts of the document.
+   */
   public InsertCollection getInserts() {
     return this.inserts;
   }
 
+  /**
+   * Returns the tags of the document.
+   *
+   * @return the tags of the document.
+   */
   public TagCollection getTags() {
     return this.tags;
   }
 
+  /**
+   * Returns the fields of the document.
+   *
+   * @return the fields of the document.
+   */
   public FieldCollection getFields() {
     return this.fields;
   }
 
+  /**
+   * Returns the requests of the document.
+   *
+   * @return the requests of the document.
+   */
   public RequestCollection getRequests() {
     return this.requests;
   }
 
+  /**
+   * Returns the roles of the document.
+   *
+   * @return the roles of the document.
+   */
   public RoleCollection getRoles() {
     return this.roles;
   }
 
+  /**
+   * Returns the field invites of the document.
+   *
+   * @return the field invites of the document.
+   */
   public FieldInviteFolderCollection getFieldInvites() {
     return this.fieldInvites;
   }
 
+  /**
+   * Returns the version time of the document.
+   *
+   * @return the version time of the document.
+   */
   public int getVersionTime() {
     return this.versionTime;
   }
 
+  /**
+   * Returns the enumeration options of the document.
+   *
+   * @return the enumeration options of the document.
+   */
   public EnumerationOptionCollection getEnumerationOptions() {
     return this.enumerationOptions;
   }
 
+  /**
+   * Returns the attachments of the document.
+   *
+   * @return the attachments of the document.
+   */
   public AttachmentCollection getAttachments() {
     return this.attachments;
   }
 
+  /**
+   * Returns the origin document id of the document.
+   *
+   * @return the origin document id of the document.
+   */
   public String getOriginDocumentId() {
     return this.originDocumentId;
   }
 
+  /**
+   * Returns the origin user id of the document.
+   *
+   * @return the origin user id of the document.
+   */
   public String getOriginUserId() {
     return this.originUserId;
   }
 
+  /**
+   * Converts the document folder to a map.
+   *
+   * @return a map representation of the document folder.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -292,6 +538,12 @@ public final class DocumentFolder extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new DocumentFolder object from a map.
+   *
+   * @param data a map containing the data for the DocumentFolder.
+   * @return a new DocumentFolder object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static DocumentFolder fromMap(@NotNull Map<String, Object> data) {

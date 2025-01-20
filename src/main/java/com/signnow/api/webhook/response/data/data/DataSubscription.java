@@ -19,30 +19,66 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * DataSubscription class extends ApiData.
+ * It represents the data subscription in the signNow API.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class DataSubscription extends ApiData {
 
+  /**
+   * The id of the data subscription.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The event of the data subscription.
+   */
   @JsonProperty("event")
   private final String event;
 
+  /**
+   * The entity id of the data subscription.
+   */
   @JsonProperty("entity_id")
   private final int entityId;
 
+  /**
+   * The action of the data subscription.
+   */
   @JsonProperty("action")
   private final String action;
 
+  /**
+   * The json attributes of the data subscription.
+   */
   @JsonProperty("json_attributes")
   private final JsonAttribute jsonAttributes;
 
+  /**
+   * The created timestamp of the data subscription.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The content of the data subscription.
+   */
   @JsonProperty("content")
   private final Content content;
 
+  /**
+   * Constructor for DataSubscription class.
+   *
+   * @param id The id of the data subscription.
+   * @param event The event of the data subscription.
+   * @param entityId The entity id of the data subscription.
+   * @param action The action of the data subscription.
+   * @param jsonAttributes The json attributes of the data subscription.
+   * @param created The created timestamp of the data subscription.
+   * @param content The content of the data subscription.
+   */
   @JsonCreator
   public DataSubscription(
       @JsonProperty("id") String id,
@@ -61,34 +97,60 @@ public final class DataSubscription extends ApiData {
     this.content = content;
   }
 
+  /**
+   * @return The id of the data subscription.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The event of the data subscription.
+   */
   public String getEvent() {
     return this.event;
   }
 
+  /**
+   * @return The entity id of the data subscription.
+   */
   public int getEntityId() {
     return this.entityId;
   }
 
+  /**
+   * @return The action of the data subscription.
+   */
   public String getAction() {
     return this.action;
   }
 
+  /**
+   * @return The json attributes of the data subscription.
+   */
   public JsonAttribute getJsonAttributes() {
     return this.jsonAttributes;
   }
 
+  /**
+   * @return The created timestamp of the data subscription.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * @return The content of the data subscription.
+   */
   public Content getContent() {
     return this.content;
   }
 
+  /**
+   * Converts the DataSubscription object to a Map.
+   *
+   * @return A Map representation of the DataSubscription object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -103,6 +165,12 @@ public final class DataSubscription extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a DataSubscription object from a Map.
+   *
+   * @param data The Map to convert to a DataSubscription object.
+   * @return A new DataSubscription object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static DataSubscription fromMap(@NotNull Map<String, Object> data) {

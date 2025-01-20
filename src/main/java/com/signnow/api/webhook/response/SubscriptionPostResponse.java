@@ -11,5 +11,11 @@ package com.signnow.api.webhook.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response from a subscription post request.
+ * It is annotated to ignore unknown properties when parsing JSON.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SubscriptionPostResponse {}
+public class SubscriptionPostResponse {
+    // No public properties, constructors, or methods to document
+}

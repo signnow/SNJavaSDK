@@ -11,4 +11,17 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DomainCollection extends TypedCollection {}
+/**
+ * This class represents a collection of domains.
+ * It extends the TypedCollection class.
+ */
+public class DomainCollection extends TypedCollection {
+
+    /**
+     * Default constructor for DomainCollection class.
+     * It initializes a new instance of this class.
+     */
+    public DomainCollection() {
+        super();
+    }
+}

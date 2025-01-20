@@ -11,4 +11,17 @@ package com.signnow.api.document.response.data.exportedto;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class ExportedToCollection extends TypedCollection {}
+/**
+ * This class represents a collection of exported documents.
+ * It extends the TypedCollection class.
+ */
+public class ExportedToCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the ExportedToCollection class.
+     * It initializes an empty collection of exported documents.
+     */
+    public ExportedToCollection() {
+        super();
+    }
+}

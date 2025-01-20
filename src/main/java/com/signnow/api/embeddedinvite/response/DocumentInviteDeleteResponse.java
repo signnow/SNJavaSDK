@@ -11,5 +11,9 @@ package com.signnow.api.embeddedinvite.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+/**
+ * This class represents the response received after deleting a document invite.
+ * It is annotated with JsonIgnoreProperties to ignore any unknown properties when deserializing JSON to Java object.
+ * Currently, this class does not have any properties or methods.
+ */
 public class DocumentInviteDeleteResponse {}

@@ -11,5 +11,11 @@ package com.signnow.api.documentgroup.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received after a request to download a document group.
+ * It is annotated to ignore unknown properties when parsing JSON.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DownloadDocumentGroupPostResponse {}
+public class DownloadDocumentGroupPostResponse {
+    // No public properties, constructors, or methods to comment on.
+}

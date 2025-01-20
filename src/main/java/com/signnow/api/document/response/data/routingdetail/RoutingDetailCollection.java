@@ -11,4 +11,22 @@ package com.signnow.api.document.response.data.routingdetail;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class RoutingDetailCollection extends TypedCollection<RoutingDetail> {}
+/**
+ * This class represents a collection of RoutingDetail objects.
+ * It extends the TypedCollection class, specifying RoutingDetail as the type parameter.
+ * This means that this collection will only accept RoutingDetail objects.
+ * 
+ * @see com.signnow.core.collection.TypedCollection
+ * @see com.signnow.api.document.response.data.routingdetail.RoutingDetail
+ */
+public class RoutingDetailCollection extends TypedCollection<RoutingDetail> {
+
+    /**
+     * Default constructor for the RoutingDetailCollection class.
+     * It calls the constructor of the superclass TypedCollection, passing no arguments.
+     * This creates an empty collection of RoutingDetail objects.
+     */
+    public RoutingDetailCollection() {
+        super();
+    }
+}

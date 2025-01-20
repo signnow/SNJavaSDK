@@ -17,20 +17,41 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a FreeformInvite which extends ApiData.
+ */
 public final class FreeformInvite extends ApiData {
 
+  /**
+   * The id of the FreeformInvite.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * Constructor for FreeformInvite.
+   *
+   * @param id The id of the FreeformInvite.
+   */
   @JsonCreator
   public FreeformInvite(@JsonProperty("id") String id) {
     this.id = id;
   }
 
+  /**
+   * Getter for the id of the FreeformInvite.
+   *
+   * @return The id of the FreeformInvite.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Converts the FreeformInvite to a Map.
+   *
+   * @return A Map representation of the FreeformInvite.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -39,6 +60,12 @@ public final class FreeformInvite extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a FreeformInvite from a Map.
+   *
+   * @param data The Map to create the FreeformInvite from.
+   * @return A new FreeformInvite created from the provided Map.
+   */
   @NotNull
   @Contract("_ -> new")
   public static FreeformInvite fromMap(@NotNull Map<String, Object> data) {

@@ -17,20 +17,44 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * FieldsData class extends ApiData.
+ * It represents the data of a field in a document.
+ */
 public final class FieldsData extends ApiData {
 
+  /**
+   * The id of the field.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The name of the field.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The type of the field.
+   */
   @JsonProperty("type")
   private final String type;
 
+  /**
+   * The value of the field.
+   */
   @JsonProperty("value")
   private final String value;
 
+  /**
+   * Constructor for FieldsData.
+   *
+   * @param id    The id of the field.
+   * @param name  The name of the field.
+   * @param type  The type of the field.
+   * @param value The value of the field.
+   */
   @JsonCreator
   public FieldsData(
       @JsonProperty("id") String id,
@@ -43,22 +67,47 @@ public final class FieldsData extends ApiData {
     this.value = value;
   }
 
+  /**
+   * Returns the id of the field.
+   *
+   * @return The id of the field.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the name of the field.
+   *
+   * @return The name of the field.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the type of the field.
+   *
+   * @return The type of the field.
+   */
   public String getType() {
     return this.type;
   }
 
+  /**
+   * Returns the value of the field.
+   *
+   * @return The value of the field.
+   */
   public String getValue() {
     return this.value;
   }
 
+  /**
+   * Converts the FieldsData object to a Map.
+   *
+   * @return A Map representation of the FieldsData object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +119,12 @@ public final class FieldsData extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a FieldsData object from a Map.
+   *
+   * @param data The Map to convert to a FieldsData object.
+   * @return A new FieldsData object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static FieldsData fromMap(@NotNull Map<String, Object> data) {

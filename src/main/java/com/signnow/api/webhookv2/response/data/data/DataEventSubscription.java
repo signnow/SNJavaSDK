@@ -18,38 +18,85 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a data event subscription.
+ */
 public final class DataEventSubscription extends ApiData {
 
+  /**
+   * The ID of the event subscription.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The type of the entity associated with the event subscription.
+   */
   @JsonProperty("entity_type")
   private final String entityType;
 
+  /**
+   * The event associated with the subscription.
+   */
   @JsonProperty("event")
   private final String event;
 
+  /**
+   * The ID of the entity associated with the event subscription.
+   */
   @JsonProperty("entity_id")
   private final int entityId;
 
+  /**
+   * The status of the event subscription.
+   */
   @JsonProperty("active")
   private final boolean active;
 
+  /**
+   * The JSON attributes associated with the event subscription.
+   */
   @JsonProperty("json_attributes")
   private final JsonAttribute jsonAttributes;
 
+  /**
+   * The creation timestamp of the event subscription.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The version of the event subscription.
+   */
   @JsonProperty("version")
   private final int version;
 
+  /**
+   * The unique ID of the entity associated with the event subscription.
+   */
   @JsonProperty("entity_unique_id")
   private final String entityUniqueId;
 
+  /**
+   * The name of the application associated with the event subscription.
+   */
   @JsonProperty("application_name")
   private final String applicationName;
 
+  /**
+   * Constructs a new DataEventSubscription with the specified parameters.
+   *
+   * @param id the ID of the event subscription
+   * @param entityType the type of the entity associated with the event subscription
+   * @param event the event associated with the subscription
+   * @param entityId the ID of the entity associated with the event subscription
+   * @param active the status of the event subscription
+   * @param jsonAttributes the JSON attributes associated with the event subscription
+   * @param created the creation timestamp of the event subscription
+   * @param version the version of the event subscription
+   * @param entityUniqueId the unique ID of the entity associated with the event subscription
+   * @param applicationName the name of the application associated with the event subscription
+   */
   @JsonCreator
   public DataEventSubscription(
       @JsonProperty("id") String id,
@@ -74,46 +121,101 @@ public final class DataEventSubscription extends ApiData {
     this.applicationName = applicationName;
   }
 
+  /**
+   * Returns the ID of the event subscription.
+   *
+   * @return the ID of the event subscription
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the type of the entity associated with the event subscription.
+   *
+   * @return the type of the entity associated with the event subscription
+   */
   public String getEntityType() {
     return entityType;
   }
 
+  /**
+   * Returns the event associated with the subscription.
+   *
+   * @return the event associated with the subscription
+   */
   public String getEvent() {
     return this.event;
   }
 
+  /**
+   * Returns the ID of the entity associated with the event subscription.
+   *
+   * @return the ID of the entity associated with the event subscription
+   */
   public int getEntityId() {
     return this.entityId;
   }
 
+  /**
+   * Returns the unique ID of the entity associated with the event subscription.
+   *
+   * @return the unique ID of the entity associated with the event subscription
+   */
   public String getEntityUniqueId() {
     return this.entityUniqueId;
   }
 
+  /**
+   * Returns the status of the event subscription.
+   *
+   * @return the status of the event subscription
+   */
   public boolean isActive() {
     return this.active;
   }
 
+  /**
+   * Returns the JSON attributes associated with the event subscription.
+   *
+   * @return the JSON attributes associated with the event subscription
+   */
   public JsonAttribute getJsonAttributes() {
     return this.jsonAttributes;
   }
 
+  /**
+   * Returns the name of the application associated with the event subscription.
+   *
+   * @return the name of the application associated with the event subscription
+   */
   public String getApplicationName() {
     return this.applicationName;
   }
 
+  /**
+   * Returns the creation timestamp of the event subscription.
+   *
+   * @return the creation timestamp of the event subscription
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the version of the event subscription.
+   *
+   * @return the version of the event subscription
+   */
   public int getVersion() {
     return this.version;
   }
 
+  /**
+   * Converts this DataEventSubscription to a Map.
+   *
+   * @return a Map representing this DataEventSubscription
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -131,6 +233,12 @@ public final class DataEventSubscription extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new DataEventSubscription from the specified Map.
+   *
+   * @param data a Map containing the data for the new DataEventSubscription
+   * @return a new DataEventSubscription created from the specified Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static DataEventSubscription fromMap(@NotNull Map<String, Object> data) {

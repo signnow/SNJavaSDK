@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data.fieldinvite;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class EmailStatusCollection extends TypedCollection<EmailStatus> {}
+/**
+ * This class represents a collection of EmailStatus objects.
+ * It extends the TypedCollection class, specifying EmailStatus as the type parameter.
+ */
+public class EmailStatusCollection extends TypedCollection<EmailStatus> {
+    /**
+     * Constructs an empty {@code EmailStatusCollection}.
+     */
+    public EmailStatusCollection() {
+        super();
+    }
+}

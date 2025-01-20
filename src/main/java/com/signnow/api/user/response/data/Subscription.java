@@ -19,63 +19,142 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Subscription in the signNow API.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class Subscription extends ApiData {
 
+  /**
+   * The unique identifier of the subscription.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The identifier of the subscription.
+   */
   @JsonProperty("subscription_id")
   private final String subscriptionId;
 
+  /**
+   * The name of the subscription.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The expiration date of the subscription.
+   */
   @JsonProperty("expired")
   private final int expired;
 
+  /**
+   * The creation date of the subscription.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The last update date of the subscription.
+   */
   @JsonProperty("updated")
   private final int updated;
 
+  /**
+   * The plan of the subscription.
+   */
   @JsonProperty("plan")
   private final String plan;
 
+  /**
+   * The type of the mobile plan of the subscription.
+   */
   @JsonProperty("mobile_plan_type")
   private final String mobilePlanType;
 
+  /**
+   * Indicates if the subscription is paid by credit card.
+   */
   @JsonProperty("credit_card")
   private final boolean creditCard;
 
+  /**
+   * Indicates if the subscription is a trial.
+   */
   @JsonProperty("trial")
   private final boolean trial;
 
+  /**
+   * The term of the subscription.
+   */
   @JsonProperty("term")
   private final int term;
 
+  /**
+   * The email of the seat administrator of the subscription.
+   */
   @JsonProperty("seat_admin_email")
   private final String seatAdminEmail;
 
+  /**
+   * The version of the plan of the subscription.
+   */
   @JsonProperty("plan_version")
   private final int planVersion;
 
+  /**
+   * Indicates if the subscription is usage based.
+   */
   @JsonProperty("is_usage_based")
   private final boolean isUsageBased;
 
+  /**
+   * Indicates if the usage based seat of the subscription is free.
+   */
   @JsonProperty("is_usage_based_seat_free")
   private final boolean isUsageBasedSeatFree;
 
+  /**
+   * The gateway subscription of the subscription.
+   */
   @JsonProperty("gateway_subscription")
   private final GatewaySubscription gatewaySubscription;
 
+  /**
+   * The number of seats of the subscription.
+   */
   @JsonProperty("seats")
   private final int seats;
 
+  /**
+   * The number of used seats of the subscription.
+   */
   @JsonProperty("used_seats")
   private final int usedSeats;
 
+  /**
+   * Constructs a Subscription object with the provided parameters.
+   *
+   * @param id The unique identifier of the subscription.
+   * @param subscriptionId The identifier of the subscription.
+   * @param name The name of the subscription.
+   * @param expired The expiration date of the subscription.
+   * @param created The creation date of the subscription.
+   * @param updated The last update date of the subscription.
+   * @param plan The plan of the subscription.
+   * @param mobilePlanType The type of the mobile plan of the subscription.
+   * @param creditCard Indicates if the subscription is paid by credit card.
+   * @param trial Indicates if the subscription is a trial.
+   * @param term The term of the subscription.
+   * @param seatAdminEmail The email of the seat administrator of the subscription.
+   * @param planVersion The version of the plan of the subscription.
+   * @param isUsageBased Indicates if the subscription is usage based.
+   * @param isUsageBasedSeatFree Indicates if the usage based seat of the subscription is free.
+   * @param gatewaySubscription The gateway subscription of the subscription.
+   * @param seats The number of seats of the subscription.
+   * @param usedSeats The number of used seats of the subscription.
+   */
   @JsonCreator
   public Subscription(
       @JsonProperty("id") String id,
@@ -116,78 +195,173 @@ public final class Subscription extends ApiData {
     this.usedSeats = usedSeats;
   }
 
+  /**
+   * Returns the unique identifier of the subscription.
+   *
+   * @return The unique identifier of the subscription.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the identifier of the subscription.
+   *
+   * @return The identifier of the subscription.
+   */
   public String getSubscriptionId() {
     return this.subscriptionId;
   }
 
+  /**
+   * Returns the name of the subscription.
+   *
+   * @return The name of the subscription.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the expiration date of the subscription.
+   *
+   * @return The expiration date of the subscription.
+   */
   public int getExpired() {
     return this.expired;
   }
 
+  /**
+   * Returns the creation date of the subscription.
+   *
+   * @return The creation date of the subscription.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the last update date of the subscription.
+   *
+   * @return The last update date of the subscription.
+   */
   public int getUpdated() {
     return this.updated;
   }
 
+  /**
+   * Returns the plan of the subscription.
+   *
+   * @return The plan of the subscription.
+   */
   public String getPlan() {
     return this.plan;
   }
 
+  /**
+   * Returns the type of the mobile plan of the subscription.
+   *
+   * @return The type of the mobile plan of the subscription.
+   */
   public String getMobilePlanType() {
     return this.mobilePlanType;
   }
 
+  /**
+   * Returns whether the subscription is paid by credit card.
+   *
+   * @return True if the subscription is paid by credit card, false otherwise.
+   */
   public boolean isCreditCard() {
     return this.creditCard;
   }
 
+  /**
+   * Returns whether the subscription is a trial.
+   *
+   * @return True if the subscription is a trial, false otherwise.
+   */
   public boolean isTrial() {
     return this.trial;
   }
 
+  /**
+   * Returns the term of the subscription.
+   *
+   * @return The term of the subscription.
+   */
   public int getTerm() {
     return this.term;
   }
 
+  /**
+   * Returns the email of the seat administrator of the subscription.
+   *
+   * @return The email of the seat administrator of the subscription.
+   */
   public String getSeatAdminEmail() {
     return this.seatAdminEmail;
   }
 
+  /**
+   * Returns the version of the plan of the subscription.
+   *
+   * @return The version of the plan of the subscription.
+   */
   public int getPlanVersion() {
     return this.planVersion;
   }
 
+  /**
+   * Returns whether the subscription is usage based.
+   *
+   * @return True if the subscription is usage based, false otherwise.
+   */
   public boolean isUsageBased() {
     return this.isUsageBased;
   }
 
+  /**
+   * Returns whether the usage based seat of the subscription is free.
+   *
+   * @return True if the usage based seat of the subscription is free, false otherwise.
+   */
   public boolean isUsageBasedSeatFree() {
     return this.isUsageBasedSeatFree;
   }
 
+  /**
+   * Returns the gateway subscription of the subscription.
+   *
+   * @return The gateway subscription of the subscription.
+   */
   public GatewaySubscription getGatewaySubscription() {
     return this.gatewaySubscription;
   }
 
+  /**
+   * Returns the number of seats of the subscription.
+   *
+   * @return The number of seats of the subscription.
+   */
   public int getSeats() {
     return seats;
   }
 
+  /**
+   * Returns the number of used seats of the subscription.
+   *
+   * @return The number of used seats of the subscription.
+   */
   public int getUsedSeats() {
     return usedSeats;
   }
 
+  /**
+   * Converts the Subscription object to a Map.
+   *
+   * @return A Map representing the Subscription object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -213,6 +387,12 @@ public final class Subscription extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Subscription object from a Map.
+   *
+   * @param data A Map representing a Subscription object.
+   * @return A Subscription object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Subscription fromMap(@NotNull Map<String, Object> data) {

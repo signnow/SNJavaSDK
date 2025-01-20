@@ -11,5 +11,19 @@ package com.signnow.api.documentgroupinvite.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of UpdateInviteActionAttribute objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ *
+ * @see com.signnow.core.collection.TypedCollection
+ * @see com.signnow.api.documentgroupinvite.request.data.UpdateInviteActionAttribute
+ */
 public class UpdateInviteActionAttributeCollection
-    extends TypedCollection<UpdateInviteActionAttribute> {}
+    extends TypedCollection<UpdateInviteActionAttribute> {
+    /**
+     * Default constructor {@code UpdateInviteActionAttributeCollection}.
+     */
+    public UpdateInviteActionAttributeCollection() {
+        super();
+    }
+}

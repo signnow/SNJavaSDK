@@ -9,11 +9,25 @@
 
 package com.signnow.core.token;
 
+/**
+ * This interface represents a token and its type.
+ * It provides methods to get the token type and the token itself.
+ */
 interface TokenInterface {
 
-  /** Defines token type: Basic, Bearer. */
+  /**
+   * This method is used to get the type of the token.
+   * The token type can be Basic or Bearer.
+   *
+   * @return String This returns the type of the token.
+   */
   String type();
 
-  /** Returns value of token. */
+  /**
+   * This method is used to get the token.
+   * The token is a unique identifier that is used for authentication.
+   *
+   * @return String This returns the token.
+   */
   String token();
 }

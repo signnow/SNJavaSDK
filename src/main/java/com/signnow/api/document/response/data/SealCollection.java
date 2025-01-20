@@ -11,4 +11,17 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class SealCollection extends TypedCollection {}
+/**
+ * This class represents a collection of seals.
+ * It extends the TypedCollection class.
+ */
+public class SealCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the SealCollection class.
+     * It initializes an empty collection of seals.
+     */
+    public SealCollection() {
+        super();
+    }
+}

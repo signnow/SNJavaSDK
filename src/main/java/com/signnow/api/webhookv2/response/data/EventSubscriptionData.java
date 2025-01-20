@@ -18,47 +18,106 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the data of an event subscription.
+ */
 public final class EventSubscriptionData extends ApiData {
 
+  /**
+   * The id of the event subscription.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The type of the entity associated with the event subscription.
+   */
   @JsonProperty("entity_type")
   private final String entityType;
 
+  /**
+   * The event associated with the event subscription.
+   */
   @JsonProperty("event")
   private final String event;
 
+  /**
+   * The id of the entity associated with the event subscription.
+   */
   @JsonProperty("entity_id")
   private final int entityId;
 
+  /**
+   * The unique id of the entity associated with the event subscription.
+   */
   @JsonProperty("entity_unique_id")
   private final String entityUniqueId;
 
+  /**
+   * The request method of the event subscription.
+   */
   @JsonProperty("request_method")
   private final String requestMethod;
 
+  /**
+   * The action of the event subscription.
+   */
   @JsonProperty("action")
   private final String action;
 
+  /**
+   * The JSON attributes of the event subscription.
+   */
   @JsonProperty("json_attributes")
   private final com.signnow.api.webhookv2.response.data.JsonAttribute jsonAttributes;
 
+  /**
+   * The active status of the event subscription.
+   */
   @JsonProperty("active")
   private final boolean active;
 
+  /**
+   * The name of the application associated with the event subscription.
+   */
   @JsonProperty("application_name")
   private final String applicationName;
 
+  /**
+   * The version of the event subscription.
+   */
   @JsonProperty("version")
   private final String version;
 
+  /**
+   * The creation time of the event subscription.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The count of events associated with the event subscription.
+   */
   @JsonProperty("event_count")
   private final int eventCount;
 
+  /**
+   * Constructs an EventSubscriptionData object with the specified parameters.
+   *
+   * @param id the id of the event subscription
+   * @param entityType the type of the entity associated with the event subscription
+   * @param event the event associated with the event subscription
+   * @param entityId the id of the entity associated with the event subscription
+   * @param entityUniqueId the unique id of the entity associated with the event subscription
+   * @param requestMethod the request method of the event subscription
+   * @param action the action of the event subscription
+   * @param jsonAttributes the JSON attributes of the event subscription
+   * @param active the active status of the event subscription
+   * @param applicationName the name of the application associated with the event subscription
+   * @param version the version of the event subscription
+   * @param created the creation time of the event subscription
+   * @param eventCount the count of events associated with the event subscription
+   */
   @JsonCreator
   public EventSubscriptionData(
       @JsonProperty("id") String id,
@@ -90,58 +149,128 @@ public final class EventSubscriptionData extends ApiData {
     this.eventCount = eventCount;
   }
 
+  /**
+   * Returns the id of the event subscription.
+   *
+   * @return the id of the event subscription
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the name of the application associated with the event subscription.
+   *
+   * @return the name of the application associated with the event subscription
+   */
   public String getApplicationName() {
     return this.applicationName;
   }
 
+  /**
+   * Returns the id of the entity associated with the event subscription.
+   *
+   * @return the id of the entity associated with the event subscription
+   */
   public int getEntityId() {
     return this.entityId;
   }
 
+  /**
+   * Returns the type of the entity associated with the event subscription.
+   *
+   * @return the type of the entity associated with the event subscription
+   */
   public String getEntityType() {
     return this.entityType;
   }
 
+  /**
+   * Returns the unique id of the entity associated with the event subscription.
+   *
+   * @return the unique id of the entity associated with the event subscription
+   */
   public String getEntityUniqueId() {
     return this.entityUniqueId;
   }
 
+  /**
+   * Returns the event associated with the event subscription.
+   *
+   * @return the event associated with the event subscription
+   */
   public String getEvent() {
     return this.event;
   }
 
+  /**
+   * Returns the JSON attributes of the event subscription.
+   *
+   * @return the JSON attributes of the event subscription
+   */
   public com.signnow.api.webhookv2.response.data.JsonAttribute getJsonAttributes() {
     return this.jsonAttributes;
   }
 
+  /**
+   * Returns the request method of the event subscription.
+   *
+   * @return the request method of the event subscription
+   */
   public String getRequestMethod() {
     return this.requestMethod;
   }
 
+  /**
+   * Returns the version of the event subscription.
+   *
+   * @return the version of the event subscription
+   */
   public String getVersion() {
     return this.version;
   }
 
+  /**
+   * Returns the active status of the event subscription.
+   *
+   * @return the active status of the event subscription
+   */
   public boolean isActive() {
     return this.active;
   }
 
+  /**
+   * Returns the action of the event subscription.
+   *
+   * @return the action of the event subscription
+   */
   public String getAction() {
     return this.action;
   }
 
+  /**
+   * Returns the creation time of the event subscription.
+   *
+   * @return the creation time of the event subscription
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the count of events associated with the event subscription.
+   *
+   * @return the count of events associated with the event subscription
+   */
   public int getEventCount() {
     return this.eventCount;
   }
 
+  /**
+   * Converts the event subscription data to a map.
+   *
+   * @return a map representing the event subscription data
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -162,6 +291,12 @@ public final class EventSubscriptionData extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an EventSubscriptionData object from a map.
+   *
+   * @param data a map representing the event subscription data
+   * @return an EventSubscriptionData object
+   */
   @NotNull
   @Contract("_ -> new")
   public static EventSubscriptionData fromMap(@NotNull Map<String, Object> data) {

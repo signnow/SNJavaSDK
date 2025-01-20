@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the ApproverGet data model.
+ */
 public final class ApproverGet extends ApiData {
 
+  /**
+   * The default email of the approver.
+   */
   @JsonProperty("default_email")
   private final String defaultEmail;
 
+  /**
+   * The name of the approver.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The signing order of the approver.
+   */
   @JsonProperty("signing_order")
   private final int signingOrder;
 
+  /**
+   * Constructs a new ApproverGet object.
+   *
+   * @param defaultEmail the default email of the approver
+   * @param name the name of the approver
+   * @param signingOrder the signing order of the approver
+   */
   @JsonCreator
   public ApproverGet(
       @JsonProperty("default_email") String defaultEmail,
@@ -38,18 +57,38 @@ public final class ApproverGet extends ApiData {
     this.signingOrder = signingOrder;
   }
 
+  /**
+   * Returns the default email of the approver.
+   *
+   * @return the default email
+   */
   public String getDefaultEmail() {
     return this.defaultEmail;
   }
 
+  /**
+   * Returns the name of the approver.
+   *
+   * @return the name
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the signing order of the approver.
+   *
+   * @return the signing order
+   */
   public int getSigningOrder() {
     return this.signingOrder;
   }
 
+  /**
+   * Converts this object to a Map.
+   *
+   * @return a Map representation of this object
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class ApproverGet extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new ApproverGet object from a Map.
+   *
+   * @param data a Map containing the data to create the object
+   * @return a new ApproverGet object
+   */
   @NotNull
   @Contract("_ -> new")
   public static ApproverGet fromMap(@NotNull Map<String, Object> data) {

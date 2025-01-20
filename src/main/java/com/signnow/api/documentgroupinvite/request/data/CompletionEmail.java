@@ -17,20 +17,43 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a completion email.
+ */
 public final class CompletionEmail extends ApiData {
 
+  /**
+   * The email address to which the completion email will be sent.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * Flag to disable document attachment in the email.
+   */
   @JsonProperty("disable_document_attachment")
   private final int disableDocumentAttachment;
 
+  /**
+   * The subject of the completion email.
+   */
   @JsonProperty("subject")
   private final String subject;
 
+  /**
+   * The message body of the completion email.
+   */
   @JsonProperty("message")
   private final String message;
 
+  /**
+   * Constructor for CompletionEmail class.
+   *
+   * @param email The email address to which the completion email will be sent.
+   * @param disableDocumentAttachment Flag to disable document attachment in the email.
+   * @param subject The subject of the completion email.
+   * @param message The message body of the completion email.
+   */
   @JsonCreator
   public CompletionEmail(
       @JsonProperty("email") String email,
@@ -43,22 +66,47 @@ public final class CompletionEmail extends ApiData {
     this.message = message;
   }
 
+  /**
+   * Returns the email address.
+   *
+   * @return The email address.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the flag for disabling document attachment.
+   *
+   * @return The flag for disabling document attachment.
+   */
   public int getDisableDocumentAttachment() {
     return this.disableDocumentAttachment;
   }
 
+  /**
+   * Returns the subject of the email.
+   *
+   * @return The subject of the email.
+   */
   public String getSubject() {
     return this.subject;
   }
 
+  /**
+   * Returns the message body of the email.
+   *
+   * @return The message body of the email.
+   */
   public String getMessage() {
     return this.message;
   }
 
+  /**
+   * Converts the CompletionEmail object to a Map.
+   *
+   * @return A Map representation of the CompletionEmail object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +118,12 @@ public final class CompletionEmail extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a CompletionEmail object from a Map.
+   *
+   * @param data The Map from which the CompletionEmail object will be created.
+   * @return A new CompletionEmail object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static CompletionEmail fromMap(@NotNull Map<String, Object> data) {

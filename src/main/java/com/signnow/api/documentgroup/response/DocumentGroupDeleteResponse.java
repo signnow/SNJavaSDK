@@ -12,16 +12,33 @@ package com.signnow.api.documentgroup.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * This class represents the response received after a document group deletion request.
+ * It is ignored by the Jackson JSON processor if any unknown properties are encountered in the JSON input.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DocumentGroupDeleteResponse {
 
+  /**
+   * The status of the document group deletion request.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * Constructs a new DocumentGroupDeleteResponse with the specified status.
+   *
+   * @param status the status of the document group deletion request
+   */
   public DocumentGroupDeleteResponse(@JsonProperty("status") String status) {
     this.status = status;
   }
 
+  /**
+   * Returns the status of the document group deletion request.
+   *
+   * @return the status of the document group deletion request
+   */
   public String getStatus() {
     return this.status;
   }

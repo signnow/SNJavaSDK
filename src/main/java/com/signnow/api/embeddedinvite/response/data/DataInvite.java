@@ -17,23 +17,50 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the data of an invite in the signNow API.
+ */
 public final class DataInvite extends ApiData {
 
+  /**
+   * The id of the invite.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The email associated with the invite.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The role id associated with the invite.
+   */
   @JsonProperty("role_id")
   private final String roleId;
 
+  /**
+   * The order of the invite.
+   */
   @JsonProperty("order")
   private final int order;
 
+  /**
+   * The status of the invite.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * Constructs a new DataInvite with the given parameters.
+   *
+   * @param id the id of the invite
+   * @param email the email associated with the invite
+   * @param roleId the role id associated with the invite
+   * @param order the order of the invite
+   * @param status the status of the invite
+   */
   @JsonCreator
   public DataInvite(
       @JsonProperty("id") String id,
@@ -48,26 +75,56 @@ public final class DataInvite extends ApiData {
     this.status = status;
   }
 
+  /**
+   * Returns the id of the invite.
+   *
+   * @return the id of the invite
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the email associated with the invite.
+   *
+   * @return the email associated with the invite
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the role id associated with the invite.
+   *
+   * @return the role id associated with the invite
+   */
   public String getRoleId() {
     return this.roleId;
   }
 
+  /**
+   * Returns the order of the invite.
+   *
+   * @return the order of the invite
+   */
   public int getOrder() {
     return this.order;
   }
 
+  /**
+   * Returns the status of the invite.
+   *
+   * @return the status of the invite
+   */
   public String getStatus() {
     return this.status;
   }
 
+  /**
+   * Converts this DataInvite to a Map.
+   *
+   * @return a Map representation of this DataInvite
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -80,6 +137,12 @@ public final class DataInvite extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new DataInvite from the given Map.
+   *
+   * @param data a Map containing the data for the new DataInvite
+   * @return a new DataInvite created from the given Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static DataInvite fromMap(@NotNull Map<String, Object> data) {

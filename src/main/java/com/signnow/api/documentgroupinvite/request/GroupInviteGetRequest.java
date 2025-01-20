@@ -15,6 +15,11 @@ import java.util.HashMap;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to get a group invite.
+ * It implements the RequestInterface with a String type.
+ * The API endpoint is defined with the @ApiEndpoint annotation.
+ */
 @ApiEndpoint(
     name = "getDocumentGroupInvite",
     url = "/documentgroup/{document_group_id}/groupinvite/{invite_id}",
@@ -25,18 +30,38 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class GroupInviteGetRequest implements RequestInterface<String> {
 
+  /**
+   * A HashMap to store the URI parameters for the request.
+   */
   private final HashMap<String, String> uriParams = new HashMap<>();
 
+  /**
+   * Adds the document group id to the URI parameters.
+   *
+   * @param documentGroupId The id of the document group.
+   * @return The current GroupInviteGetRequest instance.
+   */
   public GroupInviteGetRequest withDocumentGroupId(String documentGroupId) {
     this.uriParams.put("document_group_id", documentGroupId);
     return this;
   }
 
+  /**
+   * Adds the invite id to the URI parameters.
+   *
+   * @param inviteId The id of the invite.
+   * @return The current GroupInviteGetRequest instance.
+   */
   public GroupInviteGetRequest withInviteId(String inviteId) {
     this.uriParams.put("invite_id", inviteId);
     return this;
   }
 
+  /**
+   * Returns a new HashMap containing the URI parameters for the request.
+   *
+   * @return A new HashMap containing the URI parameters.
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -44,6 +69,11 @@ public final class GroupInviteGetRequest implements RequestInterface<String> {
     return new HashMap<>(this.uriParams);
   }
 
+  /**
+   * Returns an empty HashMap as the payload for the request.
+   *
+   * @return An empty HashMap.
+   */
   @NotNull
   @Override
   public HashMap<String, String> payload() {

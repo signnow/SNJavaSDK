@@ -17,29 +17,64 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Radio button in a document.
+ */
 public final class Radio extends ApiData {
 
+  /**
+   * The x-coordinate of the radio button.
+   */
   @JsonProperty("x")
   private final int x;
 
+  /**
+   * The y-coordinate of the radio button.
+   */
   @JsonProperty("y")
   private final int y;
 
+  /**
+   * The width of the radio button.
+   */
   @JsonProperty("width")
   private final int width;
 
+  /**
+   * The height of the radio button.
+   */
   @JsonProperty("height")
   private final int height;
 
+  /**
+   * The value of the radio button.
+   */
   @JsonProperty("value")
   private final String value;
 
+  /**
+   * The checked status of the radio button.
+   */
   @JsonProperty("checked")
   private final int checked;
 
+  /**
+   * The page number where the radio button is located.
+   */
   @JsonProperty("page_number")
   private final int pageNumber;
 
+  /**
+   * Constructor for the Radio class.
+   *
+   * @param x The x-coordinate of the radio button.
+   * @param y The y-coordinate of the radio button.
+   * @param width The width of the radio button.
+   * @param height The height of the radio button.
+   * @param value The value of the radio button.
+   * @param checked The checked status of the radio button.
+   * @param pageNumber The page number where the radio button is located.
+   */
   @JsonCreator
   public Radio(
       @JsonProperty("x") int x,
@@ -58,34 +93,60 @@ public final class Radio extends ApiData {
     this.pageNumber = pageNumber;
   }
 
+  /**
+   * @return The x-coordinate of the radio button.
+   */
   public int getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the radio button.
+   */
   public int getY() {
     return this.y;
   }
 
+  /**
+   * @return The width of the radio button.
+   */
   public int getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the radio button.
+   */
   public int getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The value of the radio button.
+   */
   public String getValue() {
     return this.value;
   }
 
+  /**
+   * @return The checked status of the radio button.
+   */
   public int getChecked() {
     return this.checked;
   }
 
+  /**
+   * @return The page number where the radio button is located.
+   */
   public int getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * Converts the radio button data to a map.
+   *
+   * @return A map containing the radio button data.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -100,6 +161,12 @@ public final class Radio extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new Radio object from a map of data.
+   *
+   * @param data A map containing the radio button data.
+   * @return A new Radio object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Radio fromMap(@NotNull Map<String, Object> data) {

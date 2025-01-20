@@ -17,17 +17,37 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Data class extends ApiData.
+ * It represents the data response from the signNow API.
+ */
 public final class Data extends ApiData {
 
+  /**
+   * The name of the data.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The role id of the data.
+   */
   @JsonProperty("role_id")
   private final String roleId;
 
+  /**
+   * The signing order of the data.
+   */
   @JsonProperty("signing_order")
   private final int signingOrder;
 
+  /**
+   * Constructor for Data class.
+   *
+   * @param name The name of the data.
+   * @param roleId The role id of the data.
+   * @param signingOrder The signing order of the data.
+   */
   @JsonCreator
   public Data(
       @JsonProperty("name") String name,
@@ -38,18 +58,38 @@ public final class Data extends ApiData {
     this.signingOrder = signingOrder;
   }
 
+  /**
+   * Returns the name of the data.
+   *
+   * @return The name of the data.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the role id of the data.
+   *
+   * @return The role id of the data.
+   */
   public String getRoleId() {
     return this.roleId;
   }
 
+  /**
+   * Returns the signing order of the data.
+   *
+   * @return The signing order of the data.
+   */
   public int getSigningOrder() {
     return this.signingOrder;
   }
 
+  /**
+   * Converts the data to a map.
+   *
+   * @return A map representation of the data.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +100,12 @@ public final class Data extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new Data object from a map.
+   *
+   * @param data The map to create the Data object from.
+   * @return A new Data object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Data fromMap(@NotNull Map<String, Object> data) {

@@ -9,4 +9,17 @@
 
 package com.signnow.core.collection;
 
-public class StringCollection extends TypedCollection<String> {}
+/**
+ * This class represents a collection of Strings. It extends the TypedCollection class
+ * with a type parameter of String.
+ * 
+ * @see com.signnow.core.collection.TypedCollection
+ */
+public class StringCollection extends TypedCollection<String> {
+    /**
+     * Default constructor {@code StringCollection}.
+     */
+    public StringCollection() {
+        super();
+    }
+}

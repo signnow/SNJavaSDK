@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data.fieldinvite;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DeclinedCollection extends TypedCollection<Declined> {}
+/**
+ * This class represents a collection of Declined objects.
+ * It extends the TypedCollection class by specifying the type as Declined.
+ */
+public class DeclinedCollection extends TypedCollection<Declined> {
+    /**
+     * Constructs an empty {@code DeclinedCollection}.
+     */
+    public DeclinedCollection() {
+        super();
+    }
+}

@@ -17,41 +17,93 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Payment class extends ApiData.
+ * Represents a payment made by a user.
+ */
 public final class Payment extends ApiData {
 
+  /**
+   * The unique identifier for the payment.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The unique identifier for the user who made the payment.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The email of the user who made the payment.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The date when the payment was created.
+   */
   @JsonProperty("created")
   private final String created;
 
+  /**
+   * The amount of the payment.
+   */
   @JsonProperty("amount")
   private final String amount;
 
+  /**
+   * The unique identifier for the payment request.
+   */
   @JsonProperty("payment_request_id")
   private final String paymentRequestId;
 
+  /**
+   * The unique identifier for the merchant.
+   */
   @JsonProperty("merchant_id")
   private final String merchantId;
 
+  /**
+   * The type of the merchant.
+   */
   @JsonProperty("merchant_type")
   private final String merchantType;
 
+  /**
+   * The name of the merchant account.
+   */
   @JsonProperty("merchant_account_name")
   private final String merchantAccountName;
 
+  /**
+   * The name of the currency used for the payment.
+   */
   @JsonProperty("currency_name")
   private final String currencyName;
 
+  /**
+   * The currency used for the payment.
+   */
   @JsonProperty("currency")
   private final String currency;
 
+  /**
+   * Constructor for Payment class.
+   *
+   * @param id The unique identifier for the payment.
+   * @param userId The unique identifier for the user who made the payment.
+   * @param email The email of the user who made the payment.
+   * @param created The date when the payment was created.
+   * @param amount The amount of the payment.
+   * @param paymentRequestId The unique identifier for the payment request.
+   * @param merchantId The unique identifier for the merchant.
+   * @param merchantType The type of the merchant.
+   * @param merchantAccountName The name of the merchant account.
+   * @param currencyName The name of the currency used for the payment.
+   * @param currency The currency used for the payment.
+   */
   @JsonCreator
   public Payment(
       @JsonProperty("id") String id,
@@ -78,50 +130,88 @@ public final class Payment extends ApiData {
     this.currency = currency;
   }
 
+  /**
+   * @return the unique identifier for the payment.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return the unique identifier for the user who made the payment.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return the email of the user who made the payment.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return the date when the payment was created.
+   */
   public String getCreated() {
     return this.created;
   }
 
+  /**
+   * @return the amount of the payment.
+   */
   public String getAmount() {
     return this.amount;
   }
 
+  /**
+   * @return the unique identifier for the payment request.
+   */
   public String getPaymentRequestId() {
     return this.paymentRequestId;
   }
 
+  /**
+   * @return the unique identifier for the merchant.
+   */
   public String getMerchantId() {
     return this.merchantId;
   }
 
+  /**
+   * @return the type of the merchant.
+   */
   public String getMerchantType() {
     return this.merchantType;
   }
 
+  /**
+   * @return the name of the merchant account.
+   */
   public String getMerchantAccountName() {
     return this.merchantAccountName;
   }
 
+  /**
+   * @return the name of the currency used for the payment.
+   */
   public String getCurrencyName() {
     return this.currencyName;
   }
 
+  /**
+   * @return the currency used for the payment.
+   */
   public String getCurrency() {
     return this.currency;
   }
 
+  /**
+   * Converts the Payment object to a Map.
+   *
+   * @return a Map containing the properties of the Payment object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -140,6 +230,12 @@ public final class Payment extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Payment object from a Map.
+   *
+   * @param data a Map containing the properties of the Payment object.
+   * @return a new Payment object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Payment fromMap(@NotNull Map<String, Object> data) {

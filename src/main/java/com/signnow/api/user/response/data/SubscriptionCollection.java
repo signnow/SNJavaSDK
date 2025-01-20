@@ -11,4 +11,18 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class SubscriptionCollection extends TypedCollection<Subscription> {}
+/**
+ * This class represents a collection of Subscription objects.
+ * It extends the TypedCollection class, specifying Subscription as the type parameter.
+ * This means that this collection will only accept Subscription objects.
+ */
+public class SubscriptionCollection extends TypedCollection<Subscription> {
+
+    /**
+     * Default constructor for the SubscriptionCollection class.
+     * It calls the constructor of the superclass TypedCollection.
+     */
+    public SubscriptionCollection() {
+        super();
+    }
+}

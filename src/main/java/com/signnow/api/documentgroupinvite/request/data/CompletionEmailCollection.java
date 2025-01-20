@@ -11,4 +11,15 @@ package com.signnow.api.documentgroupinvite.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class CompletionEmailCollection extends TypedCollection<CompletionEmail> {}
+/**
+ * This class represents a collection of CompletionEmail objects.
+ * It extends the TypedCollection class, specifying CompletionEmail as the type parameter.
+ */
+public class CompletionEmailCollection extends TypedCollection<CompletionEmail> {
+    /**
+     * Default constructor {@code CompletionEmailCollection}.
+     */
+    public CompletionEmailCollection() {
+        super();
+    }
+}

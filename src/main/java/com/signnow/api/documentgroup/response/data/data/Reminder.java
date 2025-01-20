@@ -17,17 +17,37 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Reminder class extends ApiData.
+ * It represents the reminder data in the document group response.
+ */
 public final class Reminder extends ApiData {
 
+  /**
+   * The time after which the reminder should be sent.
+   */
   @JsonProperty("remind_after")
   private final int remindAfter;
 
+  /**
+   * The time before which the reminder should be sent.
+   */
   @JsonProperty("remind_before")
   private final int remindBefore;
 
+  /**
+   * The frequency of the reminder.
+   */
   @JsonProperty("remind_repeat")
   private final int remindRepeat;
 
+  /**
+   * Constructor for Reminder class.
+   *
+   * @param remindAfter  The time after which the reminder should be sent.
+   * @param remindBefore The time before which the reminder should be sent.
+   * @param remindRepeat The frequency of the reminder.
+   */
   @JsonCreator
   public Reminder(
       @JsonProperty("remind_after") int remindAfter,
@@ -38,18 +58,38 @@ public final class Reminder extends ApiData {
     this.remindRepeat = remindRepeat;
   }
 
+  /**
+   * Getter for remindAfter.
+   *
+   * @return The time after which the reminder should be sent.
+   */
   public int getRemindAfter() {
     return this.remindAfter;
   }
 
+  /**
+   * Getter for remindBefore.
+   *
+   * @return The time before which the reminder should be sent.
+   */
   public int getRemindBefore() {
     return this.remindBefore;
   }
 
+  /**
+   * Getter for remindRepeat.
+   *
+   * @return The frequency of the reminder.
+   */
   public int getRemindRepeat() {
     return this.remindRepeat;
   }
 
+  /**
+   * Converts the Reminder object to a Map.
+   *
+   * @return A map representation of the Reminder object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +100,12 @@ public final class Reminder extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Reminder object from a Map.
+   *
+   * @param data The map containing the reminder data.
+   * @return A new Reminder object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Reminder fromMap(@NotNull Map<String, Object> data) {

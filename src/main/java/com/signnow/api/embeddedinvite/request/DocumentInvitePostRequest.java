@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to create an embedded invite.
+ */
 @ApiEndpoint(
     name = "createEmbeddedInvite",
     url = "/v2/documents/{document_id}/embedded-invites",
@@ -26,36 +29,77 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class DocumentInvitePostRequest implements RequestInterface<Object> {
 
+  /**
+   * Collection of invites.
+   */
   private final InviteCollection invites;
 
+  /**
+   * Formula for the name.
+   */
   private final String nameFormula;
 
+  /**
+   * Parameters for the URI.
+   */
   private final Map<String, String> uriParams = new HashMap<>();
 
+  /**
+   * Constructor for DocumentInvitePostRequest.
+   *
+   * @param invites     The collection of invites.
+   * @param nameFormula The formula for the name.
+   */
   public DocumentInvitePostRequest(InviteCollection invites, String nameFormula) {
     this.invites = invites;
     this.nameFormula = nameFormula;
   }
 
+  /**
+   * Getter for the name formula.
+   *
+   * @return The name formula.
+   */
   public String getNameFormula() {
     return this.nameFormula;
   }
 
+  /**
+   * Getter for the invites.
+   *
+   * @return The collection of invites.
+   */
   public InviteCollection getInvites() {
     return this.invites;
   }
 
+  /**
+   * Method to add a document ID to the URI parameters.
+   *
+   * @param documentId The document ID.
+   * @return The updated DocumentInvitePostRequest.
+   */
   public DocumentInvitePostRequest withDocumentId(String documentId) {
     this.uriParams.put("document_id", documentId);
     return this;
   }
 
+  /**
+   * Getter for the URI parameters.
+   *
+   * @return A copy of the URI parameters.
+   */
   @NotNull
   @Override
   public HashMap<String, String> uriParams() {
     return new HashMap<>(this.uriParams);
   }
 
+  /**
+   * Method to generate the payload for the request.
+   *
+   * @return The payload as a map.
+   */
   @NotNull
   @Override
   public Map<String, Object> payload() {

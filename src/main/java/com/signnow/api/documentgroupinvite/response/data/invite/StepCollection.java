@@ -11,4 +11,8 @@ package com.signnow.api.documentgroupinvite.response.data.invite;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of Step objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
 public class StepCollection extends TypedCollection<Step> {}

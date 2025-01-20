@@ -17,41 +17,80 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Signature object with properties for a signature's position, size, page number, data, and other related information.
+ */
 public final class Signature extends ApiData {
 
+  /**
+   * The x-coordinate of the signature.
+   */
   @JsonProperty("x")
   private final int x;
 
+  /**
+   * The y-coordinate of the signature.
+   */
   @JsonProperty("y")
   private final int y;
 
+  /**
+   * The width of the signature.
+   */
   @JsonProperty("width")
   private final int width;
 
+  /**
+   * The height of the signature.
+   */
   @JsonProperty("height")
   private final int height;
 
+  /**
+   * The page number where the signature is located.
+   */
   @JsonProperty("page_number")
   private final int pageNumber;
 
+  /**
+   * The data of the signature.
+   */
   @JsonProperty("data")
   private final String data;
 
+  /**
+   * The subtype of the signature.
+   */
   @JsonProperty("subtype")
   private final String subtype;
 
+  /**
+   * The ID of the signature request.
+   */
   @JsonProperty("signature_request_id")
   private final String signatureRequestId;
 
+  /**
+   * The ID of the field.
+   */
   @JsonProperty("field_id")
   private final String fieldId;
 
+  /**
+   * The reason for signing.
+   */
   @JsonProperty("signing_reason")
   private final String signingReason;
 
+  /**
+   * Indicates if the owner is also the recipient.
+   */
   @JsonProperty("owner_as_recipient")
   private final boolean ownerAsRecipient;
 
+  /**
+   * Constructor for creating a Signature object with all properties.
+   */
   @JsonCreator
   public Signature(
       @JsonProperty("x") int x,
@@ -78,6 +117,9 @@ public final class Signature extends ApiData {
     this.ownerAsRecipient = ownerAsRecipient;
   }
 
+  /**
+   * Constructor for creating a Signature object with only position, size, page number, and data properties.
+   */
   public Signature(
       @JsonProperty("x") int x,
       @JsonProperty("y") int y,
@@ -98,50 +140,87 @@ public final class Signature extends ApiData {
     this.ownerAsRecipient = false;
   }
 
+  /**
+   * Returns the x-coordinate of the signature.
+   */
   public int getX() {
     return this.x;
   }
 
+  /**
+   * Returns the y-coordinate of the signature.
+   */
   public int getY() {
     return this.y;
   }
 
+  /**
+   * Returns the width of the signature.
+   */
   public int getWidth() {
     return this.width;
   }
 
+  /**
+   * Returns the height of the signature.
+   */
   public int getHeight() {
     return this.height;
   }
 
+  /**
+   * Returns the page number where the signature is located.
+   */
   public int getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * Returns the subtype of the signature.
+   */
   public String getSubtype() {
     return this.subtype;
   }
 
+  /**
+   * Returns the ID of the signature request.
+   */
   public String getSignatureRequestId() {
     return this.signatureRequestId;
   }
 
+  /**
+   * Returns the ID of the field.
+   */
   public String getFieldId() {
     return this.fieldId;
   }
 
+  /**
+   * Returns the reason for signing.
+   */
   public String getSigningReason() {
     return this.signingReason;
   }
 
+  /**
+   * Returns true if the owner is also the recipient, false otherwise.
+   */
   public boolean isOwnerAsRecipient() {
     return this.ownerAsRecipient;
   }
 
+  /**
+   * Returns the data of the signature.
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * Converts the Signature object to a Map.
+   * @return a Map with the properties of the Signature object as key-value pairs.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -160,6 +239,11 @@ public final class Signature extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Signature object from a Map.
+   * @param data a Map containing the properties of a Signature object as key-value pairs.
+   * @return a new Signature object with the properties set from the Map.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Signature fromMap(@NotNull Map<String, Object> data) {

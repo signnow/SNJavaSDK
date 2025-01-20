@@ -11,4 +11,8 @@ package com.signnow.api.document.response.data.request;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class extends the TypedCollection class.
+ * It represents a collection of requests in the signNow API client.
+ */
 public class RequestCollection extends TypedCollection {}

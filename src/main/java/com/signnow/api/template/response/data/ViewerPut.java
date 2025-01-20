@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the ViewerPut data model.
+ */
 public final class ViewerPut extends ApiData {
 
+  /**
+   * The default email of the viewer.
+   */
   @JsonProperty("default_email")
   private final String defaultEmail;
 
+  /**
+   * The name of the viewer.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The signing order of the viewer.
+   */
   @JsonProperty("signing_order")
   private final int signingOrder;
 
+  /**
+   * Constructs a new ViewerPut object.
+   *
+   * @param defaultEmail the default email of the viewer.
+   * @param name the name of the viewer.
+   * @param signingOrder the signing order of the viewer.
+   */
   @JsonCreator
   public ViewerPut(
       @JsonProperty("default_email") String defaultEmail,
@@ -38,18 +57,38 @@ public final class ViewerPut extends ApiData {
     this.signingOrder = signingOrder;
   }
 
+  /**
+   * Returns the default email of the viewer.
+   *
+   * @return the default email of the viewer.
+   */
   public String getDefaultEmail() {
     return this.defaultEmail;
   }
 
+  /**
+   * Returns the name of the viewer.
+   *
+   * @return the name of the viewer.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the signing order of the viewer.
+   *
+   * @return the signing order of the viewer.
+   */
   public int getSigningOrder() {
     return this.signingOrder;
   }
 
+  /**
+   * Converts this ViewerPut object to a Map.
+   *
+   * @return a Map representing this ViewerPut object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class ViewerPut extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new ViewerPut object from a Map.
+   *
+   * @param data a Map containing the data for the new ViewerPut object.
+   * @return a new ViewerPut object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static ViewerPut fromMap(@NotNull Map<String, Object> data) {

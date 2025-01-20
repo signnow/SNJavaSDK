@@ -11,5 +11,19 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of OriginatorOrganizationSettings.
+ * It extends the TypedCollection class by specifying the type of collection as OriginatorOrganizationSettings.
+ * 
+ * @see com.signnow.core.collection.TypedCollection
+ * @see com.signnow.api.document.response.data.OriginatorOrganizationSettings
+ */
 public class OriginatorOrganizationSettingsCollection
-    extends TypedCollection<OriginatorOrganizationSettings> {}
+    extends TypedCollection<OriginatorOrganizationSettings> {
+    /**
+     * Constructs an empty {@code OriginatorOrganizationSettingsCollection}.
+     */
+    public OriginatorOrganizationSettingsCollection() {
+        super();
+    }
+}

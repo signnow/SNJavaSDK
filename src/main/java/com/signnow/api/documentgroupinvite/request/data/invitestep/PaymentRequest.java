@@ -17,20 +17,43 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a payment request.
+ */
 public final class PaymentRequest extends ApiData {
 
+  /**
+   * The ID of the merchant.
+   */
   @JsonProperty("merchant_id")
   private final String merchantId;
 
+  /**
+   * The currency of the payment.
+   */
   @JsonProperty("currency")
   private final String currency;
 
+  /**
+   * The type of the payment.
+   */
   @JsonProperty("type")
   private final String type;
 
+  /**
+   * The amount of the payment.
+   */
   @JsonProperty("amount")
   private final String amount;
 
+  /**
+   * Constructs a new PaymentRequest with the specified details.
+   *
+   * @param merchantId the ID of the merchant
+   * @param currency the currency of the payment
+   * @param type the type of the payment
+   * @param amount the amount of the payment
+   */
   @JsonCreator
   public PaymentRequest(
       @JsonProperty("merchant_id") String merchantId,
@@ -43,22 +66,47 @@ public final class PaymentRequest extends ApiData {
     this.amount = amount;
   }
 
+  /**
+   * Returns the ID of the merchant.
+   *
+   * @return the merchant ID
+   */
   public String getMerchantId() {
     return this.merchantId;
   }
 
+  /**
+   * Returns the currency of the payment.
+   *
+   * @return the currency
+   */
   public String getCurrency() {
     return this.currency;
   }
 
+  /**
+   * Returns the type of the payment.
+   *
+   * @return the type
+   */
   public String getType() {
     return this.type;
   }
 
+  /**
+   * Returns the amount of the payment.
+   *
+   * @return the amount
+   */
   public String getAmount() {
     return this.amount;
   }
 
+  /**
+   * Converts this PaymentRequest to a Map.
+   *
+   * @return a Map representation of this PaymentRequest
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +118,12 @@ public final class PaymentRequest extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new PaymentRequest from the specified Map.
+   *
+   * @param data a Map containing the details of the PaymentRequest
+   * @return a new PaymentRequest with the details from the Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static PaymentRequest fromMap(@NotNull Map<String, Object> data) {

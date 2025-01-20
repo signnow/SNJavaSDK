@@ -15,6 +15,10 @@ import java.util.HashMap;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to get free form invites for a document.
+ * It implements the RequestInterface with a String type parameter.
+ */
 @ApiEndpoint(
     name = "getDocumentFreeFormInvites",
     url = "/v2/documents/{document_id}/free-form-invites",
@@ -25,8 +29,17 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class FreeFormInviteGetRequest implements RequestInterface<String> {
 
+  /**
+   * A map to hold URI parameters for the request.
+   */
   private final HashMap<String, String> uriParams = new HashMap<>();
 
+  /**
+   * Sets the document ID for the request.
+   *
+   * @param documentId the ID of the document
+   * @return this request object with the document ID set
+   */
   @NotNull
   @Contract("_ -> this")
   public FreeFormInviteGetRequest withDocumentId(@NotNull String documentId) {
@@ -34,12 +47,22 @@ public final class FreeFormInviteGetRequest implements RequestInterface<String> 
     return this;
   }
 
+  /**
+   * Gets the URI parameters for the request.
+   *
+   * @return the map of URI parameters
+   */
   @NotNull
   @Override
   public HashMap<String, String> uriParams() {
     return this.uriParams;
   }
 
+  /**
+   * Gets the payload for the request.
+   *
+   * @return an empty map as the payload
+   */
   @NotNull
   @Override
   public HashMap<String, String> payload() {

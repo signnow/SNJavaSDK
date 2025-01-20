@@ -18,44 +18,99 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a ViewerFieldInvite object.
+ */
 public final class ViewerFieldInvite extends ApiData {
 
+  /**
+   * The id of the ViewerFieldInvite.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The status of the ViewerFieldInvite.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * The creation date of the ViewerFieldInvite.
+   */
   @JsonProperty("created")
   private final String created;
 
+  /**
+   * The last updated date of the ViewerFieldInvite.
+   */
   @JsonProperty("updated")
   private final String updated;
 
+  /**
+   * The email associated with the ViewerFieldInvite.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The redirect target of the ViewerFieldInvite.
+   */
   @JsonProperty("redirect_target")
   private final String redirectTarget;
 
+  /**
+   * The email group of the ViewerFieldInvite.
+   */
   @JsonProperty("email_group")
   private final EmailGroup emailGroup;
 
+  /**
+   * The email statuses of the ViewerFieldInvite.
+   */
   @JsonProperty("email_statuses")
   private final EmailStatusCollection emailStatuses;
 
+  /**
+   * The signer user id of the ViewerFieldInvite.
+   */
   @JsonProperty("signer_user_id")
   private final String signerUserId;
 
+  /**
+   * The role of the ViewerFieldInvite.
+   */
   @JsonProperty("role")
   private final String role;
 
+  /**
+   * The role id of the ViewerFieldInvite.
+   */
   @JsonProperty("role_id")
   private final String roleId;
 
+  /**
+   * The close redirect URI of the ViewerFieldInvite.
+   */
   @JsonProperty("close_redirect_uri")
   private final String closeRedirectUri;
 
+  /**
+   * Constructor for ViewerFieldInvite.
+   *
+   * @param id The id of the ViewerFieldInvite.
+   * @param status The status of the ViewerFieldInvite.
+   * @param created The creation date of the ViewerFieldInvite.
+   * @param updated The last updated date of the ViewerFieldInvite.
+   * @param email The email associated with the ViewerFieldInvite.
+   * @param redirectTarget The redirect target of the ViewerFieldInvite.
+   * @param emailGroup The email group of the ViewerFieldInvite.
+   * @param emailStatuses The email statuses of the ViewerFieldInvite.
+   * @param signerUserId The signer user id of the ViewerFieldInvite.
+   * @param role The role of the ViewerFieldInvite.
+   * @param roleId The role id of the ViewerFieldInvite.
+   * @param closeRedirectUri The close redirect URI of the ViewerFieldInvite.
+   */
   @JsonCreator
   public ViewerFieldInvite(
       @JsonProperty("id") String id,
@@ -84,54 +139,119 @@ public final class ViewerFieldInvite extends ApiData {
     this.closeRedirectUri = closeRedirectUri;
   }
 
+  /**
+   * Returns the id of the ViewerFieldInvite.
+   *
+   * @return The id of the ViewerFieldInvite.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the signer user id of the ViewerFieldInvite.
+   *
+   * @return The signer user id of the ViewerFieldInvite.
+   */
   public String getSignerUserId() {
     return this.signerUserId;
   }
 
+  /**
+   * Returns the status of the ViewerFieldInvite.
+   *
+   * @return The status of the ViewerFieldInvite.
+   */
   public String getStatus() {
     return this.status;
   }
 
+  /**
+   * Returns the creation date of the ViewerFieldInvite.
+   *
+   * @return The creation date of the ViewerFieldInvite.
+   */
   public String getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the last updated date of the ViewerFieldInvite.
+   *
+   * @return The last updated date of the ViewerFieldInvite.
+   */
   public String getUpdated() {
     return this.updated;
   }
 
+  /**
+   * Returns the role of the ViewerFieldInvite.
+   *
+   * @return The role of the ViewerFieldInvite.
+   */
   public String getRole() {
     return this.role;
   }
 
+  /**
+   * Returns the email associated with the ViewerFieldInvite.
+   *
+   * @return The email associated with the ViewerFieldInvite.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the role id of the ViewerFieldInvite.
+   *
+   * @return The role id of the ViewerFieldInvite.
+   */
   public String getRoleId() {
     return this.roleId;
   }
 
+  /**
+   * Returns the close redirect URI of the ViewerFieldInvite.
+   *
+   * @return The close redirect URI of the ViewerFieldInvite.
+   */
   public String getCloseRedirectUri() {
     return this.closeRedirectUri;
   }
 
+  /**
+   * Returns the redirect target of the ViewerFieldInvite.
+   *
+   * @return The redirect target of the ViewerFieldInvite.
+   */
   public String getRedirectTarget() {
     return this.redirectTarget;
   }
 
+  /**
+   * Returns the email group of the ViewerFieldInvite.
+   *
+   * @return The email group of the ViewerFieldInvite.
+   */
   public EmailGroup getEmailGroup() {
     return this.emailGroup;
   }
 
+  /**
+   * Returns the email statuses of the ViewerFieldInvite.
+   *
+   * @return The email statuses of the ViewerFieldInvite.
+   */
   public EmailStatusCollection getEmailStatuses() {
     return this.emailStatuses;
   }
 
+  /**
+   * Converts the ViewerFieldInvite to a Map.
+   *
+   * @return A Map representation of the ViewerFieldInvite.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -151,6 +271,12 @@ public final class ViewerFieldInvite extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a ViewerFieldInvite from a Map.
+   *
+   * @param data The Map to convert to a ViewerFieldInvite.
+   * @return A ViewerFieldInvite created from the Map.
+   */
   @NotNull
   @Contract("_ -> new")
   public static ViewerFieldInvite fromMap(@NotNull Map<String, Object> data) {

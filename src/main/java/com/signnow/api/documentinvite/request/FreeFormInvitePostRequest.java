@@ -18,6 +18,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to create a free form invite.
+ * It implements the RequestInterface with Object as the type parameter.
+ */
 @ApiEndpoint(
     name = "createFreeFormInvite",
     url = "/document/{document_id}/invite",
@@ -28,36 +32,84 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class FreeFormInvitePostRequest implements RequestInterface<Object> {
 
+  /**
+   * The recipient of the invite.
+   */
   private final String to;
 
+  /**
+   * The sender of the invite.
+   */
   private final String from;
 
+  /**
+   * The collection of CC recipients.
+   */
   private final CcCollection cc;
 
+  /**
+   * The subject of the invite.
+   */
   private final String subject;
 
+  /**
+   * The message of the invite.
+   */
   private final String message;
 
+  /**
+   * The subject of the CC invite.
+   */
   private final String ccSubject;
 
+  /**
+   * The message of the CC invite.
+   */
   private final String ccMessage;
 
+  /**
+   * The language of the invite.
+   */
   private final String language;
 
+  /**
+   * The client timestamp of the invite.
+   */
   private final Integer clientTimestamp;
 
+  /**
+   * The callback URL of the invite.
+   */
   private final String callbackUrl;
 
+  /**
+   * A flag indicating if this is the first invite in the sequence.
+   */
   private final Boolean isFirstInviteInSequence;
 
+  /**
+   * The redirect URI of the invite.
+   */
   private final String redirectUri;
 
+  /**
+   * The close redirect URI of the invite.
+   */
   private final String closeRedirectUri;
 
+  /**
+   * The redirect target of the invite.
+   */
   private final String redirectTarget;
 
+  /**
+   * The URI parameters of the invite.
+   */
   private final Map<String, String> uriParams = new HashMap<>();
 
+  /**
+   * Constructor with all parameters.
+   */
   public FreeFormInvitePostRequest(
       String to,
       String from,
@@ -89,6 +141,9 @@ public final class FreeFormInvitePostRequest implements RequestInterface<Object>
     this.redirectTarget = redirectTarget;
   }
 
+  /**
+   * Constructor with minimal parameters.
+   */
   public FreeFormInvitePostRequest(String to, String from, String subject, String message) {
     this.to = to;
     this.from = from;
@@ -106,6 +161,9 @@ public final class FreeFormInvitePostRequest implements RequestInterface<Object>
     this.redirectTarget = null;
   }
 
+  /**
+   * Constructor with only to and from parameters.
+   */
   public FreeFormInvitePostRequest(String to, String from) {
     this.to = to;
     this.from = from;
@@ -123,67 +181,115 @@ public final class FreeFormInvitePostRequest implements RequestInterface<Object>
     this.redirectTarget = null;
   }
 
+  /**
+   * Returns the recipient of the invite.
+   */
   public String getTo() {
     return this.to;
   }
 
+  /**
+   * Returns the sender of the invite.
+   */
   public String getFrom() {
     return this.from;
   }
 
+  /**
+   * Returns the collection of CC recipients.
+   */
   public CcCollection getCc() {
     return this.cc;
   }
 
+  /**
+   * Returns the subject of the invite.
+   */
   public String getSubject() {
     return this.subject;
   }
 
+  /**
+   * Returns the message of the invite.
+   */
   public String getMessage() {
     return this.message;
   }
 
+  /**
+   * Returns the subject of the CC invite.
+   */
   public String getCcSubject() {
     return this.ccSubject;
   }
 
+  /**
+   * Returns the message of the CC invite.
+   */
   public String getCcMessage() {
     return this.ccMessage;
   }
 
+  /**
+   * Returns the language of the invite.
+   */
   public String getLanguage() {
     return this.language;
   }
 
+  /**
+   * Returns the client timestamp of the invite.
+   */
   public Integer getClientTimestamp() {
     return this.clientTimestamp;
   }
 
+  /**
+   * Returns the callback URL of the invite.
+   */
   public String getCallbackUrl() {
     return this.callbackUrl;
   }
 
+  /**
+   * Returns the flag indicating if this is the first invite in the sequence.
+   */
   public Boolean getIsFirstInviteInSequence() {
     return this.isFirstInviteInSequence;
   }
 
+  /**
+   * Returns the redirect URI of the invite.
+   */
   public String getRedirectUri() {
     return this.redirectUri;
   }
 
+  /**
+   * Returns the close redirect URI of the invite.
+   */
   public String getCloseRedirectUri() {
     return this.closeRedirectUri;
   }
 
+  /**
+   * Returns the redirect target of the invite.
+   */
   public String getRedirectTarget() {
     return this.redirectTarget;
   }
 
+  /**
+   * Adds a document ID to the URI parameters.
+   */
   public FreeFormInvitePostRequest withDocumentId(String documentId) {
     this.uriParams.put("document_id", documentId);
     return this;
   }
 
+  /**
+   * Returns a new HashMap containing the URI parameters.
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -191,6 +297,9 @@ public final class FreeFormInvitePostRequest implements RequestInterface<Object>
     return new HashMap<>(uriParams);
   }
 
+  /**
+   * Returns a Map containing the payload of the request.
+   */
   @NotNull
   @Override
   public Map<String, Object> payload() {

@@ -11,4 +11,15 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class ApproverPostCollection extends TypedCollection<ApproverPost> {}
+/**
+ * This class represents a collection of ApproverPost objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
+public class ApproverPostCollection extends TypedCollection<ApproverPost> {
+    /**
+     * Constructs an empty {@code ApproverPostCollection}.
+     */
+    public ApproverPostCollection() {
+        super();
+    }
+}

@@ -17,35 +17,78 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Seal object in the signNow API.
+ */
 public final class Seal extends ApiData {
 
+  /**
+   * The id of the Seal.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The user id associated with the Seal.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The email associated with the Seal.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The page number where the Seal is located.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The width of the Seal.
+   */
   @JsonProperty("width")
   private final String width;
 
+  /**
+   * The height of the Seal.
+   */
   @JsonProperty("height")
   private final String height;
 
+  /**
+   * The x-coordinate of the Seal.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the Seal.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * The creation timestamp of the Seal.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * Constructor for the Seal class.
+   *
+   * @param id The id of the Seal.
+   * @param userId The user id associated with the Seal.
+   * @param email The email associated with the Seal.
+   * @param pageNumber The page number where the Seal is located.
+   * @param width The width of the Seal.
+   * @param height The height of the Seal.
+   * @param x The x-coordinate of the Seal.
+   * @param y The y-coordinate of the Seal.
+   * @param created The creation timestamp of the Seal.
+   */
   @JsonCreator
   public Seal(
       @JsonProperty("id") String id,
@@ -68,42 +111,74 @@ public final class Seal extends ApiData {
     this.created = created;
   }
 
+  /**
+   * @return The id of the Seal.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The user id associated with the Seal.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return The email associated with the Seal.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The page number where the Seal is located.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The width of the Seal.
+   */
   public String getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the Seal.
+   */
   public String getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The x-coordinate of the Seal.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the Seal.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * @return The creation timestamp of the Seal.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Converts the Seal object to a Map.
+   *
+   * @return A Map representation of the Seal object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -120,6 +195,12 @@ public final class Seal extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Seal object from a Map.
+   *
+   * @param data The Map containing the Seal data.
+   * @return A new Seal object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Seal fromMap(@NotNull Map<String, Object> data) {

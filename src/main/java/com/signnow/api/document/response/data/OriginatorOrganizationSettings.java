@@ -17,14 +17,29 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the settings of the originator organization.
+ */
 public final class OriginatorOrganizationSettings extends ApiData {
 
+  /**
+   * The setting of the originator organization.
+   */
   @JsonProperty("setting")
   private final String setting;
 
+  /**
+   * The value of the setting.
+   */
   @JsonProperty("value")
   private final String value;
 
+  /**
+   * Constructs a new OriginatorOrganizationSettings with the specified setting and value.
+   *
+   * @param setting the setting of the originator organization
+   * @param value the value of the setting
+   */
   @JsonCreator
   public OriginatorOrganizationSettings(
       @JsonProperty("setting") String setting, @JsonProperty("value") String value) {
@@ -32,14 +47,29 @@ public final class OriginatorOrganizationSettings extends ApiData {
     this.value = value;
   }
 
+  /**
+   * Returns the setting of the originator organization.
+   *
+   * @return the setting of the originator organization
+   */
   public String getSetting() {
     return this.setting;
   }
 
+  /**
+   * Returns the value of the setting.
+   *
+   * @return the value of the setting
+   */
   public String getValue() {
     return this.value;
   }
 
+  /**
+   * Returns a map representation of this OriginatorOrganizationSettings.
+   *
+   * @return a map representation of this OriginatorOrganizationSettings
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -49,6 +79,12 @@ public final class OriginatorOrganizationSettings extends ApiData {
     return map;
   }
 
+  /**
+   * Returns a new OriginatorOrganizationSettings created from the specified map.
+   *
+   * @param data the map from which to create the OriginatorOrganizationSettings
+   * @return a new OriginatorOrganizationSettings created from the specified map
+   */
   @NotNull
   @Contract("_ -> new")
   public static OriginatorOrganizationSettings fromMap(@NotNull Map<String, Object> data) {

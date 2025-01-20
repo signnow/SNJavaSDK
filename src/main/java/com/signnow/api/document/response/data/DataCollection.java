@@ -11,4 +11,19 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DataCollection extends TypedCollection {}
+/**
+ * This class extends the TypedCollection class.
+ * It is used to create a collection of data objects.
+ * 
+ * @see TypedCollection
+ */
+public class DataCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the DataCollection class.
+     * It initializes a new instance of the DataCollection class.
+     */
+    public DataCollection() {
+        super();
+    }
+}

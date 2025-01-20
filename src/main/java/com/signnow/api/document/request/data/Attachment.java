@@ -17,14 +17,29 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an Attachment which extends ApiData.
+ */
 public final class Attachment extends ApiData {
 
+  /**
+   * Unique identifier for the attachment.
+   */
   @JsonProperty("attachment_unique_id")
   private final String attachmentUniqueId;
 
+  /**
+   * Identifier for the field.
+   */
   @JsonProperty("field_id")
   private final String fieldId;
 
+  /**
+   * Constructor for the Attachment class.
+   *
+   * @param attachmentUniqueId Unique identifier for the attachment.
+   * @param fieldId Identifier for the field.
+   */
   @JsonCreator
   public Attachment(
       @JsonProperty("attachment_unique_id") String attachmentUniqueId,
@@ -33,14 +48,29 @@ public final class Attachment extends ApiData {
     this.fieldId = fieldId;
   }
 
+  /**
+   * Getter for the attachment unique id.
+   *
+   * @return String The unique identifier for the attachment.
+   */
   public String getAttachmentUniqueId() {
     return this.attachmentUniqueId;
   }
 
+  /**
+   * Getter for the field id.
+   *
+   * @return String The identifier for the field.
+   */
   public String getFieldId() {
     return this.fieldId;
   }
 
+  /**
+   * Converts the Attachment object to a Map.
+   *
+   * @return Maplt;String, Object&gt; The map representation of the Attachment object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -50,6 +80,12 @@ public final class Attachment extends ApiData {
     return map;
   }
 
+  /**
+   * Static method to create an Attachment object from a Map.
+   *
+   * @param data The map containing the data for the Attachment object.
+   * @return Attachment The created Attachment object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Attachment fromMap(@NotNull Map<String, Object> data) {
