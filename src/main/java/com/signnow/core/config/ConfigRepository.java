@@ -37,7 +37,7 @@ public class ConfigRepository {
    * @return the host as a string
    */
   public String host() {
-    return this.configMap.get("API_HOST");
+    return this.configMap.get("SIGNNOW_API_HOST");
   }
 
   /**
@@ -46,7 +46,7 @@ public class ConfigRepository {
    * @return the basic token as a BasicToken object
    */
   public BasicToken basicToken() {
-    return new BasicToken(this.configMap.get("API_BASIC_TOKEN"));
+    return new BasicToken(this.configMap.get("SIGNNOW_API_BASIC_TOKEN"));
   }
 
   /**
@@ -55,7 +55,7 @@ public class ConfigRepository {
    * @return the user as a string
    */
   public String user() {
-    return this.configMap.get("API_USERNAME");
+    return this.configMap.get("SIGNNOW_API_USERNAME");
   }
 
   /**
@@ -64,7 +64,7 @@ public class ConfigRepository {
    * @return the password as a string
    */
   public String password() {
-    return this.configMap.get("API_PASSWORD");
+    return this.configMap.get("SIGNNOW_API_PASSWORD");
   }
 
   /**
