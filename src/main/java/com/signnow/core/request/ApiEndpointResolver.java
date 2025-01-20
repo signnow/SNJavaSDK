@@ -14,8 +14,18 @@ package com.signnow.core.request;
  * as a standalone data object.
  */
 public class ApiEndpointResolver {
+  /**
+   * Constructs an empty {@code ApiEndpointResolver}.
+   */
+  public ApiEndpointResolver() {}
 
-  /** Construct ApiEndpoint data object from annotated request object. */
+  /**
+   * This method is used to construct ApiEndpoint data object from annotated request object.
+   * 
+   * @param request This is the request object that needs to be resolved to an ApiEndpoint.
+   * @return ApiEndpoint This returns the ApiEndpoint annotation from the request object.
+   * @throws IllegalArgumentException if the request class is not annotated with ApiEndpoint.
+   */
   public ApiEndpoint resolve(RequestInterface<?> request) {
     Class<? extends RequestInterface> reflection = request.getClass();
     if (!reflection.isAnnotationPresent(ApiEndpoint.class)) {

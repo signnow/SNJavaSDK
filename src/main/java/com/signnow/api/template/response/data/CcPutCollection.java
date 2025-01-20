@@ -11,4 +11,8 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class.
+ * It represents a collection of strings for the Carbon Copy (Cc) Put operation in the signNow API.
+ */
 public class CcPutCollection extends StringCollection {}

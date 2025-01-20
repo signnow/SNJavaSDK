@@ -17,26 +17,58 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Recipient class extends ApiData.
+ * Represents a recipient of a document group.
+ */
 public final class Recipient extends ApiData {
 
+  /**
+   * Name of the recipient.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * Email of the recipient.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * Order of the recipient.
+   */
   @JsonProperty("order")
   private final int order;
 
+  /**
+   * Collection of documents associated with the recipient.
+   */
   @JsonProperty("documents")
   private final DocumentCollection documents;
 
+  /**
+   * Email group associated with the recipient.
+   */
   @JsonProperty("email_group")
   private final EmailGroup emailGroup;
 
+  /**
+   * Attributes of the recipient.
+   */
   @JsonProperty("attributes")
   private final Attribute attributes;
 
+  /**
+   * Constructor for Recipient class.
+   *
+   * @param name Name of the recipient.
+   * @param email Email of the recipient.
+   * @param order Order of the recipient.
+   * @param documents Collection of documents associated with the recipient.
+   * @param emailGroup Email group associated with the recipient.
+   * @param attributes Attributes of the recipient.
+   */
   @JsonCreator
   public Recipient(
       @JsonProperty("name") String name,
@@ -53,30 +85,53 @@ public final class Recipient extends ApiData {
     this.attributes = attributes;
   }
 
+  /**
+   * @return Name of the recipient.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * @return Email of the recipient.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return Email group associated with the recipient.
+   */
   public EmailGroup getEmailGroup() {
     return this.emailGroup;
   }
 
+  /**
+   * @return Order of the recipient.
+   */
   public int getOrder() {
     return this.order;
   }
 
+  /**
+   * @return Attributes of the recipient.
+   */
   public Attribute getAttributes() {
     return this.attributes;
   }
 
+  /**
+   * @return Collection of documents associated with the recipient.
+   */
   public DocumentCollection getDocuments() {
     return this.documents;
   }
 
+  /**
+   * Converts the Recipient object to a Map.
+   *
+   * @return Map representation of the Recipient object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -90,6 +145,12 @@ public final class Recipient extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Recipient object from a Map.
+   *
+   * @param data Map containing the data for the Recipient object.
+   * @return New Recipient object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Recipient fromMap(@NotNull Map<String, Object> data) {

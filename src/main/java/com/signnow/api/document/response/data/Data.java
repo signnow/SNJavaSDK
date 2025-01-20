@@ -17,20 +17,44 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Data class extends ApiData.
+ * Represents the data response from the API.
+ */
 public final class Data extends ApiData {
 
+  /**
+   * The id of the data.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The name of the data.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The type of the data.
+   */
   @JsonProperty("type")
   private final String type;
 
+  /**
+   * The value of the data.
+   */
   @JsonProperty("value")
   private final String value;
 
+  /**
+   * Constructor for Data class.
+   *
+   * @param id    The id of the data.
+   * @param name  The name of the data.
+   * @param type  The type of the data.
+   * @param value The value of the data.
+   */
   @JsonCreator
   public Data(
       @JsonProperty("id") String id,
@@ -43,22 +67,47 @@ public final class Data extends ApiData {
     this.value = value;
   }
 
+  /**
+   * Gets the id of the data.
+   *
+   * @return The id of the data.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Gets the name of the data.
+   *
+   * @return The name of the data.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Gets the type of the data.
+   *
+   * @return The type of the data.
+   */
   public String getType() {
     return this.type;
   }
 
+  /**
+   * Gets the value of the data.
+   *
+   * @return The value of the data.
+   */
   public String getValue() {
     return this.value;
   }
 
+  /**
+   * Converts the data to a map.
+   *
+   * @return A map representation of the data.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +119,12 @@ public final class Data extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new Data object from a map.
+   *
+   * @param data The map to create the Data object from.
+   * @return A new Data object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Data fromMap(@NotNull Map<String, Object> data) {

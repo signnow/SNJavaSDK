@@ -11,4 +11,16 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DocumentCollection extends TypedCollection<Document> {}
+/**
+ * This class represents a collection of Document objects.
+ * It extends the TypedCollection class, specifying Document as the type parameter.
+ * This means that this collection will only accept Document objects.
+ */
+public class DocumentCollection extends TypedCollection<Document> {
+    /**
+     * Default constructor {@code DocumentCollection}.
+     */
+    public DocumentCollection() {
+        super();
+    }
+}

@@ -11,5 +11,18 @@ package com.signnow.api.webhookv2.response.data.data;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of EventSubscriptionDataCallback objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ *
+ * @see com.signnow.core.collection.TypedCollection
+ */
 public class EventSubscriptionDataCallbackCollection
-    extends TypedCollection<EventSubscriptionDataCallback> {}
+    extends TypedCollection<EventSubscriptionDataCallback> {
+    /**
+     * Default constructor {@code EventSubscriptionDataCallbackCollection}.
+     */
+    public EventSubscriptionDataCallbackCollection() {
+        super();
+    }
+}

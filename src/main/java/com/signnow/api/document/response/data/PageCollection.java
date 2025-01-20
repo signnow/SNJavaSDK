@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class PageCollection extends TypedCollection<Page> {}
+/**
+ * This class represents a collection of Page objects.
+ * It extends the TypedCollection class with a type parameter of Page.
+ */
+public class PageCollection extends TypedCollection<Page> {
+    /**
+     * Constructs an empty {@code PageCollection}.
+     */
+    public PageCollection() {
+        super();
+    }
+}

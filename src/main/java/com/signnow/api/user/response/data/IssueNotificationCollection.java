@@ -11,4 +11,15 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class IssueNotificationCollection extends TypedCollection<IssueNotification> {}
+/**
+ * This class represents a collection of IssueNotification objects.
+ * It extends the TypedCollection class, specifying IssueNotification as the type parameter.
+ */
+public class IssueNotificationCollection extends TypedCollection<IssueNotification> {
+    /**
+     * Default constructor {@code IssueNotificationCollection}.
+     */
+    public IssueNotificationCollection() {
+        super();
+    }
+}

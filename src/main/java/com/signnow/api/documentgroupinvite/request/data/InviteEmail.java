@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an invite email with reminder and expiration days.
+ */
 public final class InviteEmail extends ApiData {
 
+  /**
+   * The email address to which the invite is sent.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The reminder period for the invite.
+   */
   @JsonProperty("reminder")
   private final int reminder;
 
+  /**
+   * The number of days before the invite expires.
+   */
   @JsonProperty("expiration_days")
   private final int expirationDays;
 
+  /**
+   * Constructs an InviteEmail object with the specified email, reminder, and expiration days.
+   *
+   * @param email the email address to which the invite is sent
+   * @param reminder the reminder period for the invite
+   * @param expirationDays the number of days before the invite expires
+   */
   @JsonCreator
   public InviteEmail(
       @JsonProperty("email") String email,
@@ -38,18 +57,38 @@ public final class InviteEmail extends ApiData {
     this.expirationDays = expirationDays;
   }
 
+  /**
+   * Returns the email address to which the invite is sent.
+   *
+   * @return the email address
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the reminder period for the invite.
+   *
+   * @return the reminder period
+   */
   public int getReminder() {
     return this.reminder;
   }
 
+  /**
+   * Returns the number of days before the invite expires.
+   *
+   * @return the number of expiration days
+   */
   public int getExpirationDays() {
     return this.expirationDays;
   }
 
+  /**
+   * Converts this InviteEmail object to a Map.
+   *
+   * @return a Map representing this InviteEmail object
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class InviteEmail extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an InviteEmail object from the specified Map.
+   *
+   * @param data a Map containing the data for the InviteEmail object
+   * @return a new InviteEmail object
+   */
   @NotNull
   @Contract("_ -> new")
   public static InviteEmail fromMap(@NotNull Map<String, Object> data) {

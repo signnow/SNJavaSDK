@@ -17,14 +17,29 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the storage data of the API.
+ */
 public final class Storage extends ApiData {
 
+  /**
+   * Represents the active status of the storage.
+   */
   @JsonProperty("is_active")
   private final boolean isActive;
 
+  /**
+   * Represents the account associated with the storage.
+   */
   @JsonProperty("account")
   private final String account;
 
+  /**
+   * Constructor for the Storage class.
+   *
+   * @param isActive the active status of the storage.
+   * @param account the account associated with the storage.
+   */
   @JsonCreator
   public Storage(
       @JsonProperty("is_active") boolean isActive, @JsonProperty("account") String account) {
@@ -32,14 +47,29 @@ public final class Storage extends ApiData {
     this.account = account;
   }
 
+  /**
+   * Returns the active status of the storage.
+   *
+   * @return the active status of the storage.
+   */
   public boolean isActive() {
     return this.isActive;
   }
 
+  /**
+   * Returns the account associated with the storage.
+   *
+   * @return the account associated with the storage.
+   */
   public String getAccount() {
     return this.account;
   }
 
+  /**
+   * Converts the storage data to a map.
+   *
+   * @return a map containing the storage data.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -49,6 +79,12 @@ public final class Storage extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new Storage object from a map.
+   *
+   * @param data a map containing the storage data.
+   * @return a new Storage object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Storage fromMap(@NotNull Map<String, Object> data) {

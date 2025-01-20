@@ -11,4 +11,8 @@ package com.signnow.api.documentgroup.response.data.data;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of Recipient objects.
+ * It extends the TypedCollection class, specifying Recipient as the type parameter.
+ */
 public class RecipientCollection extends TypedCollection<Recipient> {}

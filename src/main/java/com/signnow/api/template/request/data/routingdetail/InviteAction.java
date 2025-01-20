@@ -17,29 +17,64 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an invite action in the signNow API.
+ */
 public final class InviteAction extends ApiData {
 
+  /**
+   * The email of the invitee.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The role name of the invitee.
+   */
   @JsonProperty("role_name")
   private final String roleName;
 
+  /**
+   * The action to be performed.
+   */
   @JsonProperty("action")
   private final String action;
 
+  /**
+   * The ID of the document.
+   */
   @JsonProperty("document_id")
   private final String documentId;
 
+  /**
+   * The name of the document.
+   */
   @JsonProperty("document_name")
   private final String documentName;
 
+  /**
+   * Flag to allow reassignment of the invite.
+   */
   @JsonProperty("allow_reassign")
   private final String allowReassign;
 
+  /**
+   * Flag to allow decline by signature.
+   */
   @JsonProperty("decline_by_signature")
   private final String declineBySignature;
 
+  /**
+   * Constructor for InviteAction.
+   *
+   * @param email The email of the invitee.
+   * @param roleName The role name of the invitee.
+   * @param action The action to be performed.
+   * @param documentId The ID of the document.
+   * @param documentName The name of the document.
+   * @param allowReassign Flag to allow reassignment of the invite.
+   * @param declineBySignature Flag to allow decline by signature.
+   */
   @JsonCreator
   public InviteAction(
       @JsonProperty("email") String email,
@@ -58,6 +93,15 @@ public final class InviteAction extends ApiData {
     this.declineBySignature = declineBySignature;
   }
 
+  /**
+   * Constructor for InviteAction.
+   *
+   * @param email The email of the invitee.
+   * @param roleName The role name of the invitee.
+   * @param action The action to be performed.
+   * @param documentId The ID of the document.
+   * @param documentName The name of the document.
+   */
   public InviteAction(
       @JsonProperty("email") String email,
       @JsonProperty("role_name") String roleName,
@@ -73,34 +117,60 @@ public final class InviteAction extends ApiData {
     this.declineBySignature = null;
   }
 
+  /**
+   * @return The email of the invitee.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The role name of the invitee.
+   */
   public String getRoleName() {
     return this.roleName;
   }
 
+  /**
+   * @return The action to be performed.
+   */
   public String getAction() {
     return this.action;
   }
 
+  /**
+   * @return The ID of the document.
+   */
   public String getDocumentId() {
     return this.documentId;
   }
 
+  /**
+   * @return The name of the document.
+   */
   public String getDocumentName() {
     return this.documentName;
   }
 
+  /**
+   * @return Flag to allow reassignment of the invite.
+   */
   public String getAllowReassign() {
     return this.allowReassign;
   }
 
+  /**
+   * @return Flag to allow decline by signature.
+   */
   public String getDeclineBySignature() {
     return this.declineBySignature;
   }
 
+  /**
+   * Converts this object to a Map.
+   *
+   * @return A Map representation of this object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -115,6 +185,12 @@ public final class InviteAction extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an InviteAction object from a Map.
+   *
+   * @param data The Map to convert.
+   * @return A new InviteAction object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static InviteAction fromMap(@NotNull Map<String, Object> data) {

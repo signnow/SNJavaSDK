@@ -11,4 +11,16 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class SignatureCollection extends TypedCollection<Signature> {}
+/**
+ * This class represents a collection of Signature objects.
+ * It extends the TypedCollection class, specifying Signature as the type parameter.
+ * This means that this collection will only accept Signature objects.
+ */
+public class SignatureCollection extends TypedCollection<Signature> {
+    /**
+     * Default constructor {@code SignatureCollection}.
+     */
+    public SignatureCollection() {
+        super();
+    }
+}

@@ -16,6 +16,10 @@ import java.util.HashMap;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents a request to upload a document to the server.
+ * This class is used to build the request payload and parameters.
+ */
 @ApiEndpoint(
     name = "uploadDocument",
     url = "/document",
@@ -26,24 +30,64 @@ import org.jetbrains.annotations.NotNull;
     type = "multipart/form-data")
 public final class DocumentPostRequest implements RequestInterface<Object> {
 
+  /**
+   * The file to be uploaded.
+   */
   private final File file;
 
+  /**
+   * The name of the file.
+   */
   private final String name;
 
+  /**
+   * Flag to check fields.
+   */
   private final boolean checkFields;
 
+  /**
+   * Flag to save fields.
+   */
   private final int saveFields;
 
+  /**
+   * Flag to make template.
+   */
   private final int makeTemplate;
 
+  /**
+   * The password for the document.
+   */
   private final String password;
 
+  /**
+   * The ID of the folder where the document will be stored.
+   */
   private final String folderId;
 
+  /**
+   * The ID of the original template.
+   */
   private final String originTemplateId;
 
+  /**
+   * The client timestamp.
+   */
   private final int clientTimestamp;
 
+  /**
+   * Constructs a new DocumentPostRequest with the specified parameters.
+   *
+   * @param file the file to be uploaded
+   * @param name the name of the file
+   * @param checkFields flag to check fields
+   * @param saveFields flag to save fields
+   * @param makeTemplate flag to make template
+   * @param password the password for the document
+   * @param folderId the ID of the folder where the document will be stored
+   * @param originTemplateId the ID of the original template
+   * @param clientTimestamp the client timestamp
+   */
   public DocumentPostRequest(
       File file,
       String name,
@@ -65,6 +109,11 @@ public final class DocumentPostRequest implements RequestInterface<Object> {
     this.clientTimestamp = clientTimestamp;
   }
 
+  /**
+   * Constructs a new DocumentPostRequest with the specified file.
+   *
+   * @param file the file to be uploaded
+   */
   public DocumentPostRequest(File file) {
     this.file = file;
     this.name = null;
@@ -77,6 +126,12 @@ public final class DocumentPostRequest implements RequestInterface<Object> {
     this.clientTimestamp = 0;
   }
 
+  /**
+   * Constructs a new DocumentPostRequest with the specified file and name.
+   *
+   * @param file the file to be uploaded
+   * @param name the name of the file
+   */
   public DocumentPostRequest(File file, String name) {
     this.file = file;
     this.name = name;
@@ -89,48 +144,103 @@ public final class DocumentPostRequest implements RequestInterface<Object> {
     this.clientTimestamp = 0;
   }
 
+  /**
+   * Returns the file to be uploaded.
+   *
+   * @return the file to be uploaded
+   */
   public File getFile() {
     return this.file;
   }
 
+  /**
+   * Returns the name of the file.
+   *
+   * @return the name of the file
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the flag to check fields.
+   *
+   * @return the flag to check fields
+   */
   public boolean isCheckFields() {
     return this.checkFields;
   }
 
+  /**
+   * Returns the flag to save fields.
+   *
+   * @return the flag to save fields
+   */
   public int getSaveFields() {
     return this.saveFields;
   }
 
+  /**
+   * Returns the flag to make template.
+   *
+   * @return the flag to make template
+   */
   public int getMakeTemplate() {
     return this.makeTemplate;
   }
 
+  /**
+   * Returns the password for the document.
+   *
+   * @return the password for the document
+   */
   public String getPassword() {
     return this.password;
   }
 
+  /**
+   * Returns the ID of the folder where the document will be stored.
+   *
+   * @return the ID of the folder where the document will be stored
+   */
   public String getFolderId() {
     return this.folderId;
   }
 
+  /**
+   * Returns the ID of the original template.
+   *
+   * @return the ID of the original template
+   */
   public String getOriginTemplateId() {
     return this.originTemplateId;
   }
 
+  /**
+   * Returns the client timestamp.
+   *
+   * @return the client timestamp
+   */
   public int getClientTimestamp() {
     return this.clientTimestamp;
   }
 
+  /**
+   * Returns the URI parameters for the request.
+   *
+   * @return the URI parameters for the request
+   */
   @NotNull
   @Override
   public HashMap<String, String> uriParams() {
     return new HashMap<>();
   }
 
+  /**
+   * Returns the payload for the request.
+   *
+   * @return the payload for the request
+   */
   @NotNull
   @Override
   public Map<String, Object> payload() {

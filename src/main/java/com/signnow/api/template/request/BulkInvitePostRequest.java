@@ -17,6 +17,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents a bulk invite post request.
+ * This class is used to send a bulk invite request to the API.
+ */
 @ApiEndpoint(
     name = "bulkInvite",
     url = "/template/{document_id}/bulkinvite",
@@ -27,20 +31,51 @@ import org.jetbrains.annotations.NotNull;
     type = "multipart/form-data")
 public final class BulkInvitePostRequest implements RequestInterface<Object> {
 
+  /**
+   * The file to be sent in the request.
+   */
   private final File file;
 
+  /**
+   * The ID of the folder where the document is located.
+   */
   private final String folderId;
 
+  /**
+   * The client timestamp when the request is made.
+   */
   private final int clientTimestamp;
 
+  /**
+   * The name of the document.
+   */
   private final String documentName;
 
+  /**
+   * The subject of the email.
+   */
   private final String subject;
 
+  /**
+   * The message of the email.
+   */
   private final String emailMessage;
 
+  /**
+   * The URI parameters for the request.
+   */
   private final HashMap<String, String> uriParams = new HashMap<>();
 
+  /**
+   * Constructs a new BulkInvitePostRequest.
+   *
+   * @param file the file to be sent in the request
+   * @param folderId the ID of the folder where the document is located
+   * @param clientTimestamp the client timestamp when the request is made
+   * @param documentName the name of the document
+   * @param subject the subject of the email
+   * @param emailMessage the message of the email
+   */
   public BulkInvitePostRequest(
       File file,
       String folderId,
@@ -56,35 +91,76 @@ public final class BulkInvitePostRequest implements RequestInterface<Object> {
     this.emailMessage = emailMessage;
   }
 
+  /**
+   * Returns the file to be sent in the request.
+   *
+   * @return the file to be sent in the request
+   */
   public File getFile() {
     return this.file;
   }
 
+  /**
+   * Returns the ID of the folder where the document is located.
+   *
+   * @return the ID of the folder where the document is located
+   */
   public String getFolderId() {
     return this.folderId;
   }
 
+  /**
+   * Returns the client timestamp when the request is made.
+   *
+   * @return the client timestamp when the request is made
+   */
   public int getClientTimestamp() {
     return this.clientTimestamp;
   }
 
+  /**
+   * Returns the name of the document.
+   *
+   * @return the name of the document
+   */
   public String getDocumentName() {
     return this.documentName;
   }
 
+  /**
+   * Returns the subject of the email.
+   *
+   * @return the subject of the email
+   */
   public String getSubject() {
     return this.subject;
   }
 
+  /**
+   * Returns the message of the email.
+   *
+   * @return the message of the email
+   */
   public String getEmailMessage() {
     return this.emailMessage;
   }
 
+  /**
+   * Adds the document ID to the URI parameters.
+   *
+   * @param documentId the ID of the document
+   * @return this BulkInvitePostRequest
+   */
   public BulkInvitePostRequest withDocumentId(String documentId) {
     this.uriParams.put("document_id", documentId);
     return this;
   }
 
+  /**
+   * Returns a new HashMap containing the URI parameters for the request.
+   *
+   * @return a new HashMap containing the URI parameters for the request
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -92,6 +168,11 @@ public final class BulkInvitePostRequest implements RequestInterface<Object> {
     return new HashMap<>(this.uriParams);
   }
 
+  /**
+   * Returns a Map containing the payload for the request.
+   *
+   * @return a Map containing the payload for the request
+   */
   @NotNull
   @Override
   public Map<String, Object> payload() {

@@ -11,4 +11,17 @@ package com.signnow.api.user.response.data.team;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class AdminCollection extends TypedCollection {}
+/**
+ * This class represents a collection of Admin objects.
+ * It extends the TypedCollection class.
+ */
+public class AdminCollection extends TypedCollection {
+
+    /**
+     * Default constructor for AdminCollection class.
+     * It initializes an empty collection of Admin objects.
+     */
+    public AdminCollection() {
+        super();
+    }
+}

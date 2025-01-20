@@ -11,4 +11,19 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class FieldsDataCollection extends TypedCollection {}
+/**
+ * This class extends the TypedCollection class.
+ * It is used to create a collection of fields data.
+ * 
+ * @see TypedCollection
+ */
+public class FieldsDataCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the FieldsDataCollection class.
+     * It initializes an empty collection of fields data.
+     */
+    public FieldsDataCollection() {
+        super();
+    }
+}

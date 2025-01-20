@@ -11,4 +11,21 @@ package com.signnow.api.template.request.data.routingdetail;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class InviteActionCollection extends TypedCollection<InviteAction> {}
+/**
+ * This class represents a collection of InviteAction objects.
+ * It extends the TypedCollection class, specifying InviteAction as the type parameter.
+ * This means that this collection will only accept InviteAction objects.
+ * 
+ * @see com.signnow.core.collection.TypedCollection
+ * @see com.signnow.api.template.request.data.routingdetail.InviteAction
+ */
+public class InviteActionCollection extends TypedCollection<InviteAction> {
+
+    /**
+     * Default constructor for InviteActionCollection.
+     * It calls the constructor of the superclass TypedCollection.
+     */
+    public InviteActionCollection() {
+        super();
+    }
+}

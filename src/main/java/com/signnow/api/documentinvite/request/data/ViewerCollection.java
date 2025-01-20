@@ -11,4 +11,15 @@ package com.signnow.api.documentinvite.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class ViewerCollection extends TypedCollection<Viewer> {}
+/**
+ * This class represents a collection of Viewer objects.
+ * It extends the TypedCollection class with Viewer as its type.
+ */
+public class ViewerCollection extends TypedCollection<Viewer> {
+    /**
+     * Default constructor {@code ViewerCollection}.
+     */
+    public ViewerCollection() {
+        super();
+    }
+}

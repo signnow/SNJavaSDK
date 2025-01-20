@@ -11,5 +11,11 @@ package com.signnow.api.webhook.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received when a subscription is deleted.
+ * It is annotated to ignore unknown properties when deserializing from JSON.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SubscriptionDeleteResponse {}
+public class SubscriptionDeleteResponse {
+    // No public properties, constructors, or methods to document
+}

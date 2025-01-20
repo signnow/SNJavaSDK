@@ -18,8 +18,21 @@ import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Abstract class ApiData that implements JsonSerializable and Mappable interfaces.
+ */
 public abstract class ApiData implements JsonSerializable, Mappable {
+  /**
+   * Constructs an empty {@code ApiData}.
+   */
+  public ApiData() {
+  }
 
+  /**
+   * Converts the object to a Map.
+   * 
+   * @return a Map with the object's fields as keys and their values as map values.
+   */
   public Map<String, Object> toMap() {
     Map<String, Object> map = new LinkedHashMap<>();
 
@@ -42,11 +55,21 @@ public abstract class ApiData implements JsonSerializable, Mappable {
     return map;
   }
 
+  /**
+   * Overrides the toString method to return the JSON representation of the object.
+   * 
+   * @return a JSON string representation of the object.
+   */
   @Override
   public String toString() {
     return this.toJson();
   }
 
+  /**
+   * Converts the object to a JSON string.
+   * 
+   * @return a JSON string representation of the object. If an error occurs during conversion, returns an empty JSON object string.
+   */
   public String toJson() {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.setVisibility(

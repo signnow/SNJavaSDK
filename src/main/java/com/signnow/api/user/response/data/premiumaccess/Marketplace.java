@@ -17,20 +17,41 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Marketplace object.
+ */
 public final class Marketplace extends ApiData {
 
+  /**
+   * The name of the marketplace.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * Constructor for the Marketplace class.
+   *
+   * @param name The name of the marketplace.
+   */
   @JsonCreator
   public Marketplace(@JsonProperty("name") String name) {
     this.name = name;
   }
 
+  /**
+   * Returns the name of the marketplace.
+   *
+   * @return The name of the marketplace.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Converts the Marketplace object to a Map.
+   *
+   * @return A Map representation of the Marketplace object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -39,6 +60,12 @@ public final class Marketplace extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new Marketplace object from a Map.
+   *
+   * @param data The Map to convert to a Marketplace object.
+   * @return A new Marketplace object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Marketplace fromMap(@NotNull Map<String, Object> data) {

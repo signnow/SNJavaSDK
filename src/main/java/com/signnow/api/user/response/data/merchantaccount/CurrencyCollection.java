@@ -11,4 +11,9 @@ package com.signnow.api.user.response.data.merchantaccount;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class and represents a collection of currencies.
+ * It doesn't have any additional properties or methods.
+ * It's used in the context of merchant accounts in the signNow API.
+ */
 public class CurrencyCollection extends StringCollection {}

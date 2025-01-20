@@ -11,4 +11,8 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class and represents a collection of invite link instructions.
+ * It is used to manage and manipulate collections of invite link instructions in the signNow API client.
+ */
 public class InviteLinkInstructionPostCollection extends StringCollection {}

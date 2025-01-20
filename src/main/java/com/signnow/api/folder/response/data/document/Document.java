@@ -19,105 +19,240 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Document in the signNow API.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class Document extends ApiData {
 
+  /**
+   * The unique identifier of the document.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The unique identifier of the user who owns the document.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The name of the document.
+   */
   @JsonProperty("document_name")
   private final String documentName;
 
+  /**
+   * The number of pages in the document.
+   */
   @JsonProperty("page_count")
   private final String pageCount;
 
+  /**
+   * The creation timestamp of the document.
+   */
   @JsonProperty("created")
   private final String created;
 
+  /**
+   * The last updated timestamp of the document.
+   */
   @JsonProperty("updated")
   private final String updated;
 
+  /**
+   * The version timestamp of the document.
+   */
   @JsonProperty("version_time")
   private final String versionTime;
 
+  /**
+   * The original filename of the document.
+   */
   @JsonProperty("original_filename")
   private final String originalFilename;
 
+  /**
+   * The owner of the document.
+   */
   @JsonProperty("owner")
   private final String owner;
 
+  /**
+   * The unique identifier of the original user who created the document.
+   */
   @JsonProperty("origin_user_id")
   private final String originUserId;
 
+  /**
+   * The thumbnail of the document.
+   */
   @JsonProperty("thumbnail")
   private final Thumbnail thumbnail;
 
+  /**
+   * The template status of the document.
+   */
   @JsonProperty("template")
   private final boolean template;
 
+  /**
+   * The roles associated with the document.
+   */
   @JsonProperty("roles")
   private final RoleCollection roles;
 
+  /**
+   * The routing details of the document.
+   */
   @JsonProperty("routing_details")
   private final RoutingDetailCollection routingDetails;
 
+  /**
+   * The field invites of the document.
+   */
   @JsonProperty("field_invites")
   private final FieldInviteCollection fieldInvites;
 
+  /**
+   * The signatures of the document.
+   */
   @JsonProperty("signatures")
   private final SignatureCollection signatures;
 
+  /**
+   * The seals of the document.
+   */
   @JsonProperty("seals")
   private final SealCollection seals;
 
+  /**
+   * The texts of the document.
+   */
   @JsonProperty("texts")
   private final TextCollection texts;
 
+  /**
+   * The checks of the document.
+   */
   @JsonProperty("checks")
   private final CheckCollection checks;
 
+  /**
+   * The radio buttons of the document.
+   */
   @JsonProperty("radiobuttons")
   private final RadiobuttonCollection radiobuttons;
 
+  /**
+   * The integrations of the document.
+   */
   @JsonProperty("integrations")
   private final IntegrationCollection integrations;
 
+  /**
+   * The inserts of the document.
+   */
   @JsonProperty("inserts")
   private final InsertCollection inserts;
 
+  /**
+   * The tags of the document.
+   */
   @JsonProperty("tags")
   private final TagCollection tags;
 
+  /**
+   * The fields of the document.
+   */
   @JsonProperty("fields")
   private final FieldDocumentCollection fields;
 
+  /**
+   * The requests of the document.
+   */
   @JsonProperty("requests")
   private final RequestCollection requests;
 
+  /**
+   * The enumeration options of the document.
+   */
   @JsonProperty("enumeration_options")
   private final EnumerationOptionCollection enumerationOptions;
 
+  /**
+   * The attachments of the document.
+   */
   @JsonProperty("attachments")
   private final AttachmentCollection attachments;
 
+  /**
+   * The document group info of the document.
+   */
   @JsonProperty("document_group_info")
   private final DocumentGroupInfo documentGroupInfo;
 
+  /**
+   * The unique identifier of the original document.
+   */
   @JsonProperty("origin_document_id")
   private final String originDocumentId;
 
+  /**
+   * The unique identifier of the project associated with the document.
+   */
   @JsonProperty("project_id")
   private final String projectId;
 
+  /**
+   * The favorite status of the document.
+   */
   @JsonProperty("is_favorite")
   private final Boolean isFavorite;
 
+  /**
+   * The recently used timestamp of the document.
+   */
   @JsonProperty("recently_used")
   private final String recentlyUsed;
 
+  /**
+   * Constructs a new Document with the specified details.
+   *
+   * @param id the unique identifier of the document
+   * @param userId the unique identifier of the user who owns the document
+   * @param documentName the name of the document
+   * @param pageCount the number of pages in the document
+   * @param created the creation timestamp of the document
+   * @param updated the last updated timestamp of the document
+   * @param versionTime the version timestamp of the document
+   * @param originalFilename the original filename of the document
+   * @param owner the owner of the document
+   * @param originUserId the unique identifier of the original user who created the document
+   * @param thumbnail the thumbnail of the document
+   * @param template the template status of the document
+   * @param roles the roles associated with the document
+   * @param routingDetails the routing details of the document
+   * @param fieldInvites the field invites of the document
+   * @param signatures the signatures of the document
+   * @param seals the seals of the document
+   * @param texts the texts of the document
+   * @param checks the checks of the document
+   * @param radiobuttons the radio buttons of the document
+   * @param integrations the integrations of the document
+   * @param inserts the inserts of the document
+   * @param tags the tags of the document
+   * @param fields the fields of the document
+   * @param requests the requests of the document
+   * @param enumerationOptions the enumeration options of the document
+   * @param attachments the attachments of the document
+   * @param documentGroupInfo the document group info of the document
+   * @param originDocumentId the unique identifier of the original document
+   * @param projectId the unique identifier of the project associated with the document
+   * @param isFavorite the favorite status of the document
+   * @param recentlyUsed the recently used timestamp of the document
+   */
   @JsonCreator
   public Document(
       @JsonProperty("id") String id,
@@ -186,134 +321,299 @@ public final class Document extends ApiData {
     this.recentlyUsed = recentlyUsed;
   }
 
+  /**
+   * Returns the unique identifier of the document.
+   *
+   * @return the unique identifier of the document
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the unique identifier of the user who owns the document.
+   *
+   * @return the unique identifier of the user who owns the document
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * Returns the name of the document.
+   *
+   * @return the name of the document
+   */
   public String getDocumentName() {
     return this.documentName;
   }
 
+  /**
+   * Returns the number of pages in the document.
+   *
+   * @return the number of pages in the document
+   */
   public String getPageCount() {
     return this.pageCount;
   }
 
+  /**
+   * Returns the creation timestamp of the document.
+   *
+   * @return the creation timestamp of the document
+   */
   public String getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the last updated timestamp of the document.
+   *
+   * @return the last updated timestamp of the document
+   */
   public String getUpdated() {
     return this.updated;
   }
 
+  /**
+   * Returns the version timestamp of the document.
+   *
+   * @return the version timestamp of the document
+   */
   public String getVersionTime() {
     return this.versionTime;
   }
 
+  /**
+   * Returns the original filename of the document.
+   *
+   * @return the original filename of the document
+   */
   public String getOriginalFilename() {
     return this.originalFilename;
   }
 
+  /**
+   * Returns the unique identifier of the original document.
+   *
+   * @return the unique identifier of the original document
+   */
   public String getOriginDocumentId() {
     return this.originDocumentId;
   }
 
+  /**
+   * Returns the owner of the document.
+   *
+   * @return the owner of the document
+   */
   public String getOwner() {
     return this.owner;
   }
 
+  /**
+   * Returns the unique identifier of the original user who created the document.
+   *
+   * @return the unique identifier of the original user who created the document
+   */
   public String getOriginUserId() {
     return this.originUserId;
   }
 
+  /**
+   * Returns the unique identifier of the project associated with the document.
+   *
+   * @return the unique identifier of the project associated with the document
+   */
   public String getProjectId() {
     return this.projectId;
   }
 
+  /**
+   * Returns the thumbnail of the document.
+   *
+   * @return the thumbnail of the document
+   */
   public Thumbnail getThumbnail() {
     return this.thumbnail;
   }
 
+  /**
+   * Returns the template status of the document.
+   *
+   * @return the template status of the document
+   */
   public boolean isTemplate() {
     return this.template;
   }
 
+  /**
+   * Returns the favorite status of the document.
+   *
+   * @return the favorite status of the document
+   */
   public Boolean isFavorite() {
     return this.isFavorite;
   }
 
+  /**
+   * Returns the roles associated with the document.
+   *
+   * @return the roles associated with the document
+   */
   public RoleCollection getRoles() {
     return this.roles;
   }
 
+  /**
+   * Returns the routing details of the document.
+   *
+   * @return the routing details of the document
+   */
   public RoutingDetailCollection getRoutingDetails() {
     return this.routingDetails;
   }
 
+  /**
+   * Returns the field invites of the document.
+   *
+   * @return the field invites of the document
+   */
   public FieldInviteCollection getFieldInvites() {
     return this.fieldInvites;
   }
 
+  /**
+   * Returns the signatures of the document.
+   *
+   * @return the signatures of the document
+   */
   public SignatureCollection getSignatures() {
     return this.signatures;
   }
 
+  /**
+   * Returns the seals of the document.
+   *
+   * @return the seals of the document
+   */
   public SealCollection getSeals() {
     return this.seals;
   }
 
+  /**
+   * Returns the texts of the document.
+   *
+   * @return the texts of the document
+   */
   public TextCollection getTexts() {
     return this.texts;
   }
 
+  /**
+   * Returns the checks of the document.
+   *
+   * @return the checks of the document
+   */
   public CheckCollection getChecks() {
     return this.checks;
   }
 
+  /**
+   * Returns the radio buttons of the document.
+   *
+   * @return the radio buttons of the document
+   */
   public RadiobuttonCollection getRadiobuttons() {
     return this.radiobuttons;
   }
 
+  /**
+   * Returns the integrations of the document.
+   *
+   * @return the integrations of the document
+   */
   public IntegrationCollection getIntegrations() {
     return this.integrations;
   }
 
+  /**
+   * Returns the inserts of the document.
+   *
+   * @return the inserts of the document
+   */
   public InsertCollection getInserts() {
     return this.inserts;
   }
 
+  /**
+   * Returns the tags of the document.
+   *
+   * @return the tags of the document
+   */
   public TagCollection getTags() {
     return this.tags;
   }
 
+  /**
+   * Returns the fields of the document.
+   *
+   * @return the fields of the document
+   */
   public FieldDocumentCollection getFields() {
     return this.fields;
   }
 
+  /**
+   * Returns the requests of the document.
+   *
+   * @return the requests of the document
+   */
   public RequestCollection getRequests() {
     return this.requests;
   }
 
+  /**
+   * Returns the enumeration options of the document.
+   *
+   * @return the enumeration options of the document
+   */
   public EnumerationOptionCollection getEnumerationOptions() {
     return this.enumerationOptions;
   }
 
+  /**
+   * Returns the attachments of the document.
+   *
+   * @return the attachments of the document
+   */
   public AttachmentCollection getAttachments() {
     return this.attachments;
   }
 
+  /**
+   * Returns the document group info of the document.
+   *
+   * @return the document group info of the document
+   */
   public DocumentGroupInfo getDocumentGroupInfo() {
     return this.documentGroupInfo;
   }
 
+  /**
+   * Returns the recently used timestamp of the document.
+   *
+   * @return the recently used timestamp of the document
+   */
   public String getRecentlyUsed() {
     return this.recentlyUsed;
   }
 
+  /**
+   * Converts the document to a map.
+   *
+   * @return a map representation of the document
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -353,6 +653,12 @@ public final class Document extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new Document from the specified map.
+   *
+   * @param data the map containing the document details
+   * @return a new Document created from the specified map
+   */
   @NotNull
   @Contract("_ -> new")
   public static Document fromMap(@NotNull Map<String, Object> data) {

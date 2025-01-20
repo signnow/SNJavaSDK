@@ -17,29 +17,64 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Merchant Account.
+ */
 public final class MerchantAccount extends ApiData {
 
+  /**
+   * The id of the Merchant Account.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The scope of the Merchant Account.
+   */
   @JsonProperty("scope")
   private final String scope;
 
+  /**
+   * The type of the Merchant.
+   */
   @JsonProperty("merchant_type")
   private final String merchantType;
 
+  /**
+   * The name of the Merchant Account.
+   */
   @JsonProperty("merchant_account_name")
   private final String merchantAccountName;
 
+  /**
+   * The collection of currencies supported by the Merchant Account.
+   */
   @JsonProperty("currencies")
   private final CurrencyCollection currencies;
 
+  /**
+   * The currency of the Merchant Account.
+   */
   @JsonProperty("currency")
   private final String currency;
 
+  /**
+   * The name of the currency of the Merchant Account.
+   */
   @JsonProperty("currency_name")
   private final String currencyName;
 
+  /**
+   * Constructor for the MerchantAccount class.
+   *
+   * @param id The id of the Merchant Account.
+   * @param scope The scope of the Merchant Account.
+   * @param merchantType The type of the Merchant.
+   * @param merchantAccountName The name of the Merchant Account.
+   * @param currencies The collection of currencies supported by the Merchant Account.
+   * @param currency The currency of the Merchant Account.
+   * @param currencyName The name of the currency of the Merchant Account.
+   */
   @JsonCreator
   public MerchantAccount(
       @JsonProperty("id") String id,
@@ -58,34 +93,60 @@ public final class MerchantAccount extends ApiData {
     this.currencyName = currencyName;
   }
 
+  /**
+   * @return The id of the Merchant Account.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The scope of the Merchant Account.
+   */
   public String getScope() {
     return this.scope;
   }
 
+  /**
+   * @return The type of the Merchant.
+   */
   public String getMerchantType() {
     return this.merchantType;
   }
 
+  /**
+   * @return The name of the Merchant Account.
+   */
   public String getMerchantAccountName() {
     return this.merchantAccountName;
   }
 
+  /**
+   * @return The collection of currencies supported by the Merchant Account.
+   */
   public CurrencyCollection getCurrencies() {
     return this.currencies;
   }
 
+  /**
+   * @return The currency of the Merchant Account.
+   */
   public String getCurrency() {
     return this.currency;
   }
 
+  /**
+   * @return The name of the currency of the Merchant Account.
+   */
   public String getCurrencyName() {
     return this.currencyName;
   }
 
+  /**
+   * Converts the MerchantAccount object to a Map.
+   *
+   * @return A Map representation of the MerchantAccount object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -100,6 +161,12 @@ public final class MerchantAccount extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a MerchantAccount object from a Map.
+   *
+   * @param data A Map containing the data for the MerchantAccount object.
+   * @return A new MerchantAccount object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static MerchantAccount fromMap(@NotNull Map<String, Object> data) {

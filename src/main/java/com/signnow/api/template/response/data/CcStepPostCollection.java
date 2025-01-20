@@ -11,4 +11,15 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class CcStepPostCollection extends TypedCollection<CcStepPost> {}
+/**
+ * This class extends the TypedCollection class with CcStepPost as its type.
+ * It represents a collection of CcStepPost objects.
+ */
+public class CcStepPostCollection extends TypedCollection<CcStepPost> {
+    /**
+     * Default constructor {@code CcStepPostCollection}.
+     */
+    public CcStepPostCollection() {
+        super();
+    }
+}

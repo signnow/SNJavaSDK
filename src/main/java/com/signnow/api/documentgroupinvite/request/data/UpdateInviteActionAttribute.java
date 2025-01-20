@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the attributes of an invite action that can be updated.
+ */
 public final class UpdateInviteActionAttribute extends ApiData {
 
+  /**
+   * The ID of the document associated with the invite action.
+   */
   @JsonProperty("document_id")
   private final String documentId;
 
+  /**
+   * The flag indicating whether reassignment is allowed.
+   */
   @JsonProperty("allow_reassign")
   private final int allowReassign;
 
+  /**
+   * The signature associated with the decline action.
+   */
   @JsonProperty("decline_by_signature")
   private final String declineBySignature;
 
+  /**
+   * Constructs a new UpdateInviteActionAttribute with the specified document ID, reassignment flag, and decline signature.
+   *
+   * @param documentId the ID of the document
+   * @param allowReassign the flag indicating whether reassignment is allowed
+   * @param declineBySignature the signature associated with the decline action
+   */
   @JsonCreator
   public UpdateInviteActionAttribute(
       @JsonProperty("document_id") String documentId,
@@ -38,24 +57,49 @@ public final class UpdateInviteActionAttribute extends ApiData {
     this.declineBySignature = declineBySignature;
   }
 
+  /**
+   * Constructs a new UpdateInviteActionAttribute with the specified document ID.
+   *
+   * @param documentId the ID of the document
+   */
   public UpdateInviteActionAttribute(@JsonProperty("document_id") String documentId) {
     this.documentId = documentId;
     this.allowReassign = 0;
     this.declineBySignature = null;
   }
 
+  /**
+   * Returns the ID of the document associated with the invite action.
+   *
+   * @return the document ID
+   */
   public String getDocumentId() {
     return this.documentId;
   }
 
+  /**
+   * Returns the flag indicating whether reassignment is allowed.
+   *
+   * @return the reassignment flag
+   */
   public int getAllowReassign() {
     return this.allowReassign;
   }
 
+  /**
+   * Returns the signature associated with the decline action.
+   *
+   * @return the decline signature
+   */
   public String getDeclineBySignature() {
     return this.declineBySignature;
   }
 
+  /**
+   * Converts this object to a map.
+   *
+   * @return a map representing this object
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -66,6 +110,12 @@ public final class UpdateInviteActionAttribute extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new UpdateInviteActionAttribute from the specified map.
+   *
+   * @param data the map containing the data
+   * @return a new UpdateInviteActionAttribute
+   */
   @NotNull
   @Contract("_ -> new")
   public static UpdateInviteActionAttribute fromMap(@NotNull Map<String, Object> data) {

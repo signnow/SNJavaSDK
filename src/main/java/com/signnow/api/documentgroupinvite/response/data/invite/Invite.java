@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an Invite which extends ApiData.
+ */
 public final class Invite extends ApiData {
 
+  /**
+   * The id of the invite.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The status of the invite.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * The steps of the invite.
+   */
   @JsonProperty("steps")
   private final StepCollection steps;
 
+  /**
+   * Constructs an Invite object with the specified id, status and steps.
+   *
+   * @param id the id of the invite
+   * @param status the status of the invite
+   * @param steps the steps of the invite
+   */
   @JsonCreator
   public Invite(
       @JsonProperty("id") String id,
@@ -38,18 +57,38 @@ public final class Invite extends ApiData {
     this.steps = steps;
   }
 
+  /**
+   * Returns the id of the invite.
+   *
+   * @return the id of the invite
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the status of the invite.
+   *
+   * @return the status of the invite
+   */
   public String getStatus() {
     return this.status;
   }
 
+  /**
+   * Returns the steps of the invite.
+   *
+   * @return the steps of the invite
+   */
   public StepCollection getSteps() {
     return this.steps;
   }
 
+  /**
+   * Converts the Invite object to a Map.
+   *
+   * @return a Map representing the Invite object
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class Invite extends ApiData {
     return map;
   }
 
+  /**
+   * Constructs an Invite object from a Map.
+   *
+   * @param data a Map containing the data to construct an Invite object
+   * @return a new Invite object constructed from the specified Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static Invite fromMap(@NotNull Map<String, Object> data) {

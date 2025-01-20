@@ -11,4 +11,15 @@ package com.signnow.api.template.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class ViewerPutCollection extends TypedCollection<ViewerPut> {}
+/**
+ * This class extends the TypedCollection class with ViewerPut as its type.
+ * It represents a collection of ViewerPut objects.
+ */
+public class ViewerPutCollection extends TypedCollection<ViewerPut> {
+    /**
+     * Default constructor {@code ViewerPutCollection}.
+     */
+    public ViewerPutCollection() {
+        super();
+    }
+}

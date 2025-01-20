@@ -17,35 +17,78 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a Radiobutton in the signNow API.
+ */
 public final class Radiobutton extends ApiData {
 
+  /**
+   * The id of the Radiobutton.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The user id associated with the Radiobutton.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The email associated with the Radiobutton.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The page number where the Radiobutton is located.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The width of the Radiobutton.
+   */
   @JsonProperty("width")
   private final String width;
 
+  /**
+   * The height of the Radiobutton.
+   */
   @JsonProperty("height")
   private final String height;
 
+  /**
+   * The x-coordinate of the Radiobutton.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the Radiobutton.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * The creation timestamp of the Radiobutton.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * Constructor for the Radiobutton class.
+   *
+   * @param id The id of the Radiobutton.
+   * @param userId The user id associated with the Radiobutton.
+   * @param email The email associated with the Radiobutton.
+   * @param pageNumber The page number where the Radiobutton is located.
+   * @param width The width of the Radiobutton.
+   * @param height The height of the Radiobutton.
+   * @param x The x-coordinate of the Radiobutton.
+   * @param y The y-coordinate of the Radiobutton.
+   * @param created The creation timestamp of the Radiobutton.
+   */
   @JsonCreator
   public Radiobutton(
       @JsonProperty("id") String id,
@@ -68,42 +111,74 @@ public final class Radiobutton extends ApiData {
     this.created = created;
   }
 
+  /**
+   * @return The id of the Radiobutton.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The user id associated with the Radiobutton.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return The email associated with the Radiobutton.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The page number where the Radiobutton is located.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The width of the Radiobutton.
+   */
   public String getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the Radiobutton.
+   */
   public String getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The x-coordinate of the Radiobutton.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the Radiobutton.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * @return The creation timestamp of the Radiobutton.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Converts the Radiobutton object to a Map.
+   *
+   * @return A Map representation of the Radiobutton object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -120,6 +195,12 @@ public final class Radiobutton extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Radiobutton object from a Map.
+   *
+   * @param data The Map to convert to a Radiobutton object.
+   * @return A new Radiobutton object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Radiobutton fromMap(@NotNull Map<String, Object> data) {

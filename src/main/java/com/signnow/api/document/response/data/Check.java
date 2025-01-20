@@ -17,41 +17,93 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Check class extends ApiData.
+ * Represents a check in the document.
+ */
 public final class Check extends ApiData {
 
+  /**
+   * The id of the check.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The page number where the check is located.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The x-coordinate of the check.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the check.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * The width of the check.
+   */
   @JsonProperty("width")
   private final String width;
 
+  /**
+   * The height of the check.
+   */
   @JsonProperty("height")
   private final String height;
 
+  /**
+   * The creation date of the check.
+   */
   @JsonProperty("created")
   private final String created;
 
+  /**
+   * The flag indicating if editing is allowed.
+   */
   @JsonProperty("allow_editing")
   private final boolean allowEditing;
 
+  /**
+   * The flag indicating if the owner is the recipient.
+   */
   @JsonProperty("owner_as_recipient")
   private final boolean ownerAsRecipient;
 
+  /**
+   * The user id of the check owner.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The email of the check owner.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * Constructor for Check class.
+   *
+   * @param id The id of the check.
+   * @param pageNumber The page number where the check is located.
+   * @param x The x-coordinate of the check.
+   * @param y The y-coordinate of the check.
+   * @param width The width of the check.
+   * @param height The height of the check.
+   * @param created The creation date of the check.
+   * @param allowEditing The flag indicating if editing is allowed.
+   * @param ownerAsRecipient The flag indicating if the owner is the recipient.
+   * @param userId The user id of the check owner.
+   * @param email The email of the check owner.
+   */
   @JsonCreator
   public Check(
       @JsonProperty("id") String id,
@@ -78,50 +130,88 @@ public final class Check extends ApiData {
     this.email = email;
   }
 
+  /**
+   * @return The id of the check.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The user id of the check owner.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return The email of the check owner.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The page number where the check is located.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The x-coordinate of the check.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the check.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * @return The width of the check.
+   */
   public String getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the check.
+   */
   public String getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The creation date of the check.
+   */
   public String getCreated() {
     return this.created;
   }
 
+  /**
+   * @return The flag indicating if editing is allowed.
+   */
   public boolean isAllowEditing() {
     return this.allowEditing;
   }
 
+  /**
+   * @return The flag indicating if the owner is the recipient.
+   */
   public boolean isOwnerAsRecipient() {
     return this.ownerAsRecipient;
   }
 
+  /**
+   * Converts the Check object to a Map.
+   *
+   * @return A map representation of the Check object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -140,6 +230,12 @@ public final class Check extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Check object from a Map.
+   *
+   * @param data The map containing the data.
+   * @return A new Check object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Check fromMap(@NotNull Map<String, Object> data) {

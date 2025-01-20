@@ -11,4 +11,17 @@ package com.signnow.api.document.request.data.tag;
 
 import com.signnow.core.collection.StringCollection;
 
-public class EnumerationOptionCollection extends StringCollection {}
+/**
+ * This class represents a collection of enumeration options.
+ * It extends the StringCollection class.
+ */
+public class EnumerationOptionCollection extends StringCollection {
+
+    /**
+     * Default constructor for EnumerationOptionCollection.
+     * It initializes a new instance of the EnumerationOptionCollection class.
+     */
+    public EnumerationOptionCollection() {
+        super();
+    }
+}

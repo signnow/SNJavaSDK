@@ -11,5 +11,11 @@ package com.signnow.api.document.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received after a document download request.
+ * It is annotated with JsonIgnoreProperties to ignore any unknown properties when deserializing JSON.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DocumentDownloadGetResponse {}
+public class DocumentDownloadGetResponse {
+    // No public properties, constructors, or methods to comment on.
+}

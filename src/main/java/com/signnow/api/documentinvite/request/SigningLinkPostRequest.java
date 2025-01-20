@@ -16,6 +16,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to create a signing link.
+ * It implements the RequestInterface with a String type.
+ */
 @ApiEndpoint(
     name = "createSigningLink",
     url = "/link",
@@ -26,27 +30,59 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class SigningLinkPostRequest implements RequestInterface<String> {
 
+  /**
+   * The ID of the document for which the signing link is to be created.
+   */
   private final String documentId;
 
+  /**
+   * The URI to which the user will be redirected after signing the document.
+   */
   private final String redirectUri;
 
+  /**
+   * Constructor for SigningLinkPostRequest.
+   *
+   * @param documentId The ID of the document.
+   * @param redirectUri The URI for redirection after signing.
+   */
   public SigningLinkPostRequest(String documentId, String redirectUri) {
     this.documentId = documentId;
     this.redirectUri = redirectUri;
   }
 
+  /**
+   * Constructor for SigningLinkPostRequest with only documentId.
+   *
+   * @param documentId The ID of the document.
+   */
   public SigningLinkPostRequest(String documentId) {
     this(documentId, "");
   }
 
+  /**
+   * Getter for documentId.
+   *
+   * @return The ID of the document.
+   */
   public String getDocumentId() {
     return this.documentId;
   }
 
+  /**
+   * Getter for redirectUri.
+   *
+   * @return The URI for redirection after signing.
+   */
   public String getRedirectUri() {
     return this.redirectUri;
   }
 
+  /**
+   * This method returns an empty HashMap.
+   *
+   * @return An empty HashMap.
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -54,6 +90,11 @@ public final class SigningLinkPostRequest implements RequestInterface<String> {
     return new HashMap<>();
   }
 
+  /**
+   * This method returns a Map with the documentId and redirectUri as key-value pairs.
+   *
+   * @return A Map with the documentId and redirectUri.
+   */
   @NotNull
   public Map<String, String> payload() {
     Map<String, String> map = new HashMap<>();

@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class FieldValidatorCollection extends TypedCollection<FieldValidator> {}
+/**
+ * This class extends the TypedCollection class with FieldValidator type.
+ * It represents a collection of FieldValidator objects.
+ */
+public class FieldValidatorCollection extends TypedCollection<FieldValidator> {
+    /**
+     * Constructs an empty {@code FieldValidatorCollection}.
+     */
+    public FieldValidatorCollection() {
+        super();
+    }
+}

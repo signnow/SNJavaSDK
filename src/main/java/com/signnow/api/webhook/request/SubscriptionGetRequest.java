@@ -16,6 +16,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a GET request to the "getEventSubscriptions" API endpoint.
+ * It is used to retrieve event subscriptions.
+ */
 @ApiEndpoint(
     name = "getEventSubscriptions",
     url = "/api/v2/events",
@@ -26,6 +30,11 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class SubscriptionGetRequest implements RequestInterface<String> {
 
+  /**
+   * This method is used to get the URI parameters for the request.
+   * 
+   * @return a new HashMap with the URI parameters for the request.
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -33,6 +42,11 @@ public final class SubscriptionGetRequest implements RequestInterface<String> {
     return new HashMap<>();
   }
 
+  /**
+   * This method is used to get the payload for the request.
+   * 
+   * @return a new HashMap with the payload for the request.
+   */
   @NotNull
   @Override
   public Map<String, String> payload() {

@@ -17,6 +17,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to merge documents.
+ * It is annotated with @ApiEndpoint to provide metadata about the API endpoint.
+ */
 @ApiEndpoint(
     name = "mergeDocuments",
     url = "/document/merge",
@@ -27,12 +31,28 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class DocumentMergePostRequest implements RequestInterface<Object> {
 
+  /**
+   * The name of the document.
+   */
   private final String name;
 
+  /**
+   * The collection of document IDs to be merged.
+   */
   private final DocumentIdCollection documentIds;
 
+  /**
+   * Flag indicating whether the document should be uploaded.
+   */
   private final boolean uploadDocument;
 
+  /**
+   * Constructs a new DocumentMergePostRequest.
+   *
+   * @param name the name of the document
+   * @param documentIds the collection of document IDs to be merged
+   * @param uploadDocument flag indicating whether the document should be uploaded
+   */
   public DocumentMergePostRequest(
       String name, DocumentIdCollection documentIds, boolean uploadDocument) {
     this.name = name;
@@ -40,18 +60,38 @@ public final class DocumentMergePostRequest implements RequestInterface<Object> 
     this.uploadDocument = uploadDocument;
   }
 
+  /**
+   * Returns the name of the document.
+   *
+   * @return the name of the document
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the collection of document IDs to be merged.
+   *
+   * @return the collection of document IDs to be merged
+   */
   public DocumentIdCollection getDocumentIds() {
     return this.documentIds;
   }
 
+  /**
+   * Returns whether the document should be uploaded.
+   *
+   * @return true if the document should be uploaded, false otherwise
+   */
   public boolean isUploadDocument() {
     return this.uploadDocument;
   }
 
+  /**
+   * Returns a new HashMap with no URI parameters.
+   *
+   * @return a new HashMap with no URI parameters
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -59,6 +99,11 @@ public final class DocumentMergePostRequest implements RequestInterface<Object> 
     return new HashMap<>();
   }
 
+  /**
+   * Returns a map with the payload of the request.
+   *
+   * @return a map with the payload of the request
+   */
   @NotNull
   public Map<String, Object> payload() {
     Map<String, Object> map = new HashMap<>();

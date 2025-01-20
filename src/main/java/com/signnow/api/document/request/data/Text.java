@@ -17,41 +17,92 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Text class extends ApiData and represents a text object in a document.
+ */
 public final class Text extends ApiData {
 
+  /**
+   * The x-coordinate of the text.
+   */
   @JsonProperty("x")
   private final int x;
 
+  /**
+   * The y-coordinate of the text.
+   */
   @JsonProperty("y")
   private final int y;
 
+  /**
+   * The size of the text.
+   */
   @JsonProperty("size")
   private final int size;
 
+  /**
+   * The width of the text.
+   */
   @JsonProperty("width")
   private final int width;
 
+  /**
+   * The height of the text.
+   */
   @JsonProperty("height")
   private final int height;
 
+  /**
+   * The subtype of the text.
+   */
   @JsonProperty("subtype")
   private final String subtype;
 
+  /**
+   * The page number where the text is located.
+   */
   @JsonProperty("page_number")
   private final int pageNumber;
 
+  /**
+   * The data of the text.
+   */
   @JsonProperty("data")
   private final String data;
 
+  /**
+   * The font of the text.
+   */
   @JsonProperty("font")
   private final String font;
 
+  /**
+   * The line height of the text.
+   */
   @JsonProperty("line_height")
   private final int lineHeight;
 
+  /**
+   * The field id of the text.
+   */
   @JsonProperty("field_id")
   private final String fieldId;
 
+  /**
+   * Constructor for Text class.
+   *
+   * @param x The x-coordinate of the text.
+   * @param y The y-coordinate of the text.
+   * @param size The size of the text.
+   * @param width The width of the text.
+   * @param height The height of the text.
+   * @param subtype The subtype of the text.
+   * @param pageNumber The page number where the text is located.
+   * @param data The data of the text.
+   * @param font The font of the text.
+   * @param lineHeight The line height of the text.
+   * @param fieldId The field id of the text.
+   */
   @JsonCreator
   public Text(
       @JsonProperty("x") int x,
@@ -78,6 +129,17 @@ public final class Text extends ApiData {
     this.fieldId = fieldId;
   }
 
+  /**
+   * Constructor for Text class with default values for subtype, font, lineHeight, and fieldId.
+   *
+   * @param x The x-coordinate of the text.
+   * @param y The y-coordinate of the text.
+   * @param size The size of the text.
+   * @param width The width of the text.
+   * @param height The height of the text.
+   * @param pageNumber The page number where the text is located.
+   * @param data The data of the text.
+   */
   public Text(
       @JsonProperty("x") int x,
       @JsonProperty("y") int y,
@@ -99,50 +161,88 @@ public final class Text extends ApiData {
     this.fieldId = null;
   }
 
+  /**
+   * @return The x-coordinate of the text.
+   */
   public int getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the text.
+   */
   public int getY() {
     return this.y;
   }
 
+  /**
+   * @return The size of the text.
+   */
   public int getSize() {
     return this.size;
   }
 
+  /**
+   * @return The width of the text.
+   */
   public int getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the text.
+   */
   public int getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The subtype of the text.
+   */
   public String getSubtype() {
     return this.subtype;
   }
 
+  /**
+   * @return The page number where the text is located.
+   */
   public int getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The data of the text.
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * @return The font of the text.
+   */
   public String getFont() {
     return this.font;
   }
 
+  /**
+   * @return The line height of the text.
+   */
   public int getLineHeight() {
     return this.lineHeight;
   }
 
+  /**
+   * @return The field id of the text.
+   */
   public String getFieldId() {
     return this.fieldId;
   }
 
+  /**
+   * Converts the Text object to a Map.
+   *
+   * @return A Map representation of the Text object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -161,6 +261,12 @@ public final class Text extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Text object from a Map.
+   *
+   * @param data The Map containing the data for the Text object.
+   * @return A new Text object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Text fromMap(@NotNull Map<String, Object> data) {

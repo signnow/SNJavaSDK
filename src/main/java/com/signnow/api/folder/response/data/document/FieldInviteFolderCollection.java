@@ -11,4 +11,15 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class FieldInviteFolderCollection extends TypedCollection<FieldInviteFolder> {}
+/**
+ * This class represents a collection of FieldInviteFolder objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
+public class FieldInviteFolderCollection extends TypedCollection<FieldInviteFolder> {
+    /**
+     * Default constructor {@code FieldInviteFolderCollection}.
+     */
+    public FieldInviteFolderCollection() {
+        super();
+    }
+}

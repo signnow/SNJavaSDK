@@ -11,4 +11,8 @@ package com.signnow.api.documentgroupinvite.request.data.invitestep;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of InviteStep objects.
+ * It extends the TypedCollection class, specifying InviteStep as the type parameter.
+ */
 public class InviteStepCollection extends TypedCollection<InviteStep> {}

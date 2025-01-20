@@ -17,20 +17,43 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the billing period data.
+ */
 public final class BillingPeriod extends ApiData {
 
+  /**
+   * The start date of the billing period.
+   */
   @JsonProperty("start_date")
   private final String startDate;
 
+  /**
+   * The end date of the billing period.
+   */
   @JsonProperty("end_date")
   private final String endDate;
 
+  /**
+   * The start timestamp of the billing period.
+   */
   @JsonProperty("start_timestamp")
   private final int startTimestamp;
 
+  /**
+   * The end timestamp of the billing period.
+   */
   @JsonProperty("end_timestamp")
   private final int endTimestamp;
 
+  /**
+   * Constructs a new BillingPeriod with the specified start date, end date, start timestamp, and end timestamp.
+   *
+   * @param startDate the start date of the billing period
+   * @param endDate the end date of the billing period
+   * @param startTimestamp the start timestamp of the billing period
+   * @param endTimestamp the end timestamp of the billing period
+   */
   @JsonCreator
   public BillingPeriod(
       @JsonProperty("start_date") String startDate,
@@ -43,22 +66,47 @@ public final class BillingPeriod extends ApiData {
     this.endTimestamp = endTimestamp;
   }
 
+  /**
+   * Returns the start date of the billing period.
+   *
+   * @return the start date of the billing period
+   */
   public String getStartDate() {
     return this.startDate;
   }
 
+  /**
+   * Returns the end date of the billing period.
+   *
+   * @return the end date of the billing period
+   */
   public String getEndDate() {
     return this.endDate;
   }
 
+  /**
+   * Returns the start timestamp of the billing period.
+   *
+   * @return the start timestamp of the billing period
+   */
   public int getStartTimestamp() {
     return this.startTimestamp;
   }
 
+  /**
+   * Returns the end timestamp of the billing period.
+   *
+   * @return the end timestamp of the billing period
+   */
   public int getEndTimestamp() {
     return this.endTimestamp;
   }
 
+  /**
+   * Converts this BillingPeriod to a Map.
+   *
+   * @return a Map representing this BillingPeriod
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +118,12 @@ public final class BillingPeriod extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new BillingPeriod from the specified Map.
+   *
+   * @param data a Map containing the data to create the BillingPeriod from
+   * @return a new BillingPeriod created from the specified Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static BillingPeriod fromMap(@NotNull Map<String, Object> data) {

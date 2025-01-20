@@ -17,29 +17,64 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the details of routing in the signNow API.
+ */
 public final class RoutingDetailGet extends ApiData {
 
+  /**
+   * Represents the role of the inviter.
+   */
   @JsonProperty("inviter_role")
   private final boolean inviterRole;
 
+  /**
+   * Represents the name of the user.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * Represents the ID of the role.
+   */
   @JsonProperty("role_id")
   private final String roleId;
 
+  /**
+   * Represents the order of signing.
+   */
   @JsonProperty("signing_order")
   private final int signingOrder;
 
+  /**
+   * Represents the default email of the user.
+   */
   @JsonProperty("default_email")
   private final String defaultEmail;
 
+  /**
+   * Represents if the signature can be declined.
+   */
   @JsonProperty("decline_by_signature")
   private final boolean declineBySignature;
 
+  /**
+   * Represents the type of delivery.
+   */
   @JsonProperty("delivery_type")
   private final String deliveryType;
 
+  /**
+   * Constructor for the RoutingDetailGet class.
+   *
+   * @param inviterRole        The role of the inviter.
+   * @param name               The name of the user.
+   * @param roleId             The ID of the role.
+   * @param signingOrder       The order of signing.
+   * @param defaultEmail       The default email of the user.
+   * @param declineBySignature If the signature can be declined.
+   * @param deliveryType       The type of delivery.
+   */
   @JsonCreator
   public RoutingDetailGet(
       @JsonProperty("inviter_role") boolean inviterRole,
@@ -58,34 +93,60 @@ public final class RoutingDetailGet extends ApiData {
     this.deliveryType = deliveryType;
   }
 
+  /**
+   * @return The role of the inviter.
+   */
   public boolean isInviterRole() {
     return this.inviterRole;
   }
 
+  /**
+   * @return The name of the user.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * @return The ID of the role.
+   */
   public String getRoleId() {
     return this.roleId;
   }
 
+  /**
+   * @return The order of signing.
+   */
   public int getSigningOrder() {
     return this.signingOrder;
   }
 
+  /**
+   * @return The default email of the user.
+   */
   public String getDefaultEmail() {
     return this.defaultEmail;
   }
 
+  /**
+   * @return If the signature can be declined.
+   */
   public boolean isDeclineBySignature() {
     return this.declineBySignature;
   }
 
+  /**
+   * @return The type of delivery.
+   */
   public String getDeliveryType() {
     return this.deliveryType;
   }
 
+  /**
+   * Converts the RoutingDetailGet object to a Map.
+   *
+   * @return A Map representing the RoutingDetailGet object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -100,6 +161,12 @@ public final class RoutingDetailGet extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a RoutingDetailGet object from a Map.
+   *
+   * @param data The Map to convert.
+   * @return A new RoutingDetailGet object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static RoutingDetailGet fromMap(@NotNull Map<String, Object> data) {

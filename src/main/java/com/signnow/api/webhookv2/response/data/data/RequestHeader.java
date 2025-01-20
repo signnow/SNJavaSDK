@@ -17,20 +17,43 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the request header data.
+ */
 public final class RequestHeader extends ApiData {
 
+  /**
+   * The string header property.
+   */
   @JsonProperty("string_head")
   private final String stringHead;
 
+  /**
+   * The integer header property.
+   */
   @JsonProperty("int_head")
   private final Integer intHead;
 
+  /**
+   * The boolean header property.
+   */
   @JsonProperty("bool_head")
   private final Boolean boolHead;
 
+  /**
+   * The float header property.
+   */
   @JsonProperty("float_head")
   private final Float floatHead;
 
+  /**
+   * Constructs a new RequestHeader with the specified values.
+   *
+   * @param stringHead the string header value
+   * @param intHead the integer header value
+   * @param boolHead the boolean header value
+   * @param floatHead the float header value
+   */
   @JsonCreator
   public RequestHeader(
       @JsonProperty("string_head") String stringHead,
@@ -43,22 +66,47 @@ public final class RequestHeader extends ApiData {
     this.floatHead = floatHead;
   }
 
+  /**
+   * Returns the string header value.
+   *
+   * @return the string header value
+   */
   public String getStringHead() {
     return this.stringHead;
   }
 
+  /**
+   * Returns the integer header value.
+   *
+   * @return the integer header value
+   */
   public Integer getIntHead() {
     return this.intHead;
   }
 
+  /**
+   * Returns the boolean header value.
+   *
+   * @return the boolean header value
+   */
   public Boolean isBoolHead() {
     return this.boolHead;
   }
 
+  /**
+   * Returns the float header value.
+   *
+   * @return the float header value
+   */
   public Float getFloatHead() {
     return this.floatHead;
   }
 
+  /**
+   * Converts this RequestHeader to a Map.
+   *
+   * @return a Map representation of this RequestHeader
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +118,12 @@ public final class RequestHeader extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new RequestHeader from the specified Map.
+   *
+   * @param data the Map to convert
+   * @return a new RequestHeader with the values from the specified Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static RequestHeader fromMap(@NotNull Map<String, Object> data) {

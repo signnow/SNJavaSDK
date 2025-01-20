@@ -11,4 +11,15 @@ package com.signnow.api.document.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class FieldCollection extends TypedCollection<Field> {}
+/**
+ * This class represents a collection of Field objects.
+ * It extends the TypedCollection class with Field as its type parameter.
+ */
+public class FieldCollection extends TypedCollection<Field> {
+    /**
+     * Constructs an empty {@code FieldCollection}.
+     */
+    public FieldCollection() {
+        super();
+    }
+}

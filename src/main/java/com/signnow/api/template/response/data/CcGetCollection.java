@@ -11,4 +11,17 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.StringCollection;
 
-public class CcGetCollection extends StringCollection {}
+/**
+ * This class extends the StringCollection class.
+ * It represents a collection of strings for the CcGet operation in the signNow API.
+ */
+public class CcGetCollection extends StringCollection {
+
+    /**
+     * Default constructor for the CcGetCollection class.
+     * It initializes an empty collection of strings.
+     */
+    public CcGetCollection() {
+        super();
+    }
+}

@@ -16,6 +16,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a POST request for creating routing details in the template.
+ * It implements the RequestInterface with a String type parameter.
+ */
 @ApiEndpoint(
     name = "createRoutingDetails",
     url = "/document/{document_id}/template/routing/detail",
@@ -26,13 +30,27 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class RoutingDetailsPostRequest implements RequestInterface<String> {
 
+  /**
+   * A map to hold URI parameters for the request.
+   */
   private final HashMap<String, String> uriParams = new HashMap<>();
 
+  /**
+   * Method to add a document ID to the URI parameters.
+   *
+   * @param documentId The ID of the document.
+   * @return The current RoutingDetailsPostRequest instance.
+   */
   public RoutingDetailsPostRequest withDocumentId(String documentId) {
     this.uriParams.put("document_id", documentId);
     return this;
   }
 
+  /**
+   * Method to get a copy of the URI parameters.
+   *
+   * @return A new HashMap containing the URI parameters.
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -40,6 +58,11 @@ public final class RoutingDetailsPostRequest implements RequestInterface<String>
     return new HashMap<>(this.uriParams);
   }
 
+  /**
+   * Method to get the payload for the request.
+   *
+   * @return A new HashMap. In this case, it's empty as the payload is not used.
+   */
   @NotNull
   @Override
   public Map<String, String> payload() {

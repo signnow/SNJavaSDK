@@ -17,26 +17,58 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Pagination class extends ApiData.
+ * It represents the pagination information of the API response.
+ */
 public final class Pagination extends ApiData {
 
+  /**
+   * Total number of items.
+   */
   @JsonProperty("total")
   private final int total;
 
+  /**
+   * Count of items on the current page.
+   */
   @JsonProperty("count")
   private final int count;
 
+  /**
+   * Number of items per page.
+   */
   @JsonProperty("per_page")
   private final int perPage;
 
+  /**
+   * Current page number.
+   */
   @JsonProperty("current_page")
   private final int currentPage;
 
+  /**
+   * Total number of pages.
+   */
   @JsonProperty("total_pages")
   private final int totalPages;
 
+  /**
+   * Collection of links for pagination.
+   */
   @JsonProperty("links")
   private final LinkCollection links;
 
+  /**
+   * Constructor for Pagination class.
+   *
+   * @param total Total number of items.
+   * @param count Count of items on the current page.
+   * @param perPage Number of items per page.
+   * @param currentPage Current page number.
+   * @param totalPages Total number of pages.
+   * @param links Collection of links for pagination.
+   */
   @JsonCreator
   public Pagination(
       @JsonProperty("total") int total,
@@ -53,30 +85,53 @@ public final class Pagination extends ApiData {
     this.links = links;
   }
 
+  /**
+   * @return Total number of items.
+   */
   public int getTotal() {
     return this.total;
   }
 
+  /**
+   * @return Count of items on the current page.
+   */
   public int getCount() {
     return this.count;
   }
 
+  /**
+   * @return Number of items per page.
+   */
   public int getPerPage() {
     return this.perPage;
   }
 
+  /**
+   * @return Current page number.
+   */
   public int getCurrentPage() {
     return this.currentPage;
   }
 
+  /**
+   * @return Total number of pages.
+   */
   public int getTotalPages() {
     return this.totalPages;
   }
 
+  /**
+   * @return Collection of links for pagination.
+   */
   public LinkCollection getLinks() {
     return this.links;
   }
 
+  /**
+   * Converts the Pagination object to a Map.
+   *
+   * @return Map representation of the Pagination object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -90,6 +145,12 @@ public final class Pagination extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Pagination object from a Map.
+   *
+   * @param data Map containing the data for the Pagination object.
+   * @return New Pagination object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Pagination fromMap(@NotNull Map<String, Object> data) {

@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data.fieldinvite;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class FieldInviteCollection extends TypedCollection<FieldInvite> {}
+/**
+ * This class represents a collection of FieldInvite objects.
+ * It extends the TypedCollection class from the signNow SDK API client.
+ */
+public class FieldInviteCollection extends TypedCollection<FieldInvite> {
+    /**
+     * Constructs an empty {@code FieldInviteCollection}.
+     */
+    public FieldInviteCollection() {
+        super();
+    }
+}

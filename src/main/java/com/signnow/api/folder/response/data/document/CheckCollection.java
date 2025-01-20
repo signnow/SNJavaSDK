@@ -11,4 +11,19 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class CheckCollection extends TypedCollection {}
+/**
+ * This class extends the TypedCollection class.
+ * It is used to create a collection of checks.
+ * 
+ * @see TypedCollection
+ */
+public class CheckCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the CheckCollection class.
+     * It initializes an empty CheckCollection.
+     */
+    public CheckCollection() {
+        super();
+    }
+}

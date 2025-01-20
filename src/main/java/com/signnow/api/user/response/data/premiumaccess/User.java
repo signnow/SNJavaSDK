@@ -17,29 +17,65 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * User class extends ApiData.
+ * Represents a user with premium access in the system.
+ */
 public final class User extends ApiData {
 
+  /**
+   * The username of the user.
+   */
   @JsonProperty("username")
   private final String username;
 
+  /**
+   * The email of the user.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The date the user was added.
+   */
   @JsonProperty("added_date")
   private final int addedDate;
 
+  /**
+   * The status of the user.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * The admin status of the user.
+   */
   @JsonProperty("admin")
   private final String admin;
 
+  /**
+   * The first name of the user.
+   */
   @JsonProperty("first_name")
   private final String firstName;
 
+  /**
+   * The last name of the user.
+   */
   @JsonProperty("last_name")
   private final String lastName;
 
+  /**
+   * Constructor for User class.
+   *
+   * @param username  The username of the user.
+   * @param email     The email of the user.
+   * @param addedDate The date the user was added.
+   * @param status    The status of the user.
+   * @param admin     The admin status of the user.
+   * @param firstName The first name of the user.
+   * @param lastName  The last name of the user.
+   */
   @JsonCreator
   public User(
       @JsonProperty("username") String username,
@@ -58,34 +94,60 @@ public final class User extends ApiData {
     this.lastName = lastName;
   }
 
+  /**
+   * @return The username of the user.
+   */
   public String getUsername() {
     return this.username;
   }
 
+  /**
+   * @return The email of the user.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The first name of the user.
+   */
   public String getFirstName() {
     return this.firstName;
   }
 
+  /**
+   * @return The last name of the user.
+   */
   public String getLastName() {
     return this.lastName;
   }
 
+  /**
+   * @return The date the user was added.
+   */
   public int getAddedDate() {
     return this.addedDate;
   }
 
+  /**
+   * @return The status of the user.
+   */
   public String getStatus() {
     return this.status;
   }
 
+  /**
+   * @return The admin status of the user.
+   */
   public String getAdmin() {
     return this.admin;
   }
 
+  /**
+   * Converts the User object to a Map.
+   *
+   * @return A map representation of the User object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -100,6 +162,12 @@ public final class User extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a User object from a Map.
+   *
+   * @param data The map containing the user data.
+   * @return A new User object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static User fromMap(@NotNull Map<String, Object> data) {

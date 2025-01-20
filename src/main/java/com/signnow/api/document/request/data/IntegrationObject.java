@@ -17,62 +17,141 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an IntegrationObject which extends ApiData.
+ */
 public final class IntegrationObject extends ApiData {
 
+  /**
+   * The x-coordinate of the IntegrationObject.
+   */
   @JsonProperty("x")
   private final int x;
 
+  /**
+   * The y-coordinate of the IntegrationObject.
+   */
   @JsonProperty("y")
   private final int y;
 
+  /**
+   * The size of the IntegrationObject.
+   */
   @JsonProperty("size")
   private final int size;
 
+  /**
+   * The width of the IntegrationObject.
+   */
   @JsonProperty("width")
   private final int width;
 
+  /**
+   * The height of the IntegrationObject.
+   */
   @JsonProperty("height")
   private final int height;
 
+  /**
+   * The page number of the IntegrationObject.
+   */
   @JsonProperty("page_number")
   private final int pageNumber;
 
+  /**
+   * The font of the IntegrationObject.
+   */
   @JsonProperty("font")
   private final String font;
 
+  /**
+   * The data of the IntegrationObject.
+   */
   @JsonProperty("data")
   private final String data;
 
+  /**
+   * The status of the IntegrationObject.
+   */
   @JsonProperty("status")
   private final int status;
 
+  /**
+   * The color of the IntegrationObject.
+   */
   @JsonProperty("color")
   private final String color;
 
+  /**
+   * The creation time of the IntegrationObject.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The active status of the IntegrationObject.
+   */
   @JsonProperty("active")
   private final boolean active;
 
+  /**
+   * The line height of the IntegrationObject.
+   */
   @JsonProperty("line_height")
   private final int lineHeight;
 
+  /**
+   * The bold status of the IntegrationObject.
+   */
   @JsonProperty("bold")
   private final boolean bold;
 
+  /**
+   * The italic status of the IntegrationObject.
+   */
   @JsonProperty("italic")
   private final boolean italic;
 
+  /**
+   * The underline status of the IntegrationObject.
+   */
   @JsonProperty("underline")
   private final boolean underline;
 
+  /**
+   * The field id of the IntegrationObject.
+   */
   @JsonProperty("field_id")
   private final String fieldId;
 
+  /**
+   * The API integration id of the IntegrationObject.
+   */
   @JsonProperty("api_integration_id")
   private final String apiIntegrationId;
 
+  /**
+   * Constructor for IntegrationObject.
+   *
+   * @param x The x-coordinate.
+   * @param y The y-coordinate.
+   * @param size The size.
+   * @param width The width.
+   * @param height The height.
+   * @param pageNumber The page number.
+   * @param font The font.
+   * @param data The data.
+   * @param status The status.
+   * @param color The color.
+   * @param created The creation time.
+   * @param active The active status.
+   * @param lineHeight The line height.
+   * @param bold The bold status.
+   * @param italic The italic status.
+   * @param underline The underline status.
+   * @param fieldId The field id.
+   * @param apiIntegrationId The API integration id.
+   */
   @JsonCreator
   public IntegrationObject(
       @JsonProperty("x") int x,
@@ -113,6 +192,23 @@ public final class IntegrationObject extends ApiData {
     this.apiIntegrationId = apiIntegrationId;
   }
 
+  /**
+   * Overloaded constructor for IntegrationObject.
+   *
+   * @param x The x-coordinate.
+   * @param y The y-coordinate.
+   * @param size The size.
+   * @param width The width.
+   * @param height The height.
+   * @param pageNumber The page number.
+   * @param font The font.
+   * @param data The data.
+   * @param status The status.
+   * @param color The color.
+   * @param created The creation time.
+   * @param active The active status.
+   * @param lineHeight The line height.
+   */
   public IntegrationObject(
       @JsonProperty("x") int x,
       @JsonProperty("y") int y,
@@ -147,78 +243,173 @@ public final class IntegrationObject extends ApiData {
     this.apiIntegrationId = null;
   }
 
+  /**
+   * Returns the x-coordinate.
+   *
+   * @return The x-coordinate.
+   */
   public int getX() {
     return this.x;
   }
 
+  /**
+   * Returns the y-coordinate.
+   *
+   * @return The y-coordinate.
+   */
   public int getY() {
     return this.y;
   }
 
+  /**
+   * Returns the size.
+   *
+   * @return The size.
+   */
   public int getSize() {
     return this.size;
   }
 
+  /**
+   * Returns the width.
+   *
+   * @return The width.
+   */
   public int getWidth() {
     return this.width;
   }
 
+  /**
+   * Returns the height.
+   *
+   * @return The height.
+   */
   public int getHeight() {
     return this.height;
   }
 
+  /**
+   * Returns the page number.
+   *
+   * @return The page number.
+   */
   public int getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * Returns the font.
+   *
+   * @return The font.
+   */
   public String getFont() {
     return this.font;
   }
 
+  /**
+   * Returns the data.
+   *
+   * @return The data.
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * Returns the status.
+   *
+   * @return The status.
+   */
   public int getStatus() {
     return this.status;
   }
 
+  /**
+   * Returns the color.
+   *
+   * @return The color.
+   */
   public String getColor() {
     return this.color;
   }
 
+  /**
+   * Returns the bold status.
+   *
+   * @return The bold status.
+   */
   public boolean isBold() {
     return this.bold;
   }
 
+  /**
+   * Returns the italic status.
+   *
+   * @return The italic status.
+   */
   public boolean isItalic() {
     return this.italic;
   }
 
+  /**
+   * Returns the underline status.
+   *
+   * @return The underline status.
+   */
   public boolean isUnderline() {
     return this.underline;
   }
 
+  /**
+   * Returns the creation time.
+   *
+   * @return The creation time.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the active status.
+   *
+   * @return The active status.
+   */
   public boolean isActive() {
     return this.active;
   }
 
+  /**
+   * Returns the line height.
+   *
+   * @return The line height.
+   */
   public int getLineHeight() {
     return this.lineHeight;
   }
 
+  /**
+   * Returns the field id.
+   *
+   * @return The field id.
+   */
   public String getFieldId() {
     return this.fieldId;
   }
 
+  /**
+   * Returns the API integration id.
+   *
+   * @return The API integration id.
+   */
   public String getApiIntegrationId() {
     return this.apiIntegrationId;
   }
 
+  /**
+   * Converts the IntegrationObject to a Map.
+   *
+   * @return The Map representation of the IntegrationObject.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -244,6 +435,12 @@ public final class IntegrationObject extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an IntegrationObject from a Map.
+   *
+   * @param data The Map representation of the IntegrationObject.
+   * @return The IntegrationObject.
+   */
   @NotNull
   @Contract("_ -> new")
   public static IntegrationObject fromMap(@NotNull Map<String, Object> data) {

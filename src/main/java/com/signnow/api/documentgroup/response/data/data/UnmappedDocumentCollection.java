@@ -11,4 +11,17 @@ package com.signnow.api.documentgroup.response.data.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class UnmappedDocumentCollection extends TypedCollection {}
+/**
+ * This class represents a collection of documents that are not mapped to any specific type.
+ * It extends the TypedCollection class.
+ */
+public class UnmappedDocumentCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the UnmappedDocumentCollection class.
+     * It initializes an empty collection of unmapped documents.
+     */
+    public UnmappedDocumentCollection() {
+        super();
+    }
+}

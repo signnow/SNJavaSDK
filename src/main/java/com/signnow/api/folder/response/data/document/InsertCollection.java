@@ -11,4 +11,15 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class InsertCollection extends TypedCollection {}
+/**
+ * This class extends the TypedCollection class.
+ * It is used to insert a collection of a specific type.
+ */
+public class InsertCollection extends TypedCollection<Insert> {
+    /**
+     * Default constructor {@code InsertCollection}.
+     */
+    public InsertCollection() {
+        super();
+    }
+}

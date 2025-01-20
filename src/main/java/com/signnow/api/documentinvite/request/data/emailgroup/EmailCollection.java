@@ -11,4 +11,8 @@ package com.signnow.api.documentinvite.request.data.emailgroup;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of Email objects.
+ * It extends the TypedCollection class, which provides a type-safe way to handle collections.
+ */
 public class EmailCollection extends TypedCollection<Email> {}

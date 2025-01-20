@@ -11,4 +11,15 @@ package com.signnow.api.folder.response.data.document;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class TagCollection extends TypedCollection<Tag> {}
+/**
+ * This class represents a collection of Tag objects.
+ * It extends the TypedCollection class with a type parameter of Tag.
+ */
+public class TagCollection extends TypedCollection<Tag> {
+    /**
+     * Default constructor {@code TagCollection}.
+     */
+    public TagCollection() {
+        super();
+    }
+}

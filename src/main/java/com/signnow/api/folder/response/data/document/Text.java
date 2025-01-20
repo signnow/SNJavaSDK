@@ -17,41 +17,93 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Text class extends ApiData.
+ * Represents a text object in the signNow API.
+ */
 public final class Text extends ApiData {
 
+  /**
+   * The id of the text object.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The user id associated with the text object.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The page number where the text object is located.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The email associated with the text object.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The font of the text object.
+   */
   @JsonProperty("font")
   private final String font;
 
+  /**
+   * The size of the text object.
+   */
   @JsonProperty("size")
   private final String size;
 
+  /**
+   * The data of the text object.
+   */
   @JsonProperty("data")
   private final String data;
 
+  /**
+   * The x-coordinate of the text object.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the text object.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * The line height of the text object.
+   */
   @JsonProperty("line_height")
   private final String lineHeight;
 
+  /**
+   * The creation timestamp of the text object.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * Constructor for Text class.
+   *
+   * @param id The id of the text object.
+   * @param userId The user id associated with the text object.
+   * @param pageNumber The page number where the text object is located.
+   * @param email The email associated with the text object.
+   * @param font The font of the text object.
+   * @param size The size of the text object.
+   * @param data The data of the text object.
+   * @param x The x-coordinate of the text object.
+   * @param y The y-coordinate of the text object.
+   * @param lineHeight The line height of the text object.
+   * @param created The creation timestamp of the text object.
+   */
   @JsonCreator
   public Text(
       @JsonProperty("id") String id,
@@ -78,50 +130,88 @@ public final class Text extends ApiData {
     this.created = created;
   }
 
+  /**
+   * @return The id of the text object.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * @return The user id associated with the text object.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * @return The page number where the text object is located.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * @return The email associated with the text object.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * @return The font of the text object.
+   */
   public String getFont() {
     return this.font;
   }
 
+  /**
+   * @return The size of the text object.
+   */
   public String getSize() {
     return this.size;
   }
 
+  /**
+   * @return The data of the text object.
+   */
   public String getData() {
     return this.data;
   }
 
+  /**
+   * @return The x-coordinate of the text object.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the text object.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * @return The line height of the text object.
+   */
   public String getLineHeight() {
     return this.lineHeight;
   }
 
+  /**
+   * @return The creation timestamp of the text object.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Converts the Text object to a Map.
+   *
+   * @return A Map representation of the Text object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -140,6 +230,12 @@ public final class Text extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Text object from a Map.
+   *
+   * @param data The Map to convert to a Text object.
+   * @return A new Text object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Text fromMap(@NotNull Map<String, Object> data) {

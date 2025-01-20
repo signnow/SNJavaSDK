@@ -11,5 +11,11 @@ package com.signnow.api.documentfield.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received after updating the prefill of a document.
+ * It is annotated with JsonIgnoreProperties to ignore any unknown properties when deserializing JSON to Java object.
+ * Currently, this class does not have any properties, constructors, or methods.
+ * Future updates may include properties, constructors, and methods as per requirements.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DocumentPrefillPutResponse {}

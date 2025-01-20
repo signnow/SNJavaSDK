@@ -16,6 +16,10 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a request to create a template.
+ * It implements the RequestInterface with a String type.
+ */
 @ApiEndpoint(
     name = "createTemplate",
     url = "/template",
@@ -26,23 +30,50 @@ import org.jetbrains.annotations.NotNull;
     type = "application/json")
 public final class TemplatePostRequest implements RequestInterface<String> {
 
+  /**
+   * The ID of the document to be used as a template.
+   */
   private final String documentId;
 
+  /**
+   * The name of the document to be used as a template.
+   */
   private final String documentName;
 
+  /**
+   * Constructs a new TemplatePostRequest with the specified document ID and name.
+   *
+   * @param documentId the ID of the document
+   * @param documentName the name of the document
+   */
   public TemplatePostRequest(String documentId, String documentName) {
     this.documentId = documentId;
     this.documentName = documentName;
   }
 
+  /**
+   * Returns the ID of the document.
+   *
+   * @return the document ID
+   */
   public String getDocumentId() {
     return this.documentId;
   }
 
+  /**
+   * Returns the name of the document.
+   *
+   * @return the document name
+   */
   public String getDocumentName() {
     return this.documentName;
   }
 
+  /**
+   * Returns an empty HashMap for URI parameters.
+   *
+   * @return an empty HashMap
+   */
   @NotNull
   @Contract(value = " -> new", pure = true)
   @Override
@@ -50,6 +81,11 @@ public final class TemplatePostRequest implements RequestInterface<String> {
     return new HashMap<>();
   }
 
+  /**
+   * Returns a Map with the document ID and name as the payload.
+   *
+   * @return a Map with the document ID and name
+   */
   @NotNull
   public Map<String, String> payload() {
     Map<String, String> map = new HashMap<>();

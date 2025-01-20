@@ -17,23 +17,50 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the Authentication data for the API.
+ */
 public final class Authentication extends ApiData {
 
+  /**
+   * The type of authentication.
+   */
   @JsonProperty("type")
   private final String type;
 
+  /**
+   * The value of the authentication.
+   */
   @JsonProperty("value")
   private final String value;
 
+  /**
+   * The method of authentication.
+   */
   @JsonProperty("method")
   private final String method;
 
+  /**
+   * The phone number for authentication.
+   */
   @JsonProperty("phone")
   private final String phone;
 
+  /**
+   * The message for authentication.
+   */
   @JsonProperty("message")
   private final String message;
 
+  /**
+   * Constructs an Authentication object with the specified values.
+   *
+   * @param type the type of authentication
+   * @param value the value of authentication
+   * @param method the method of authentication
+   * @param phone the phone number for authentication
+   * @param message the message for authentication
+   */
   @JsonCreator
   public Authentication(
       @JsonProperty("type") String type,
@@ -48,26 +75,56 @@ public final class Authentication extends ApiData {
     this.message = message;
   }
 
+  /**
+   * Returns the type of authentication.
+   *
+   * @return the type
+   */
   public String getType() {
     return this.type;
   }
 
+  /**
+   * Returns the value of authentication.
+   *
+   * @return the value
+   */
   public String getValue() {
     return this.value;
   }
 
+  /**
+   * Returns the method of authentication.
+   *
+   * @return the method
+   */
   public String getMethod() {
     return this.method;
   }
 
+  /**
+   * Returns the phone number for authentication.
+   *
+   * @return the phone number
+   */
   public String getPhone() {
     return this.phone;
   }
 
+  /**
+   * Returns the message for authentication.
+   *
+   * @return the message
+   */
   public String getMessage() {
     return this.message;
   }
 
+  /**
+   * Converts this Authentication object to a Map.
+   *
+   * @return a Map representing this Authentication object
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -80,6 +137,12 @@ public final class Authentication extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an Authentication object from a Map.
+   *
+   * @param data a Map containing the data for the Authentication object
+   * @return a new Authentication object
+   */
   @NotNull
   @Contract("_ -> new")
   public static Authentication fromMap(@NotNull Map<String, Object> data) {

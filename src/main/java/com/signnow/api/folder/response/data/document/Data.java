@@ -17,38 +17,86 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Data class extends ApiData.
+ * Represents the data related to a document.
+ */
 public final class Data extends ApiData {
 
+  /**
+   * The name of the document.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The role of the inviter.
+   */
   @JsonProperty("inviter_role")
   private final Boolean inviterRole;
 
+  /**
+   * The order of signing.
+   */
   @JsonProperty("signing_order")
   private final Integer signingOrder;
 
+  /**
+   * The type of delivery.
+   */
   @JsonProperty("delivery_type")
   private final String deliveryType;
 
+  /**
+   * The default email.
+   */
   @JsonProperty("default_email")
   private final String defaultEmail;
 
+  /**
+   * The id of the role.
+   */
   @JsonProperty("role_id")
   private final String roleId;
 
+  /**
+   * The decline by signature status.
+   */
   @JsonProperty("decline_by_signature")
   private final Boolean declineBySignature;
 
+  /**
+   * The reassign status.
+   */
   @JsonProperty("reassign")
   private final Boolean reassign;
 
+  /**
+   * The number of expiration days.
+   */
   @JsonProperty("expiration_days")
   private final Integer expirationDays;
 
+  /**
+   * The reminder.
+   */
   @JsonProperty("reminder")
   private final Reminder reminder;
 
+  /**
+   * Constructor for Data class.
+   *
+   * @param name The name of the document.
+   * @param inviterRole The role of the inviter.
+   * @param signingOrder The order of signing.
+   * @param deliveryType The type of delivery.
+   * @param defaultEmail The default email.
+   * @param roleId The id of the role.
+   * @param declineBySignature The decline by signature status.
+   * @param reassign The reassign status.
+   * @param expirationDays The number of expiration days.
+   * @param reminder The reminder.
+   */
   @JsonCreator
   public Data(
       @JsonProperty("name") String name,
@@ -73,46 +121,81 @@ public final class Data extends ApiData {
     this.reminder = reminder;
   }
 
+  /**
+   * @return The name of the document.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * @return The role of the inviter.
+   */
   public Boolean isInviterRole() {
     return this.inviterRole;
   }
 
+  /**
+   * @return The order of signing.
+   */
   public Integer getSigningOrder() {
     return this.signingOrder;
   }
 
+  /**
+   * @return The type of delivery.
+   */
   public String getDeliveryType() {
     return this.deliveryType;
   }
 
+  /**
+   * @return The default email.
+   */
   public String getDefaultEmail() {
     return this.defaultEmail;
   }
 
+  /**
+   * @return The id of the role.
+   */
   public String getRoleId() {
     return this.roleId;
   }
 
+  /**
+   * @return The decline by signature status.
+   */
   public Boolean isDeclineBySignature() {
     return this.declineBySignature;
   }
 
+  /**
+   * @return The reassign status.
+   */
   public Boolean isReassign() {
     return this.reassign;
   }
 
+  /**
+   * @return The number of expiration days.
+   */
   public Integer getExpirationDays() {
     return this.expirationDays;
   }
 
+  /**
+   * @return The reminder.
+   */
   public Reminder getReminder() {
     return this.reminder;
   }
 
+  /**
+   * Converts the Data object to a Map.
+   *
+   * @return A Map representation of the Data object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -130,6 +213,12 @@ public final class Data extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Data object from a Map.
+   *
+   * @param data The Map to convert to a Data object.
+   * @return A new Data object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Data fromMap(@NotNull Map<String, Object> data) {

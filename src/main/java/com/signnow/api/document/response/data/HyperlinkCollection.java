@@ -11,4 +11,18 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class HyperlinkCollection extends TypedCollection<Hyperlink> {}
+/**
+ * This class represents a collection of Hyperlink objects.
+ * It extends the TypedCollection class by specifying the type of objects it can contain.
+ *
+ * @see com.signnow.core.collection.TypedCollection
+ */
+public class HyperlinkCollection extends TypedCollection<Hyperlink> {
+    /**
+     * Default constructor for HyperlinkCollection class.
+     * It initializes an empty collection of Hyperlink objects.
+     */
+    public HyperlinkCollection() {
+        super();
+    }
+}

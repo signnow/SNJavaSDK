@@ -11,4 +11,15 @@ package com.signnow.api.folder.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class FolderCollection extends TypedCollection<Folder> {}
+/**
+ * This class represents a collection of Folder objects.
+ * It extends the TypedCollection class with Folder as its type parameter.
+ */
+public class FolderCollection extends TypedCollection<Folder> {
+    /**
+     * Default constructor {@code FolderCollection}.
+     */
+    public FolderCollection() {
+        super();
+    }
+}

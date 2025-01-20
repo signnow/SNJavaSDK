@@ -17,35 +17,78 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an Integration object with various properties.
+ */
 public final class Integration extends ApiData {
 
+  /**
+   * The id of the Integration.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The user id associated with the Integration.
+   */
   @JsonProperty("user_id")
   private final String userId;
 
+  /**
+   * The email associated with the Integration.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The page number associated with the Integration.
+   */
   @JsonProperty("page_number")
   private final String pageNumber;
 
+  /**
+   * The width of the Integration.
+   */
   @JsonProperty("width")
   private final String width;
 
+  /**
+   * The height of the Integration.
+   */
   @JsonProperty("height")
   private final String height;
 
+  /**
+   * The x-coordinate of the Integration.
+   */
   @JsonProperty("x")
   private final String x;
 
+  /**
+   * The y-coordinate of the Integration.
+   */
   @JsonProperty("y")
   private final String y;
 
+  /**
+   * The creation timestamp of the Integration.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * Constructs an Integration object with the provided parameters.
+   *
+   * @param id The id of the Integration.
+   * @param userId The user id associated with the Integration.
+   * @param email The email associated with the Integration.
+   * @param pageNumber The page number associated with the Integration.
+   * @param width The width of the Integration.
+   * @param height The height of the Integration.
+   * @param x The x-coordinate of the Integration.
+   * @param y The y-coordinate of the Integration.
+   * @param created The creation timestamp of the Integration.
+   */
   @JsonCreator
   public Integration(
       @JsonProperty("id") String id,
@@ -68,42 +111,92 @@ public final class Integration extends ApiData {
     this.created = created;
   }
 
+  /**
+   * Returns the id of the Integration.
+   *
+   * @return The id of the Integration.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the user id associated with the Integration.
+   *
+   * @return The user id associated with the Integration.
+   */
   public String getUserId() {
     return this.userId;
   }
 
+  /**
+   * Returns the email associated with the Integration.
+   *
+   * @return The email associated with the Integration.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the page number associated with the Integration.
+   *
+   * @return The page number associated with the Integration.
+   */
   public String getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * Returns the width of the Integration.
+   *
+   * @return The width of the Integration.
+   */
   public String getWidth() {
     return this.width;
   }
 
+  /**
+   * Returns the height of the Integration.
+   *
+   * @return The height of the Integration.
+   */
   public String getHeight() {
     return this.height;
   }
 
+  /**
+   * Returns the x-coordinate of the Integration.
+   *
+   * @return The x-coordinate of the Integration.
+   */
   public String getX() {
     return this.x;
   }
 
+  /**
+   * Returns the y-coordinate of the Integration.
+   *
+   * @return The y-coordinate of the Integration.
+   */
   public String getY() {
     return this.y;
   }
 
+  /**
+   * Returns the creation timestamp of the Integration.
+   *
+   * @return The creation timestamp of the Integration.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Converts the Integration object to a Map.
+   *
+   * @return A Map representation of the Integration object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -120,6 +213,12 @@ public final class Integration extends ApiData {
     return map;
   }
 
+  /**
+   * Creates an Integration object from a Map.
+   *
+   * @param data The Map containing the Integration data.
+   * @return A new Integration object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Integration fromMap(@NotNull Map<String, Object> data) {

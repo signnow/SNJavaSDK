@@ -11,4 +11,8 @@ package com.signnow.api.documentgroup.response.data.document;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class.
+ * It represents a collection of roles in the context of a document group response.
+ */
 public class RoleCollection extends StringCollection {}

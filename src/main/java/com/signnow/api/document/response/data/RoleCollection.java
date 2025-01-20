@@ -11,4 +11,15 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class RoleCollection extends TypedCollection<Role> {}
+/**
+ * This class represents a collection of Role objects.
+ * It extends the TypedCollection class by specifying the type of the collection as Role.
+ */
+public class RoleCollection extends TypedCollection<Role> {
+    /**
+     * Constructs an empty {@code RoleCollection}.
+     */
+    public RoleCollection() {
+        super();
+    }
+}

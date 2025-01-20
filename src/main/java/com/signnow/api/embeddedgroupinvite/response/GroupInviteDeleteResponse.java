@@ -11,5 +11,12 @@ package com.signnow.api.embeddedgroupinvite.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received after deleting a group invite.
+ * It is annotated with JsonIgnoreProperties to ignore any unknown properties
+ * when deserializing JSON to Java object.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GroupInviteDeleteResponse {}
+public class GroupInviteDeleteResponse {
+    // No public properties, constructors, or methods to comment on.
+}

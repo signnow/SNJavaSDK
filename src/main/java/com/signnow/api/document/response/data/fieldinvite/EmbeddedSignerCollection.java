@@ -11,4 +11,19 @@ package com.signnow.api.document.response.data.fieldinvite;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class EmbeddedSignerCollection extends TypedCollection<EmbeddedSigner> {}
+/**
+ * This class represents a collection of EmbeddedSigner objects.
+ * It extends the TypedCollection class, specifying EmbeddedSigner as the type parameter.
+ * This means that this collection will only accept EmbeddedSigner objects.
+ *
+ * @see com.signnow.core.collection.TypedCollection
+ * @see com.signnow.api.document.response.data.fieldinvite.EmbeddedSigner
+ */
+public class EmbeddedSignerCollection extends TypedCollection<EmbeddedSigner> {
+    /**
+     * Constructs an empty {@code EmbeddedSignerCollection}.
+     */
+    public EmbeddedSignerCollection() {
+        super();
+    }
+}

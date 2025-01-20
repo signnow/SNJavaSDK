@@ -17,14 +17,29 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents an issue notification.
+ */
 public final class IssueNotification extends ApiData {
 
+  /**
+   * The title of the issue notification.
+   */
   @JsonProperty("title")
   private final String title;
 
+  /**
+   * The description of the issue notification.
+   */
   @JsonProperty("description")
   private final String description;
 
+  /**
+   * Constructs an IssueNotification object with the specified title and description.
+   *
+   * @param title the title of the issue notification
+   * @param description the description of the issue notification
+   */
   @JsonCreator
   public IssueNotification(
       @JsonProperty("title") String title, @JsonProperty("description") String description) {
@@ -32,14 +47,29 @@ public final class IssueNotification extends ApiData {
     this.description = description;
   }
 
+  /**
+   * Returns the title of this issue notification.
+   *
+   * @return the title of this issue notification
+   */
   public String getTitle() {
     return this.title;
   }
 
+  /**
+   * Returns the description of this issue notification.
+   *
+   * @return the description of this issue notification
+   */
   public String getDescription() {
     return this.description;
   }
 
+  /**
+   * Returns a map representation of this issue notification.
+   *
+   * @return a map representation of this issue notification
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -49,6 +79,12 @@ public final class IssueNotification extends ApiData {
     return map;
   }
 
+  /**
+   * Returns an IssueNotification object created from the specified map.
+   *
+   * @param data the map from which to create the IssueNotification object
+   * @return an IssueNotification object created from the specified map
+   */
   @NotNull
   @Contract("_ -> new")
   public static IssueNotification fromMap(@NotNull Map<String, Object> data) {

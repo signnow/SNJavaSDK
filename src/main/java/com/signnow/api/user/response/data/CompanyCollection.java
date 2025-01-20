@@ -11,4 +11,17 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class CompanyCollection extends TypedCollection {}
+/**
+ * This class represents a collection of Company objects.
+ * It extends the TypedCollection class.
+ */
+public class CompanyCollection extends TypedCollection {
+
+    /**
+     * Default constructor for the CompanyCollection class.
+     * It initializes an empty collection of Company objects.
+     */
+    public CompanyCollection() {
+        super();
+    }
+}

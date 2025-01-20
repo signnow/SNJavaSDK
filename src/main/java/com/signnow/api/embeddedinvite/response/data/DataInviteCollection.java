@@ -11,4 +11,15 @@ package com.signnow.api.embeddedinvite.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DataInviteCollection extends TypedCollection<DataInvite> {}
+/**
+ * This class represents a collection of DataInvite objects.
+ * It extends the TypedCollection class from the signNow SDK API client.
+ */
+public class DataInviteCollection extends TypedCollection<DataInvite> {
+    /**
+     * Default constructor {@code DataInviteCollection}.
+     */
+    public DataInviteCollection() {
+        super();
+    }
+}

@@ -11,4 +11,8 @@ package com.signnow.api.document.request.data.line;
 
 import com.signnow.core.collection.FloatCollection;
 
+/**
+ * This class represents a collection of control points.
+ * It extends the FloatCollection class.
+ */
 public class ControlPointCollection extends FloatCollection {}

@@ -17,26 +17,58 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Check class extends ApiData.
+ * Represents a check object in a document.
+ */
 public final class Check extends ApiData {
 
+  /**
+   * The x-coordinate of the check.
+   */
   @JsonProperty("x")
   private final int x;
 
+  /**
+   * The y-coordinate of the check.
+   */
   @JsonProperty("y")
   private final int y;
 
+  /**
+   * The width of the check.
+   */
   @JsonProperty("width")
   private final int width;
 
+  /**
+   * The height of the check.
+   */
   @JsonProperty("height")
   private final int height;
 
+  /**
+   * The subtype of the check.
+   */
   @JsonProperty("subtype")
   private final String subtype;
 
+  /**
+   * The page number where the check is located.
+   */
   @JsonProperty("page_number")
   private final int pageNumber;
 
+  /**
+   * Constructor for Check class.
+   *
+   * @param x The x-coordinate of the check.
+   * @param y The y-coordinate of the check.
+   * @param width The width of the check.
+   * @param height The height of the check.
+   * @param subtype The subtype of the check.
+   * @param pageNumber The page number where the check is located.
+   */
   @JsonCreator
   public Check(
       @JsonProperty("x") int x,
@@ -53,6 +85,15 @@ public final class Check extends ApiData {
     this.pageNumber = pageNumber;
   }
 
+  /**
+   * Overloaded constructor for Check class with default subtype as "check".
+   *
+   * @param x The x-coordinate of the check.
+   * @param y The y-coordinate of the check.
+   * @param width The width of the check.
+   * @param height The height of the check.
+   * @param pageNumber The page number where the check is located.
+   */
   public Check(
       @JsonProperty("x") int x,
       @JsonProperty("y") int y,
@@ -67,30 +108,53 @@ public final class Check extends ApiData {
     this.pageNumber = pageNumber;
   }
 
+  /**
+   * @return The x-coordinate of the check.
+   */
   public int getX() {
     return this.x;
   }
 
+  /**
+   * @return The y-coordinate of the check.
+   */
   public int getY() {
     return this.y;
   }
 
+  /**
+   * @return The width of the check.
+   */
   public int getWidth() {
     return this.width;
   }
 
+  /**
+   * @return The height of the check.
+   */
   public int getHeight() {
     return this.height;
   }
 
+  /**
+   * @return The subtype of the check.
+   */
   public String getSubtype() {
     return this.subtype;
   }
 
+  /**
+   * @return The page number where the check is located.
+   */
   public int getPageNumber() {
     return this.pageNumber;
   }
 
+  /**
+   * Converts the Check object to a Map.
+   *
+   * @return A Map representation of the Check object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -104,6 +168,12 @@ public final class Check extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Check object from a Map.
+   *
+   * @param data A Map containing the data for a Check object.
+   * @return A new Check object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Check fromMap(@NotNull Map<String, Object> data) {

@@ -11,4 +11,15 @@ package com.signnow.api.user.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class LogoCollection extends TypedCollection<Logo> {}
+/**
+ * This class represents a collection of Logo objects.
+ * It extends the TypedCollection class with Logo as its type parameter.
+ */
+public class LogoCollection extends TypedCollection<Logo> {
+    /**
+     * Default constructor {@code LogoCollection}.
+     */
+    public LogoCollection() {
+        super();
+    }
+}

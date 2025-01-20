@@ -17,23 +17,51 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Status class extends ApiData.
+ * It represents the status of various tokens.
+ */
 public final class Status extends ApiData {
 
+  /**
+   * Represents the status of bad copy token.
+   */
   @JsonProperty("bad_copy_token")
   private final boolean badCopyToken;
 
+  /**
+   * Represents the status of copy token.
+   */
   @JsonProperty("has_copy_token")
   private final boolean hasCopyToken;
 
+  /**
+   * Represents the status of cloud export token.
+   */
   @JsonProperty("has_cloud_export_token")
   private final boolean hasCloudExportToken;
 
+  /**
+   * Represents the status of bad cloud export token.
+   */
   @JsonProperty("bad_cloud_export_token")
   private final boolean badCloudExportToken;
 
+  /**
+   * Represents the status of salesforce token.
+   */
   @JsonProperty("has_salesforce_token")
   private final boolean hasSalesforceToken;
 
+  /**
+   * Constructor for Status class.
+   *
+   * @param badCopyToken status of bad copy token.
+   * @param hasCopyToken status of copy token.
+   * @param hasCloudExportToken status of cloud export token.
+   * @param badCloudExportToken status of bad cloud export token.
+   * @param hasSalesforceToken status of salesforce token.
+   */
   @JsonCreator
   public Status(
       @JsonProperty("bad_copy_token") boolean badCopyToken,
@@ -48,26 +76,46 @@ public final class Status extends ApiData {
     this.hasSalesforceToken = hasSalesforceToken;
   }
 
+  /**
+   * @return the status of bad copy token.
+   */
   public boolean isBadCopyToken() {
     return this.badCopyToken;
   }
 
+  /**
+   * @return the status of copy token.
+   */
   public boolean hasCopyToken() {
     return this.hasCopyToken;
   }
 
+  /**
+   * @return the status of cloud export token.
+   */
   public boolean hasCloudExportToken() {
     return this.hasCloudExportToken;
   }
 
+  /**
+   * @return the status of bad cloud export token.
+   */
   public boolean isBadCloudExportToken() {
     return this.badCloudExportToken;
   }
 
+  /**
+   * @return the status of salesforce token.
+   */
   public boolean hasSalesforceToken() {
     return this.hasSalesforceToken;
   }
 
+  /**
+   * Converts the status of tokens to a map.
+   *
+   * @return a map of token statuses.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -80,6 +128,12 @@ public final class Status extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Status object from a map.
+   *
+   * @param data a map of token statuses.
+   * @return a new Status object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Status fromMap(@NotNull Map<String, Object> data) {

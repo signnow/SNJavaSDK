@@ -11,4 +11,8 @@ package com.signnow.api.document.response.data.exportedto;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of storage objects.
+ * It extends the TypedCollection class.
+ */
 public class StorageCollection extends TypedCollection {}

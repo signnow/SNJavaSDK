@@ -11,4 +11,16 @@ package com.signnow.api.smartfields.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class DataCollection extends TypedCollection<Data> {}
+/**
+ * This class represents a collection of Data objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ * In this case, the specific type is Data.
+ */
+public class DataCollection extends TypedCollection<Data> {
+    /**
+     * Default constructor {@code DataCollection}.
+     */
+    public DataCollection() {
+        super();
+    }
+}

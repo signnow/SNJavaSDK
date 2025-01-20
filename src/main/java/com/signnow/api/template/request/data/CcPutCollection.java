@@ -11,4 +11,8 @@ package com.signnow.api.template.request.data;
 
 import com.signnow.core.collection.StringCollection;
 
+/**
+ * This class extends the StringCollection class.
+ * It is used to handle collections of strings for the signNow API client.
+ */
 public class CcPutCollection extends StringCollection {}

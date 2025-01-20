@@ -11,4 +11,8 @@ package com.signnow.api.documentgroupinvite.request.data.invitestep;
 
 import com.signnow.core.collection.TypedCollection;
 
+/**
+ * This class represents a collection of InviteEmail objects.
+ * It extends the TypedCollection class, which provides methods for managing collections of a specific type.
+ */
 public class InviteEmailCollection extends TypedCollection<InviteEmail> {}

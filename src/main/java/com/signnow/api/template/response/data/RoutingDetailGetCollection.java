@@ -11,4 +11,15 @@ package com.signnow.api.template.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class RoutingDetailGetCollection extends TypedCollection<RoutingDetailGet> {}
+/**
+ * This class extends the TypedCollection class and is used to store a collection of RoutingDetailGet objects.
+ * It provides all the methods inherited from the TypedCollection class to manipulate the collection.
+ */
+public class RoutingDetailGetCollection extends TypedCollection<RoutingDetailGet> {
+    /**
+     * Default constructor {@code RoutingDetailGetCollection}.
+     */
+    public RoutingDetailGetCollection() {
+        super();
+    }
+}

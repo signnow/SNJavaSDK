@@ -11,4 +11,15 @@ package com.signnow.api.document.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class CheckCollection extends TypedCollection<Check> {}
+/**
+ * This class extends the TypedCollection class with a type parameter of Check.
+ * It represents a collection of Check objects.
+ */
+public class CheckCollection extends TypedCollection<Check> {
+    /**
+     * Constructs an empty {@code CheckCollection}.
+     */
+    public CheckCollection() {
+        super();
+    }
+}

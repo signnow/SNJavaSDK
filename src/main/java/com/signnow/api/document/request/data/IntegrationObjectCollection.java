@@ -11,4 +11,15 @@ package com.signnow.api.document.request.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class IntegrationObjectCollection extends TypedCollection<IntegrationObject> {}
+/**
+ * This class represents a collection of IntegrationObject instances.
+ * It extends the TypedCollection class, specifying IntegrationObject as the type parameter.
+ */
+public class IntegrationObjectCollection extends TypedCollection<IntegrationObject> {
+    /**
+     * Constructs an empty {@code IntegrationObjectCollection}.
+     */
+    public IntegrationObjectCollection() {
+        super();
+    }
+}

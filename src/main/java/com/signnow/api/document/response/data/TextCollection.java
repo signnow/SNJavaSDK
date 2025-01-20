@@ -11,4 +11,17 @@ package com.signnow.api.document.response.data;
 
 import com.signnow.core.collection.TypedCollection;
 
-public class TextCollection extends TypedCollection<String> {}
+/**
+ * This class represents a collection of text data.
+ * It extends the TypedCollection class with a type parameter of String.
+ */
+public class TextCollection extends TypedCollection<String> {
+
+    /**
+     * Default constructor for TextCollection class.
+     * It initializes a new instance of the TextCollection class.
+     */
+    public TextCollection() {
+        super();
+    }
+}

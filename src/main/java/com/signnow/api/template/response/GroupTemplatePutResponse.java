@@ -11,5 +11,11 @@ package com.signnow.api.template.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received after updating a group template.
+ * It is annotated with JsonIgnoreProperties to ignore any unknown properties when deserializing JSON to this type.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GroupTemplatePutResponse {}
+public class GroupTemplatePutResponse {
+    // No public properties, constructors, or methods to document
+}

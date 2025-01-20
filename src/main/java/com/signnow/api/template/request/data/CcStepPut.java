@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents a step in the CC process.
+ */
 public final class CcStepPut extends ApiData {
 
+  /**
+   * The email of the user.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * The name of the user.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * The step number in the process.
+   */
   @JsonProperty("step")
   private final int step;
 
+  /**
+   * Constructor for the CcStepPut class.
+   *
+   * @param email The email of the user.
+   * @param name The name of the user.
+   * @param step The step number in the process.
+   */
   @JsonCreator
   public CcStepPut(
       @JsonProperty("email") String email,
@@ -38,18 +57,38 @@ public final class CcStepPut extends ApiData {
     this.step = step;
   }
 
+  /**
+   * Returns the email of the user.
+   *
+   * @return The email of the user.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Returns the name of the user.
+   *
+   * @return The name of the user.
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Returns the step number in the process.
+   *
+   * @return The step number in the process.
+   */
   public int getStep() {
     return this.step;
   }
 
+  /**
+   * Converts the CcStepPut object to a Map.
+   *
+   * @return A Map representation of the CcStepPut object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class CcStepPut extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a CcStepPut object from a Map.
+   *
+   * @param data The Map to convert to a CcStepPut object.
+   * @return A new CcStepPut object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static CcStepPut fromMap(@NotNull Map<String, Object> data) {

@@ -17,20 +17,42 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the data of an invite.
+ * It extends the ApiData class.
+ */
 public final class DataInvite extends ApiData {
 
+  /**
+   * The id of the invite.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * Constructor for the DataInvite class.
+   *
+   * @param id The id of the invite.
+   */
   @JsonCreator
   DataInvite(@JsonProperty("id") String id) {
     this.id = id;
   }
 
+  /**
+   * This method returns the id of the invite.
+   *
+   * @return The id of the invite.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * This method converts the invite data to a map.
+   *
+   * @return A map containing the invite data.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -39,6 +61,12 @@ public final class DataInvite extends ApiData {
     return map;
   }
 
+  /**
+   * This method creates a new DataInvite object from a map.
+   *
+   * @param data A map containing the invite data.
+   * @return A new DataInvite object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static DataInvite fromMap(@NotNull Map<String, Object> data) {

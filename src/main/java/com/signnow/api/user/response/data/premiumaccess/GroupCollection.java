@@ -11,4 +11,17 @@ package com.signnow.api.user.response.data.premiumaccess;
 
 import com.signnow.core.collection.StringCollection;
 
-public class GroupCollection extends StringCollection {}
+/**
+ * This class extends the StringCollection class.
+ * It represents a collection of groups in the context of premium access.
+ */
+public class GroupCollection extends StringCollection {
+
+    /**
+     * Default constructor for GroupCollection class.
+     * It initializes a new instance of this class without setting any of its properties.
+     */
+    public GroupCollection() {
+        super();
+    }
+}

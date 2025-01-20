@@ -11,5 +11,15 @@ package com.signnow.api.webhookv2.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * This class represents the response received after deleting an event subscription.
+ * It is annotated with JsonIgnoreProperties to ignore any unknown properties when deserializing JSON to Java object.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EventSubscriptionDeleteResponse {}
+public class EventSubscriptionDeleteResponse {
+    /**
+     * Default constructor for EventSubscriptionDeleteResponse class.
+     * It is used to create an instance of this class without setting any of its properties.
+     */
+    public EventSubscriptionDeleteResponse() {}
+}

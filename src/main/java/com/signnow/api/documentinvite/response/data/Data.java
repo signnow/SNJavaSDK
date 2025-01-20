@@ -17,20 +17,44 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Data class extends ApiData.
+ * Represents the data response from the document invite API.
+ */
 public final class Data extends ApiData {
 
+  /**
+   * The id of the document invite.
+   */
   @JsonProperty("id")
   private final String id;
 
+  /**
+   * The status of the document invite.
+   */
   @JsonProperty("status")
   private final String status;
 
+  /**
+   * The creation timestamp of the document invite.
+   */
   @JsonProperty("created")
   private final int created;
 
+  /**
+   * The email associated with the document invite.
+   */
   @JsonProperty("email")
   private final String email;
 
+  /**
+   * Constructor for Data class.
+   *
+   * @param id      The id of the document invite.
+   * @param status  The status of the document invite.
+   * @param created The creation timestamp of the document invite.
+   * @param email   The email associated with the document invite.
+   */
   @JsonCreator
   public Data(
       @JsonProperty("id") String id,
@@ -43,22 +67,47 @@ public final class Data extends ApiData {
     this.email = email;
   }
 
+  /**
+   * Returns the id of the document invite.
+   *
+   * @return id of the document invite.
+   */
   public String getId() {
     return this.id;
   }
 
+  /**
+   * Returns the status of the document invite.
+   *
+   * @return status of the document invite.
+   */
   public String getStatus() {
     return this.status;
   }
 
+  /**
+   * Returns the creation timestamp of the document invite.
+   *
+   * @return creation timestamp of the document invite.
+   */
   public int getCreated() {
     return this.created;
   }
 
+  /**
+   * Returns the email associated with the document invite.
+   *
+   * @return email associated with the document invite.
+   */
   public String getEmail() {
     return this.email;
   }
 
+  /**
+   * Converts the Data object to a Map.
+   *
+   * @return a Map representation of the Data object.
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -70,6 +119,12 @@ public final class Data extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a Data object from a Map.
+   *
+   * @param data a Map containing the data for the Data object.
+   * @return a new Data object.
+   */
   @NotNull
   @Contract("_ -> new")
   public static Data fromMap(@NotNull Map<String, Object> data) {

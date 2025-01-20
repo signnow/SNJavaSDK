@@ -17,17 +17,36 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class represents the role of a viewer in the signNow API.
+ */
 public final class ViewerRole extends ApiData {
 
+  /**
+   * The unique identifier for the viewer role.
+   */
   @JsonProperty("unique_id")
   private final String uniqueId;
 
+  /**
+   * The signing order for the viewer role.
+   */
   @JsonProperty("signing_order")
   private final String signingOrder;
 
+  /**
+   * The name of the viewer role.
+   */
   @JsonProperty("name")
   private final String name;
 
+  /**
+   * Constructs a new ViewerRole with the specified uniqueId, signingOrder, and name.
+   *
+   * @param uniqueId the unique identifier for the viewer role
+   * @param signingOrder the signing order for the viewer role
+   * @param name the name of the viewer role
+   */
   @JsonCreator
   public ViewerRole(
       @JsonProperty("unique_id") String uniqueId,
@@ -38,18 +57,38 @@ public final class ViewerRole extends ApiData {
     this.name = name;
   }
 
+  /**
+   * Returns the unique identifier for this viewer role.
+   *
+   * @return the unique identifier for this viewer role
+   */
   public String getUniqueId() {
     return this.uniqueId;
   }
 
+  /**
+   * Returns the signing order for this viewer role.
+   *
+   * @return the signing order for this viewer role
+   */
   public String getSigningOrder() {
     return this.signingOrder;
   }
 
+  /**
+   * Returns the name of this viewer role.
+   *
+   * @return the name of this viewer role
+   */
   public String getName() {
     return this.name;
   }
 
+  /**
+   * Converts this viewer role to a Map.
+   *
+   * @return a Map representing this viewer role
+   */
   @NotNull
   @Override
   public Map<String, Object> toMap() {
@@ -60,6 +99,12 @@ public final class ViewerRole extends ApiData {
     return map;
   }
 
+  /**
+   * Creates a new ViewerRole from the specified Map.
+   *
+   * @param data a Map containing the data to create the ViewerRole from
+   * @return a new ViewerRole created from the specified Map
+   */
   @NotNull
   @Contract("_ -> new")
   public static ViewerRole fromMap(@NotNull Map<String, Object> data) {
