@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
     namespace = "documentField",
     entity = "documentPrefill",
     type = "application/json")
-public final class DocumentPrefillPutRequest implements RequestInterface<String> {
+public final class DocumentPrefillPutRequest implements RequestInterface<Object> {
 
   /**
    * Collection of fields to be prefilled in the document.
@@ -86,9 +86,9 @@ public final class DocumentPrefillPutRequest implements RequestInterface<String>
    */
   @NotNull
   @Override
-  public Map<String, String> payload() {
-    Map<String, String> map = new HashMap<>();
-    map.put("fields", this.fields.toString());
+  public Map<String, Object> payload() {
+    Map<String, Object> map = new HashMap<>();
+    map.put("fields", this.getFields());
     return map;
   }
 }

@@ -18,7 +18,7 @@ import java.util.Map;
 public class ConfigRepository {
 
   private static final int READ_TIMEOUT = 15;
-  private static final String CLIENT_NAME = "SignNow Java API Client/v3.0.0";
+  private static final String CLIENT_NAME = "SignNowApiClient/v3.0.0 (Java)";
 
   private final Map<String, String> configMap;
 

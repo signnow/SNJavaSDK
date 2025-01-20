@@ -9,6 +9,9 @@
 
 package com.signnow.api.documentfield.request.data;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,11 +23,13 @@ public final class Field {
   /**
    * The name of the field.
    */
+  @JsonProperty("field_name")
   private final String fieldName;
 
   /**
    * The prefilled text of the field.
    */
+  @JsonProperty("prefilled_text")
   private final String prefilledText;
 
   /**
@@ -33,7 +38,10 @@ public final class Field {
    * @param fieldName the name of the field
    * @param prefilledText the prefilled text of the field
    */
-  public Field(String fieldName, String prefilledText) {
+  @JsonCreator
+  public Field(
+          @JsonProperty("field_name") String fieldName,
+          @JsonProperty("prefilled_text") String prefilledText) {
     this.fieldName = fieldName;
     this.prefilledText = prefilledText;
   }
@@ -63,8 +71,8 @@ public final class Field {
    */
   public Map<String, String> toMap() {
     Map<String, String> map = new HashMap<>();
-    map.put("field_name", getFieldName());
-    map.put("prefilled_text", getPrefilledText());
+    map.put("field_name", this.getFieldName());
+    map.put("prefilled_text", this.getPrefilledText());
     return map;
   }
 
