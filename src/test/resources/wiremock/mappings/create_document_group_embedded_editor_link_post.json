@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/v2/document-groups/[0-9a-z]{40}/embedded-editor"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":{\"url\":\"http:\\/\\/www.little.org\\/ut-porro-tenetur-nihil-aut-quisquam-voluptatibus-veniam\"}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

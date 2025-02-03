@@ -1,5 +1,5 @@
 # signNow API Java SDK
-## v3.0.0
+## v3.1.0
 
 [![Java Version](https://img.shields.io/badge/codebase-java--11-yellowgreen)](https://www.java.com/)
 
