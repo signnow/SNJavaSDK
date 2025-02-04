@@ -1,0 +1,23 @@
+name: Functional tests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Raise mock server
+        run: make mock-up
+
+      - name: Run functional tests
+        run: make tests
+
+      - name: Stop mock server
+        run: make mock-stop
