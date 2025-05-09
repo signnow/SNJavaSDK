@@ -23,12 +23,6 @@ import org.jetbrains.annotations.NotNull;
 public final class RoutingDetailGet extends ApiData {
 
   /**
-   * Represents the role of the inviter.
-   */
-  @JsonProperty("inviter_role")
-  private final boolean inviterRole;
-
-  /**
    * Represents the name of the user.
    */
   @JsonProperty("name")
@@ -41,16 +35,22 @@ public final class RoutingDetailGet extends ApiData {
   private final String roleId;
 
   /**
-   * Represents the order of signing.
-   */
-  @JsonProperty("signing_order")
-  private final int signingOrder;
-
-  /**
    * Represents the default email of the user.
    */
   @JsonProperty("default_email")
   private final String defaultEmail;
+
+  /**
+   * Represents the role of the inviter.
+   */
+  @JsonProperty("inviter_role")
+  private final boolean inviterRole;
+
+  /**
+   * Represents the order of signing.
+   */
+  @JsonProperty("signing_order")
+  private final int signingOrder;
 
   /**
    * Represents if the signature can be declined.
@@ -67,28 +67,28 @@ public final class RoutingDetailGet extends ApiData {
   /**
    * Constructor for the RoutingDetailGet class.
    *
-   * @param inviterRole        The role of the inviter.
    * @param name               The name of the user.
    * @param roleId             The ID of the role.
-   * @param signingOrder       The order of signing.
    * @param defaultEmail       The default email of the user.
+   * @param inviterRole        The role of the inviter.
+   * @param signingOrder       The order of signing.
    * @param declineBySignature If the signature can be declined.
    * @param deliveryType       The type of delivery.
    */
   @JsonCreator
   public RoutingDetailGet(
-      @JsonProperty("inviter_role") boolean inviterRole,
       @JsonProperty("name") String name,
       @JsonProperty("role_id") String roleId,
-      @JsonProperty("signing_order") int signingOrder,
       @JsonProperty("default_email") String defaultEmail,
+      @JsonProperty("inviter_role") boolean inviterRole,
+      @JsonProperty("signing_order") int signingOrder,
       @JsonProperty("decline_by_signature") boolean declineBySignature,
       @JsonProperty("delivery_type") String deliveryType) {
-    this.inviterRole = inviterRole;
     this.name = name;
     this.roleId = roleId;
-    this.signingOrder = signingOrder;
     this.defaultEmail = defaultEmail;
+    this.inviterRole = inviterRole;
+    this.signingOrder = signingOrder;
     this.declineBySignature = declineBySignature;
     this.deliveryType = deliveryType;
   }
@@ -151,11 +151,11 @@ public final class RoutingDetailGet extends ApiData {
   @Override
   public Map<String, Object> toMap() {
     Map<String, Object> map = new LinkedHashMap<>();
-    map.put("inviter_role", this.isInviterRole());
     map.put("name", this.getName());
     map.put("role_id", this.getRoleId());
-    map.put("signing_order", this.getSigningOrder());
     map.put("default_email", this.getDefaultEmail());
+    map.put("inviter_role", this.isInviterRole());
+    map.put("signing_order", this.getSigningOrder());
     map.put("decline_by_signature", this.isDeclineBySignature());
     map.put("delivery_type", this.getDeliveryType());
     return map;
@@ -171,11 +171,11 @@ public final class RoutingDetailGet extends ApiData {
   @Contract("_ -> new")
   public static RoutingDetailGet fromMap(@NotNull Map<String, Object> data) {
     return new RoutingDetailGet(
-        (boolean) data.getOrDefault("inviter_role", false),
         (String) data.get("name"),
         (String) data.get("role_id"),
-        (int) data.get("signing_order"),
         (String) data.getOrDefault("default_email", ""),
+        (boolean) data.getOrDefault("inviter_role", false),
+        (int) data.get("signing_order"),
         (boolean) data.getOrDefault("decline_by_signature", false),
         (String) data.get("delivery_type"));
   }

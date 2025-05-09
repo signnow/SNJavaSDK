@@ -1,3 +1,5 @@
+import java.io.File;
+
 import com.signnow.api.document.request.DocumentPostRequest;
 import com.signnow.api.document.response.DocumentPostResponse;
 import com.signnow.api.embeddededitor.request.DocumentEmbeddedEditorLinkPostRequest;
@@ -5,11 +7,9 @@ import com.signnow.api.embeddededitor.response.DocumentEmbeddedEditorLinkPostRes
 import com.signnow.core.ApiClient;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.factory.SdkFactory;
-import java.io.File;
 
-public class DocumentUploadExample {
+public class EmbeddedEditorDocumentExample {
   public static void main(String[] args) {
-
     // Set your actual input data here
     // Note: following values are dummy, just for example
     // ----------------------------------------------------

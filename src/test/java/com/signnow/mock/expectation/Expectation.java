@@ -23,18 +23,18 @@ import java.util.Map;
 public class Expectation {
 
   /** The name of expectation. It corresponds with their file name. * */
-  private final String name;
+  private final String expectationName;
 
   /** Map of response properties expected in testing. * */
   private final LinkedHashMap<String, Object> data;
 
-  public Expectation(String name, LinkedHashMap<String, Object> data) {
-    this.name = name;
+  public Expectation(String expectationName, LinkedHashMap<String, Object> data) {
+    this.expectationName = expectationName;
     this.data = data;
   }
 
-  public String getName() {
-    return name;
+  public String getExpectationName() {
+    return expectationName;
   }
 
   /*

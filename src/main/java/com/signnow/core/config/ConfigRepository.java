@@ -12,13 +12,12 @@ package com.signnow.core.config;
 import com.signnow.core.token.BasicToken;
 import java.util.Map;
 
-/** 
- * This class represents all the signNow SDK API configuration file entries as a repository. 
- */
+/** This class represents all the signNow SDK API configuration file entries as a repository. */
 public class ConfigRepository {
 
   private static final int READ_TIMEOUT = 15;
-  private static final String CLIENT_NAME = "SignNowApiClient/v3.0.0 (Java)";
+  private static final String CLIENT_NAME = "SignNowApiClient/v3.2.0 (Java)";
+  private static final String DEFAULT_DOWNLOADS_DIR = "./src/main/resources/downloads";
 
   private final Map<String, String> configMap;
 
@@ -65,6 +64,26 @@ public class ConfigRepository {
    */
   public String password() {
     return this.configMap.get("SIGNNOW_API_PASSWORD");
+  }
+
+  public String projectDirectory() {
+    return System.getProperty("user.dir");
+  }
+
+  /**
+   * Returns the path to save downloaded files from the configuration map.
+   *
+   * @return the password as a string
+   */
+  public String downloadsDirectory() {
+    String downloadsDir =
+        this.configMap.getOrDefault("SIGNNOW_DOWNLOADS_DIR", DEFAULT_DOWNLOADS_DIR);
+
+    if (downloadsDir.startsWith(".")) {
+      downloadsDir = downloadsDir.replaceFirst("^\\.", projectDirectory());
+    }
+
+    return downloadsDir;
   }
 
   /**

@@ -17,8 +17,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This class represents a request to download a document.
- * It implements the RequestInterface with a String type parameter.
+ * This class represents a request to download a document. It implements the RequestInterface with a
+ * String type parameter.
  */
 @ApiEndpoint(
     name = "downloadDocument",
@@ -30,10 +30,31 @@ import org.jetbrains.annotations.NotNull;
     type = "application/pdf")
 public final class DocumentDownloadGetRequest implements RequestInterface<String> {
 
-  /**
-   * A map to hold URI parameters for the request.
-   */
+  /** A map to hold URI parameters for the request. */
   private final HashMap<String, String> uriParams = new HashMap<>();
+
+  /** A map to hold query parameters for the request. */
+  private final HashMap<String, String> queryParams = new HashMap<>();
+
+  /**
+   * Specifies file type to download: collapsed|zip|email
+   *
+   * @return this DocumentDownloadGetRequest instance
+   */
+  public DocumentDownloadGetRequest withType(String type) {
+    this.queryParams.put("type", type);
+    return this;
+  }
+
+  /**
+   * The value "yes" allows to include a table containing the document's history into a document.
+   *
+   * @return this DocumentDownloadGetRequest instance
+   */
+  public DocumentDownloadGetRequest withHistory(String withHistory) {
+    this.queryParams.put("with_history", withHistory);
+    return this;
+  }
 
   /**
    * Adds a document ID to the URI parameters.
@@ -56,6 +77,16 @@ public final class DocumentDownloadGetRequest implements RequestInterface<String
   @Override
   public HashMap<String, String> uriParams() {
     return new HashMap<>(this.uriParams);
+  }
+
+  /**
+   * Returns a map as the query parameters for this request.
+   *
+   * @return an empty map
+   */
+  @NotNull
+  public Map<String, String> queryParams() {
+    return new HashMap<>(this.queryParams);
   }
 
   /**

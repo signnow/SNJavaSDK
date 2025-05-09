@@ -96,7 +96,7 @@ public class SignNowApiException extends Exception {
   @Override
   public String getMessage() {
     return String.format(
-        "%s\n%s\nStatus: %s,\nResponse: %s\nRequest: %s\nDetails: %s",
+        "%s\n%s\nStatus: %s,\nResponse: %s\nRequest: %s\nMessage: %s",
         super.getMessage(),
         this.endpoint == null ? "" : this.endpoint,
         this.responseCode == null ? "?" : String.format("%d", this.responseCode),

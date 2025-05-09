@@ -17,26 +17,18 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * This class represents an invite step in the signNow API.
- */
+/** This class represents an invite step in the signNow API. */
 public final class InviteStep extends ApiData {
 
-  /**
-   * The order of the invite step.
-   */
+  /** The order of the invite step. */
   @JsonProperty("order")
   private final int order;
 
-  /**
-   * The actions associated with the invite step.
-   */
+  /** The actions associated with the invite step. */
   @JsonProperty("invite_actions")
   private final InviteActionCollection inviteActions;
 
-  /**
-   * The emails associated with the invite step.
-   */
+  /** The emails associated with the invite step. */
   @JsonProperty("invite_emails")
   private final InviteEmailCollection inviteEmails;
 

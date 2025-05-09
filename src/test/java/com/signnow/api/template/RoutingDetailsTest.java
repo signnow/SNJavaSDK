@@ -120,6 +120,7 @@ public class RoutingDetailsTest extends BaseTest {
           this.assertSame(expectation.get("cc_step"), response.getCcStep());
           this.assertSame(expectation.get("viewers"), response.getViewers());
           this.assertSame(expectation.get("approvers"), response.getApprovers());
+          this.assertSame(expectation.get("attributes"), response.getAttributes());
           this.assertSame(
               expectation.get("invite_link_instructions"), response.getInviteLinkInstructions());
         },

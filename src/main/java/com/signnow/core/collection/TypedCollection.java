@@ -179,8 +179,8 @@ public class TypedCollection<T> implements Collection<T>, JsonSerializable {
   }
 
   /**
-   * Returns an array containing all of the elements in the collection.
-   * @return an array containing all of the elements
+   * Returns an array containing all the elements in the collection.
+   * @return an array containing all the elements
    */
   @NotNull
   public Object[] toArray() {
@@ -302,9 +302,9 @@ public class TypedCollection<T> implements Collection<T>, JsonSerializable {
   }
 
   /**
-   * Checks if the collection contains all of the elements in the specified collection.
+   * Checks if the collection contains all the elements in the specified collection.
    * @param otherCollection collection to be checked for containment in this collection
-   * @return true if this collection contains all of the elements in the specified collection
+   * @return true if this collection contains all the elements in the specified collection
    */
   @Override
   public boolean containsAll(@NotNull Collection<?> otherCollection) {
@@ -322,9 +322,9 @@ public class TypedCollection<T> implements Collection<T>, JsonSerializable {
   }
 
   /**
-   * Returns an array containing all of the elements in the collection; the runtime type of the returned array is that of the specified array.
+   * Returns an array containing all the elements in the collection; the runtime type of the returned array is that of the specified array.
    * @param a the array into which the elements of the collection are to be stored, if it is big enough; otherwise, a new array of the same runtime type is allocated for this purpose.
-   * @return an array containing all of the elements in the collection
+   * @return an array containing all the elements in the collection
    */
   @NotNull
   @Override
@@ -353,7 +353,7 @@ public class TypedCollection<T> implements Collection<T>, JsonSerializable {
   }
 
   /**
-   * Adds all of the elements in the specified collection to the collection.
+   * Adds all the elements in the specified collection to the collection.
    * @param otherCollection collection containing elements to be added to this collection
    * @return true if this collection changed as a result of the call
    */
@@ -363,7 +363,7 @@ public class TypedCollection<T> implements Collection<T>, JsonSerializable {
   }
 
   /**
-   * Removes all of the collection's elements that are also contained in the specified collection.
+   * Removes all the collection's elements that are also contained in the specified collection.
    * @param otherCollection collection containing elements to be removed from this collection
    * @return true if this collection changed as a result of the call
    */
@@ -383,7 +383,7 @@ public class TypedCollection<T> implements Collection<T>, JsonSerializable {
   }
 
   /**
-   * Removes all of the elements from the collection.
+   * Removes all the elements from the collection.
    */
   @Override
   public void clear() {

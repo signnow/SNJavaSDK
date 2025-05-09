@@ -9,15 +9,17 @@
 
 package com.signnow.core.response;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.signnow.api.auth.request.TokenPostRequest;
 import com.signnow.api.auth.response.TokenPostResponse;
 import com.signnow.api.webhookv2.request.EventSubscriptionDeleteRequest;
 import com.signnow.api.webhookv2.response.EventSubscriptionDeleteResponse;
+import com.signnow.core.data.ResponseData;
 import com.signnow.core.request.ApiEndpoint;
 import com.signnow.core.request.ApiEndpointResolver;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ResponseParserTest {
 
@@ -25,8 +27,7 @@ public class ResponseParserTest {
   public void testJsonResponseMappedSuccessfully() {
     ApiEndpointResolver apiEndpointResolver = new ApiEndpointResolver();
     TokenPostRequest request =
-        new TokenPostRequest(
-            "test_user", "test#paZZw0rd", "*", "password", "some code");
+        new TokenPostRequest("test_user", "test#paZZw0rd", "*", "password", "some code");
 
     assertDoesNotThrow(
         () -> {
@@ -40,7 +41,9 @@ public class ResponseParserTest {
                   + "\"last_login\":590918188"
                   + "}";
           ApiEndpoint endpoint = apiEndpointResolver.resolve(request);
-          Reply<TokenPostResponse> reply = ResponseParser.parseResponse(200, json, endpoint);
+          ResponseData responseData =
+              new ResponseData(200, "application/json", null, "", json.getBytes());
+          Reply<TokenPostResponse> reply = ResponseParser.parse(responseData, endpoint);
           TokenPostResponse response = reply.getResponse();
 
           assertEquals(200, reply.getStatusCode());
@@ -65,16 +68,17 @@ public class ResponseParserTest {
 
     assertDoesNotThrow(
         () -> {
-          String body = "";
           ApiEndpoint endpoint = apiEndpointResolver.resolve(request);
-          Reply<EventSubscriptionDeleteResponse> reply = ResponseParser.parseResponse(204, body, endpoint);
+          byte[] emptyBytes = new byte[0];
+          ResponseData responseData = new ResponseData(204, "application/json", "", "", emptyBytes);
+          Reply<EventSubscriptionDeleteResponse> reply =
+              ResponseParser.parse(responseData, endpoint);
 
           assertEquals(204, reply.getStatusCode());
           assertTrue(reply.isOk());
           assertTrue(reply.isEmpty());
           assertEquals("{}", reply.toJson());
-        }
-    );
+        });
   }
 
   @Test
@@ -85,15 +89,16 @@ public class ResponseParserTest {
 
     assertDoesNotThrow(
         () -> {
-          String body = "{}";
           ApiEndpoint endpoint = apiEndpointResolver.resolve(request);
-          Reply<EventSubscriptionDeleteResponse> reply = ResponseParser.parseResponse(204, body, endpoint);
+          byte[] bytes = "{}".getBytes(StandardCharsets.UTF_8);
+          ResponseData responseData = new ResponseData(204, "application/json", "", "{}", bytes);
+          Reply<EventSubscriptionDeleteResponse> reply =
+              ResponseParser.parse(responseData, endpoint);
 
           assertEquals(204, reply.getStatusCode());
           assertTrue(reply.isOk());
           assertTrue(reply.isEmpty());
           assertEquals("{}", reply.toJson());
-        }
-    );
+        });
   }
 }

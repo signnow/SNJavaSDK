@@ -1,5 +1,5 @@
 # signNow API Java SDK
-## v3.1.0
+## v3.2.0
 
 [![Java Version](https://img.shields.io/badge/codebase-java--11-yellowgreen)](https://www.java.com/)
 
@@ -165,6 +165,20 @@ public class DocumentGetExample {
     }
 }
 ```
+
+#### Proxy endpoints usage
+
+If you need to call an API endpoint that is not yet available in the SDK, you can still access it using the proxy mechanism.
+
+This allows you to send custom requests without waiting for an official SDK update.
+
+To do this, create a class that extends `CustomProxyRequest` and annotate it with `@ApiEndpoint`, setting: `namespace = "proxy"`.
+
+The `name` and `entity` values within the annotation can be arbitrary and do not affect functionality.
+
+Example of creating a request to proxy any unimplemented endpoint that returns JSON data: [ProxyJsonTest](./src/test/java/com/signnow/api/proxy/ProxyJsonTest.java).
+
+Example of creating a request to proxy any unimplemented endpoint that returns a file: [ProxyFileTest](./src/test/java/com/signnow/api/proxy/ProxyFileTest.java).
 
 ### Examples
 You can find more examples of API usage in the [examples](./examples) directory.

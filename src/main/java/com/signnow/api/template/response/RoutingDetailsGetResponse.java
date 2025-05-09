@@ -11,12 +11,7 @@ package com.signnow.api.template.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.signnow.api.template.response.data.ApproverGetCollection;
-import com.signnow.api.template.response.data.CcGetCollection;
-import com.signnow.api.template.response.data.CcStepGetCollection;
-import com.signnow.api.template.response.data.InviteLinkInstructionGetCollection;
-import com.signnow.api.template.response.data.RoutingDetailGetCollection;
-import com.signnow.api.template.response.data.ViewerGetCollection;
+import com.signnow.api.template.response.data.*;
 
 /**
  * This class represents the response for getting routing details.
@@ -49,10 +44,16 @@ public class RoutingDetailsGetResponse {
   private final ViewerGetCollection viewers;
 
   /**
-   * Collection of approvers.
+   * Collection of persons who approve the signing.
    */
   @JsonProperty("approvers")
   private final ApproverGetCollection approvers;
+
+  /**
+   * Attributes.
+   */
+  @JsonProperty("attributes")
+  private final AttributeGet attributes;
 
   /**
    * Collection of invite link instructions.
@@ -67,7 +68,7 @@ public class RoutingDetailsGetResponse {
    * @param cc Collection of CCs.
    * @param ccStep Collection of CC steps.
    * @param viewers Collection of viewers.
-   * @param approvers Collection of approvers.
+   * @param approvers Collection of persons who approve the signing.
    * @param inviteLinkInstructions Collection of invite link instructions.
    */
   public RoutingDetailsGetResponse(
@@ -76,6 +77,7 @@ public class RoutingDetailsGetResponse {
       @JsonProperty("cc_step") CcStepGetCollection ccStep,
       @JsonProperty("viewers") ViewerGetCollection viewers,
       @JsonProperty("approvers") ApproverGetCollection approvers,
+      @JsonProperty("attributes") AttributeGet attributes,
       @JsonProperty("invite_link_instructions")
           InviteLinkInstructionGetCollection inviteLinkInstructions) {
     this.routingDetails = routingDetails;
@@ -83,6 +85,7 @@ public class RoutingDetailsGetResponse {
     this.ccStep = ccStep;
     this.viewers = viewers;
     this.approvers = approvers;
+    this.attributes = attributes;
     this.inviteLinkInstructions = inviteLinkInstructions;
   }
 
@@ -129,6 +132,15 @@ public class RoutingDetailsGetResponse {
    */
   public ApproverGetCollection getApprovers() {
     return this.approvers;
+  }
+
+  /**
+   * Returns the attributes.
+   *
+   * @return attributes.
+   */
+  public AttributeGet getAttributes() {
+    return this.attributes;
   }
 
   /**
