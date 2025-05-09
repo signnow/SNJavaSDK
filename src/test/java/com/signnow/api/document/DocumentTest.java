@@ -22,6 +22,7 @@ import com.signnow.api.document.response.DocumentPostResponse;
 import com.signnow.api.document.response.DocumentPutResponse;
 import com.signnow.core.ApiClient;
 import com.signnow.core.exception.SignNowApiException;
+import com.signnow.core.response.Reply;
 import com.signnow.mock.expectation.Expectation;
 import com.signnow.mock.faker.SignNowFaker;
 import org.junit.jupiter.api.BeforeEach;

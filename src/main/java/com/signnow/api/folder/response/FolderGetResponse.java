@@ -31,7 +31,7 @@ public class FolderGetResponse {
    * The timestamp when the folder was created.
    */
   @JsonProperty("created")
-  private final int created;
+  private final String created;
 
   /**
    * The name of the folder.
@@ -119,7 +119,7 @@ public class FolderGetResponse {
   @JsonCreator
   public FolderGetResponse(
       @JsonProperty("id") String id,
-      @JsonProperty("created") int created,
+      @JsonProperty("created") String created,
       @JsonProperty("name") String name,
       @JsonProperty("user_id") String userId,
       @JsonProperty("system_folder") boolean systemFolder,
@@ -160,7 +160,7 @@ public class FolderGetResponse {
    *
    * @return the timestamp when the folder was created
    */
-  public int getCreated() {
+  public String getCreated() {
     return this.created;
   }
 

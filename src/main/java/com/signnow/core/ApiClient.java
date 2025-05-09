@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.signnow.core.config.ConfigRepository;
+import com.signnow.core.data.ResponseData;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.request.ApiEndpoint;
 import com.signnow.core.request.ApiEndpointResolver;
@@ -21,19 +22,20 @@ import com.signnow.core.response.Reply;
 import com.signnow.core.response.ResponseParser;
 import com.signnow.core.token.BasicToken;
 import com.signnow.core.token.BearerToken;
+import com.signnow.core.util.Cast;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import okhttp3.*;
 import okio.Buffer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * This class is responsible for sending API requests to the signNow server.
- */
+/** This class is responsible for sending API requests to the signNow server. */
 public class ApiClient {
 
   /** HTTP client to send API requests. */
@@ -55,7 +57,8 @@ public class ApiClient {
    * Constructs an ApiClient with the provided parameters.
    *
    * @param client the HTTP client to send API requests
-   * @param apiEndpointResolver the resolver to retrieve the ApiEndpoint data object from annotated request object
+   * @param apiEndpointResolver the resolver to retrieve the ApiEndpoint data object from annotated
+   *     request object
    * @param configRepository the signNow SDK configuration
    * @param basicToken the Authorization Basic token to retrieve Bearer token
    * @param bearerToken the Authorization Bearer token for API requests
@@ -84,8 +87,8 @@ public class ApiClient {
   public <R> Reply<R> send(RequestInterface<?> request) throws SignNowApiException {
     ApiEndpoint apiEndpoint = this.apiEndpointResolver.resolve(request);
     Request apiRequest = this.buildRequest(apiEndpoint, request);
-    String responseBody = "";
     int responseCode = 0;
+    String jsonContent = "{}";
 
     try {
       Response response = this.client.newCall(apiRequest).execute();
@@ -97,19 +100,27 @@ public class ApiClient {
                 + "Please try again later, or check your internet connection.");
       }
 
-      responseBody = response.body().string();
-      responseCode = response.code();
+      ResponseData responseData =
+          new ResponseData(
+              response.code(),
+              response.header("Content-Type", ""),
+              response.header("Content-Disposition", ""),
+              this.configRepository.downloadsDirectory(),
+              response.body().bytes());
       response.close();
 
-      this.validateResponse(responseCode, responseBody);
+      responseCode = responseData.getCode();
+      jsonContent = responseData.getContentAsString();
 
-      return ResponseParser.parseResponse(responseCode, responseBody, apiEndpoint);
+      this.validateResponse(responseCode);
+
+      return ResponseParser.parse(responseData, apiEndpoint);
     } catch (IOException e) {
       throw new SignNowApiException(
           "Failed processing signNow API request.",
           apiEndpoint.method().toUpperCase(Locale.ROOT) + " " + apiEndpoint.url(),
           this.getPayload(apiRequest),
-          responseBody,
+          jsonContent,
           responseCode,
           e);
     }
@@ -162,7 +173,21 @@ public class ApiClient {
       uri = uri.replace("{" + param + "}", value);
     }
 
-    return host + uri;
+    HttpUrl.Builder urlBuilder = Objects.requireNonNull(HttpUrl.parse(host + uri)).newBuilder();
+
+    try {
+      Method queryParamsMethod = request.getClass().getDeclaredMethod("queryParams");
+      Map<String, String> queryParams =
+          Cast.safeToMap(queryParamsMethod.invoke(request), String.class, String.class);
+      if (!queryParams.isEmpty()) {
+        for (Map.Entry<String, String> entry : queryParams.entrySet()) {
+          urlBuilder.addQueryParameter(entry.getKey(), entry.getValue());
+        }
+      }
+    } catch (Exception ignored) {
+    }
+
+    return urlBuilder.build().toString();
   }
 
   private String buildAuthHeader(@NotNull ApiEndpoint endpoint) throws SignNowApiException {
@@ -247,7 +272,7 @@ public class ApiClient {
     return null;
   }
 
-  private void validateResponse(int code, String body) throws IOException {
+  private void validateResponse(int code) throws IOException {
     if (code >= 400 && code < 500) {
       throw new IOException("SignNow API request was invalid.");
     }

@@ -17,20 +17,14 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * This class represents the routing details of a request.
- */
+/** This class represents the routing details of a request. */
 public final class RoutingDetail extends ApiData {
 
-  /**
-   * Collection of invite steps.
-   */
+  /** Collection of invite steps. */
   @JsonProperty("invite_steps")
   private final InviteStepCollection inviteSteps;
 
-  /**
-   * Flag to include email attachments.
-   */
+  /** Flag to include email attachments. */
   @JsonProperty("include_email_attachments")
   private final int includeEmailAttachments;
 

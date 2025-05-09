@@ -10,12 +10,34 @@
 package com.signnow.api.document.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.File;
 
 /**
  * This class represents the response received after a document download request.
- * It is annotated with JsonIgnoreProperties to ignore any unknown properties when deserializing JSON.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class DocumentDownloadGetResponse {
-    // No public properties, constructors, or methods to comment on.
+
+  /**
+   * The file downloaded as part of the response. This file is created from the response content and
+   * stored locally.
+   */
+  private final File file;
+
+  /**
+   * Creates a new DocumentDownloadGetResponse with the specified file.
+   *
+   * @param file The downloaded file
+   */
+  public DocumentDownloadGetResponse(File file) {
+    this.file = file;
+  }
+
+  /**
+   * Gets the downloaded file.
+   *
+   * @return The File object representing the downloaded file
+   */
+  public File getFile() {
+    return file;
+  }
 }

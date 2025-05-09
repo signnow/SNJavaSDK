@@ -12,14 +12,12 @@ package com.signnow.api.template.request.data.routingdetail;
 import com.signnow.core.collection.TypedCollection;
 
 /**
- * This class represents a collection of InviteEmail objects.
- * It extends the TypedCollection class, specifying InviteEmail as the type parameter.
+ * This class represents a collection of InviteEmail objects. It extends the TypedCollection class,
+ * specifying InviteEmail as the type parameter.
  */
 public class InviteEmailCollection extends TypedCollection<InviteEmail> {
-    /**
-     * Default constructor {@code InviteEmailCollection}.
-     */
-    public InviteEmailCollection() {
-        super();
-    }
+  /** Default constructor {@code InviteEmailCollection}. */
+  public InviteEmailCollection() {
+    super();
+  }
 }

@@ -33,16 +33,34 @@ public class PendingInviteGetResponse {
   private final InviteCollection invites;
 
   /**
+   * Should be signed as a single document
+   */
+  @JsonProperty("sign_as_merged")
+  private final boolean signAsMerged;
+
+  /**
+   * The owner organization id
+   */
+  @JsonProperty("owner_organization_id")
+  private final String ownerOrganizationId;
+
+  /**
    * Constructs a new PendingInviteGetResponse with the specified document group name and invites.
    *
    * @param documentGroupName the name of the document group
    * @param invites the collection of invites
+   * @param signAsMerged should be signed as a single document
+   * @param ownerOrganizationId owner organization id
    */
   public PendingInviteGetResponse(
       @JsonProperty("document_group_name") String documentGroupName,
-      @JsonProperty("invites") InviteCollection invites) {
+      @JsonProperty("invites") InviteCollection invites,
+      @JsonProperty("sign_as_merged") boolean signAsMerged,
+      @JsonProperty("owner_organization_id") String ownerOrganizationId) {
     this.documentGroupName = documentGroupName;
     this.invites = invites;
+    this.signAsMerged = signAsMerged;
+    this.ownerOrganizationId = ownerOrganizationId;
   }
 
   /**
@@ -61,5 +79,23 @@ public class PendingInviteGetResponse {
    */
   public InviteCollection getInvites() {
     return this.invites;
+  }
+
+  /**
+   * Return owner organization id
+   *
+   * @return owner organization id
+   */
+  public String getOwnerOrganizationId() {
+      return this.ownerOrganizationId;
+  }
+
+  /**
+   * Return should be signed as a single document
+   *
+   * @return should be signed as a single document
+   */
+  public boolean isSignAsMerged() {
+      return this.signAsMerged;
   }
 }

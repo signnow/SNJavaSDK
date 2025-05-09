@@ -54,6 +54,8 @@ public class PendingInviteTest extends BaseTest {
 
           this.assertSame(expectation.get("invites"), response.getInvites());
           this.assertSame(expectation.get("document_group_name"), response.getDocumentGroupName());
+          this.assertSame(expectation.get("sign_as_merged"), response.isSignAsMerged());
+          this.assertSame(expectation.get("owner_organization_id"), response.getOwnerOrganizationId());
         },
         "Sending PendingInviteGetRequest should not throw any exception.");
   }

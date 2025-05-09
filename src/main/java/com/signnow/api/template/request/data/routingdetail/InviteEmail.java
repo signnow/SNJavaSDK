@@ -17,44 +17,30 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * This class represents an invitation email.
- */
+/** This class represents an invitation email. */
 public final class InviteEmail extends ApiData {
 
-  /**
-   * The email address to which the invitation is sent.
-   */
+  /** The email address to which the invitation is sent. */
   @JsonProperty("email")
   private final String email;
 
-  /**
-   * The subject of the invitation email.
-   */
+  /** The subject of the invitation email. */
   @JsonProperty("subject")
   private final String subject;
 
-  /**
-   * The message content of the invitation email.
-   */
+  /** The message content of the invitation email. */
   @JsonProperty("message")
   private final String message;
 
-  /**
-   * The permission to reassign the invitation.
-   */
+  /** The permission to reassign the invitation. */
   @JsonProperty("allow_reassign")
   private final String allowReassign;
 
-  /**
-   * The number of days before the invitation expires.
-   */
+  /** The number of days before the invitation expires. */
   @JsonProperty("expiration_days")
   private final int expirationDays;
 
-  /**
-   * The reminder setting for the invitation.
-   */
+  /** The reminder setting for the invitation. */
   @JsonProperty("reminder")
   private final int reminder;
 

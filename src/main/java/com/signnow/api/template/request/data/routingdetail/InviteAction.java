@@ -17,50 +17,34 @@ import java.util.Map;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * This class represents an invite action in the signNow API.
- */
+/** This class represents an invitation action in the signNow API. */
 public final class InviteAction extends ApiData {
 
-  /**
-   * The email of the invitee.
-   */
+  /** The email of the invitee. */
   @JsonProperty("email")
   private final String email;
 
-  /**
-   * The role name of the invitee.
-   */
+  /** The role name of the invitee. */
   @JsonProperty("role_name")
   private final String roleName;
 
-  /**
-   * The action to be performed.
-   */
+  /** The action to be performed. */
   @JsonProperty("action")
   private final String action;
 
-  /**
-   * The ID of the document.
-   */
+  /** The ID of the document. */
   @JsonProperty("document_id")
   private final String documentId;
 
-  /**
-   * The name of the document.
-   */
+  /** The name of the document. */
   @JsonProperty("document_name")
   private final String documentName;
 
-  /**
-   * Flag to allow reassignment of the invite.
-   */
+  /** Flag to allow reassignment of the invite. */
   @JsonProperty("allow_reassign")
   private final String allowReassign;
 
-  /**
-   * Flag to allow decline by signature.
-   */
+  /** Flag to allow decline by signature. */
   @JsonProperty("decline_by_signature")
   private final String declineBySignature;
 
@@ -195,12 +179,12 @@ public final class InviteAction extends ApiData {
   @Contract("_ -> new")
   public static InviteAction fromMap(@NotNull Map<String, Object> data) {
     return new InviteAction(
-        (String) data.get("email"),
-        (String) data.get("role_name"),
-        (String) data.get("action"),
-        (String) data.get("document_id"),
-        (String) data.get("document_name"),
-        (String) data.getOrDefault("allow_reassign", ""),
-        (String) data.getOrDefault("decline_by_signature", ""));
+      (String) data.get("email"),
+      (String) data.get("role_name"),
+      (String) data.get("action"),
+      (String) data.get("document_id"),
+      (String) data.get("document_name"),
+      (String) data.getOrDefault("allow_reassign", ""),
+      (String) data.getOrDefault("decline_by_signature", ""));
   }
 }
