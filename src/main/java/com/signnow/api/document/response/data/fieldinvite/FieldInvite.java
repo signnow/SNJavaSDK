@@ -10,6 +10,7 @@
 package com.signnow.api.document.response.data.fieldinvite;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.core.data.ApiData;
 import java.util.LinkedHashMap;
@@ -20,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * This class represents a FieldInvite which is a part of the signNow SDK API client.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class FieldInvite extends ApiData {
 
   /**

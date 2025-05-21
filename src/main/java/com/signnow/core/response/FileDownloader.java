@@ -36,6 +36,13 @@ public final class FileDownloader {
             ? downloadDirectory + fileName
             : downloadDirectory + "/" + fileName;
 
+    File directory = new File(downloadDirectory);
+    if (!directory.exists()) {
+      if (!directory.mkdirs()) {
+        throw new IOException("Failed to create directory: " + downloadDirectory);
+      }
+    }
+
     try (FileOutputStream fos = new FileOutputStream(filePath)) {
       byte[] fileContent = downloadData.getContent();
       fos.write(fileContent);
