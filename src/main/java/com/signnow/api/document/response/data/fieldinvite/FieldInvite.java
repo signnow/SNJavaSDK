@@ -162,6 +162,15 @@ public final class FieldInvite extends ApiData {
   @JsonProperty("language")
   private final String language;
 
+  @JsonProperty("is_finish_redirect_canceled")
+  private final Boolean isFinishRedirectCanceled;
+
+  @JsonProperty("is_close_redirect_canceled")
+  private final Boolean isCloseRedirectCanceled;
+
+  @JsonProperty("is_decline_redirect_canceled")
+  private final Boolean isDeclineRedirectCanceled;
+
   /**
    * The phone invite of the signer associated with the FieldInvite.
    */
@@ -342,6 +351,9 @@ public final class FieldInvite extends ApiData {
   @JsonProperty("signature_type")
   private final String signatureType;
 
+  @JsonProperty("compliance")
+  private final Compliance compliance;
+
   /**
    * Constructs a new FieldInvite with the provided parameters.
    *
@@ -424,6 +436,9 @@ public final class FieldInvite extends ApiData {
       @JsonProperty("id_verified") String idVerified,
       @JsonProperty("embedded_signer") EmbeddedSignerCollection embeddedSigner,
       @JsonProperty("language") String language,
+      @JsonProperty("is_finish_redirect_canceled") Boolean isFinishRedirectCanceled,
+      @JsonProperty("is_close_redirect_canceled") Boolean isCloseRedirectCanceled,
+      @JsonProperty("is_decline_redirect_canceled") Boolean isDeclineRedirectCanceled,
       @JsonProperty("signer_phone_invite") String signerPhoneInvite,
       @JsonProperty("password_type") String passwordType,
       @JsonProperty("password_method") String passwordMethod,
@@ -453,7 +468,8 @@ public final class FieldInvite extends ApiData {
       @JsonProperty("prefill_signature_name") String prefillSignatureName,
       @JsonProperty("force_new_signature") int forceNewSignature,
       @JsonProperty("signing_instructions") String signingInstructions,
-      @JsonProperty("signature_type") String signatureType) {
+      @JsonProperty("signature_type") String signatureType,
+      @JsonProperty("compliance") Compliance compliance) {
     this.id = id;
     this.signerUserId = signerUserId;
     this.status = status;
@@ -477,6 +493,9 @@ public final class FieldInvite extends ApiData {
     this.idVerified = idVerified;
     this.embeddedSigner = embeddedSigner;
     this.language = language;
+    this.isFinishRedirectCanceled = isFinishRedirectCanceled;
+    this.isCloseRedirectCanceled = isCloseRedirectCanceled;
+    this.isDeclineRedirectCanceled = isDeclineRedirectCanceled;
     this.signerPhoneInvite = signerPhoneInvite;
     this.passwordType = passwordType;
     this.passwordMethod = passwordMethod;
@@ -507,6 +526,7 @@ public final class FieldInvite extends ApiData {
     this.forceNewSignature = forceNewSignature;
     this.signingInstructions = signingInstructions;
     this.signatureType = signatureType;
+    this.compliance = compliance;
   }
 
   public String getId() {
@@ -717,8 +737,24 @@ public final class FieldInvite extends ApiData {
     return this.signatureType;
   }
 
+  public Compliance getCompliance() {
+    return this.compliance;
+  }
+
   public String getLanguage() {
     return this.language;
+  }
+
+  public Boolean isFinishRedirectCanceled() {
+    return this.isFinishRedirectCanceled;
+  }
+
+  public Boolean isCloseRedirectCanceled() {
+    return this.isCloseRedirectCanceled;
+  }
+
+  public Boolean isDeclineRedirectCanceled() {
+    return this.isDeclineRedirectCanceled;
   }
 
   @NotNull
@@ -777,7 +813,11 @@ public final class FieldInvite extends ApiData {
     map.put("force_new_signature", this.getForceNewSignature());
     map.put("signing_instructions", this.getSigningInstructions());
     map.put("signature_type", this.getSignatureType());
+    map.put("compliance", this.getCompliance() != null ? this.getCompliance().toMap() : null);
     map.put("language", this.getLanguage());
+    map.put("is_finish_redirect_canceled", this.isFinishRedirectCanceled());
+    map.put("is_close_redirect_canceled", this.isCloseRedirectCanceled());
+    map.put("is_decline_redirect_canceled", this.isDeclineRedirectCanceled());
     return map;
   }
 
@@ -808,6 +848,9 @@ public final class FieldInvite extends ApiData {
             (String) data.get("id_verified"),
             (EmbeddedSignerCollection) data.get("embedded_signer"),
             (String) data.get("language"),
+            (Boolean) data.get("is_finish_redirect_canceled"),
+            (Boolean) data.get("is_close_redirect_canceled"),
+            (Boolean) data.get("is_decline_redirect_canceled"),
             (String) data.get("signer_phone_invite"),
             (String) data.get("password_type"),
             (String) data.get("password_method"),
@@ -837,6 +880,7 @@ public final class FieldInvite extends ApiData {
             (String) data.get("prefill_signature_name"),
             (Integer) data.get("force_new_signature"),
             (String) data.get("signing_instructions"),
-            (String) data.get("signature_type"));
+            (String) data.get("signature_type"),
+            data.get("compliance") != null ? Compliance.fromMap((Map<String, Object>) data.get("compliance")) : null);
   }
 }
