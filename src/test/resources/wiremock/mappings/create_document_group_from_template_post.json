@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "POST",
+        "urlPathPattern": "/v2/document-group-templates/[0-9a-z]{40}/document-group"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":{\"unique_id\":\"7fcf46b0d307c27ba495c2c5b3eeee377592b179\",\"name\":\"quia\",\"created\":138108469,\"invite_id\":\"0f117c09ca5743d81fa03aa44208002f86b647cf\",\"state\":\"quia\",\"last_invite_id\":\"5dd2fc6b5ddffcaa5d06a63875f3ae2b103e5361\",\"owner_email\":\"imoore@yahoo.com\",\"documents\":[{\"roles\":[\"laborum\"],\"document_name\":\"cupiditate ut\",\"id\":\"34763dff13990f8a575ffc2785afb9562b3b1932\",\"thumbnail\":{\"small\":\"https:\\/\\/api.signnow.com\\/document\\/a06b6381f64d302447f4df2d68d900fc8eb0bd96\\/thumbnail?size=small\",\"medium\":\"https:\\/\\/api.signnow.com\\/document\\/a06b6381f64d302447f4df2d68d900fc8eb0bd96\\/thumbnail?size=medium\",\"large\":\"https:\\/\\/api.signnow.com\\/document\\/a06b6381f64d302447f4df2d68d900fc8eb0bd96\\/thumbnail?size=large\"},\"origin_document_id\":\"68503fc27ab587d8380b25df8f94c48f2c079843\",\"has_unassigned_field\":true,\"has_credit_card_number\":false}],\"owner\":\"colten08@keeling.net\"}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

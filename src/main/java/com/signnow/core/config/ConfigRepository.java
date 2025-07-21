@@ -16,7 +16,7 @@ import java.util.Map;
 public class ConfigRepository {
 
   private static final int READ_TIMEOUT = 15;
-  private static final String CLIENT_NAME = "SignNowApiClient/v3.2.1 (Java)";
+  private static final String CLIENT_NAME = "SignNowApiClient/v3.4 (Java)";
   private static final String DEFAULT_DOWNLOADS_DIR = "./src/main/resources/downloads";
 
   private final Map<String, String> configMap;

@@ -10,6 +10,7 @@
 package com.signnow.api.document.response.data.viewerfieldinvite;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.core.data.ApiData;
 import com.signnow.core.util.Cast;
@@ -21,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * This class represents a ViewerFieldInvite object.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class ViewerFieldInvite extends ApiData {
 
   /**
@@ -52,6 +54,12 @@ public final class ViewerFieldInvite extends ApiData {
    */
   @JsonProperty("email")
   private final String email;
+
+  /**
+   * The is_close_redirect_canceled associated with the ViewerFieldInvite.
+   */
+  @JsonProperty("is_close_redirect_canceled")
+  private final Boolean isCloseRedirectCanceled;
 
   /**
    * The redirect target of the ViewerFieldInvite.
@@ -103,6 +111,7 @@ public final class ViewerFieldInvite extends ApiData {
    * @param created The creation date of the ViewerFieldInvite.
    * @param updated The last updated date of the ViewerFieldInvite.
    * @param email The email associated with the ViewerFieldInvite.
+   * @param isCloseRedirectCanceled whether the close redirect is canceled
    * @param redirectTarget The redirect target of the ViewerFieldInvite.
    * @param emailGroup The email group of the ViewerFieldInvite.
    * @param emailStatuses The email statuses of the ViewerFieldInvite.
@@ -118,6 +127,7 @@ public final class ViewerFieldInvite extends ApiData {
       @JsonProperty("created") String created,
       @JsonProperty("updated") String updated,
       @JsonProperty("email") String email,
+      @JsonProperty("is_close_redirect_canceled") Boolean isCloseRedirectCanceled,
       @JsonProperty("redirect_target") String redirectTarget,
       @JsonProperty("email_group") EmailGroup emailGroup,
       @JsonProperty("email_statuses") EmailStatusCollection emailStatuses,
@@ -130,6 +140,7 @@ public final class ViewerFieldInvite extends ApiData {
     this.created = created;
     this.updated = updated;
     this.email = email;
+    this.isCloseRedirectCanceled = isCloseRedirectCanceled;
     this.redirectTarget = redirectTarget;
     this.emailGroup = emailGroup;
     this.emailStatuses = emailStatuses;
@@ -212,6 +223,15 @@ public final class ViewerFieldInvite extends ApiData {
   }
 
   /**
+   * Checks if the close redirect is canceled.
+   *
+   * @return true if canceled, otherwise false
+   */
+  public Boolean isCloseRedirectCanceled() {
+      return this.isCloseRedirectCanceled;
+  }
+
+  /**
    * Returns the close redirect URI of the ViewerFieldInvite.
    *
    * @return The close redirect URI of the ViewerFieldInvite.
@@ -264,6 +284,7 @@ public final class ViewerFieldInvite extends ApiData {
     map.put("role", this.getRole());
     map.put("email", this.getEmail());
     map.put("role_id", this.getRoleId());
+    map.put("is_close_redirect_canceled", this.isCloseRedirectCanceled());
     map.put("close_redirect_uri", this.getCloseRedirectUri());
     map.put("redirect_target", this.getRedirectTarget());
     map.put("email_group", this.getEmailGroup());
@@ -286,6 +307,7 @@ public final class ViewerFieldInvite extends ApiData {
         (String) data.get("created"),
         (String) data.get("updated"),
         (String) data.get("email"),
+        (Boolean) data.get("is_close_redirect_canceled"),
         (String) data.get("redirect_target"),
         EmailGroup.fromMap(Cast.safeToMap(data.get("email_group"), String.class, Object.class)),
         (EmailStatusCollection) data.get("email_statuses"),
