@@ -39,12 +39,15 @@ public final class DocumentGroupEmbeddedSendingLinkPostRequest implements Reques
   /** The redirect target for the request. */
   private final String redirectTarget;
 
+  /** The type of the embedded link: manage (default), edit, send-invite. */
+  private final String type;
+
   /** The URI parameters for the request. */
   private final HashMap<String, String> uriParams = new HashMap<>();
 
   /**
    * Constructs a new DocumentGroupEmbeddedSendingLinkPostRequest with the specified redirect URI,
-   * link expiration, and redirect target.
+   * link expiration, and redirect target, using default type 'manage'.
    *
    * @param redirectUri the redirect URI for the request
    * @param linkExpiration the link expiration time for the request
@@ -55,6 +58,24 @@ public final class DocumentGroupEmbeddedSendingLinkPostRequest implements Reques
     this.redirectUri = redirectUri;
     this.linkExpiration = linkExpiration;
     this.redirectTarget = redirectTarget;
+    this.type = "manage";
+  }
+
+  /**
+   * Constructs a new DocumentGroupEmbeddedSendingLinkPostRequest with the specified redirect URI,
+   * link expiration, redirect target, and type.
+   *
+   * @param redirectUri the redirect URI for the request
+   * @param linkExpiration the link expiration time for the request
+   * @param redirectTarget the redirect target for the request
+   * @param type the type of the embedded link: manage (default), edit, send-invite
+   */
+  public DocumentGroupEmbeddedSendingLinkPostRequest(
+      String redirectUri, int linkExpiration, String redirectTarget, String type) {
+    this.redirectUri = redirectUri;
+    this.linkExpiration = linkExpiration;
+    this.redirectTarget = redirectTarget;
+    this.type = type;
   }
 
   /**
@@ -82,6 +103,15 @@ public final class DocumentGroupEmbeddedSendingLinkPostRequest implements Reques
    */
   public String getRedirectTarget() {
     return this.redirectTarget;
+  }
+
+  /**
+   * Returns the type for the request.
+   *
+   * @return the type for the request
+   */
+  public String getType() {
+    return this.type;
   }
 
   /**
@@ -118,6 +148,7 @@ public final class DocumentGroupEmbeddedSendingLinkPostRequest implements Reques
     map.put("redirect_uri", this.getRedirectUri());
     map.put("link_expiration", this.getLinkExpiration());
     map.put("redirect_target", this.getRedirectTarget());
+    map.put("type", this.getType());
     return map;
   }
 }

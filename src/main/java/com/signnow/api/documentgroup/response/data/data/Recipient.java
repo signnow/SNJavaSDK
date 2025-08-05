@@ -10,6 +10,7 @@
 package com.signnow.api.documentgroup.response.data.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.core.data.ApiData;
 import java.util.LinkedHashMap;
@@ -21,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * Recipient class extends ApiData.
  * Represents a recipient of a document group.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class Recipient extends ApiData {
 
   /**

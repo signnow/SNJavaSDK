@@ -49,7 +49,7 @@ public class EmbeddedSendingDocumentGroupExample {
 
       /** Create an embedded sending link for the created document group. */
       DocumentGroupEmbeddedSendingLinkPostRequest embeddedSendingRequest =
-          new DocumentGroupEmbeddedSendingLinkPostRequest("https://example.com", 15, "blank");
+          new DocumentGroupEmbeddedSendingLinkPostRequest("https://example.com", 15, "self", "manage");
       embeddedSendingRequest.withDocumentGroupId(groupId);
       DocumentGroupEmbeddedSendingLinkPostResponse embeddedSendingResponse =
           (DocumentGroupEmbeddedSendingLinkPostResponse)

@@ -9,6 +9,7 @@
 
 package com.signnow.api.documentgrouptemplate.response;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.api.documentgrouptemplate.response.data.data.Data;
@@ -31,7 +32,8 @@ public class DocumentGroupTemplatePostResponse {
    *
    * @param data the data associated with the document group template post response.
    */
-  public DocumentGroupTemplatePostResponse(Data data) {
+  @JsonCreator
+  public DocumentGroupTemplatePostResponse(@JsonProperty("data") Data data) {
     this.data = data;
   }
 

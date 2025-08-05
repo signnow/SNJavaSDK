@@ -10,6 +10,7 @@
 package com.signnow.api.documentgroupinvite.response.data.invite;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.core.data.ApiData;
 import java.util.LinkedHashMap;
@@ -20,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * This class represents an Invite which extends ApiData.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class Invite extends ApiData {
 
   /**
