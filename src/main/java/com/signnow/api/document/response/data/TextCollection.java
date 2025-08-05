@@ -15,7 +15,7 @@ import com.signnow.core.collection.TypedCollection;
  * This class represents a collection of text data.
  * It extends the TypedCollection class with a type parameter of String.
  */
-public class TextCollection extends TypedCollection<String> {
+public class TextCollection extends TypedCollection<Text> {
 
     /**
      * Default constructor for TextCollection class.

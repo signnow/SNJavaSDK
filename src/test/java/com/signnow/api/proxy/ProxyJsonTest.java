@@ -98,10 +98,10 @@ public class ProxyJsonTest extends BaseTest {
               expectation.get("original_filename"),
               response.getRawJson().get("original_filename").asText());
           this.assertSame(
-              expectation.get("origin_user_id"), response.getRawJson().get("origin_user_id"));
+              expectation.get("origin_user_id"), response.getRawJson().get("origin_user_id").asText());
           this.assertSame(
               expectation.get("origin_document_id"),
-              response.getRawJson().get("origin_document_id"));
+              response.getRawJson().get("origin_document_id").asText());
           this.assertSame(expectation.get("owner"), response.getRawJson().get("owner").asText());
           this.assertSame(
               expectation.get("owner_name"), response.getRawJson().get("owner_name").asText());

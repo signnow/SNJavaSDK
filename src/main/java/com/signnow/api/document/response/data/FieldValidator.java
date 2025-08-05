@@ -10,6 +10,7 @@
 package com.signnow.api.document.response.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.core.data.ApiData;
 import java.util.LinkedHashMap;
@@ -20,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * This class represents a field validator in the signNow API.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class FieldValidator extends ApiData {
 
   /**

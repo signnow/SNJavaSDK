@@ -10,6 +10,7 @@
 package com.signnow.api.document.response.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.core.data.ApiData;
 import java.util.LinkedHashMap;
@@ -21,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * Text class extends ApiData.
  * Represents the text data in a document.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class Text extends ApiData {
 
   /**
@@ -117,19 +119,19 @@ public final class Text extends ApiData {
    * The width of the text.
    */
   @JsonProperty("width")
-  private final String width;
+  private final Integer width;
 
   /**
    * The height of the text.
    */
   @JsonProperty("height")
-  private final String height;
+  private final Integer height;
 
   /**
    * The line height of the text.
    */
   @JsonProperty("line_height")
-  private final float lineHeight;
+  private final String lineHeight;
 
   /**
    * The color of the text.
@@ -219,9 +221,9 @@ public final class Text extends ApiData {
       @JsonProperty("owner_as_recipient") boolean ownerAsRecipient,
       @JsonProperty("user_id") String userId,
       @JsonProperty("email") String email,
-      @JsonProperty("width") String width,
-      @JsonProperty("height") String height,
-      @JsonProperty("line_height") float lineHeight,
+      @JsonProperty("width") Integer width,
+      @JsonProperty("height") Integer height,
+      @JsonProperty("line_height") String lineHeight,
       @JsonProperty("color") String color,
       @JsonProperty("italic") boolean italic,
       @JsonProperty("underline") boolean underline,
@@ -342,7 +344,7 @@ public final class Text extends ApiData {
    *
    * @return The width of the text.
    */
-  public String getWidth() {
+  public Integer getWidth() {
     return this.width;
   }
 
@@ -351,7 +353,7 @@ public final class Text extends ApiData {
    *
    * @return The height of the text.
    */
-  public String getHeight() {
+  public Integer getHeight() {
     return this.height;
   }
 
@@ -360,7 +362,7 @@ public final class Text extends ApiData {
    *
    * @return The line height of the text.
    */
-  public float getLineHeight() {
+  public String getLineHeight() {
     return this.lineHeight;
   }
 
@@ -543,9 +545,9 @@ public final class Text extends ApiData {
         (Boolean) data.get("owner_as_recipient"),
         (String) data.getOrDefault("user_id", null),
         (String) data.getOrDefault("email", ""),
-        (String) data.getOrDefault("width", ""),
-        (String) data.getOrDefault("height", ""),
-        (Float) data.getOrDefault("line_height", 0f),
+        (Integer) data.getOrDefault("width", null),
+        (Integer) data.getOrDefault("height", null),
+        (String) data.getOrDefault("line_height", "0"),
         (String) data.getOrDefault("color", null),
         (Boolean) data.getOrDefault("italic", false),
         (Boolean) data.getOrDefault("underline", false),
