@@ -897,7 +897,9 @@ public class SignNowFaker {
     var signers = new com.signnow.api.embeddedgroupinvite.request.data.invite.SignerCollection();
     signers.add(
         new com.signnow.api.embeddedgroupinvite.request.data.invite.Signer(
-            this.email(), this.authMethod(), documents, this.firstName(), this.lastName()));
+            this.email(), this.authMethod(), documents, this.firstName(), this.lastName(),
+            this.language(), this.string(), this.redirectUri(), this.declineRedirectUri(),
+            this.redirectTarget(), this.string()));
 
     var embeddedGroupInvites =
         new com.signnow.api.embeddedgroupinvite.request.data.invite.InviteCollection();

@@ -83,6 +83,12 @@ public final class Signer extends ApiData {
   private final String redirectTarget;
 
   /**
+   * The delivery type of the signer (link, email).
+   */
+  @JsonProperty("delivery_type")
+  private final String deliveryType;
+
+  /**
    * Constructor for the Signer class.
    *
    * @param email The email of the signer.
@@ -95,6 +101,7 @@ public final class Signer extends ApiData {
    * @param redirectUri The redirect URI of the signer.
    * @param declineRedirectUri The decline redirect URI of the signer.
    * @param redirectTarget The redirect target of the signer.
+   * @param deliveryType The delivery type of the signer (link, email).
    */
   @JsonCreator
   public Signer(
@@ -107,7 +114,8 @@ public final class Signer extends ApiData {
       @JsonProperty("required_preset_signature_name") String requiredPresetSignatureName,
       @JsonProperty("redirect_uri") String redirectUri,
       @JsonProperty("decline_redirect_uri") String declineRedirectUri,
-      @JsonProperty("redirect_target") String redirectTarget) {
+      @JsonProperty("redirect_target") String redirectTarget,
+      @JsonProperty("delivery_type") String deliveryType) {
     this.email = email;
     this.authMethod = authMethod;
     this.documents = documents;
@@ -118,6 +126,7 @@ public final class Signer extends ApiData {
     this.redirectUri = redirectUri;
     this.declineRedirectUri = declineRedirectUri;
     this.redirectTarget = redirectTarget;
+    this.deliveryType = deliveryType;
   }
 
   /**
@@ -145,6 +154,7 @@ public final class Signer extends ApiData {
     this.redirectUri = null;
     this.declineRedirectUri = null;
     this.redirectTarget = null;
+    this.deliveryType = null;
   }
 
   /**
@@ -218,6 +228,13 @@ public final class Signer extends ApiData {
   }
 
   /**
+   * @return The delivery type of the signer (link, email).
+   */
+  public String getDeliveryType() {
+    return this.deliveryType;
+  }
+
+  /**
    * Converts the Signer object to a Map.
    *
    * @return A Map representation of the Signer object.
@@ -236,6 +253,7 @@ public final class Signer extends ApiData {
     map.put("redirect_uri", this.getRedirectUri());
     map.put("decline_redirect_uri", this.getDeclineRedirectUri());
     map.put("redirect_target", this.getRedirectTarget());
+    map.put("delivery_type", this.getDeliveryType());
     return map;
   }
 
@@ -258,6 +276,7 @@ public final class Signer extends ApiData {
         (String) data.getOrDefault("required_preset_signature_name", ""),
         (String) data.getOrDefault("redirect_uri", ""),
         (String) data.getOrDefault("decline_redirect_uri", ""),
-        (String) data.getOrDefault("redirect_target", ""));
+        (String) data.getOrDefault("redirect_target", ""),
+        (String) data.getOrDefault("delivery_type", ""));
   }
 }

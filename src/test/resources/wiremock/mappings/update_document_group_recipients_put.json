@@ -1,0 +1,13 @@
+{
+    "request": {
+        "method": "PUT",
+        "urlPathPattern": "/v2/document-groups/[0-9a-z]{40}/recipients"
+    },
+    "response": {
+        "status": 200,
+        "body": "{\"data\":{\"recipients\":[{\"name\":\"molestiae\",\"email\":\"udaugherty@gmail.com\",\"email_group\":{\"id\":\"02c9bc5e05f7e83897b324bba9f6665a4b9b671e\"},\"order\":86425,\"attributes\":{\"message\":\"qui\",\"subject\":\"nihil\",\"expiration_days\":8556,\"reminder\":{\"remind_after\":95281,\"remind_before\":6116,\"remind_repeat\":91025},\"allow_forwarding\":false,\"show_decline_button\":true,\"i_am_recipient\":true,\"authentication\":{\"type\":\"consequatur\",\"value\":\"vel\",\"phone\":\"voluptas\",\"method\":\"explicabo\"}},\"documents\":[{\"id\":\"b667c03e2551fead0d0f2af5d6aeb681058cf5a2\",\"role\":\"fuga\",\"action\":\"in\"}]}],\"unmapped_documents\":[{\"id\":\"f03e83b3f3aa56e94f7a658eb1c3b9fde7959881\",\"role\":\"maiores\",\"action\":\"dolorem\"}],\"allowed_unmapped_sign_documents\":[{\"id\":\"f7872e68c3079f03bcc12f1f284def5cdb566d26\",\"role\":\"labore\",\"recipient\":\"quaerat\"}],\"cc\":[\"omnis\"]}}",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
