@@ -16,8 +16,7 @@ import java.util.Map;
 public class ConfigRepository {
 
   private static final int READ_TIMEOUT = 15;
-  private static final String CLIENT_NAME = "SignNowApiClient/v3.4.1 (Java)";
-  private static final String DEFAULT_DOWNLOADS_DIR = "./src/main/resources/downloads";
+  private static final String CLIENT_NAME = "SignNowApiClient/v3.5.1 (Java)";
 
   private final Map<String, String> configMap;
 
@@ -36,7 +35,7 @@ public class ConfigRepository {
    * @return the host as a string
    */
   public String host() {
-    return this.configMap.get("SIGNNOW_API_HOST");
+    return this.configMap.get(ConfigDefaults.ENV_VAR_HOST);
   }
 
   /**
@@ -45,7 +44,7 @@ public class ConfigRepository {
    * @return the basic token as a BasicToken object
    */
   public BasicToken basicToken() {
-    return new BasicToken(this.configMap.get("SIGNNOW_API_BASIC_TOKEN"));
+    return new BasicToken(this.configMap.get(ConfigDefaults.ENV_VAR_BASIC_TOKEN));
   }
 
   /**
@@ -54,7 +53,7 @@ public class ConfigRepository {
    * @return the user as a string
    */
   public String user() {
-    return this.configMap.get("SIGNNOW_API_USERNAME");
+    return this.configMap.get(ConfigDefaults.ENV_VAR_USERNAME);
   }
 
   /**
@@ -63,7 +62,7 @@ public class ConfigRepository {
    * @return the password as a string
    */
   public String password() {
-    return this.configMap.get("SIGNNOW_API_PASSWORD");
+    return this.configMap.get(ConfigDefaults.ENV_VAR_PASSWORD);
   }
 
   public String projectDirectory() {
@@ -77,7 +76,7 @@ public class ConfigRepository {
    */
   public String downloadsDirectory() {
     String downloadsDir =
-        this.configMap.getOrDefault("SIGNNOW_DOWNLOADS_DIR", DEFAULT_DOWNLOADS_DIR);
+        this.configMap.getOrDefault(ConfigDefaults.ENV_DOWNLOADS_DIR, ConfigDefaults.DOWNLOADS_DIR);
 
     if (downloadsDir.startsWith(".")) {
       downloadsDir = downloadsDir.replaceFirst("^\\.", projectDirectory());

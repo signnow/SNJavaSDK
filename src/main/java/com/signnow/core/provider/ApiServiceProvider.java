@@ -10,27 +10,25 @@
 package com.signnow.core.provider;
 
 import com.signnow.core.ApiClient;
+import com.signnow.core.config.ConfigDefaults;
 import com.signnow.core.config.ConfigLoader;
 import com.signnow.core.config.ConfigRepository;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.request.ApiEndpointResolver;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * This class provides services for the signNow API SDK.
- */
+/** This class provides services for the signNow API SDK. */
 public class ApiServiceProvider {
 
-  /** 
-   * Path to signNow API SDK configuration file. 
-   */
+  /** Path to signNow API SDK configuration file. */
   private final String configPath;
 
-  /** 
-   * Map of SDK general services 
-   */
+  /** Map of SDK general services */
   private final ServiceRepository serviceRepository;
 
   /**
@@ -70,10 +68,9 @@ public class ApiServiceProvider {
    * Create an API client.
    *
    * @return the created API client
-   * @throws SignNowApiException if there is an error during the creation process
    */
   @NotNull
-  private ApiClient createApiClient() throws SignNowApiException {
+  private ApiClient createApiClient() {
     ConfigRepository config = (ConfigRepository) this.serviceRepository.get("config");
     OkHttpClient httpClient =
         new OkHttpClient.Builder()
@@ -92,6 +89,24 @@ public class ApiServiceProvider {
   @NotNull
   private ConfigRepository createSdkConfig() throws SignNowApiException {
     ConfigLoader configLoader = new ConfigLoader();
-    return new ConfigRepository(configLoader.load(this.configPath));
+    ConfigDefaults defaults = new ConfigDefaults();
+    Map<String, String> defaultConfig = defaults.getDefaults();
+    Map<String, String> config;
+    File file = new File(this.configPath);
+    if (file.exists() && file.isFile()) {
+      Map<String, String> fileConfig = configLoader.load(this.configPath);
+      config = new HashMap<>(fileConfig);
+    } else {
+      Map<String, String> envConfig = configLoader.loadConfigFromEnvironmentVariables();
+      config = new HashMap<>(envConfig);
+    }
+    defaultConfig.forEach(
+        (key, defaultVal) -> {
+          String currentVal = config.get(key);
+          if (currentVal == null || currentVal.isBlank()) {
+            config.put(key, defaultVal);
+          }
+        });
+    return new ConfigRepository(config);
   }
 }

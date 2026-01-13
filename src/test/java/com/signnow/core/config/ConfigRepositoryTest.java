@@ -13,20 +13,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.token.BasicToken;
+import com.signnow.mock.Constants;
 import java.util.Map;
 import java.util.Objects;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ConfigRepositoryTest {
-  private static final String TEST_CONFIG_FILE = "mock_config.env";
-
   private ConfigRepository configRepository;
 
   @BeforeEach
   public void setUp() {
     String configPath =
-        Objects.requireNonNull(getClass().getClassLoader().getResource(TEST_CONFIG_FILE)).getPath();
+        Objects.requireNonNull(getClass().getClassLoader().getResource(Constants.TEST_CONFIG_FILE))
+            .getPath();
     try {
       Map<String, String> configMap = (new ConfigLoader()).load(configPath);
       configRepository = new ConfigRepository(configMap);
