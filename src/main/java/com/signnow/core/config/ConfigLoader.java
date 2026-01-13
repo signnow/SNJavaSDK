@@ -16,16 +16,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** 
- * This class reads and parses signNow SDK configuration file. 
- */
+/** This class reads and parses signNow SDK configuration file. */
 public class ConfigLoader {
 
-  /** 
+  /**
    * This method loads the configuration file from the provided file path and parses it into a map.
-   * Each line in the file should represent a key-value pair, separated by an equals sign.
-   * Lines starting with a hash sign are considered comments and are ignored.
-   * Empty lines are also ignored.
+   * Each line in the file should represent a key-value pair, separated by an equals sign. Lines
+   * starting with a hash sign are considered comments and are ignored. Empty lines are also
+   * ignored.
    *
    * @param filePath The path to the configuration file.
    * @return A map containing the key-value pairs from the configuration file.
@@ -55,5 +53,25 @@ public class ConfigLoader {
           e);
     }
     return configMap;
+  }
+
+  /**
+   * Load API credentials from environment variables if they exist.
+   *
+   * @return A map of SDK configuration parsed from environment variables
+   */
+  public Map<String, String> loadConfigFromEnvironmentVariables() {
+    String[] envVars = ConfigDefaults.getEnvironmentVariableNames();
+
+    Map<String, String> config = new HashMap<>();
+    Map<String, String> env = System.getenv();
+
+    for (String envVar : envVars) {
+      String value = env.get(envVar);
+      if (value != null) {
+        config.put(envVar, value);
+      }
+    }
+    return config;
   }
 }

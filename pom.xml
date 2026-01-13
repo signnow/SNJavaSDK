@@ -6,7 +6,7 @@
 
     <groupId>com.signnow</groupId>
     <artifactId>signnow-java-sdk</artifactId>
-    <version>3.2.1</version>
+    <version>3.5.1</version>
     <packaging>jar</packaging>
     <name>signnow-java-sdk</name>
     <description>SignNow official Java SDK</description>
@@ -25,6 +25,16 @@
             <id>Jisoft</id>
             <name>Ihor Cherkashyn</name>
             <email>cherkashyn.ihor@pdffiller.team</email>
+        </developer>
+        <developer>
+            <id>Vasyl-Kravets</id>
+            <name>Vasyl Kravets</name>
+            <email>kravets.vasyl@pdffiller.team</email>
+        </developer>
+        <developer>
+            <id>Mykhailo-Lebediev</id>
+            <name>Mykhailo Lebediev</name>
+            <email>lebedev.mikhail@pdffiller.team</email>
         </developer>
     </developers>
 
