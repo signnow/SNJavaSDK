@@ -15,9 +15,8 @@ import java.util.Map;
 /** This class represents all the signNow SDK API configuration file entries as a repository. */
 public class ConfigRepository {
 
-  private static final int READ_TIMEOUT = 15;
-  private static final String CLIENT_NAME = "SignNowApiClient/v3.5.1 (Java)";
-
+  private static final String DEFAULT_READ_TIMEOUT = "30";
+  private static final String CLIENT_NAME = "SignNowApiClient/v3.5.2 (Java)";
   private final Map<String, String> configMap;
 
   /**
@@ -100,6 +99,6 @@ public class ConfigRepository {
    * @return the read timeout as an integer
    */
   public int readTimeout() {
-    return READ_TIMEOUT;
+    return Integer.parseInt(this.configMap.getOrDefault("SIGNNOW_API_TIMEOUT", DEFAULT_READ_TIMEOUT));
   }
 }

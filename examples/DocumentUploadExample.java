@@ -7,13 +7,11 @@ import java.io.File;
 
 public class DocumentUploadExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String pathToDocument = "/your/path/to/file.pdf";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String pathToDocument = data.getPathToDocument();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

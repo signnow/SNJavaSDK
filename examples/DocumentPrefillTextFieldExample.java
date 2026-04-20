@@ -1,3 +1,4 @@
+import com.signnow.api.document.request.DocumentPutRequest;
 import com.signnow.api.document.request.DocumentPostRequest;
 import com.signnow.api.document.response.DocumentPostResponse;
 import com.signnow.api.documentfield.request.DocumentPrefillPutRequest;
@@ -7,16 +8,16 @@ import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.factory.SdkFactory;
 import com.signnow.api.documentfield.request.data.*;
 import com.signnow.core.response.Reply;
+import java.io.File;
+
 public class DocumentPrefillTextFieldExample {
     public static void main(String[] args) {
-
-        // Set your actual input data here
-        // Note: following values are dummy, just for example
+        // Fill in your actual data in examples/signnow-example.properties before running
         //----------------------------------------------------
-        // if it is not specified here, a new Bearer token will be created automatically
-        String bearerToken = "";
-        String signerRole = "Product Manager";
-        String pathToDocument = "/your/path/to/file.pdf";
+        SignNowExampleData data = new SignNowExampleData();
+        String bearerToken = data.getBearerToken();
+        String signerRole = data.getDocumentPrefillTextFieldSignerRole();
+        String pathToDocument = data.getPathToDocument();
 
         try {
             ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

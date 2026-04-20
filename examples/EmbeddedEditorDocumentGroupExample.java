@@ -13,14 +13,13 @@ import com.signnow.core.factory.SdkFactory;
 
 public class EmbeddedEditorDocumentGroupExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
-    // ----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
+    // Fill in your actual data in examples/signnow-example.properties before running
+    //----------------------------------------------------
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String pathToDocument = data.getPathToDocument();
+    // Set your actual input data here, or use these as examples
     String groupName = "Test Document Group";
-    String pathToDocument = "/your/path/to/file.pdf";
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

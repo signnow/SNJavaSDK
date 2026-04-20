@@ -1,0 +1,98 @@
+# signNow SDK Example Configuration
+# This file shows how `signnow-example.properties` should look.
+# It is filled with dummy data and should not be used in real requests.
+# Naming convention: {domainName}_{variableName}, exception: global domain
+# Example: e.g. bulk_invite_template_id,
+#   where is {domainName} = bulk_invite, {variableName} = template_id
+#
+
+# Global - properties that can be used across all examples
+# your actual bearer token: leave an empty to create or set a created to reuse
+bearer_token=a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2
+# document to upload in signNow
+path_to_document=examples/files/demo.pdf
+# default recipient role names used across examples (i.e. Signer 1, CTO, HR)
+first_recipient_role=Recipient 1
+second_recipient_role=Recipient 2
+# recipient actions: sign, view
+sign_action=sign
+view_action=view
+# sender email (the document owner who sends invites) - used across examples
+sender_email=sender@example.com
+# your signNow user ID - used across examples (i.e. Webhook subscriptions)
+user_id=e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0
+
+# -- BulkInviteExample
+# the template from which a new document will be cloned for each invite in the bulk
+bulk_invite_template_id=a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0
+# the folder to store documents cloned from the template in the bulk
+bulk_invite_folder_id=b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1
+# signers list for the bulk
+bulk_invite_csv_file_path=/path/to/your/bulk-invite-data.csv
+
+# -- DocumentGroupInviteExample
+# how named your signer role (i.e. CTO, Accounter, HR)
+document_group_invite_signer_role=Signer
+# email to send an invitation to sign a document group
+document_group_invite_signer_email=signer@example.com
+
+# -- DocumentGetExample
+# any your document to get it's metadata
+document_id=c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2
+
+# -- DocumentGroupTemplateExample
+# existing document group template to create a document group from
+document_group_template_template_group_id=d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3
+# folder to store the created document group
+document_group_template_folder_id=e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4
+
+# -- DocumentPrefillTextFieldExample
+# signer role name assigned to the prefill field (i.e. Product Manager, CEO)
+document_prefill_text_field_signer_role=Product Manager
+
+# -- DownloadDocumentGroupExample
+# document group to download as a merged file
+download_document_group_document_group_id=f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5
+# documents inside the group to define merge order
+download_document_group_document_id_1=a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6
+download_document_group_document_id_2=b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7
+
+# -- EmbeddedGroupInviteExample
+# emails for two signers in the embedded group invite
+embedded_group_invite_signer_1_email=signer1@example.com
+embedded_group_invite_signer_2_email=signer2@example.com
+
+# -- EmbeddedInviteExample
+# signer role name assigned to a field in the document
+embedded_invite_signer_role=Signer 1
+# signer's email to receive the embedded invite
+embedded_invite_signer_email=signer@example.com
+# signer's first and last name displayed in the invite
+embedded_invite_signer_first_name=John
+embedded_invite_signer_last_name=Doe
+
+# -- FieldInviteExample
+# signer email to receive the field invite
+field_invite_signer_email=signer@example.com
+# signer role name assigned to the field (i.e. General Manager, CTO)
+field_invite_signer_role=General Manager
+
+# -- FolderExample
+# existing folder ID to retrieve its documents
+folder_folder_id=c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8
+
+# -- FreeFormInviteExample
+# signer email to receive the free form invite
+free_form_invite_signer_email=signer@example.com
+# existing document to send the free form invite for
+free_form_invite_document_id=d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9
+
+# -- WebhookExample
+# your endpoint URL to receive webhook callbacks
+webhook_callback_url=https://your-domain.requestcatcher.com/
+
+# -- DocumentGroupTemplateRecipientsExample
+# document group template to manage recipients for
+document_group_template_recipients_template_id=c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4
+# document inside the template assigned to recipients
+document_group_template_recipients_document_id_1=d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5

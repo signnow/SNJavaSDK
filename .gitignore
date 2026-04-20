@@ -7,3 +7,5 @@
 .env.backup
 .env.production
 .env.development
+examples/signnow-example.properties
+examples/files/bulk_real.csv

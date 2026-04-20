@@ -8,20 +8,17 @@ import com.signnow.api.webhook.response.data.data.DataSubscriptionCollection;
 import com.signnow.core.ApiClient;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.factory.SdkFactory;
+import com.signnow.core.response.Reply;
 import java.util.Optional;
 
 public class WebhookExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    // Your user ID
-    String userId = "f2e913db4ba9815a31f8a28a196b7df96fe1cc46";
-    // Your URL to catch webhooks for subscribed events in SignNow
-    String callbackUrl = "https://demo.requestcatcher.com/";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String userId = data.getUserId();
+    String callbackUrl = data.getWebhookCallbackUrl();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);
@@ -35,31 +32,22 @@ public class WebhookExample {
               "callback", // we will send callbacks
               new Attribute(callbackUrl), // to the specified URL
               null);
-      client.send(subscriptionRequest);
-      System.out.println("Subscription is created");
+      Reply<?> postReply = client.send(subscriptionRequest);
+      String subscriptionId = postReply.getHeader("id");
+      System.out.println("Subscription is created, ID: " + subscriptionId);
+      System.out.println(new String(new char[10]).replace("\0", "-"));
 
       // 2. Get all subscriptions
       SubscriptionGetRequest subscriptionsRequest = new SubscriptionGetRequest();
       SubscriptionGetResponse subscriptionsResponse =
           (SubscriptionGetResponse) client.send(subscriptionsRequest).getResponse();
 
-      String subscriptionId = null;
       DataSubscriptionCollection subscriptions = subscriptionsResponse.getData();
       for (DataSubscription subscription : subscriptions) {
         System.out.println("ID: " + subscription.getId());
         System.out.println("Event: " + subscription.getEvent());
         System.out.println("Entity ID: " + subscription.getEntityId());
         System.out.println("Action: " + subscription.getAction());
-        System.out.println(
-            "Headers: "
-                + Optional.ofNullable(subscription.getJsonAttributes().getHeaders())
-                    .map(m -> m.toString())
-                    .orElse("{}"));
-        System.out.println(new String(new char[10]).replace("\0", "-"));
-
-        if ("user.document.open".equals(subscription.getEvent())) {
-          subscriptionId = subscription.getId();
-        }
       }
 
       // 3. Delete the subscription
@@ -67,7 +55,7 @@ public class WebhookExample {
         SubscriptionDeleteRequest deleteRequest = new SubscriptionDeleteRequest();
         deleteRequest.withEventSubscriptionId(subscriptionId);
         client.send(deleteRequest);
-        System.out.println("Subscription is deleted");
+        System.out.println("Subscription is deleted, ID: " + subscriptionId);
       }
     } catch (SignNowApiException e) {
       System.out.println("ERROR: " + e.getMessage());

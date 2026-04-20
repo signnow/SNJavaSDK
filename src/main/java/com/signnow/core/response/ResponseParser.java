@@ -90,7 +90,7 @@ public class ResponseParser {
       try {
         Constructor<?> constructor = clazz.getConstructor(File.class);
         R response = (R) constructor.newInstance(file);
-        return new Reply<>(downloadData.getCode(), "{}", response);
+        return new Reply<>(downloadData.getCode(), "{}", response, downloadData.getHeaders());
       } catch (NoSuchMethodException
           | InstantiationException
           | IllegalAccessException
@@ -117,7 +117,7 @@ public class ResponseParser {
         jsonResponse = "{}";
       }
       R response = objectMapper.readValue(jsonResponse, responseType);
-      return new Reply<>(responseData.getCode(), jsonResponse, response);
+      return new Reply<>(responseData.getCode(), jsonResponse, response, responseData.getHeaders());
     } catch (JsonProcessingException e) {
       throw new SignNowApiException(
           String.format(

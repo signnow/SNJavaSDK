@@ -6,12 +6,10 @@ import com.signnow.core.factory.SdkFactory;
 
 public class UserInfoExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

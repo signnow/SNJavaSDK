@@ -4,17 +4,17 @@ import com.signnow.api.documentgroup.response.DownloadDocumentGroupPostResponse;
 import com.signnow.core.ApiClient;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.factory.SdkFactory;
+import java.io.File;
 
 public class DownloadDocumentGroupExample {
     public static void main(String[] args) {
-        // Set your actual input data here
-        // Note: following values are dummy, just for example
+        // Fill in your actual data in examples/signnow-example.properties before running
         //----------------------------------------------------
-        // if it is not specified here, a new Bearer token will be created automatically
-        String bearerToken = "";
-        String documentGroupId = "e1b4c8a2f930d7e6a5b1f4c3d8a09e2b7c5d1f0a";
-        String documentId1 = "05fbed799231d85cf3471121ecd6a4221f9c5610";
-        String documentId2 = "9a3b1e4f0c2d7a8e5f6b9c1d3e0a4b7c8f2d6a9e";
+        SignNowExampleData data = new SignNowExampleData();
+        String bearerToken = data.getBearerToken();
+        String documentGroupId = data.getDownloadDocumentGroupDocumentGroupId();
+        String documentId1 = data.getDownloadDocumentGroupDocumentId1();
+        String documentId2 = data.getDownloadDocumentGroupDocumentId2();
 
         try {
             ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

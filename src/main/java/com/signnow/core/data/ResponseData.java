@@ -10,6 +10,7 @@
 package com.signnow.core.data;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.UUID;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +41,9 @@ public class ResponseData {
   /** The raw content of the response as a byte array. */
   private final byte[] content;
 
+  /** The HTTP response headers. */
+  private final Map<String, String> headers;
+
   /**
    * Constructs a new {@code ResponseData} instance.
    *
@@ -56,11 +60,32 @@ public class ResponseData {
       String contentDisposition,
       String downloadDirectory,
       byte[] content) {
+    this(code, contentType, contentDisposition, downloadDirectory, content, Collections.emptyMap());
+  }
+
+  /**
+   * Constructs a new {@code ResponseData} instance with headers.
+   *
+   * @param code the HTTP status code
+   * @param contentType the content type of the response
+   * @param contentDisposition the content disposition parsed from the response
+   * @param downloadDirectory the directory where the response content should be downloaded
+   * @param content the raw body content of the response
+   * @param headers the HTTP response headers
+   */
+  public ResponseData(
+      int code,
+      String contentType,
+      String contentDisposition,
+      String downloadDirectory,
+      byte[] content,
+      Map<String, String> headers) {
     this.code = code;
     this.contentType = contentType;
     this.contentDisposition = contentDisposition;
     this.downloadDirectory = downloadDirectory;
     this.content = content;
+    this.headers = headers != null ? headers : Collections.emptyMap();
   }
 
   /**
@@ -88,6 +113,15 @@ public class ResponseData {
    */
   public String getContentAsString() {
     return new String(this.getContent(), StandardCharsets.UTF_8);
+  }
+
+  /**
+   * Returns the HTTP response headers.
+   *
+   * @return an unmodifiable map of response headers
+   */
+  public Map<String, String> getHeaders() {
+    return Collections.unmodifiableMap(this.headers);
   }
 
   /**

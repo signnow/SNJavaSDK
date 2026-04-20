@@ -14,21 +14,21 @@ import com.signnow.api.documentinvite.response.SendInvitePostResponse;
 import com.signnow.core.ApiClient;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.factory.SdkFactory;
+import java.io.File;
 
 public class FieldInviteExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String senderEmail = "sender@signnow.com";
-    String signerEmail = "signer@signnow.com";
-    String signerRole = "General Manager";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String senderEmail = data.getSenderEmail();
+    String signerEmail = data.getFieldInviteSignerEmail();
+    String signerRole = data.getFieldInviteSignerRole();
+    String pathToDocument = data.getPathToDocument();
+    // Set your actual input data here, or use these as examples
     String subject = "You have got an invitation to sign the contact";
     String message = "Hello, please read and sign the contract";
-    String pathToDocument = "/your/path/to/file.pdf"; // Path to a document to be signed
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

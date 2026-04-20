@@ -1,0 +1,65 @@
+# signNow SDK Example Configuration
+# Make a copy of this file named `signnow-example.properties` and update it with your actual values.
+# Naming convention: {domainName}_{variableName}, e.g. bulk_invite_template_id
+
+# Global
+bearer_token=
+path_to_document=examples/files/demo.pdf
+first_recipient_role=
+second_recipient_role=
+sign_action=sign
+view_action=view
+sender_email=
+user_id=
+
+# BulkInviteExample
+bulk_invite_template_id=
+bulk_invite_folder_id=
+bulk_invite_csv_file_path=
+
+# DocumentGroupInviteExample
+document_group_invite_signer_role=
+document_group_invite_signer_email=
+
+# DocumentGetExample
+document_id=
+
+# DocumentGroupTemplateExample
+document_group_template_template_group_id=
+document_group_template_folder_id=
+
+# DocumentPrefillTextFieldExample
+document_prefill_text_field_signer_role=
+
+# DownloadDocumentGroupExample
+download_document_group_document_group_id=
+download_document_group_document_id_1=
+download_document_group_document_id_2=
+
+# EmbeddedGroupInviteExample
+embedded_group_invite_signer_1_email=
+embedded_group_invite_signer_2_email=
+
+# EmbeddedInviteExample
+embedded_invite_signer_role=
+embedded_invite_signer_email=
+embedded_invite_signer_first_name=
+embedded_invite_signer_last_name=
+
+# FieldInviteExample
+field_invite_signer_email=
+field_invite_signer_role=
+
+# FolderExample
+folder_folder_id=
+
+# FreeFormInviteExample
+free_form_invite_signer_email=
+free_form_invite_document_id=
+
+# WebhookExample
+webhook_callback_url=
+
+# DocumentGroupTemplateRecipientsExample
+document_group_template_recipients_template_id=
+document_group_template_recipients_document_id_1=

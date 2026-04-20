@@ -9,6 +9,11 @@
 
 package com.signnow.core.response;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.Map;
+
 /**
  * This class represents a server reply.
  *
@@ -18,6 +23,7 @@ public class Reply<R> {
   private final Integer httpStatusCode;
   private final String json;
   private final R response;
+  private final Map<String, String> headers;
 
   /**
    * Constructs a new Reply object.
@@ -25,11 +31,23 @@ public class Reply<R> {
    * @param httpStatusCode the HTTP status code of the server response
    * @param json the raw JSON string of the server response
    * @param response the deserialized response body
+   * @param headers the HTTP response headers
    */
-  public Reply(Integer httpStatusCode, String json, R response) {
+  public Reply(Integer httpStatusCode, String json, R response, Map<String, String> headers) {
     this.httpStatusCode = httpStatusCode;
     this.json = json;
     this.response = response;
+    if (headers == null || headers.isEmpty()) {
+      this.headers = Collections.emptyMap();
+    } else {
+      Map<String, String> normalized = new LinkedHashMap<>();
+      for (Map.Entry<String, String> entry : headers.entrySet()) {
+        if (entry.getKey() != null) {
+          normalized.put(entry.getKey().toLowerCase(Locale.ROOT), entry.getValue());
+        }
+      }
+      this.headers = Collections.unmodifiableMap(normalized);
+    }
   }
 
   /**
@@ -69,6 +87,28 @@ public class Reply<R> {
    */
   public String toJson() {
     return this.json;
+  }
+
+  /**
+   * Returns the HTTP response headers.
+   *
+   * @return an unmodifiable map of response headers
+   */
+  public Map<String, String> getHeaders() {
+    return this.headers;
+  }
+
+  /**
+   * Returns a specific HTTP response header value. Header name lookup is case-insensitive.
+   *
+   * @param name the header name (case-insensitive)
+   * @return the header value, or null if not present
+   */
+  public String getHeader(String name) {
+    if (name == null) {
+      return null;
+    }
+    return this.headers.get(name.toLowerCase(Locale.ROOT));
   }
 
   /**

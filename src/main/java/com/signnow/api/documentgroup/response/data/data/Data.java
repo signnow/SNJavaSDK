@@ -48,12 +48,34 @@ public final class Data extends ApiData {
   private final CcCollection cc;
 
   /**
+   * The number of general expiration days for the document group.
+   */
+  @JsonProperty("general_expiration_days")
+  private final Integer generalExpirationDays;
+
+  /**
+   * General reminder for the document group.
+   */
+  @JsonProperty("general_reminder")
+  private final GeneralReminder generalReminder;
+
+  /**
+   * The order type for the document group recipients.
+   * Possible values: at_the_same_time, recipient_order, advanced_order.
+   */
+  @JsonProperty("order_type")
+  private final String orderType;
+
+  /**
    * Constructor for Data class.
    *
    * @param recipients Collection of recipients.
    * @param unmappedDocuments Collection of unmapped documents.
    * @param allowedUnmappedSignDocuments Collection of allowed unmapped sign documents.
    * @param cc Collection of cc.
+   * @param generalExpirationDays The number of general expiration days.
+   * @param generalReminder General reminder.
+   * @param orderType The order type for the document group recipients.
    */
   @JsonCreator
   public Data(
@@ -61,11 +83,17 @@ public final class Data extends ApiData {
       @JsonProperty("unmapped_documents") UnmappedDocumentCollection unmappedDocuments,
       @JsonProperty("allowed_unmapped_sign_documents")
           AllowedUnmappedSignDocumentCollection allowedUnmappedSignDocuments,
-      @JsonProperty("cc") CcCollection cc) {
+      @JsonProperty("cc") CcCollection cc,
+      @JsonProperty("general_expiration_days") Integer generalExpirationDays,
+      @JsonProperty("general_reminder") GeneralReminder generalReminder,
+      @JsonProperty("order_type") String orderType) {
     this.recipients = recipients;
     this.unmappedDocuments = unmappedDocuments;
     this.allowedUnmappedSignDocuments = allowedUnmappedSignDocuments;
     this.cc = cc;
+    this.generalExpirationDays = generalExpirationDays;
+    this.generalReminder = generalReminder;
+    this.orderType = orderType;
   }
 
   /**
@@ -105,6 +133,33 @@ public final class Data extends ApiData {
   }
 
   /**
+   * Getter for general expiration days.
+   *
+   * @return The number of general expiration days, or null if not set.
+   */
+  public Integer getGeneralExpirationDays() {
+    return this.generalExpirationDays;
+  }
+
+  /**
+   * Getter for general reminder.
+   *
+   * @return GeneralReminder, or null if not set.
+   */
+  public GeneralReminder getGeneralReminder() {
+    return this.generalReminder;
+  }
+
+  /**
+   * Getter for order type.
+   *
+   * @return The order type for the document group recipients, or null if not set.
+   */
+  public String getOrderType() {
+    return this.orderType;
+  }
+
+  /**
    * Converts the Data object to a Map.
    *
    * @return Map representation of the Data object.
@@ -117,6 +172,9 @@ public final class Data extends ApiData {
     map.put("unmapped_documents", this.getUnmappedDocuments());
     map.put("allowed_unmapped_sign_documents", this.getAllowedUnmappedSignDocuments());
     map.put("cc", this.getCc());
+    map.put("general_expiration_days", this.getGeneralExpirationDays());
+    map.put("general_reminder", this.getGeneralReminder());
+    map.put("order_type", this.getOrderType());
     return map;
   }
 
@@ -133,6 +191,9 @@ public final class Data extends ApiData {
         (RecipientCollection) data.get("recipients"),
         (UnmappedDocumentCollection) data.get("unmapped_documents"),
         (AllowedUnmappedSignDocumentCollection) data.get("allowed_unmapped_sign_documents"),
-        (CcCollection) data.get("cc"));
+        (CcCollection) data.get("cc"),
+        (Integer) data.getOrDefault("general_expiration_days", null),
+        (GeneralReminder) data.getOrDefault("general_reminder", null),
+        (String) data.getOrDefault("order_type", null));
   }
 }

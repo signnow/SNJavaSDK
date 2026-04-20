@@ -10,12 +10,11 @@ import com.signnow.core.factory.SdkFactory;
 
 public class EmbeddedEditorDocumentExample {
   public static void main(String[] args) {
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
-    // ----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String pathToDocument = "/your/path/to/file.pdf";
+    // Fill in your actual data in examples/signnow-example.properties before running
+    //----------------------------------------------------
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String pathToDocument = data.getPathToDocument();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);
