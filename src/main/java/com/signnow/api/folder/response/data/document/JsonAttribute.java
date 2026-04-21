@@ -143,6 +143,12 @@ public final class JsonAttribute extends ApiData {
   private final Integer maxChars;
 
   /**
+   * Whether the attribute should stretch to fit the document grid.
+   */
+  @JsonProperty("stretch_to_grid")
+  private final Boolean stretchToGrid;
+
+  /**
    * Constructor for JsonAttribute.
    *
    * @param pageNumber the page number
@@ -165,6 +171,7 @@ public final class JsonAttribute extends ApiData {
    * @param arrangement the arrangement
    * @param maxLines the maximum number of lines
    * @param maxChars the maximum number of characters
+   * @param stretchToGrid whether the attribute should stretch to fit the document grid
    */
   @JsonCreator
   public JsonAttribute(
@@ -187,7 +194,8 @@ public final class JsonAttribute extends ApiData {
       @JsonProperty("font_size") Integer fontSize,
       @JsonProperty("arrangement") String arrangement,
       @JsonProperty("max_lines") Integer maxLines,
-      @JsonProperty("max_chars") Integer maxChars) {
+      @JsonProperty("max_chars") Integer maxChars,
+      @JsonProperty("stretch_to_grid") Boolean stretchToGrid) {
     this.pageNumber = pageNumber;
     this.x = x;
     this.y = y;
@@ -208,6 +216,7 @@ public final class JsonAttribute extends ApiData {
     this.arrangement = arrangement;
     this.maxLines = maxLines;
     this.maxChars = maxChars;
+    this.stretchToGrid = stretchToGrid;
   }
 
   /**
@@ -391,6 +400,15 @@ public final class JsonAttribute extends ApiData {
   }
 
   /**
+   * Returns whether the attribute should stretch to fit the document grid.
+   *
+   * @return true if the attribute should stretch to grid, false or null otherwise
+   */
+  public Boolean isStretchToGrid() {
+    return this.stretchToGrid;
+  }
+
+  /**
    * Converts this object to a map.
    *
    * @return a map representation of this object
@@ -419,6 +437,7 @@ public final class JsonAttribute extends ApiData {
     map.put("arrangement", this.getArrangement());
     map.put("max_lines", this.getMaxLines());
     map.put("max_chars", this.getMaxChars());
+    map.put("stretch_to_grid", this.isStretchToGrid());
     return map;
   }
 
@@ -451,6 +470,7 @@ public final class JsonAttribute extends ApiData {
         (Integer) data.getOrDefault("font_size", null),
         (String) data.getOrDefault("arrangement", null),
         (Integer) data.getOrDefault("max_lines", null),
-        (Integer) data.getOrDefault("max_chars", null));
+        (Integer) data.getOrDefault("max_chars", null),
+        (Boolean) data.getOrDefault("stretch_to_grid", null));
   }
 }

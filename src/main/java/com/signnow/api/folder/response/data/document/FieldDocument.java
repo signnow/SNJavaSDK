@@ -89,6 +89,12 @@ public final class FieldDocument extends ApiData {
   private final String fieldId;
 
   /**
+   * Whether the field request is canceled.
+   */
+  @JsonProperty("field_request_canceled")
+  private final Boolean fieldRequestCanceled;
+
+  /**
    * Constructor for FieldDocument.
    *
    * @param id The id of the FieldDocument.
@@ -102,6 +108,7 @@ public final class FieldDocument extends ApiData {
    * @param elementId The element id of the FieldDocument.
    * @param templateFieldId The template field id of the FieldDocument.
    * @param fieldId The field id of the FieldDocument.
+   * @param fieldRequestCanceled Whether the field request is canceled.
    */
   @JsonCreator
   public FieldDocument(
@@ -115,7 +122,8 @@ public final class FieldDocument extends ApiData {
       @JsonProperty("field_request_id") String fieldRequestId,
       @JsonProperty("element_id") String elementId,
       @JsonProperty("template_field_id") String templateFieldId,
-      @JsonProperty("field_id") String fieldId) {
+      @JsonProperty("field_id") String fieldId,
+      @JsonProperty("field_request_canceled") Boolean fieldRequestCanceled) {
     this.id = id;
     this.type = type;
     this.roleId = roleId;
@@ -127,6 +135,7 @@ public final class FieldDocument extends ApiData {
     this.elementId = elementId;
     this.templateFieldId = templateFieldId;
     this.fieldId = fieldId;
+    this.fieldRequestCanceled = fieldRequestCanceled;
   }
 
   /**
@@ -229,6 +238,15 @@ public final class FieldDocument extends ApiData {
   }
 
   /**
+   * Returns whether the field request is canceled.
+   *
+   * @return true if the field request is canceled, null if not set.
+   */
+  public Boolean isFieldRequestCanceled() {
+    return this.fieldRequestCanceled;
+  }
+
+  /**
    * Converts the FieldDocument object to a Map.
    *
    * @return A Map representation of the FieldDocument object.
@@ -248,6 +266,7 @@ public final class FieldDocument extends ApiData {
     map.put("element_id", this.getElementId());
     map.put("template_field_id", this.getTemplateFieldId());
     map.put("field_id", this.getFieldId());
+    map.put("field_request_canceled", this.isFieldRequestCanceled());
     return map;
   }
 
@@ -271,6 +290,7 @@ public final class FieldDocument extends ApiData {
         (String) data.getOrDefault("field_request_id", null),
         (String) data.getOrDefault("element_id", null),
         (String) data.getOrDefault("template_field_id", null),
-        (String) data.getOrDefault("field_id", null));
+        (String) data.getOrDefault("field_id", null),
+        (Boolean) data.getOrDefault("field_request_canceled", null));
   }
 }

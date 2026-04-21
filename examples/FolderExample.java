@@ -6,13 +6,11 @@ import com.signnow.core.factory.SdkFactory;
 
 public class FolderExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String folderId = "14f2b0157ce3cb455a2d8031ccc1fc08bd32f8b5";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String folderId = data.getFolderFolderId();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

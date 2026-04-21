@@ -19,18 +19,17 @@ import java.io.File;
 
 public class DocumentGroupInviteExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String pathToDocument = data.getPathToDocument();
+    String signerRole = data.getDocumentGroupInviteSignerRole();
+    String signerEmail = data.getDocumentGroupInviteSignerEmail();
+    // Set your actual input data here, or use these as examples
     String groupName = "Test Document Group";
-    String signerRole = "Signer";
-    String signerEmail = "signer@signnow.com";
     String subject = "Please sign these documents";
     String message = "Hello, please sign these documents";
-    String pathToDocument = "/your/path/to/document.pdf";
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);
@@ -103,6 +102,18 @@ public class DocumentGroupInviteExample {
       GroupInvitePostResponse inviteResponse = (GroupInvitePostResponse) client.send(inviteRequest).getResponse();
 
       System.out.println("Document Group: " + docGroupResponse.getId());
+      // These fields are available when using ?include=reminder query parameter
+      if (docGroupResponse.getGeneralExpirationDays() != null) {
+        System.out.println("General Expiration Days: " + docGroupResponse.getGeneralExpirationDays());
+      }
+      if (docGroupResponse.getGeneralReminder() != null) {
+        System.out.println("General Reminder - After: " + docGroupResponse.getGeneralReminder().getRemindAfter()
+            + ", Before: " + docGroupResponse.getGeneralReminder().getRemindBefore()
+            + ", Repeat: " + docGroupResponse.getGeneralReminder().getRemindRepeat());
+      }
+      if (docGroupResponse.getOrderType() != null) {
+        System.out.println("Order Type: " + docGroupResponse.getOrderType());
+      }
       System.out.println("Document Group invite: " + inviteResponse.getId());
     } catch (SignNowApiException e) {
       System.out.println("ERROR: " + e.getMessage());

@@ -12,6 +12,7 @@ package com.signnow.api.documentgroup.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.signnow.api.documentgroup.response.data.OriginatorOrganizationSettingsCollection;
+import com.signnow.api.documentgroup.response.data.data.GeneralReminder;
 import com.signnow.api.documentgroup.response.data.document.DocumentItemCollection;
 
 /**
@@ -51,6 +52,25 @@ public class DocumentGroupGetResponse {
   private final String inviteId;
 
   /**
+   * The number of general expiration days for the document group.
+   */
+  @JsonProperty("general_expiration_days")
+  private final Integer generalExpirationDays;
+
+  /**
+   * General reminder for the document group.
+   */
+  @JsonProperty("general_reminder")
+  private final GeneralReminder generalReminder;
+
+  /**
+   * The order type for the document group recipients.
+   * Possible values: at_the_same_time, recipient_order, advanced_order.
+   */
+  @JsonProperty("order_type")
+  private final String orderType;
+
+  /**
    * Constructs a new DocumentGroupGetResponse with the specified parameters.
    *
    * @param id the unique identifier of the document group
@@ -58,6 +78,9 @@ public class DocumentGroupGetResponse {
    * @param documents the collection of documents in the document group
    * @param originatorOrganizationSettings the settings of the organization that originated the document group
    * @param inviteId the unique identifier of the invite
+   * @param generalExpirationDays the number of general expiration days
+   * @param generalReminder the general reminder
+   * @param orderType the order type for the document group recipients
    */
   public DocumentGroupGetResponse(
       @JsonProperty("id") String id,
@@ -65,12 +88,18 @@ public class DocumentGroupGetResponse {
       @JsonProperty("documents") DocumentItemCollection documents,
       @JsonProperty("originator_organization_settings")
           OriginatorOrganizationSettingsCollection originatorOrganizationSettings,
-      @JsonProperty("invite_id") String inviteId) {
+      @JsonProperty("invite_id") String inviteId,
+      @JsonProperty("general_expiration_days") Integer generalExpirationDays,
+      @JsonProperty("general_reminder") GeneralReminder generalReminder,
+      @JsonProperty("order_type") String orderType) {
     this.id = id;
     this.groupName = groupName;
     this.documents = documents;
     this.originatorOrganizationSettings = originatorOrganizationSettings;
     this.inviteId = inviteId;
+    this.generalExpirationDays = generalExpirationDays;
+    this.generalReminder = generalReminder;
+    this.orderType = orderType;
   }
 
   /**
@@ -116,5 +145,32 @@ public class DocumentGroupGetResponse {
    */
   public String getInviteId() {
     return this.inviteId;
+  }
+
+  /**
+   * Returns the number of general expiration days.
+   *
+   * @return the number of general expiration days, or null if not set
+   */
+  public Integer getGeneralExpirationDays() {
+    return this.generalExpirationDays;
+  }
+
+  /**
+   * Returns the collection of general reminders.
+   *
+   * @return the general reminder, or null if not set
+   */
+  public GeneralReminder getGeneralReminder() {
+    return this.generalReminder;
+  }
+
+  /**
+   * Returns the order type for the document group recipients.
+   *
+   * @return the order type, or null if not set
+   */
+  public String getOrderType() {
+    return this.orderType;
   }
 }

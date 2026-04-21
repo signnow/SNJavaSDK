@@ -6,15 +6,13 @@ import com.signnow.core.factory.SdkFactory;
 
 public class FreeFormInviteExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String senderEmail = "sender@signnow.com";
-    String signerEmail = "signer@signnow.com";
-    String documentId = "b2072009b7e0427dba1f6de56df4812da5d8eb9c"; // Document to be signed
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String senderEmail = data.getSenderEmail();
+    String signerEmail = data.getFreeFormInviteSignerEmail();
+    String documentId = data.getFreeFormInviteDocumentId();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

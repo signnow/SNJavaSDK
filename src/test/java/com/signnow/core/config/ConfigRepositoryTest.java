@@ -43,6 +43,7 @@ public class ConfigRepositoryTest {
     assertEquals("test!PAZZW", configRepository.password());
     assertInstanceOf(BasicToken.class, configRepository.basicToken());
     assertEquals("test_basic_token", configRepository.basicToken().token());
+    assertEquals(55, configRepository.readTimeout());
     assertEquals(System.getProperty("user.dir"), configRepository.projectDirectory());
     assertEquals(
         configRepository.projectDirectory() + "/src/main/resources/downloads",

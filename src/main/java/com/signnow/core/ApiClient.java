@@ -100,13 +100,18 @@ public class ApiClient {
                 + "Please try again later, or check your internet connection.");
       }
 
+      Map<String, String> responseHeaders = new java.util.LinkedHashMap<>();
+      for (String name : response.headers().names()) {
+        responseHeaders.put(name, response.header(name));
+      }
       ResponseData responseData =
           new ResponseData(
               response.code(),
               response.header("Content-Type", ""),
               response.header("Content-Disposition", ""),
               this.configRepository.downloadsDirectory(),
-              response.body().bytes());
+              response.body().bytes(),
+              responseHeaders);
       response.close();
 
       responseCode = responseData.getCode();

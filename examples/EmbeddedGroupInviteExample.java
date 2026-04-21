@@ -18,18 +18,17 @@ import java.io.File;
 
 public class EmbeddedGroupInviteExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String signer1Email = data.getEmbeddedGroupInviteSigner1Email();
+    String signer2Email = data.getEmbeddedGroupInviteSigner2Email();
+    String pathToDocument = data.getPathToDocument();
+    // Set your actual input data here, or use these as examples
     String groupName = "Test Document Group for Embedded Invite";
     String signer1Role = "Signer 1";
     String signer2Role = "Signer 2";
-    String signer1Email = "first@signnow.com";
-    String signer2Email = "second@signnow.com";
-    String pathToDocument = "/your/path/to/document.pdf";
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

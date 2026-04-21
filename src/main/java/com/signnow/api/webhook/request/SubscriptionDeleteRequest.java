@@ -22,9 +22,8 @@ import org.jetbrains.annotations.NotNull;
  */
 @ApiEndpoint(
     name = "deleteEventSubscription",
-    url = "/api/v2/events/{event_subscription_id}",
+    url = "/v2/event-subscriptions/{event_subscription_id}",
     method = "delete",
-    auth = "basic",
     namespace = "webhook",
     entity = "subscription",
     type = "application/json")

@@ -6,13 +6,11 @@ import com.signnow.core.factory.SdkFactory;
 
 public class DocumentGetExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String documentId = "05fbed799231d85cf3471121ecd6a4221f9c5610";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String documentId = data.getDocumentId();
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);
@@ -22,6 +20,19 @@ public class DocumentGetExample {
       System.out.println("Document ID: " + response.getId());
       System.out.println("Document Name: " + response.getDocumentName());
       System.out.println("Document Owner: " + response.getUserId());
+
+      // These fields are available when using ?include=field_invites query parameter
+      if (response.getGeneralExpirationDays() != null) {
+        System.out.println("General Expiration Days: " + response.getGeneralExpirationDays());
+      }
+      if (response.getGeneralReminder() != null) {
+        System.out.println("General Reminder - After: " + response.getGeneralReminder().getRemindAfter()
+            + ", Before: " + response.getGeneralReminder().getRemindBefore()
+            + ", Repeat: " + response.getGeneralReminder().getRemindRepeat());
+      }
+      if (response.getOrderType() != null) {
+        System.out.println("Order Type: " + response.getOrderType());
+      }
     } catch (SignNowApiException e) {
       System.out.println("ERROR: " + e.getMessage());
     }

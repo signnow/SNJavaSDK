@@ -20,6 +20,7 @@ import com.signnow.api.document.response.data.EnumerationOptionCollection;
 import com.signnow.api.document.response.data.FieldCollection;
 import com.signnow.api.document.response.data.FieldValidatorCollection;
 import com.signnow.api.document.response.data.FieldsDataCollection;
+import com.signnow.api.document.response.data.GeneralReminder;
 import com.signnow.api.document.response.data.HyperlinkCollection;
 import com.signnow.api.document.response.data.InsertCollection;
 import com.signnow.api.document.response.data.IntegrationCollection;
@@ -353,6 +354,25 @@ public class DocumentGetResponse {
   private final DocumentGroupTemplateInfoCollection documentGroupTemplateInfo;
 
   /**
+   * The number of general expiration days for the document.
+   */
+  @JsonProperty("general_expiration_days")
+  private final Integer generalExpirationDays;
+
+  /**
+   * General reminder for the document.
+   */
+  @JsonProperty("general_reminder")
+  private final GeneralReminder generalReminder;
+
+  /**
+   * The order type for the document recipients.
+   * Possible values: at_the_same_time, recipient_order, advanced_order.
+   */
+  @JsonProperty("order_type")
+  private final String orderType;
+
+  /**
    * Constructs a new DocumentGetResponse with the specified details.
    *
    * @param id the unique identifier of the document
@@ -405,6 +425,9 @@ public class DocumentGetResponse {
    * @param fieldsData the collection of fields data in the document
    * @param fieldValidators the collection of field validators in the document
    * @param documentGroupTemplateInfo the collection of document group template info in the document
+   * @param generalExpirationDays the number of general expiration days
+   * @param generalReminder the collection of general reminders
+   * @param orderType the order type for the document recipients
    */
   public DocumentGetResponse(
       @JsonProperty("id") String id,
@@ -458,7 +481,10 @@ public class DocumentGetResponse {
       @JsonProperty("fields_data") FieldsDataCollection fieldsData,
       @JsonProperty("field_validators") FieldValidatorCollection fieldValidators,
       @JsonProperty("document_group_template_info")
-          DocumentGroupTemplateInfoCollection documentGroupTemplateInfo) {
+          DocumentGroupTemplateInfoCollection documentGroupTemplateInfo,
+      @JsonProperty("general_expiration_days") Integer generalExpirationDays,
+      @JsonProperty("general_reminder") GeneralReminder generalReminder,
+      @JsonProperty("order_type") String orderType) {
     this.id = id;
     this.userId = userId;
     this.documentName = documentName;
@@ -509,6 +535,9 @@ public class DocumentGetResponse {
     this.fieldsData = fieldsData;
     this.fieldValidators = fieldValidators;
     this.documentGroupTemplateInfo = documentGroupTemplateInfo;
+    this.generalExpirationDays = generalExpirationDays;
+    this.generalReminder = generalReminder;
+    this.orderType = orderType;
   }
 
   /**
@@ -959,5 +988,32 @@ public class DocumentGetResponse {
    */
   public ShareInfo getShareInfo() {
     return this.shareInfo;
+  }
+
+  /**
+   * Returns the number of general expiration days.
+   *
+   * @return the number of general expiration days, or null if not set
+   */
+  public Integer getGeneralExpirationDays() {
+    return this.generalExpirationDays;
+  }
+
+  /**
+   * Returns the collection of general reminders.
+   *
+   * @return the collection of general reminders, or null if not set
+   */
+  public GeneralReminder getGeneralReminder() {
+    return this.generalReminder;
+  }
+
+  /**
+   * Returns the order type for the document recipients.
+   *
+   * @return the order type, or null if not set
+   */
+  public String getOrderType() {
+    return this.orderType;
   }
 }

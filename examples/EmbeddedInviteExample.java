@@ -22,18 +22,17 @@ import java.io.File;
 
 public class EmbeddedInviteExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String signerRole = "Signer 1";
-    String signerEmail = "first@signnow.com";
-    String signerFirstName = "Alex";
-    String signerLastName = "Tester";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String signerRole = data.getEmbeddedInviteSignerRole();
+    String signerEmail = data.getEmbeddedInviteSignerEmail();
+    String signerFirstName = data.getEmbeddedInviteSignerFirstName();
+    String signerLastName = data.getEmbeddedInviteSignerLastName();
+    String pathToDocument = data.getPathToDocument();
+    // Set your actual input data here, or use these as examples
     int embeddedInviteLinkExpirationTime = 45;
-    String pathToDocument = "/your/path/to/document.pdf";
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

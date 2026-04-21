@@ -6,13 +6,10 @@ import com.signnow.core.factory.SdkFactory;
 
 public class AuthCheckExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
-    //----------------------------------------------------
-    // if it is empty or null, a new Bearer token will be created automatically
-    String bearerToken = "";
-
+    // Fill in your actual data in examples/signnow-example.properties before running
+    //---------------------------------------------------
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);
       TokenGetResponse response = (TokenGetResponse) client.send(new TokenGetRequest()).getResponse();

@@ -3,19 +3,22 @@ import com.signnow.api.documentgrouptemplate.response.DocumentGroupTemplatePostR
 import com.signnow.core.ApiClient;
 import com.signnow.core.exception.SignNowApiException;
 import com.signnow.core.factory.SdkFactory;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 public class DocumentGroupTemplateExample {
   public static void main(String[] args) {
-
-    // Set your actual input data here
-    // Note: following values are dummy, just for example
+    // Fill in your actual data in examples/signnow-example.properties before running
     //----------------------------------------------------
-    // if it is not specified here, a new Bearer token will be created automatically
-    String bearerToken = "";
-    String templateGroupId = "5d66ca4accdd4ab28f8b2c71001093b5cb3bcb8a";
+    SignNowExampleData data = new SignNowExampleData();
+    String bearerToken = data.getBearerToken();
+    String templateGroupId = data.getDocumentGroupTemplateTemplateGroupId();
+    String clientTimestamp = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        .withZone(ZoneOffset.UTC).format(Instant.now());
+    String folderId = data.getDocumentGroupTemplateFolderId();
+    // Set your actual input data here, or use these as examples
     String groupName = "My Document Group";
-    String clientTimestamp = "2024-01-15T10:30:00Z";
-    String folderId = "5d66ca4accdd4ab28f8b2c71001093b5cb3bcb8b";
 
     try {
       ApiClient client = SdkFactory.createApiClientWithBearerToken(bearerToken);

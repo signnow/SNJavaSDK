@@ -101,6 +101,12 @@ public final class Plan extends ApiData {
   private final boolean isMarketplace;
 
   /**
+   * The mobile plan type.
+   */
+  @JsonProperty("mobile_plan_type")
+  private final String mobilePlanType;
+
+  /**
    * Constructor for the Plan class.
    *
    * @param id The id of the plan.
@@ -116,6 +122,7 @@ public final class Plan extends ApiData {
    * @param unitPrice The unit price of the plan.
    * @param isTrial The trial status of the plan.
    * @param isMarketplace The marketplace status of the plan.
+   * @param mobilePlanType The mobile plan type.
    */
   @JsonCreator
   public Plan(
@@ -131,7 +138,8 @@ public final class Plan extends ApiData {
       @JsonProperty("api_requests") int apiRequests,
       @JsonProperty("unit_price") int unitPrice,
       @JsonProperty("is_trial") boolean isTrial,
-      @JsonProperty("is_marketplace") boolean isMarketplace) {
+      @JsonProperty("is_marketplace") boolean isMarketplace,
+      @JsonProperty("mobile_plan_type") String mobilePlanType) {
     this.id = id;
     this.planId = planId;
     this.name = name;
@@ -145,6 +153,7 @@ public final class Plan extends ApiData {
     this.unitPrice = unitPrice;
     this.isTrial = isTrial;
     this.isMarketplace = isMarketplace;
+    this.mobilePlanType = mobilePlanType;
   }
 
   /**
@@ -265,6 +274,15 @@ public final class Plan extends ApiData {
   }
 
   /**
+   * Returns the mobile plan type.
+   *
+   * @return The mobile plan type.
+   */
+  public String getMobilePlanType() {
+    return this.mobilePlanType;
+  }
+
+  /**
    * Converts the Plan object to a Map.
    *
    * @return A Map representing the Plan object.
@@ -286,6 +304,7 @@ public final class Plan extends ApiData {
     map.put("unit_price", this.getUnitPrice());
     map.put("is_trial", this.isTrial());
     map.put("is_marketplace", this.isMarketplace());
+    map.put("mobile_plan_type", this.getMobilePlanType());
     return map;
   }
 
@@ -311,6 +330,7 @@ public final class Plan extends ApiData {
         (int) data.get("api_requests"),
         (int) data.get("unit_price"),
         (boolean) data.get("is_trial"),
-        (boolean) data.get("is_marketplace"));
+        (boolean) data.get("is_marketplace"),
+        (String) data.getOrDefault("mobile_plan_type", null));
   }
 }

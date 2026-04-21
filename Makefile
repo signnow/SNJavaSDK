@@ -1,4 +1,4 @@
-.PHONY: mock-up mock-stop mock-restart test tests
+.PHONY: mock-up mock-stop mock-restart test tests example examples
 
 .SILENT: ;               # no need for @
 .ONESHELL: ;             # recipes execute in same shell
@@ -34,3 +34,15 @@ test:
 # Run all the tests
 tests:
 	mvn test
+
+# Run an example from examples/ directory
+# Examples:
+#   make example E=DocumentGetExample
+#   make examples
+example:
+	@if [ -z "$(E)" ]; then echo "Usage: make example E=ExampleClassName"; exit 1; fi
+	./examples/bin/run $(E)
+
+# Run all examples
+examples:
+	./examples/bin/run all
