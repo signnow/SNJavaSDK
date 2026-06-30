@@ -1,5 +1,5 @@
 /*
- * This file is a part of signNow SDK API client.
+ * This file is a part of SignNow SDK API client.
  *
  * (с) Copyright © 2011-present airSlate Inc. (https://www.signnow.com)
  *
@@ -18,7 +18,7 @@ import com.signnow.core.provider.ApiServiceProvider;
 import com.signnow.core.token.BearerToken;
 
 /**
- * Main class for the signNow SDK.
+ * Main class for the SignNow SDK.
  */
 public class Sdk {
 
@@ -29,7 +29,7 @@ public class Sdk {
   private static final String GRANT_TYPE_BY_PASSWORD = "password";
 
   /** 
-   * signNow SDK Service Provider 
+   * SignNow SDK Service Provider
    */
   private final ApiServiceProvider apiServiceProvider;
 
