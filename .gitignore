@@ -1,11 +1,36 @@
+# Build output
+/target
+/.gradle
+
+# Dependencies
 /vendor
+
+# IDE
 /.idea
 /.fleet
 /.vscode
-/target
+/.netbeans
+*.iml
+*.ipr
+*.iws
+
+# Editor swap files
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / credentials
 .env
 .env.backup
 .env.production
 .env.development
+.env.test
+.env.local
+
+# Project-local examples / fixtures
 examples/signnow-example.properties
 examples/files/bulk_real.csv
